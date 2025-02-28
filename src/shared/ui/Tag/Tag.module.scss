@@ -1,0 +1,75 @@
+.tag {
+  $border-width: 1px;
+
+  padding: 4px 18px 6px 10px;
+  font: var(--font-tag);
+  position: relative;
+  border: $border-width solid transparent;
+  border-right-color: transparent !important;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    display: block;
+    height: 60%;
+    aspect-ratio: 1 / 1;
+    //border: 1px solid transparent;
+    transform: translate(55%, -50%) rotate(45deg) skew(15deg, 15deg);
+    transform-origin: center;
+    clip-path: polygon(100% 100%, 0% 100%, 0% 0%);
+  }
+
+
+  &.new {
+    $color: var(--accent-color);
+    color: $color;
+    border-color: $color;
+
+    &:before {
+      box-shadow: 0 0 0 $border-width $color inset;
+    }
+  }
+
+  &.hit {
+    $color: var(--purple);
+    color: $color;
+    border-color: $color;
+
+    &:before {
+      box-shadow: 0 0 0 $border-width $color inset;
+    }
+  }
+
+  &.promotion {
+    $color: var(--green);
+    color: $color;
+    border-color: $color;
+
+    &:before {
+      box-shadow: 0 0 0 $border-width $color inset;
+    }
+  }
+
+  &.absent {
+    $color: var(--grey);
+    color: $color;
+    border-color: $color;
+
+    &:before {
+      box-shadow: 0 0 0 $border-width $color inset;
+    }
+  }
+
+  &.discount {
+    $color: var(--red);
+    color: $color;
+    border-color: $color;
+
+    &:before {
+      box-shadow: 0 0 0 1px $color inset;
+    }
+  }
+}
+

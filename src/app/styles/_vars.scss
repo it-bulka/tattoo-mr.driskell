@@ -1,0 +1,59 @@
+:root {
+  --font-family-main: Montserrat, "Arial", sans-serif;
+  --font-family-secondary: Jost, "Segoe UI", "Arial", "Helvetica", sans-serif;
+  --font-family-third: Forum, "Georgia", "Times New Roman", serif;
+
+  // screens
+  --mobile-s: 320px;
+  --mobile-m: 375px;
+  --mobile-l: 414px;
+
+  --tablet-s: 768px;
+  --tablet-m: 834px;
+  --tablet-l: 1024px;
+
+  --desktop-s: 1280px;
+
+
+  // COLORS
+  --bg-color: #EEEEEE;
+  --bg-dark-color: #050402;
+  --bg-card-color: #F5F5F5;
+  --accent-color: #BB8C5F;
+  --accent-dark-color: #524336;
+  --text-light-color: #FAF6F2;
+  --text-dark-color: #3E424B;
+  --text-gray-color: #636B78;
+  --hint-color: #76BC21;
+  --purple: #755FBB;
+  --red: #C82A2A;
+  --green: #5FBBA3;
+  --gray: #636B78;
+
+
+  // FONTS
+
+  // l
+  --font-size-l: 25px;
+  --font-line-l: 140%;
+  --font-l: var(--font-size-l) / var(--font-line-l) var(--font-family-main);
+
+  // xl
+  --font-size-xl: 75px;
+  --font-line-xl: 100%;
+  --font-xl: var(--font-size-xl) / var(--font-line-xl) var(--font-family-main);
+
+  // btn
+  --font-size-btn: 20px;
+  --font-line-btn: 150%;
+  --font-btn: var(--font-size-btn) / var(--font-line-btn) var(--font-family-secondary);
+
+  // tag
+  --font-size-tag: 15px;
+  --font-line-tag: 130%;
+  --font-tag: var(--font-size-tag) / var(--font-line-tag) var(--font-family-secondary);
+
+  // SIZE
+  --container-padding: 10px;
+  --container: calc(1216px + var(-max-width) * 2);
+}

@@ -1,0 +1,46 @@
+@mixin border-main{
+  border: 2px solid var(--accent-color);
+  background-color: var(--bg-color);
+}
+.btn {
+  $transition: .5s;
+
+  @include border-main;
+  color: var(--accent-color);
+  display: inline-block;
+  position: relative;
+  padding: 8px 17px 12px;
+  transition: $transition;
+  font: var(--font-btn);
+
+  &.full {
+    width: 100%;
+  }
+
+  &:after, &:before {
+    content: "";
+    position: absolute;
+    @include border-main;
+    width: 16px;
+    height: 16px;
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    transition: $transition;
+  }
+
+  &:before {
+    top: 50%;
+    left: 0;
+    transform: translate(-50%, -50%) rotate(-45deg) skew(15deg, 15deg);
+  }
+
+  &:after {
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%) rotate(-45deg) skew(15deg, 15deg) scale(-1);
+  }
+
+  &:hover, &:hover:before, &:hover:after {
+    background-color: var(--accent-color);
+    color: var(--text-light-color);
+  }
+}
