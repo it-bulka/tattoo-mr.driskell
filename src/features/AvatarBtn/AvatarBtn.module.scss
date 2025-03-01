@@ -1,0 +1,7 @@
+.avatar {
+  @media (hover: hover) {
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}

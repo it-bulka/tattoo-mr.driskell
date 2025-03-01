@@ -1,4 +1,76 @@
+body {
+  font: var(--font-m);
+  color: var(--text-dark-color);
+}
+
 .container {
   width: 100%;
   max-width: var(--container-max-width);
+  margin: auto;
+  padding: 0 var(--container-padding);
+}
+
+svg {
+  width: 28px;
+  height: 28px;
+}
+
+.decorator {
+  position: absolute;
+  pointer-events: none;
+
+  background-color: var(--accent-color);
+  bottom: 0;
+  left: 0;
+
+  &:before, &:after {
+    content: "";
+    position: absolute;
+    background-color: var(--accent-color);
+    width: 5px;
+    height: 5px;
+  }
+
+  &.croppedPoligon {
+    &:before, &:after {
+      clip-path: polygon(0 0, 100% 0%, 100% 100%);
+    }
+  }
+
+  &.full {
+    width: 100%;
+    height: 1px;
+
+    &:before {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotate(45deg) scale(-1);
+    }
+  }
+
+  &.vertical {
+    width: 1px;
+    height: 15px;
+
+    &:before {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &.withTransition {
+    transition: left var(--delay) ease, top var(--delay) ease;
+  }
+
 }

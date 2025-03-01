@@ -1,11 +1,5 @@
-import { Outlet } from 'react-router'
+import { MainLayout } from '@/shared/layouts'
 
 export const RootRouter = () => {
-  return (
-    <div>
-      <header>header</header>
-      <Outlet />
-      <footer>footer</footer>
-    </div>
-  )
+  return <MainLayout />
 }

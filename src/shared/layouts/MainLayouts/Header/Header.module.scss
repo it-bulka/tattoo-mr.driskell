@@ -1,0 +1,69 @@
+$font-size: 15px;
+$font-line: 150%;
+$font: $font-size $font-line var(--font-family-secondary);
+
+$font-size-s: 12px;
+
+.header {
+  background-color: var(--bg-dark-color);
+  color: var(--text-light-color);
+}
+
+.upper {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  padding: 14px 0;
+  font: $font
+}
+
+.contacts {
+  display: inline-grid;
+  grid-template-columns: repeat(3, auto);
+  column-gap: var(--space-s);
+  width: max-content;
+
+  & > .linkFull {
+    grid-column: span 3;
+  }
+
+  & > *:not(.linkFull) {
+    font-size: $font-size-s;
+  }
+}
+
+.linkFull {
+  display: flex;
+  align-items: center;
+  gap: var(--space-s);
+}
+
+.logo {
+  max-width: 186px;
+  display: block;
+  margin: auto;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 50px;
+}
+
+// lower
+.lower {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-s);
+  padding: 13px 0 12px 0;
+}
+
+.search {
+  flex: toPercent(418); // 418px
+}
+
+.navbar {
+  flex: 0 1 toPercent(560);
+}

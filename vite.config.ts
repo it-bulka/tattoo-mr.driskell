@@ -15,6 +15,13 @@ export default defineConfig(({ mode }) => {
     },
     define: {
       __IS_DEV__: JSON.stringify(isDev)
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: `@use "@/app/styles/_mixins.scss" as *;`
+        }
+      }
     }
   }
 })

@@ -1,0 +1,12 @@
+.navBar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-s);
+  justify-content: space-between;
+}
+
+.link {
+  padding: 6px 0;
+  display: inline-block;
+}

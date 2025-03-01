@@ -1,0 +1,19 @@
+.search {
+
+  border: 1px solid var(--accent-color);
+  padding: 8px 8px 8px 16px;
+  display: inline-flex;
+  gap: var(--spacing-s);
+
+  & > *:first-child {
+    flex: 0 0 auto;
+    color: var(--text-gray-color);
+  }
+
+  & > input {
+    flex: 1;
+    &::placeholder {
+      color: var(--text-gray-color);
+    }
+  }
+}

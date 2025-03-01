@@ -1,0 +1,22 @@
+.cartCount {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+
+  @media (hover: hover) {
+    &:hover {
+      color: var(--accent-color);
+    }
+  }
+}
+
+.amount {
+  padding: 5px;
+  min-width: 24px;
+  background-color: var(--accent-color);
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+}

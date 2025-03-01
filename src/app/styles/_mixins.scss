@@ -1,0 +1,8 @@
+// imported as additionalData in vite config
+
+@function toPercent($part, $from: null) {
+  @if($from == null) {
+    $from: var(--container)
+  }
+  @return calc($part / $from * 100%)
+}

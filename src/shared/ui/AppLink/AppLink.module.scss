@@ -1,0 +1,8 @@
+.appLink {
+  @media (hover: hover) {
+    &:hover {
+      color: var(--accent-color);
+      transition: color var(--delay) ease;
+    }
+  }
+}

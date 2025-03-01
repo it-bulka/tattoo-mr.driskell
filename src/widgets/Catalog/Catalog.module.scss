@@ -1,0 +1,17 @@
+.catalog {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.burger {
+  width: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  & > * {
+    height: 2px;
+    width: 100%;
+    background-color: var(--accent-color);
+  }
+}

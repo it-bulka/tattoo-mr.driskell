@@ -1,3 +1,10 @@
 {
-  "home": "Main page"
+  "home": "Main page",
+  "catalog": "Catalog",
+  "search": "Search",
+  "promo codes": "Promo Codes",
+  "discounts": "Discounts",
+  "help": "Help",
+  "about": "About",
+  "contact": "Contact"
 }

@@ -33,6 +33,11 @@
 
   // FONTS
 
+  // m
+  --font-size-m: 14px;
+  --font-line-m: 100%;
+  --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
+
   // l
   --font-size-l: 25px;
   --font-line-l: 140%;
@@ -55,5 +60,12 @@
 
   // SIZE
   --container-padding: 10px;
-  --container: calc(1216px + var(-max-width) * 2);
+  --container: 1216; // 1216px + --container-padding * 2
+  --container-max-width: calc(var(--container) + var(--container-padding) + var(--container-padding));
+
+  // SPACES
+  --space-s: 10px;
+
+  // animations
+  --delay: 0.3s;
 }
