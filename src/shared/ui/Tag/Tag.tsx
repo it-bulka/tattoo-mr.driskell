@@ -1,6 +1,6 @@
 import cls from './Tag.module.scss'
 import classNames from 'classnames'
-import { PropsWithChildren } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface TagProps {
   className?: string
@@ -8,14 +8,13 @@ interface TagProps {
 }
 export const Tag = ({
   className,
-  children,
   type = 'new',
-}: PropsWithChildren<TagProps>) => {
-
+}: TagProps) => {
+  const { t } = useTranslation('tags')
 
   return (
     <span className={classNames(cls.tag, {}, [className, cls[type]])}>
-      {children}
+      {t(type)}
     </span>
   )
 }

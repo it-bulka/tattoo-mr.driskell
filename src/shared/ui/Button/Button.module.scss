@@ -7,11 +7,24 @@
 
   @include border-main;
   color: var(--accent-color);
-  display: inline-block;
+  display: block;
   position: relative;
   padding: 8px 17px 12px;
   transition: $transition;
   font: var(--font-btn);
+  width: fit-content;
+
+  &.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.big {
+    padding-top: 18px;
+    padding-bottom: 22px;
+    min-width: 270px;
+    text-align: center;
+  }
 
   &.full {
     width: 100%;

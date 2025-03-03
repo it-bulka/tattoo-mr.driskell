@@ -1,17 +1,17 @@
 import cls from './Home.module.scss'
 import classNames from 'classnames'
-// import { useTranslation } from 'react-i18next'
-// import { Tag } from '@/shared/ui/Tag/Tag.tsx'
+import { Products } from './blocks/Products.tsx'
+import { Catalog } from './blocks/Catalog/Catalog.tsx';
+
 
 interface HomeProps {
   className?: string
 }
 const Home = ({ className }: HomeProps) => {
-  // const { t } = useTranslation()
-
   return (
     <div className={classNames(cls.home, {}, [className])}>
-
+      <Products />
+      <Catalog />
     </div>
   )
 }

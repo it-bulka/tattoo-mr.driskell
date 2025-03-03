@@ -1,6 +1,6 @@
 import cls from './CartCount.module.scss'
 import classNames from 'classnames'
-import CartIcon from "@/shared/assets/general/cart.svg"
+import CartIcon from "@/shared/assets/general/cart.svg?react"
 import { useCallback, memo } from 'react'
 import { useNavigate } from 'react-router'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'

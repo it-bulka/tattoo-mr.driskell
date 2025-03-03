@@ -1,0 +1,89 @@
+$padding: 30px;
+$shadow-left: -4px 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
+
+@mixin shadow-card {
+  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1)
+}
+@mixin shadow-btn {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+}
+
+.productCard {
+  padding-bottom: $padding;
+  padding-top: 15px;
+  background-color: var(--bg-card-color);
+  transition: top 0.7s ease;
+  top: 0;
+  position: relative;
+
+  &:hover {
+    @include shadow-card;
+    top: -5%;
+    padding-bottom: 20px;
+  }
+}
+
+.cardContainer {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+.content {
+  position: relative;
+}
+
+.additional {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.title {
+  font: 17px / 140% var(--font-family-secondary);
+  margin: 6px 0 10px;
+}
+
+.price {
+  font: 24px / 130% var(--font-family-secondary);
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.info {
+  position: relative;
+}
+.btnWrapper {
+  background-color: var(--bg-card-color);
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+  transform: scaleY(0);
+  transition: transform 0.7s ease;
+  transform-origin: top;
+  z-index: 999;
+  @include shadow-btn;
+
+  .btn {
+    transform: scale(0);
+    transition: transform 0.7s ease;
+  }
+
+  &.isShown {
+    transform: scaleY(1);
+
+    & > .btn {
+      transform: scale(1);
+    }
+  }
+}
+

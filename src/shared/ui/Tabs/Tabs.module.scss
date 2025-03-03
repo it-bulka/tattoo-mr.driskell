@@ -1,0 +1,23 @@
+.tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 5px;
+
+  transition: color 0.7s ease;
+
+  font: 30px / 115% var(--font-family-secondary);
+  font-weight: 700;
+
+  & > * {
+    cursor: pointer;
+  }
+}
+
+.isActive {
+  color: var(--accent-color);
+}
+
+.decorator {
+  transition:  0.7s ease !important;
+}

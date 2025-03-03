@@ -1,8 +1,8 @@
 import { RefObject, useCallback, useRef, memo } from 'react';
 import { AppLink } from '@/shared/ui';
 import cls from '@/widgets/NavBar/NavBar.module.scss';
+import { ElPositions, getElementPosition } from '@/shared/libs'
 
-export type ElPositions = Record<'top' | 'left' | 'width', number>
 interface ILink {
   href: string
   text: string
@@ -17,13 +17,12 @@ export const NavbarLink = memo(({
   const ref = useRef<HTMLLIElement>(null)
 
   const onMouseEnter = useCallback((currentRef: RefObject<HTMLLIElement | null>)=> () => {
-    console.log('onMouseEnter', currentRef.current)
     if(!currentRef.current) return
 
-    const { width } = currentRef.current.getBoundingClientRect()
+    const { width, top, left } = getElementPosition(currentRef.current)
     setPosition({
-      top: currentRef.current.offsetTop + currentRef.current.offsetHeight,
-      left: currentRef.current.offsetLeft,
+      top,
+      left,
       width
     })
   }, [setPosition])

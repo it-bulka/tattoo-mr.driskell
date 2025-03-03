@@ -1,0 +1,22 @@
+.decoratedLink {
+  position: relative;
+  width: fit-content;
+  color: var(--accent-color);
+
+  .decorator {
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+
+  &:hover {
+    .decorator {
+      animation: width-jump 0.7s;
+    }
+  }
+}
+
+@keyframes width-jump {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}

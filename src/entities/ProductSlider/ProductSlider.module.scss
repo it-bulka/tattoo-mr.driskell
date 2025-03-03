@@ -1,0 +1,38 @@
+.ProductSlider {
+
+}
+
+.imgs {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+
+  margin: 0; /* Відсутність маргінів */
+  padding: 0;
+}
+
+.dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+
+  &  > * {
+    width: 6px;
+    height: 6px;
+    background-color: #E3E3E3;
+    transition: background-color var(--delay) ease;
+
+    &.active {
+      background-color: var(--accent-dark-color);
+    }
+  }
+}

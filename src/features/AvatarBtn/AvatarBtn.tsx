@@ -1,6 +1,6 @@
 import cls from './AvatarBtn.module.scss'
 import classNames from 'classnames'
-import User from '@/shared/assets/general/user.svg'
+import User from '@/shared/assets/general/user.svg?react'
 import { useNavigate } from 'react-router';
 import { useCallback, memo } from 'react';
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx';

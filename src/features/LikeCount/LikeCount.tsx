@@ -1,6 +1,6 @@
 import cls from './LikeCount.module.scss'
 import classNames from 'classnames'
-import LikeIcon from "@/shared/assets/general/heart.svg"
+import LikeIcon from "@/shared/assets/general/heart.svg?react"
 import { useCallback, memo } from 'react'
 import { useNavigate } from 'react-router'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'

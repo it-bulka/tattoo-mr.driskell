@@ -1,7 +1,7 @@
 import cls from './Search.module.scss'
 import classNames from 'classnames'
 import { ChangeEvent, HTMLProps, memo } from 'react'
-import SearchIcon from "@/shared/assets/general/search.svg"
+import SearchIcon from "@/shared/assets/general/search.svg?react"
 
 type InputProps = Omit<HTMLProps<HTMLInputElement>, 'value' | 'onChange'>
 

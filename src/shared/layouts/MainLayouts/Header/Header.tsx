@@ -1,6 +1,6 @@
 import cls from './Header.module.scss'
-import CallIcon from '../../../assets/general/call.svg'
-import MailIcon from '../../../assets/general/mail.svg'
+import CallIcon from '../../../assets/general/call.svg?react'
+import MailIcon from '../../../assets/general/mail.svg?react'
 import { AppLink } from '@/shared/ui'
 import { CartCount, LikeCount } from '@/features'
 import Logo from '@/shared/assets/general/logo.png'

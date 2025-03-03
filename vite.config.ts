@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
   const isDev = mode === 'development'
 
   return {
-    plugins: [svgr({ include: '**/*.svg' }), react()],
+    plugins: [svgr(), react()],
     resolve: {
       alias: [
         { find: '@', replacement: '/src' }

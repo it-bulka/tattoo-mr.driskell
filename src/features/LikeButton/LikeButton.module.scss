@@ -1,0 +1,23 @@
+.likeButton {
+  display: grid;
+  place-items: center;
+  color: var(--accent-color);
+
+  & > * {
+    grid-column: 1;
+    grid-row: 1;
+    transition: opacity var(--delay) ease;
+  }
+}
+
+.icon {
+  opacity: 0;
+
+  &:first-child:hover {
+    opacity: 1;
+  }
+
+  &.visible {
+    opacity: 1;
+  }
+}
