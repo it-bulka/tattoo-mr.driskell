@@ -56,4 +56,18 @@
     background-color: var(--accent-color);
     color: var(--text-light-color);
   }
+
+  &.dark {
+    color: var(--text-light-color);
+    background-color: var(--accent-dark-color);
+
+    &:before, &:after {
+      background-color: var(--accent-dark-color);
+    }
+  }
+
+  &.withMargin {
+    margin-left: 11px;
+    margin-right: 11px;
+  }
 }

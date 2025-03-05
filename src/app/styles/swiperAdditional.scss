@@ -1,0 +1,61 @@
+.swiper-custom-bullet {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--accent-dark-color);
+  padding: 3px;
+
+  .inner {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    transition: background-color 0.8s ease;
+  }
+
+  &.swiper-custom-bullet-active {
+    .inner {
+      background-color: var(--accent-color);
+
+    }
+  }
+}
+
+.swiper-bullets-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: auto;
+  width: fit-content;
+}
+
+$btn-size: 50px;
+$btn-space: 30px;
+$container-padding: $btn-size + $btn-space;
+
+.swiper-container-with-btns {
+  width: 100%;
+  max-width: calc(var(--container-max-width) + $btn-size * 2 + $btn-space * 2);
+  padding: 0 calc($container-padding + var(--container-padding));
+  position: relative;
+}
+
+
+.swiper-btns-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.swiper-btn {
+  position: absolute;
+  top: 50%;
+  z-index: 99;
+  transform: translateY(-50%);
+
+  .prev {
+    left: 0;
+  }
+
+  .next {
+    right: 0;
+  }
+}

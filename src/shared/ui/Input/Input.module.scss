@@ -1,0 +1,16 @@
+.input {
+  color: var(--text-gray-color);
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  font: 17px / 140% var(--font-family-secondary);
+
+  input::placeholder {
+    color: var(--gray-2);
+  }
+
+  input {
+    background-color: var(--bg-card-color);
+    padding: 23px 30px;
+  }
+}

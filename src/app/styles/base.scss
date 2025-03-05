@@ -1,6 +1,7 @@
 body {
   font: var(--font-m);
   color: var(--text-dark-color);
+  background-color: var(--bg-color-2);
 }
 
 .container {
@@ -8,6 +9,20 @@ body {
   max-width: var(--container-max-width);
   margin: auto;
   padding: 0 var(--container-padding);
+}
+
+.left-container {
+  width: 100%;
+  max-width: calc((50vw + (var(--container-max-width)) / 2));
+  padding-right: var(--container-padding);
+}
+
+.right-container {
+  width: 100%;
+  max-width: calc((50vw + (var(--container-max-width)) / 2));
+  padding-left: var(--container-padding);
+  margin-right: 0;
+  margin-left: auto;
 }
 
 svg {
@@ -23,12 +38,24 @@ svg {
   bottom: 0;
   left: 0;
 
+  &.top {
+    top: 0;
+  }
+
   &:before, &:after {
     content: "";
     position: absolute;
     background-color: var(--accent-color);
     width: 5px;
     height: 5px;
+  }
+
+  &.gray {
+    background-color: var(--gray);
+
+    &:before, &:after {
+      background-color: var(--gray);
+    }
   }
 
   &.croppedPoligon {

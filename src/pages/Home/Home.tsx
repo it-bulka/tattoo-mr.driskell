@@ -1,7 +1,11 @@
 import cls from './Home.module.scss'
 import classNames from 'classnames'
 import { Products } from './blocks/Products.tsx'
-import { Catalog } from './blocks/Catalog/Catalog.tsx';
+import { Catalog } from './blocks/Catalog/Catalog.tsx'
+import { Brands } from './blocks/Brands/Brands.tsx'
+import { About } from './blocks/about/About.tsx'
+import { Testimonials } from './blocks/Testimonials/Testimonials.tsx'
+import { FormBlock } from './blocks/Form/FormBlock.tsx'
 
 
 interface HomeProps {
@@ -12,6 +16,10 @@ const Home = ({ className }: HomeProps) => {
     <div className={classNames(cls.home, {}, [className])}>
       <Products />
       <Catalog />
+      <Brands />
+      <About />
+      <Testimonials />
+      <FormBlock />
     </div>
   )
 }

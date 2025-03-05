@@ -1,0 +1,65 @@
+$btn-size: 50px;
+$btn-space: 30px;
+$container-padding: $btn-size + $btn-space;
+
+.brands {
+  font: 60px / 100% var(--font-family-third);
+  margin: auto;
+  width: 100%;
+  max-width: calc(var(--container-max-width) + $btn-size * 2 + $btn-space * 2);
+  padding: 0 calc($container-padding + var(--container-padding));
+}
+
+.link {
+  font: var(--font-l);
+  margin-left: auto;
+  display: block;
+  width: fit-content;
+}
+
+.sliderWrapper {
+  position: relative;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  z-index: 99;
+  transform: translateY(-50%);
+
+  &.prev {
+    left: -#{$container-padding};
+
+  }
+  &.next {
+    right: -#{$container-padding};
+  }
+}
+
+
+.img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.sliderDecor {
+  position: absolute;
+  inset: 0;
+
+  .horizontal {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+
+  .vertical {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transform: translateX(-50%);
+  }
+}

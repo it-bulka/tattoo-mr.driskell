@@ -1,0 +1,14 @@
+.btn {
+  width: var(--slider-btn-size);
+  height: var(--slider-btn-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  background-color: var(--bg-color);
+
+  &.next > svg {
+    transform: scaleX(-1);
+  }
+}

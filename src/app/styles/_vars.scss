@@ -17,6 +17,7 @@
 
   // COLORS
   --bg-color: #EEEEEE;
+  --bg-color-2: #E3E3E3;
   --bg-dark-color: #050402;
   --bg-card-color: #F5F5F5;
   --accent-color: #BB8C5F;
@@ -29,6 +30,7 @@
   --red: #C82A2A;
   --green: #5FBBA3;
   --gray: #636B78;
+  --gray-2: #D0D0D0;
 
 
   // FONTS
@@ -60,7 +62,7 @@
 
   // SIZE
   --container-padding: 10px;
-  --container: 1216; // 1216px + --container-padding * 2
+  --container: 1216px; // 1216px + --container-padding * 2
   --container-max-width: calc(var(--container) + var(--container-padding) + var(--container-padding));
 
   // SPACES
@@ -68,4 +70,7 @@
 
   // animations
   --delay: 0.3s;
+
+  // slider
+  --slider-btn-size: 50px;
 }

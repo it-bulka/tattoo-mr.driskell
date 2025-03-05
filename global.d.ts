@@ -5,3 +5,9 @@ declare module "*.svg" {
   const content: React.FC<React.SVGProps<SVGSVGElement>>;
   export default content;
 }
+
+// swiper
+declare module 'swiper/css' {}
+declare module 'swiper/css/grid' {}
+declare module 'swiper/css/pagination' {}
+declare module 'swiper/css/navigation' {}

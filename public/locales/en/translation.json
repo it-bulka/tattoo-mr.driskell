@@ -21,5 +21,25 @@
   "tattoo needles": "Tattoo needles",
   "protection, containers, consumables": "Protection, containers, consumables",
   "accessories": "Accessories",
-  "printers and tablets": "Printers and tablets"
+  "printers and tablets": "Printers and tablets",
+  "popular brands": "Popular brands",
+  "see all": "See all",
+
+  "about company btn": "About company",
+  "tattoo shop": "Tattoo shop Mr. Driskell",
+  "about_info": {
+    "1": "Welcome to Tattoo Mall—our tattoo shop where industry enthusiasts, professional artists, and beginners taking their first steps in tattoo art come together. We understand how crucial it is to carefully and precisely select tools for productive tattoo sessions, and we help you quickly find exactly what will make them just that.",
+    "2": "Our assortment is more than just tattoo equipment—it’s an entire team of knowledgeable and truly effective assistants on your workstation. After undergoing long development stages and countless tests under the close supervision of domestic engineers, cosmetologists, and globally recognized brands, these products have gained experience and improved every day. Now, they are ready to show what they are capable of and help you unlock your full potential."
+  },
+
+  "testimonials": "Testimonials",
+  "form" : {
+    "email": "email",
+    "name": "Name",
+    "first to know": "Be the first to know",
+    "subscribe text": "Subscribe to the newsletter for the most interesting news and offers",
+    "enter your name": "Enter your name",
+    "agree to process personal data": "You agree to the processing of your personal data",
+    "subscribe btn": "Subscribe"
+  }
 }

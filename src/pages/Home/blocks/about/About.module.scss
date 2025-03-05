@@ -1,0 +1,27 @@
+.about {
+  padding: 120px 0;
+  display: flex;
+  align-items: center;
+
+  & > *:nth-child(1) {
+    width: 50vw;
+  }
+
+  & > *:nth-child(2) {
+    margin-left: 40px;
+  }
+
+  .title {
+    color: var(--accent-color);
+    font: 50px / 130% var(--font-family-third);
+  }
+
+  .content {
+    font: 17px / 140% var(--font-family-secondary);
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 40px;
+    }
+  }
+}

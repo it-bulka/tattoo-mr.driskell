@@ -1,0 +1,39 @@
+.formBlock {
+  padding-top: 109px;
+  padding-bottom: 209px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  & > *:nth-child(1) {
+    margin-right: 29px;
+  }
+
+  & > *:nth-child(2) {
+    width: 50vw;
+  }
+}
+
+.title {
+  font: 60px / 100% var(--font-family-third);
+}
+
+.text {
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 700;
+  margin: 28px 0 30px;
+}
+
+.form {
+  max-width: 392px;
+
+  .input {
+    &:first-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  .checkbox {
+    margin: 20px 0 30px;
+  }
+}
