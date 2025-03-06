@@ -28,12 +28,19 @@ const productsList: Product[] = Array.from({ length: 10 }, (_, index) => ({
   id: index
 }))
 
+const productsTabs = [
+  {id:1, name: 'Bestsellers'},
+  {id:2, name: 'Most Popular'},
+  {id:3, name: 'New Arrivals'},
+  {id:4, name: 'On Sale'},
+]
+
 export const Products = ({ className }: ProductsProps) => {
   const { t } = useTranslation()
 
   return (
     <div className={classNames(cls.Products, 'container', {}, [className])}>
-      <Tabs className={cls.tabs}/>
+      <Tabs className={cls.tabs} tabs={productsTabs} justify="between"/>
       <div className={cls.products}>
         {productsList.map((product) => (
           <ProductCard

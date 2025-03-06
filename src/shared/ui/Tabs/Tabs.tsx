@@ -1,19 +1,28 @@
 import cls from './Tabs.module.scss'
 import classNames from 'classnames'
 import { CSSProperties, useMemo, useState } from 'react';
-import { Tab, list, type TabType, TabPositions } from './Tab.tsx'
+import { Tab, type TabType, TabPositions } from './Tab.tsx'
 
-
-interface TabsProps {
+interface TabsProps<T extends string, K extends string | number> {
   className?: string
-  onClick?: (tab: TabType) => void
+  onClick?: (tab: TabType<T, K>) => void
+  tabs: TabType<T, K>[]
+  initialActiveTabId?: TabType<T, K>['id']
+  justify?: 'start' | 'end' | 'between'
 }
-export const Tabs = ({ className, onClick }: TabsProps) => {
-  const [activeTab, setActiveTab] = useState<TabType>(list[0])
+export const Tabs = <T extends string, K extends string | number>({
+  className,
+  onClick,
+  tabs,
+  initialActiveTabId,
+  justify = 'start',
+
+}: TabsProps<T, K>) => {
+  const [activeTab, setActiveTab] = useState<TabType<T, K>['id']>(initialActiveTabId || tabs[0].id)
   const [elPosition, setElPosition] = useState<TabPositions | null>(null)
 
-  const onClickItem = (clickedTab: TabType) => (position: TabPositions) => {
-    setActiveTab(clickedTab)
+  const onClickItem = (clickedTab: TabType<T, K>) => (position: TabPositions) => {
+    setActiveTab(clickedTab.id)
     setElPosition(position)
     onClick?.(clickedTab)
   }
@@ -25,12 +34,12 @@ export const Tabs = ({ className, onClick }: TabsProps) => {
   }, [elPosition])
 
   return (
-    <ul className={classNames(cls.tabs, {}, [className])}>
-      {list.map((item) => (
+    <ul className={classNames(cls.tabs, {}, [cls[justify], className])}>
+      {tabs.map((item) => (
         <Tab
-          isActive={activeTab === item}
+          isActive={activeTab === item.id}
           onClick={onClickItem(item)}
-          name={item}
+          tab={item}
         />
       ))}
       <div className={classNames("decorator full withTransition", cls.decorator)} style={decoratorPosition} />

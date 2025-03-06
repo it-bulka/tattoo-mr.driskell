@@ -14,13 +14,17 @@
   "working hours": "Working hours: from 9:00 to 20:00 Kyiv time",
   "to top": "Return to top",
 
+  "new arrivals": "New arrivals",
   "tattoo sets": "Tattoo sets",
   "holders": "Holders",
+  "tattoo holders": "Tattoo holders",
   "tattoo machines": "Tattoo machines",
   "pedals and wires": "Pedals and wires",
   "inks": "Inks",
+  "tattoo inks": "Tattoo inks",
   "power supplies": "Power supplies",
   "tips": "Tips",
+  "tattoo tips": "Tattoo tips",
   "tattoo needles": "Tattoo needles",
   "protection, containers, consumables": "Protection, containers, consumables",
   "accessories": "Accessories",
@@ -44,5 +48,9 @@
     "enter your name": "Enter your name",
     "agree to process personal data": "You agree to the processing of your personal data",
     "subscribe btn": "Subscribe"
+  },
+  "filter": {
+    "by category": "By category",
+    "by brands": "By brands"
   }
 }

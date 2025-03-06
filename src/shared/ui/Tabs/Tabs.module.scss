@@ -1,13 +1,20 @@
 .tabs {
   position: relative;
   display: flex;
-  justify-content: space-between;
-  gap: 5px;
 
   transition: color 0.7s ease;
 
-  font: 30px / 115% var(--font-family-secondary);
-  font-weight: 700;
+  &.start {
+    justify-content: start;
+  }
+
+  &.end {
+    justify-content: end;
+  }
+
+  &.between {
+    justify-content: space-between;
+  }
 
   & > * {
     cursor: pointer;

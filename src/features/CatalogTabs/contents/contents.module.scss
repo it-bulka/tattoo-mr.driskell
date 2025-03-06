@@ -1,0 +1,19 @@
+.contents {
+  display: grid;
+  column-gap: 40px;
+  row-gap: 30px;
+  justify-items: start;
+  transition: color var(--delay) ease;
+
+  li:hover {
+    color: var(--accent-color);
+  }
+}
+
+.brands {
+  grid-template-columns: repeat(5, auto);
+}
+
+.categories {
+  grid-template-columns: repeat(2, auto);
+}

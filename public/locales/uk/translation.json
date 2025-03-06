@@ -14,13 +14,17 @@
   "working hours": "Час роботи: з 9:00 до 20:00 за київським часом",
   "to top": "Повернутися вгору",
 
+  "new arrivals": "Новинки",
   "tattoo sets": "Тату набори",
   "holders": "Тримачі",
+  "tattoo holders": "Тату тримачі",
   "tattoo machines": "Тату машинки",
   "pedals and wires": "Педалі та проводи",
   "inks": "Фарби",
+  "tattoo inks": "Тату фарби",
   "power supplies": "Блоки живлення",
   "tips": "Насадки",
+  "tattoo tips": "Тату насадки",
   "tattoo needles": "Тату голки",
   "protection, containers, consumables": "ахист, ємності, витратні матеріали",
   "accessories": "Аксесуари",
@@ -44,5 +48,9 @@
     "enter your name": "Введіть ім’я",
     "agree to process personal data": "Ви погоджуєтесь на обробку ваших персональних даних",
     "subscribe btn": "Підписатися"
+  },
+  "filter": {
+    "by category": "За категорією",
+    "by brands": "За брендами"
   }
 }

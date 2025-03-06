@@ -3,22 +3,21 @@ import classNames from 'classnames'
 import { RefObject, useCallback, useRef } from 'react'
 import { getElementPosition } from '@/shared/libs'
 
-export const list = ['Bestsellers', 'Most Popular', 'New Arrivals', 'On Sale'] as const
-export type TabType = typeof list[number]
+export type TabType<T extends string, K extends string | number> = {id: K, name: T }
 export type TabPositions = Partial<Record<'top' | 'left' | 'width', number>>
 
-interface TabProps {
+interface TabProps<T extends string, K extends string | number> {
   className?: string
   onClick: (position: TabPositions) => void
   isActive?: boolean
-  name?: TabType
+  tab: TabType<T, K>
 }
 
-export const Tab = ({
+export const Tab = <T extends string, K extends string | number>({
   isActive = false,
   onClick,
-  name
-}: TabProps) => {
+  tab
+}: TabProps<T, K>) => {
   const ref = useRef<HTMLLIElement>(null)
 
   const handleClick = useCallback((currentRef: RefObject<HTMLLIElement | null>) => {
@@ -42,7 +41,7 @@ export const Tab = ({
       aria-pressed={isActive}
       role="button"
     >
-      {name}
+      {tab.name}
     </li>
   )
 }
