@@ -4,6 +4,7 @@
   color: var(--accent-color);
   transition: var(--delay) ease;
   text-wrap: nowrap;
+  background-color: var(--bg-card-color);
 
 
   @media (hover: hover) {

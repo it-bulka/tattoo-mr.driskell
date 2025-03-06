@@ -1,0 +1,1 @@
+export { CatalogPages } from '@/pages/CatalogPages/CatalogPages.async.tsx'

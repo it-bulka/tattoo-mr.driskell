@@ -9,6 +9,9 @@ export enum AppRoutes {
   HELP = 'help',
   ABOUT = 'about',
   CONTACTS = 'contacts',
+  // CATALOGS
+  CATALOG = 'catalog',
+  // additional
   FORBIDDEN = 'forbidden',
   NOT_FOUND = 'not_found'
 }
@@ -23,6 +26,9 @@ export const getHelpPage = () => '/help'
 export const getAboutPage = () => '/about'
 export const getContactsPage = () => '/contacts'
 
+// CATALOG PAGES
+export const getCatalogPage = (slug: string) => `/catalog/${slug}`
+
 export const getForbiddenPage = () => '/forbidden'
 export const getNotFoundPage = () => '/not_found'
 
@@ -36,6 +42,9 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HELP]: getHelpPage(),
   [AppRoutes.ABOUT]: getAboutPage(),
   [AppRoutes.CONTACTS]: getContactsPage(),
+  // CATALOGS
+  [AppRoutes.CATALOG]: getCatalogPage(':slug'),
+  // ADDITIONAL
   [AppRoutes.FORBIDDEN]: getForbiddenPage(),
   [AppRoutes.NOT_FOUND]: getNotFoundPage(),
 }

@@ -25,6 +25,5 @@ export const catalogContent: CatalogTabsObject<string[]> = {
     'InkJecta Tattoo Machine', 'Intenze', 'JACK & ALEXX', 'Kashalot Rotary', 'Kuro Sumi', 'KWADRON™', 'Lauro Paolini', 'Lithuanian Irons', 'Lucky Supply', 'Mercator Medical', 'Millenium Mom’s Ink',
     'NEMESIS', 'Nocturnal Tattoo Ink', 'Panthera', 'Perma Blend', 'Precision Needles', 'Precision Tattoo Supply', 'Premier Products', 'Radiant', 'Reprofx® Spirit™', 'Right Stuuf', 'S8TATTOO',
     'Skinductor', 'Starbrite', 'Tattoorevive', 'TURANIUM Fabrika Rotary', 'UNI–CART', 'Vlad Blad', 'World Famous Bala', 'World Famous Tattoo Ink', '2K2BT'
-
   ]
 }

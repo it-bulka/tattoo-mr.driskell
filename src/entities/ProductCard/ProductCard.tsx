@@ -6,10 +6,16 @@ import { ProductSlider } from '../ProductSlider/ProductSlider.tsx'
 import { useState } from 'react';
 import { Button } from '@/shared/ui'
 import { useTranslation } from 'react-i18next'
-interface ProductCardProps {
-  className?: string
+
+export type Product = {
   imgs: string[]
   title: string
+  price: number
+  id: number | string
+}
+
+interface ProductCardProps extends Omit<Product, 'id' | 'price'>{
+  className?: string
   price: string
 }
 export const ProductCard = ({
