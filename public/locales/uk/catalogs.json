@@ -1,0 +1,10 @@
+{
+  "filter-level": {
+    "beginners": "Для початківців",
+    "builders": "Від білдерів",
+    "professionals": "Для професіоналів",
+    "consumables": "Розхідні матеріали"
+  },
+  "available only": "Тільки в наявності",
+  "price": "Ціна"
+}

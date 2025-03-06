@@ -1,0 +1,10 @@
+{
+  "filter-level": {
+    "beginners": "For beginners",
+    "builders": "From builders",
+    "professionals": "For professionals",
+    "consumables": "Consumables"
+  },
+  "available only": "Available only",
+  "price": "Price"
+}

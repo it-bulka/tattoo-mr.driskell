@@ -1,0 +1,26 @@
+.rangeWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.range {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 83px;
+  text-align: center;
+  padding: 9px;
+  border: 1px solid var(--accent-dark-color);
+  color: var(--text-dark-color);
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  width: 14px;
+  background-color: var(--text-gray-color);
+  margin: 0 3px;
+}
