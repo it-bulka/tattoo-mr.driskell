@@ -1,0 +1,14 @@
+.breadcrumbs {
+  color: var(--gray-2);
+  font: 17px / 150% var(--font-family-secondary);
+  display: flex;
+  align-items: center;
+
+  & > *:not(:last-child) {
+    margin: 10px;
+  }
+
+  .active {
+    color: var(--text-gray-color);
+  }
+}
