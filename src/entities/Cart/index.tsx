@@ -6,3 +6,5 @@ export {
   getTotalAmountSelector,
   getTotalPriceSelector
 } from "./model/selectors/selectors.tsx"
+
+export { Cart } from './ui/Cart/Cart.tsx'

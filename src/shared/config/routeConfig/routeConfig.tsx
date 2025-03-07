@@ -19,7 +19,7 @@ export enum AppRoutes {
 export const getHomePage = () => '/'
 export const getProfilePage = () => '/profile'
 export const getLikeCountPage = () => '/profile/like-count'
-export const getCartPage = () => '/cart'
+export const getCartPage = () => '/catalog/cart'
 export const getPromoCodesPage = () => '/promo-codes'
 export const getDiscountsPage = () => '/discounts'
 export const getHelpPage = () => '/help'

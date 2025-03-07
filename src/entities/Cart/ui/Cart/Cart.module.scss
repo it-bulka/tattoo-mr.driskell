@@ -1,0 +1,30 @@
+.gridTable {
+  font: 15px / 140% var(--font-family-secondary);
+
+  display: grid;
+  align-items: center;
+  grid-template-columns: 14% 1fr repeat(4, auto);
+  column-gap: 6.87%;
+  row-gap: 20px;
+}
+
+.gridHeader {
+  position: sticky;
+  top: 0;
+}
+
+.nameHeader,
+.totalHeader {
+  grid-column: span 2;
+}
+
+.decorator {
+  position: sticky;
+  top: 40px;
+  grid-column: span 6;
+}
+
+.delete {
+  transform: rotate(-45deg);
+  padding: 10px;
+}

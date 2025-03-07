@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.input {
+  border: 1px solid var(--accent-color);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 7.5px 7px 8.5px;
+}

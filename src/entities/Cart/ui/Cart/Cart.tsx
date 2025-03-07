@@ -1,0 +1,30 @@
+import cls from './Cart.module.scss'
+import classNames from 'classnames'
+import { useTranslation } from 'react-i18next'
+import { CartItem, type CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+
+interface CartProps {
+  className?: string
+  items: CartItemType[]
+}
+export const Cart = ({ className, items }: CartProps) => {
+  const { t } = useTranslation('cart')
+  
+  return (
+    <div className={classNames(cls.gridTable, {}, [className])}>
+      <p className={classNames(cls.gridHeader, cls.nameHeader)}>{t('name')}</p>
+      <p className={cls.gridHeader}>{t('price')}</p>
+      <p className={cls.gridHeader}>{t('quantity')}</p>
+      <p className={classNames(cls.gridHeader, cls.totalHeader)}>{t('total cost')}</p>
+
+      <div className={cls.decorator}>
+        <div className="decorator full gray croppedPoligon" />
+      </div>
+
+
+      {items.map((item) => (
+        <CartItem key={item.id} {...item} />
+      ))}
+    </div>
+  )
+}
