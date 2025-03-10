@@ -2,5 +2,65 @@
   "name": "Name",
   "price": "Price",
   "quantity": "Quantity",
-  "total cost": "Total Cost"
+  "total cost": "Total Cost",
+  "form": {
+    "name": "Full name",
+    "phone": "Phone",
+    "email": "Email",
+    "city": "City",
+    "street": "Street",
+    "apartment": "Apartment",
+    "entrance": "Entrance",
+    "floor": "Floor",
+    "entryphone": "Entryphone"
+  },
+  "placeholder": {
+    "name": "John Sterro",
+    "city": "Kyiv",
+    "street": "12 Khreshchatyk Street"
+  },
+  "info about receiver": "Information about the recipient",
+  "info about address": "Information about the address",
+  "summary": {
+    "total items": "Total items",
+    "total discount": "Total discount",
+    "additional services": "Additional services",
+    "grand total": "Grand total"
+  },
+  "promo code": "Promo code",
+  "apply promo code": "Apply promo code",
+  "buy now": "Buy now",
+  "contact the manager": "Contact the manager",
+  "agreement": {
+    "agree": " I agree with",
+    "public offer": "public offer",
+    "and": "and",
+    "personal data": "the processing of personal data."
+  },
+  "payment": {
+    "title": "Payment",
+    "online payment": {
+      "title": "Online payment",
+      "info": "You can pay for your order via a secure payment service using a bank card"
+    },
+    "cash on delivery": {
+      "title": "Cash on delivery",
+      "info": "Cash or card payment upon receiving the order at the store or by courier. An additional fee may apply according to the carrier's terms"
+    },
+    "bank transfer": {
+      "title": "Bank transfer",
+      "info": "For legal entities and individual entrepreneurs. After placing the order, we will send you an invoice for payment"
+    }
+  },
+  "delivery": {
+    "title": "Delivery",
+    "courier service": {
+      "title": "Courier service",
+      "info": "Home or office delivery by courier service. The delivery cost is calculated during a call with the manager"
+    },
+    "nova poshta": {
+      "title": "Nova Poshta",
+      "info": "Delivery to a Nova Poshta branch or directly to your address. Delivery time and cost depend on the carrier's rates."
+    }
+  }
 }

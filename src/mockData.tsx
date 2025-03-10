@@ -13,7 +13,7 @@ export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => 
 }))
 
 
-export const cartList: CartItemType[] = Array.from({ length: 10 }, (_, index) => ({
+export const cartList: CartItemType[] = Array.from({ length: 2 }, (_, index) => ({
   img: ProductImg,
   title: 'Foxxx Kitsune Mini Black Vintage RCA',
   price: 6000,

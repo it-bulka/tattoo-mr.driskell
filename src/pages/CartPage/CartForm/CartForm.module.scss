@@ -1,0 +1,46 @@
+.form {
+  margin-top: 60px;
+}
+
+.title {
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+.receiver,
+.address {
+  display: grid;  // 8 frames
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.receiver {
+  margin-bottom: 50px;
+}
+
+// receiver
+.name,
+.email {
+  grid-column: span 3;
+}
+
+.phone {
+  grid-column: span  2;
+}
+
+// address
+.city {
+  grid-column: span 3;
+}
+
+.street {
+  grid-column: span 5;
+}
+
+.entrance,
+.apartment,
+.floor,
+.entryphone {
+  grid-column: span 2;
+}

@@ -14,6 +14,8 @@
   font: var(--font-btn);
   width: fit-content;
 
+  font: 20px / 150% var(--font-family-secondary);
+
   &.center {
     margin-left: auto;
     margin-right: auto;
@@ -52,7 +54,8 @@
     transform: translate(50%, -50%) rotate(-45deg) skew(15deg, 15deg) scale(-1);
   }
 
-  &:hover, &:hover:before, &:hover:after {
+  &:hover, &:hover:before, &:hover:after,
+  &.dark:hover, &.dark:hover:before, &.dark:hover:after{
     background-color: var(--accent-color);
     color: var(--text-light-color);
   }

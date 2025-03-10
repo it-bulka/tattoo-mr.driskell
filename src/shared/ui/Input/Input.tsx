@@ -5,11 +5,13 @@ import { HTMLProps, memo } from 'react';
 interface InputProps extends HTMLProps<HTMLInputElement>{
   className?: string
   label?: string
+  inputClassName?: string
 }
 
 export const Input = memo(({
- className,
+  className,
   label,
+  inputClassName,
  ...rest
 }: InputProps) => {
   return (
@@ -17,6 +19,7 @@ export const Input = memo(({
       {label && <label className={cls.label}>{label}</label>}
       <input
         {...rest}
+        className={inputClassName}
       />
     </div>
   )

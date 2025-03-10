@@ -1,13 +1,13 @@
 import SelectedIcon from '@/shared/assets/general/checked.svg?react'
 import classNames from 'classnames';
 import cls from './CheckBox.module.scss'
-import { memo, HTMLAttributes } from 'react'
+import { memo, HTMLAttributes, ReactNode } from 'react'
 
 interface CheckedButtonProps extends HTMLAttributes<HTMLInputElement> {
   className?: string
   onClick?: () => void
   checked?: boolean
-  label?: string
+  label?: string | ReactNode
 }
 export const CheckBox = memo(({
   className,
@@ -23,7 +23,7 @@ export const CheckBox = memo(({
     >
       <input type='checkbox' checked={checked} onChange={onClick} {...rest}/>
       <span className={cls.icon}><SelectedIcon /></span>
-      {label && <span>{label}</span>}
+      {label}
     </label>
   )
 })

@@ -1,0 +1,83 @@
+.additionalInfo {
+  padding: 30px 40px 40px;
+  background-color: var(--bg-card-color);
+}
+
+.block {
+  $padding: 40px;
+  position: relative;
+
+  &:not(:last-child),
+  &:not(:first-child), {
+    padding: $padding 0;
+  }
+
+  &:first-child {
+    padding-bottom: $padding;
+  }
+
+  &:last-child {
+    padding-top: $padding;
+  }
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font: 17px / 140% var(--font-family-secondary);
+}
+
+.pricesTotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+.inputWrapper {
+  margin: 30px 0 15px;
+  font: 17px / 140% var(--font-family-secondary);
+}
+
+.input {
+  border: 1.5px solid var(--gray);
+}
+
+.link {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.agreeLink {
+  color: var(--accent-color);
+}
+
+.contact {
+  margin: 10px 0 20px;
+}
+
+.checkBox {
+  font: 13px / 120% var(--font-family-secondary);
+}
+
+.radioBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  &:first-of-type {
+    margin-bottom: 30px;
+  }
+}
+.radioTitle {
+  font: 20px / 150% var(--font-family-secondary);
+  font-weight: 700;
+}
+
+.radioBtn {
+  font: 17px / 150% var(--font-family-secondary);
+}
