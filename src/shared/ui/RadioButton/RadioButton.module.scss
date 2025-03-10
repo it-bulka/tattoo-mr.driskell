@@ -1,0 +1,50 @@
+.radioButton {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  input[type=radio] {
+    display: none;
+  }
+
+  .radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-color);
+
+    &:before {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      background-color: var(--accent-color);
+      width: 10px;
+      height: 10px;
+      transform: scale(0);
+    }
+  }
+
+  &.active {
+    & .radio:before {
+      animation: growing 0.3s forwards;
+    }
+  }
+}
+
+@keyframes growing {
+  0% {
+    transform: scale(0);
+  }
+
+  80% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
