@@ -1,0 +1,29 @@
+.info {
+  position: relative;
+  width: 20px;
+  height: 20px;
+
+  .popup {
+    padding: 30px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translateY(-100%) scale(0);
+    transform-origin: bottom left;
+    transition: opacity 0.2s, transform 0.4s, left 0.4s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: var(--bg-card-color);
+    max-width: 474px;
+    width: 100vw;
+  }
+
+  &:hover .popup {
+    opacity: 1;
+    transform: translateY(-100%) scale(1);
+  }
+}
+
+.icon {
+  color: var(--gray-2);
+}
