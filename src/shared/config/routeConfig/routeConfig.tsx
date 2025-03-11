@@ -12,6 +12,7 @@ export enum AppRoutes {
   // CATALOGS
   CATALOG = 'catalog',
   CATALOG_DETAILS = 'catalog_details',
+  TATTOO_MACHINE_DETAILS = 'tattoo_machine_details',
   // additional
   FORBIDDEN = 'forbidden',
   NOT_FOUND = 'not_found'
@@ -30,6 +31,7 @@ export const getContactsPage = () => '/contacts'
 // CATALOG PAGES
 export const getCatalogPage = () => `/catalog`
 export const getCatalogDetailsPage = (slug: string) => `/catalog/${slug}`
+export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machine/${slug}`
 
 export const getForbiddenPage = () => '/forbidden'
 export const getNotFoundPage = () => '/not-found'
@@ -47,6 +49,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   // CATALOGS
   [AppRoutes.CATALOG]: getCatalogPage(),
   [AppRoutes.CATALOG_DETAILS]: getCatalogDetailsPage(':slug'),
+  [AppRoutes.TATTOO_MACHINE_DETAILS]: getTattooMachineDetailsPage(':slug'),
   // ADDITIONAL
   [AppRoutes.FORBIDDEN]: getForbiddenPage(),
   [AppRoutes.NOT_FOUND]: getNotFoundPage(),

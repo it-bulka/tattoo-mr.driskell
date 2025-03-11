@@ -56,5 +56,19 @@
   "404": "Помилка 404!",
   "page not found": "Цю сторінку не знайдено, ми вже працюємо над її відновленням!",
   "return to the homepage": "Повернутися на головну",
-  "return to the catalog": "Повернутися до каталогу"
+  "return to the catalog": "Повернутися до каталогу",
+  "description": "Опис",
+  "delivery and payment": "Доставка та оплата",
+  "share": "Поділитися",
+  "specifications": "Характеристики",
+  "machine": {
+    "needle stroke": "Хід голки",
+    "operating voltage": "Робоча напруга",
+    "connector": "Роз'єм",
+    "manufacturer": "Виробник",
+    "type": "Тип",
+    "purpose": "Призначення"
+  },
+  "presence": "Наявність",
+  "works made with this machine": "Роботи, зроблені цією машинкою"
 }

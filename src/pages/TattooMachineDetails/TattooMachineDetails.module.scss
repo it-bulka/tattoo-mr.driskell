@@ -1,0 +1,153 @@
+.page {
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: min-content auto;
+
+  row-gap: 25px;
+}
+
+.title {
+  font: 30px / 115% var(--font-family-secondary);
+  font-weight: 900;
+  color: var(--text-dark-color);
+}
+
+.slider {
+  grid-row: 1 / -1;
+  column-gap: toPercent(45, calc(1236 / 2));
+}
+
+.descriptWrapper {
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.price {
+  width: fit-content;
+  .priceCurrent {
+    color: var(--accent-color);
+    font: 24px / 130% var(--font-family-secondary);
+    font-weight: 900;
+  }
+
+  .pricePrev {
+    text-decoration: line-through;
+    color: var(--gray-2);
+    font: 17px / 130% var(--font-family-secondary);
+  }
+}
+
+.presence {
+  flex-grow: 1;
+  font: 17px / 130% var(--font-family-secondary);
+
+  .presenceValue {
+    color: var(--accent-color);
+  }
+}
+
+.description {
+  padding: 25px 0;
+}
+
+.share {
+  font: 17px / 130% var(--font-family-secondary);
+}
+
+.link {
+  flex-basis: 100%;
+  margin-bottom: 39px;
+}
+
+$element-margin-bottom: 24px;
+@include media-max-tablet-s {
+  .title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+
+    font-size: 25px;
+    line-height: 115%;
+  }
+
+  .slider {
+    grid-row: 2 / span 1;
+  }
+
+  .link {
+    order: 1;
+    margin: 0;
+  }
+
+  .description {
+    order: 2;
+    padding: 20px 0;
+    font-size: 15px;
+  }
+
+  .price {
+    order: 3;
+    margin-bottom: $element-margin-bottom;
+
+    .priceCurrent {
+      font-size: 17px;
+    }
+
+    .pricePrev {
+      font-size: 15px;
+    }
+  }
+
+  .presence {
+    display: none;
+  }
+
+  .counter, .addBtn, .share {
+    order: 4;
+  }
+
+  .share {
+    font-size: 15px;
+  }
+
+  .counter {
+    margin-right: 10%;
+    margin-bottom: $element-margin-bottom;
+  }
+}
+
+@include media-max-mobile-s {
+  $element-margin-bottom: 20px;
+  .main {
+    display: block;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .link {
+    display: flex;
+    justify-content: center;
+  }
+
+  .counter, .price, .addBtn {
+    margin-bottom: $element-margin-bottom;
+  }
+  .addBtn {
+    width: 100%;
+  }
+
+  .share {
+    margin-left: auto;
+  }
+}

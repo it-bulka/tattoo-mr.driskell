@@ -21,3 +21,13 @@ export const cartList: CartItemType[] = Array.from({ length: 2 }, (_, index) => 
   totalPrice: 12000,
   id: index
 }))
+
+export const tattooMachineDetails = {
+  description: [
+    'Viper is a machine built on a powerful motor, with the frame of this model made from durable and lightweight aluminum alloy. As a result, the weight of the machine is only 120g.',
+    'This model is equipped with an adjustable eccentric. To adjust the needle stroke you need, simply move your holder in the clamp forward or backward. The eccentric is also designed so that the machine lacks centrifugal force, which eliminates vibration during operation. There is a small and convenient pin at the bottom for attaching the bandage rubber.',
+    'The diameter of the clamping bolt is larger than on similar models, so the holder is fixed without any issues or extra effort. This model easily pushes any needles and cartridges.\n' +
+    'All necessary recommendations are provided in the instruction manual included in the box with the product.',
+    'The machine is suitable for both tattoos and permanent makeup.'
+  ]
+}

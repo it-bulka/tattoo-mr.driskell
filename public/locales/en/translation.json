@@ -56,5 +56,19 @@
   "404": "Error 404!",
   "page not found": "This page is not found, we are already working to restore it!",
   "return to the homepage": "Return to the homepage",
-  "return to the catalog": "Return to the catalog"
+  "return to the catalog": "Return to the catalog",
+  "description": "Description",
+  "delivery and payment": "Delivery and Payment",
+  "share": "Share",
+  "specifications": "Specifications",
+  "machine": {
+    "needle stroke": "Needle Stroke",
+    "operating voltage": "Operating Voltage",
+    "connector": "Connector",
+    "manufacturer": "Manufacturer",
+    "type": "Type",
+    "purpose": "Purpose"
+  },
+  "presence": "Presence",
+  "works made with this machine": "Works made with this machine"
 }
