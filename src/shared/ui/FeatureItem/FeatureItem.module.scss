@@ -1,0 +1,15 @@
+.featureItem {
+  position: relative;
+  padding: 20px 0 26.5px;
+  display: flex;
+  align-items: center;
+
+  .title {
+    color: var(--gray);
+    flex: 1;
+  }
+
+  .decription {
+    flex-basis: 32%;
+  }
+}
