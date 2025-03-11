@@ -3,6 +3,7 @@
   font: 17px / 150% var(--font-family-secondary);
   display: flex;
   align-items: center;
+  @include scroll-snap;
 
   & > *:not(:last-child) {
     margin: 10px;

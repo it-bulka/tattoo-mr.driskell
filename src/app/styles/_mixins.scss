@@ -2,9 +2,16 @@
 
 @function toPercent($part, $from: null) {
   @if($from == null) {
-    $from: var(--container)
+    $from: 1236 // container with padding
   }
-  @return calc($part / $from * 100%)
+  @return calc(($part / $from) * 100%)
+}
+
+@mixin scroll-snap {
+  scroll-snap-type: x mandatory;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
 @mixin media-max-tablet-s {
