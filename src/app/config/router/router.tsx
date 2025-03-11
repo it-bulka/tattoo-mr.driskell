@@ -1,8 +1,8 @@
-import { createBrowserRouter } from 'react-router'
+import { createBrowserRouter, Navigate } from 'react-router'
 import { RootRouter } from './RootRouter.tsx'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
-import { CatalogPages, CartPage } from '@/pages'
+import { CatalogPages, CartPage, NotFound } from '@/pages'
 
 export const router = createBrowserRouter([
   {
@@ -20,7 +20,15 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.cart,
         element: <CartPage />
+      },
+      {
+        path: RoutePaths.not_found,
+        element: <NotFound />
       }
     ]
+  },
+  {
+    path: '*',
+    element: <Navigate to={RoutePaths.not_found} />
   }
 ])

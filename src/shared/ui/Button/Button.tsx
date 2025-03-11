@@ -1,8 +1,10 @@
 import cls from './Button.module.scss'
 import classNames from 'classnames'
-import { PropsWithChildren, memo } from 'react'
+import { PropsWithChildren, memo, HTMLProps } from 'react'
 
-interface ButtonProps {
+type BtnType = Omit<HTMLProps<HTMLButtonElement>, 'max'>
+
+interface ButtonProps  extends BtnType {
   className?: string
   max?: boolean
   big?: boolean

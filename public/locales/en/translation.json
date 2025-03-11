@@ -52,5 +52,9 @@
   "filter": {
     "by category": "By category",
     "by brands": "By brands"
-  }
+  },
+  "404": "Error 404!",
+  "page not found": "This page is not found, we are already working to restore it!",
+  "return to the homepage": "Return to the homepage",
+  "return to the catalog": "Return to the catalog"
 }

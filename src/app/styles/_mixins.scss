@@ -6,3 +6,15 @@
   }
   @return calc($part / $from * 100%)
 }
+
+@mixin media-max-tablet-s {
+  @media (max-width: 1200px) {
+    @content
+  }
+}
+
+@mixin media-max-mobile-s {
+  @media (max-width: 767px) {
+    @content
+  }
+}
