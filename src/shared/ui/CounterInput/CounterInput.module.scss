@@ -6,7 +6,8 @@
 
 .input {
   border: 1px solid var(--accent-color);
-  width: 40px;
+  min-width: 40px;
+  width: 40px; // + dynamic change
   height: 40px;
   display: flex;
   align-items: center;

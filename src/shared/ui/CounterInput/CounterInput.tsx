@@ -48,12 +48,27 @@ export const CounterInput = memo(({
     }
   }, [onChange])
 
+  const onResizeInput = useCallback((value: string, ref: HTMLInputElement) => {
+    const style = getComputedStyle(ref)
+    const paddingLeft = parseFloat(style.paddingLeft);
+    const paddingRight = parseFloat(style.paddingRight);
+    const borderLeft = parseFloat(style.borderLeftWidth);
+    const borderRight = parseFloat(style.borderRightWidth);
+    const width = value.length; // for ch
+
+    const newWidth = `calc(${width}ch + ${paddingLeft + paddingRight + borderLeft + borderRight}px)`;
+
+    ref.style.width = newWidth;
+  }, [])
+
   const onInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (!inputRef.current) return;
     const value = e.target.value.replace(/[^0-9]/g, '')
     inputRef.current.value = value
     onChange?.(Number(value))
-  }, [onChange])
+    onResizeInput(value, inputRef.current)
+  }, [onChange, onResizeInput])
+
 
   return (
     <div className={classNames(cls.counter, {}, [className])}>
