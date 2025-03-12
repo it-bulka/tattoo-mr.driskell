@@ -1,0 +1,53 @@
+.sliderWrapper {
+  display: flex;
+  height: 400px;
+  position: relative;
+}
+
+.slider.withThumbs {
+  flex-basis: 72%;
+}
+
+.slide {
+  height: 400px;
+  position: relative;
+
+  .actions {
+    position: absolute;
+    inset: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+:global {
+  .swiper-tattoo-machine {
+    .swiper-slide-thumb-active {
+      border: 1px solid var(--accent-color);
+    }
+  }
+
+  .tattoo-machine-slider .tattoo-machine-bullets {
+    position: absolute;
+    bottom: 15px;
+    z-index: 9999;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+  }
+}

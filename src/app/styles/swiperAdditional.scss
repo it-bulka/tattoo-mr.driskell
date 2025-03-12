@@ -20,12 +20,41 @@
   }
 }
 
+.swiper-custom-bullet-mini {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    display: block;
+    content: "";
+
+    width: 6px;
+    height: 6px;
+    border: 1px solid var(--bg-color-2);
+    background-color: transparent;
+    transition: background-color 0.7s ease;
+  }
+
+
+  &.swiper-custom-bullet-mini-active:before {
+    $color: var(--accent-dark-color);
+    border-color: $color;
+    background-color: $color;
+  }
+}
+
 .swiper-bullets-container {
   display: flex;
   align-items: center;
   gap: 15px;
   margin: auto;
   width: fit-content;
+
+  &.mini {
+    gap: 0;
+  }
 }
 
 $btn-size: 50px;

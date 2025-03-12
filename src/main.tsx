@@ -8,6 +8,7 @@ import "../node_modules/swiper/swiper.min.css"
 import "../node_modules/swiper/modules/grid.min.css"
 import "../node_modules/swiper/modules/navigation.min.css"
 import "../node_modules/swiper/modules/pagination.min.css"
+import "../node_modules/swiper/modules/thumbs.min.css"
 import "@/app/styles/swiperAdditional.scss"
 import { App } from '@/app/App.tsx'
 

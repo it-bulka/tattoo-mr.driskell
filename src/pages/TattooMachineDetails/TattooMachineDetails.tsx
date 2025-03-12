@@ -1,9 +1,11 @@
 import cls from './TattooMachineDetails.module.scss'
 import classNames from 'classnames'
 import { Breadcrumbs, DecoratedLink, CounterInput, Button } from '@/shared/ui'
-import { currencyFormat } from '@/shared/libs'
+import { currencyFormat, useDevice } from '@/shared/libs'
 import { useTranslation } from 'react-i18next'
 import { Additional } from './blocks/Additional/Additional.tsx'
+import { TattooMachineSlider, type Slide } from './blocks/TattooMachineSlider/TattooMachineSlider.tsx'
+import { tattooMachineDetails } from '@/mockData.tsx'
 
 interface TattooMachineDetailsProps {
   className?: string
@@ -13,6 +15,7 @@ interface TattooMachineDetailsProps {
 
 const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
   const { t } = useTranslation()
+  const isMobile = useDevice(1200)
   return (
     <div className={classNames(cls.page, "container", {}, [className])}>
       <Breadcrumbs />
@@ -20,7 +23,12 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
         <h2 className={cls.title}>
           Foxxx Viper Fox Golden Vintage Lot #1 RCA
         </h2>
-        <div className={cls.slider}>Slider</div>
+        <div className={cls.slider}>
+          <TattooMachineSlider
+            slides={tattooMachineDetails.slides as Slide[]}
+            isMobile={isMobile}
+          />
+        </div>
         <div className={cls.descriptWrapper}>
           <p className={cls.price}>
             <span className={cls.priceCurrent}>{currencyFormat(34920)}</span>
@@ -47,7 +55,6 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
       </div>
 
       <Additional />
-
     </div>
   )
 }

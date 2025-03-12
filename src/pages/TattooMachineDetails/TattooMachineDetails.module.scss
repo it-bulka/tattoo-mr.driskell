@@ -5,8 +5,8 @@
 
 .main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: min-content auto;
+  grid-template-columns: repeat(2, 50%);
+  align-items: start;
 
   row-gap: 25px;
 }
@@ -18,8 +18,8 @@
 }
 
 .slider {
-  grid-row: 1 / -1;
-  column-gap: toPercent(45, calc(1236 / 2));
+  grid-row: 1 / span 2;
+  margin-right: toPercent(45, calc(1236 / 2));
 }
 
 .descriptWrapper {
@@ -129,6 +129,10 @@ $element-margin-bottom: 24px;
   $element-margin-bottom: 20px;
   .main {
     display: block;
+  }
+
+  .slider {
+    margin: 20px 0;
   }
 
   .title {
