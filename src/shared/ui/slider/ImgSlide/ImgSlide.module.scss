@@ -1,0 +1,25 @@
+.slide {
+  position: relative;
+
+  .actions {
+    position: absolute;
+    inset: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+  }
+}
+
+.img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

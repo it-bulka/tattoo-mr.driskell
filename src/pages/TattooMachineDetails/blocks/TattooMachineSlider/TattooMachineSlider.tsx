@@ -4,16 +4,9 @@ import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide, SwiperProps } from 'swiper/react'
 import { Thumbs, Pagination } from 'swiper/modules';
 import { useState, memo, useMemo } from 'react'
-import { LikeButton } from '@/features'
-import { Tag, type TagType } from '@/shared/ui'
+import { type Slide, ImgSlide } from '@/shared/ui'
 import ReactDOMServer from 'react-dom/server'
 import { PropsWithChildren } from 'react'
-
-export type Slide = {
-  id: string
-  img: string,
-  tags: TagType[]
-}
 
 interface TattoMachineSliderProps {
   className?: string
@@ -97,17 +90,7 @@ export const TattooMachineSlider = memo(({
   const slidesContent = useMemo(() => {
     return slides.map(slide => (
       <SwiperSlide key={slide.id}>
-        <div className={cls.slide}>
-          <div className={cls.actions}>
-            <div className={cls.tags}>
-              {slide.tags.map((tag) => (
-                <Tag type={tag} key={tag}/>
-              ))}
-            </div>
-            <LikeButton />
-          </div>
-          <img src={slide.img} alt="tatoo machine image" className={cls.img}/>
-        </div>
+        <ImgSlide tags={slide.tags} img={slide.img} alt="tatoo machine image" className={cls.slide}/>
       </SwiperSlide>
     ))
   }, [slides])
