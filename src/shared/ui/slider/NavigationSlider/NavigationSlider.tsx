@@ -1,4 +1,3 @@
-import cls from './NavigationSlider.module.scss'
 import classNames from 'classnames'
 
 import { memo, useRef, PropsWithChildren } from 'react'
@@ -50,7 +49,7 @@ export const NavigationSlider = memo(({
   const swiperRef = useRef<SwiperType>(null)
 
   return (
-    <div className={classNames(cls.navigationSlider, 'container-slider-nav', {}, [className])}>
+    <div className={classNames('container-slider-nav', {}, [className])}>
       <Swiper
         modules={[Navigation]}
         slidesPerView={slidesPerView}
