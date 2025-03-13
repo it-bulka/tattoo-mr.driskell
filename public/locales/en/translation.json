@@ -79,5 +79,6 @@
   "items_count": "{{count}} $t(item) for a total of:",
   "item_one": "item",
   "item_few": "items",
-  "item_many": "items"
+  "item_many": "items",
+  "consumables": "Consumables"
 }

@@ -1,4 +1,3 @@
-import { productsList } from '@/mockData.tsx';
 import { ProductCard } from '@/entities/ProductCard';
 import { currencyFormat } from '@/shared/libs';
 import { type Product } from '../ProductCard/ProductCard.tsx'
@@ -7,12 +6,12 @@ import classNames from 'classnames';
 
 interface ProductListProps {
   className?: string
-  products?: Product[]
+  products: Product[]
 }
-export const ProductList = ({ className }: ProductListProps) => {
+export const ProductList = ({ className, products }: ProductListProps) => {
   return (
     <div className={classNames(cls.products, {}, [className])}>
-      {productsList.map((product) => (
+      {products.map((product) => (
         <ProductCard
           key={product.id}
           imgs={product.imgs}

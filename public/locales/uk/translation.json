@@ -79,5 +79,6 @@
   "items_count": "{{count}} $t(item) на суму:",
   "item_one": "товар",
   "item_few": "товари",
-  "item_many": "товарів"
+  "item_many": "товарів",
+  "consumables": "Розхідні матеріали"
 }

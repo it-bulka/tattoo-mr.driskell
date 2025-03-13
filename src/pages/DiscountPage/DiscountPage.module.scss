@@ -1,0 +1,26 @@
+.discountPage {
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
+.title {
+  margin: 20px 0;
+}
+
+.products {
+  margin: 40px 0;
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  @include scroll-snap;
+}
+
+@include media-max-tablet-s {
+  .discountPage {
+    padding-top: 30px;
+    padding-bottom: 160px;
+  }
+}
