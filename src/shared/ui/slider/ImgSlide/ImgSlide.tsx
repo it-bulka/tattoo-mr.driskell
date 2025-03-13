@@ -9,41 +9,45 @@ export type Slide = {
   id: string
   img: string
   alt?: string
-  tags: TagType[]
+  tags?: TagType[]
 }
 
-type SlideWithTags = Omit<Slide, 'id'>
-type SlideWithCheckbox = Omit<Slide, 'tags'> & {
+type SlideWithoutId = Omit<Slide, 'id'>
+export type WithCheckbox = {
   checked: boolean
-  onClick?: () => void
+  onCheckClick?: () => void
 }
 
-type ImgSlideProps =  {
+export type ImgSlideProps =  {
   className?: string
   onLikeClick?: () => void
-} & (SlideWithTags | SlideWithCheckbox)
+  withAdaptation?: boolean
+} & SlideWithoutId  & ({} | WithCheckbox)
 
-export const ImgSlide = memo(({ className, img, ...rest }: ImgSlideProps) => {
+export const ImgSlide = memo(({ className, withAdaptation, img, ...rest }: ImgSlideProps) => {
   const actionContent = useMemo(() => {
-    if ('tags' in rest) {
-      return (
-        <div className={cls.tags}>
-          {rest.tags.map((tag) => (
-            <Tag type={tag} key={tag}/>
-          ))}
-        </div>
-      )
-    }
-
     if('checked' in rest) {
       return (
-        <CheckBox checked={rest.checked} onClick={rest.onClick}/>
+        <CheckBox checked={rest.checked} onClick={rest.onCheckClick}/>
       )
     }
+
+    return (
+      <div className={cls.tags}>
+        {rest.tags?.map((tag) => (
+          <Tag type={tag} key={tag}/>
+        ))}
+      </div>
+    )
   }, [rest])
 
   return (
-    <div className={classNames(cls.slide, [className])}>
+    <div className={classNames(
+      cls.slide,
+      {[cls.adaptiveWithCheckbox]: withAdaptation && 'checked' in rest},
+      {[cls.adaptiveWithTags]: withAdaptation && !('checked' in rest)},
+      [className])}
+    >
       <div className={cls.actions}>
         {actionContent}
         <LikeButton />

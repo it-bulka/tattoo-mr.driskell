@@ -23,3 +23,25 @@
   flex-direction: column;
   gap: 8px;
 }
+
+@include media-max-tablet-s {
+  .slide.adaptiveWithCheckbox {
+    .actions {
+      padding-top: 24px;
+    }
+  }
+}
+
+@include media-max-mobile-s {
+  .slide.adaptiveWithCheckbox {
+    .actions {
+      padding: 0;
+    }
+  }
+
+  .slide.adaptiveWithTags {
+    .actions {
+      display: none;
+    }
+  }
+}
