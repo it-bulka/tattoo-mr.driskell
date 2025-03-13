@@ -15,7 +15,7 @@ export const CategoriesPage = ({ className, slug }: CategoryPageProps) => {
   return (
     <div className={classNames(cls.categoriesPage, 'container', {}, [className])}>
       <Breadcrumbs />
-      <h3 className={cls.title}>{slug}</h3>
+      <h3 className={classNames("pageTitle", cls.title)}>{slug}</h3>
       <FilterToolbar className={cls.filterToolbar} />
       <ProductList className={cls.products} products={productsList} />
       <Button big className={cls.seeMore}>{t('see more')}</Button>

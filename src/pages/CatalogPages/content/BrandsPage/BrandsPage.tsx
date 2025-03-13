@@ -20,7 +20,7 @@ export const BrandsPage = ({ className, slug }: BrandPageProps) => {
       <Breadcrumbs />
       <div className={cls.brand}>
         <img src={BrandImg} alt={`${slug} logo`}/>
-        <h3 className={cls.title}>{slug}</h3>
+        <h3 className="pageTitle">{slug}</h3>
       </div>
       <div className={cls.filters}>
         {catalogContent.category.map((category) => (

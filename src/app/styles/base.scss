@@ -127,3 +127,19 @@ svg {
   color: var(--gray);
   text-decoration: line-through;
 }
+
+.pageTitle {
+  font: 60px / 100% var(--font-family-third);
+}
+
+@include media-max-tablet-s {
+  .pageTitle {
+    font-size: 50px;
+  }
+};
+
+@include media-max-mobile-s {
+  .pageTitle {
+    font-size: 25px;
+  }
+};
