@@ -14,6 +14,12 @@
   scrollbar-width: none;
 }
 
+@mixin media-desktop {
+  @media (min-width: 1201px) {
+    @content
+  }
+}
+
 @mixin media-max-tablet-s {
   @media (max-width: 1200px) {
     @content

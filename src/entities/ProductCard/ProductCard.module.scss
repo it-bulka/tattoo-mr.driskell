@@ -58,32 +58,54 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
 .info {
   position: relative;
 }
+
 .btnWrapper {
   background-color: var(--bg-card-color);
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 30px;
-  transform: scaleY(0);
-  transition: transform 0.7s ease;
-  transform-origin: top;
-  z-index: 999;
-  @include shadow-btn;
+}
 
-  .btn {
-    transform: scale(0);
+@include media-desktop {
+  .btnWrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    transform: scaleY(0);
     transition: transform 0.7s ease;
-  }
+    transform-origin: top;
+    z-index: 999;
+    @include shadow-btn;
 
-  &.isShown {
-    transform: scaleY(1);
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 30px;
 
-    & > .btn {
-      transform: scale(1);
+    .btn {
+      transform: scale(0);
+      transition: transform 0.7s ease;
+    }
+
+    &.isShown {
+      transform: scaleY(1);
+
+      & > .btn {
+        transform: scale(1);
+      }
     }
   }
 }
+
+@include media-max-tablet-s {
+  .title {
+    font-size: 15px;
+  }
+
+  .productCard {
+    padding-bottom: 20px;
+  }
+  .btnWrapper {
+    padding: 16px $padding 0;
+  }
+}
+
+
 
