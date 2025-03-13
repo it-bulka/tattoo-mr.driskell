@@ -1,0 +1,34 @@
+.cardContent {
+  padding: 0 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title {
+  font: 17px / 140% var(--font-family-secondary);
+  flex: 1;
+}
+
+.price {
+  font: 24px / 130% var(--font-family-secondary);
+  font-weight: 900;
+  color: var(--accent-color);
+}
+
+@include media-max-tablet-s {
+  .cardContent {
+    gap: 8px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+}
+
+
+@include media-max-mobile-s {
+  .cardContent {
+    padding: 0;
+  }
+}
