@@ -70,5 +70,14 @@
     "purpose": "Purpose"
   },
   "presence": "Presence",
-  "works made with this machine": "Works made with this machine"
+  "works made with this machine": "Works made with this machine",
+  "complete the set with the necessary items": "Complete the set with the necessary items",
+  "more products — bigger discount": "More products — bigger discount",
+  "recommended product": "Recommended product",
+  "products from this brand": "Products from this brand",
+  "similar products": "Similar products",
+  "items_count": "{{count}} $t(item) for a total of:",
+  "item_one": "item",
+  "item_few": "items",
+  "item_many": "items"
 }

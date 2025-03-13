@@ -4,7 +4,7 @@ import { PropsWithChildren, memo, HTMLProps } from 'react'
 
 type BtnType = Omit<HTMLProps<HTMLButtonElement>, 'max'>
 
-interface ButtonProps  extends BtnType {
+export interface ButtonProps  extends BtnType {
   className?: string
   max?: boolean
   big?: boolean

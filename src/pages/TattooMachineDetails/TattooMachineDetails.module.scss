@@ -69,6 +69,26 @@
   margin-bottom: 39px;
 }
 
+// general
+.blockHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 45px;
+  margin-top: 70px;
+}
+
+.blockTitle {
+  font: 60px / 130% var(--font-family-third);
+}
+
+.blockLink {
+  font: 25px / 140% var(--font-family-secondary);
+}
+
+
+
+// MEDIA
 $element-margin-bottom: 24px;
 @include media-max-tablet-s {
   .title {

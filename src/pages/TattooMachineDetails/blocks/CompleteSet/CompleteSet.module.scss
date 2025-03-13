@@ -1,0 +1,155 @@
+.content {
+  background-color: var(--bg-card-color);
+  position: relative;
+}
+
+.info {
+  padding: 40px 50px 0;
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+.cards {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  @include scroll-snap;
+}
+
+.card {
+  width: 289px;
+}
+
+.plus {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  background-color: var(--bg-card-color);
+  flex-shrink: 0;
+
+  &:before, &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 18.33px;
+    height: 2px;
+    background-color: var(--text-dark-color);
+    will-change: transform;
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}
+
+.actions {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.price {
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  align-items: center;
+  column-gap: 15px;
+  row-gap: 10px;
+  font: 17px / 150% var(--font-family-secondary);
+
+  .title {
+    grid-column: 1/-1;
+    color: var(--gray);
+  }
+}
+
+.discount {
+  background-color: #CB3229;
+  color: var(--text-light-color);
+  padding: 15px;
+}
+
+@include media-max-tablet-s {
+  .completeSet {
+    padding: 0;
+    width: 100%;
+  }
+
+  .info {
+    padding: 30px  var(--container-padding) 20px;
+  }
+
+  .card {
+    min-width: 229px;
+    width: 24.18%;
+  }
+
+  .plus {
+    width: 18.33px;
+  }
+}
+
+@include media-max-mobile-s {
+  .info {
+    font-size: 17px;
+    padding: 30px var(--container-padding);
+  }
+
+  .cards {
+    overflow-x: scroll;
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: var(--accent-color) var(--gray); /* Колір скролу у Firefox */
+
+    &::-webkit-scrollbar {
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--gray);
+      height: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+    }
+
+    &::-webkit-scrollbar-thumb:vertical {
+      min-height: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal {
+      min-width: 2px;
+    }
+  }
+
+  .card {
+    min-width: 130px;
+  }
+
+  .plus {
+    width: 18px;
+
+    &:before, &:after {
+      width: 10px;
+      height: 0.5px;
+    }
+  }
+
+  .decorator {
+    display: none;
+  }
+
+  .actions {
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .btn {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}

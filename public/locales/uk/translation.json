@@ -70,5 +70,14 @@
     "purpose": "Призначення"
   },
   "presence": "Наявність",
-  "works made with this machine": "Роботи, зроблені цією машинкою"
+  "works made with this machine": "Роботи, зроблені цією машинкою",
+  "complete the set with the necessary items": "Доповніть набір необхідними товарами",
+  "more products — bigger discount": "Більше товарів — більша знижка",
+  "recommended product": "Рекомендовані товари",
+  "products from this brand": "Товари цього бренду",
+  "similar products": "Схожі товари",
+  "items_count": "{{count}} $t(item) на суму:",
+  "item_one": "товар",
+  "item_few": "товари",
+  "item_many": "товарів"
 }

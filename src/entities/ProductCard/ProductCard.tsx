@@ -1,7 +1,7 @@
 import cls from './ProductCard.module.scss'
 import classNames from 'classnames'
 import { LikeButton } from '@/features'
-import { Tag } from '@/shared/ui'
+import { Tag, TagType } from '@/shared/ui'
 import { ProductSlider } from '../ProductSlider/ProductSlider.tsx'
 import { useState } from 'react';
 import { Button } from '@/shared/ui'
@@ -12,9 +12,10 @@ export type Product = {
   title: string
   price: number
   id: number | string
+  tags: TagType[]
 }
 
-interface ProductCardProps extends Omit<Product, 'id' | 'price'>{
+interface ProductCardProps extends Omit<Product, 'id' | 'price' | 'tags'>{
   className?: string
   price: string
 }

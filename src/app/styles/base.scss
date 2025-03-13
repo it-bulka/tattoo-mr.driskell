@@ -1,14 +1,25 @@
 body {
   font: var(--font-m);
   color: var(--text-dark-color);
-  background-color: var(--bg-color-2);
+  background-color: var(--bg-color);
+}
+
+@mixin center-container {
+  width: 100%;
+  margin: auto;
 }
 
 .container {
-  width: 100%;
   max-width: var(--container-max-width);
-  margin: auto;
   padding: 0 var(--container-padding);
+  @include center-container;
+}
+
+.container-slider-nav {
+  max-width: var(--container-slider-nav);
+  padding: 0 var(--slider-nav-padding);
+  @include center-container;
+  position: relative;
 }
 
 .left-container {
@@ -37,6 +48,10 @@ svg {
   background-color: var(--accent-color);
   bottom: 0;
   left: 0;
+
+  &.static {
+    position: relative;
+  }
 
   &.top {
     top: 0;
@@ -100,4 +115,15 @@ svg {
     transition: left var(--delay) ease, top var(--delay) ease;
   }
 
+}
+
+.currentPrice {
+  color: var(--accent-color);
+  font: 24px / 130% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+.prevPrice {
+  color: var(--gray);
+  text-decoration: line-through;
 }

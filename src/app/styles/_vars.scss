@@ -60,9 +60,15 @@
   --font-tag: var(--font-size-tag) / var(--font-line-tag) var(--font-family-secondary);
 
   // SIZE
-  --container-padding: 10px;
+  --container-padding: 20px;
   --container: 1216px; // 1216px + --container-padding * 2
   --container-max-width: calc(var(--container) + var(--container-padding) + var(--container-padding));
+
+  --nav-btn-size: 50px;
+  --nav-btn-margin: 30px;
+  --slider-nav-padding: calc(var(--nav-btn-size) + var(--nav-btn-margin) + var(--container-padding));
+
+  --container-slider-nav: calc(var(--container) + (var(--slider-nav-padding) * 2));
 
   // SPACES
   --space-s: 10px;

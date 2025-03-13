@@ -4,8 +4,11 @@ import { Breadcrumbs, DecoratedLink, CounterInput, Button } from '@/shared/ui'
 import { currencyFormat, useDevice } from '@/shared/libs'
 import { useTranslation } from 'react-i18next'
 import { Additional } from './blocks/Additional/Additional.tsx'
-import { TattooMachineSlider, type Slide } from './blocks/TattooMachineSlider/TattooMachineSlider.tsx'
-import { tattooMachineDetails } from '@/mockData.tsx'
+import { TattooMachineSlider } from './blocks/TattooMachineSlider/TattooMachineSlider.tsx'
+import { type Slide } from '@/shared/ui'
+import { tattooMachineDetails, productsList } from '@/mockData.tsx'
+import { ProposeProducts } from './blocks/ProposeProducts/ProposeProducts.tsx'
+import { CompleteSet } from './blocks/CompleteSet/CompleteSet.tsx';
 
 interface TattooMachineDetailsProps {
   className?: string
@@ -17,9 +20,9 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
   const { t } = useTranslation()
   const isMobile = useDevice(1200)
   return (
-    <div className={classNames(cls.page, "container", {}, [className])}>
-      <Breadcrumbs />
-      <div className={cls.main}>
+    <div className={classNames(cls.page, {}, [className])}>
+      <Breadcrumbs  className="container"/>
+      <div className={classNames(cls.main, "container")}>
         <h2 className={cls.title}>
           Foxxx Viper Fox Golden Vintage Lot #1 RCA
         </h2>
@@ -54,7 +57,27 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
         </div>
       </div>
 
-      <Additional />
+      <Additional className="container"/>
+
+      <CompleteSet />
+
+      <ProposeProducts
+        title={t('recommended product')}
+        products={productsList}
+        sliderId={'recommended_products'}
+      />
+
+      <ProposeProducts
+        title={t('products from this brand')}
+        products={productsList}
+        sliderId={'brands_products'}
+      />
+
+      <ProposeProducts
+        title={t('similar products')}
+        products={productsList}
+        sliderId={'similar_products'}
+      />
     </div>
   )
 }
