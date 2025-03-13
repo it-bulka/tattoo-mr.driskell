@@ -5,7 +5,10 @@
   border: 1px solid var(--accent-dark-color);
   padding: 3px;
 
-  .inner {
+  &:before {
+    display: block;
+    content: "";
+
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -13,9 +16,8 @@
   }
 
   &.swiper-custom-bullet-active {
-    .inner {
+    &:before {
       background-color: var(--accent-color);
-
     }
   }
 }
@@ -48,12 +50,21 @@
 .swiper-bullets-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 15px;
   margin: auto;
   width: fit-content;
 
   &.mini {
     gap: 0;
+  }
+
+  &.outside {
+    margin-top: 48px;
+
+    @include media-max-mobile-s {
+      margin-top: 30px;
+    }
   }
 }
 
@@ -70,6 +81,7 @@ $container-padding: $btn-size + $btn-space;
 
 
 .swiper-btns-container {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -86,5 +98,23 @@ $container-padding: $btn-size + $btn-space;
 
   .next {
     right: 0;
+  }
+}
+
+.swiper-btns-container-2 {
+  pointer-events: none;
+  padding: 0 var(--container-padding);
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & button {
+    pointer-events: auto;
   }
 }
