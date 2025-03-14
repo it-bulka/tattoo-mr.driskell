@@ -23,3 +23,4 @@ export { CardWithImgTagSlider } from './slider/CardWithImgTagSlider/CardWithImgT
 export { CardWithImgCheckboxSlider } from './slider/CardWithImgCheckboxSlider/CardWithImgCheckboxSlider.tsx'
 export { PaginationSlider } from './slider/PaginationSlider/PaginationSlider.tsx'
 export { Card } from './Card/Card.tsx'
+export { CardsGrid } from './CardsGrid/CardsGrid.tsx'

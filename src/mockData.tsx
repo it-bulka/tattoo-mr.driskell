@@ -8,6 +8,8 @@ import MachineImg3 from '@/shared/assets/toDelete/tattoo-machine/machine-3.png';
 import MachineImg4 from '@/shared/assets/toDelete/tattoo-machine/machine-4.png';
 import { type Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+//PromoCodes
+import PromoCodeImg from '@/shared/assets/toDelete/promocode.png'
 // TODO:connect to back
 export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => ({
   imgs: [ProductImg, ProductImg2, ProductImg3, ProductImg4],
@@ -58,3 +60,13 @@ export const tattooMachineDetails = {
     }
   ]
 }
+
+export const promoCodes = Array.from({ length: 10 }, (_, index) => ({
+  img: PromoCodeImg,
+  title: 'Package "Summer"',
+  description: [
+    'The hottest summer of the century doesn\'t want to leave and is bringing you new colors until the end of the season.',
+    'With a purchase of 5500 or more, you will receive a 1% discount on absolutely any product! Hurry and paint your life with the colors of summer!'
+  ],
+  id: index
+}))

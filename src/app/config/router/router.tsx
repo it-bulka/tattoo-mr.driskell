@@ -2,8 +2,10 @@ import { createBrowserRouter, Navigate } from 'react-router'
 import { RootRouter } from './RootRouter.tsx'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
-import { CatalogPages, CartPage, NotFound, DiscountPage, AdditionalServicePage } from '@/pages'
-import { TattooMachineDetails } from '@/pages'
+import {
+  CatalogPages, CartPage, NotFound, DiscountPage, AdditionalServicePage,
+  PromocodesPage, TattooMachineDetails
+} from '@/pages'
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.discounts,
         element: <DiscountPage />
+      },
+      {
+        path: RoutePaths.promo_codes,
+        element: <PromocodesPage />
       },
       {
         path: RoutePaths.not_found,

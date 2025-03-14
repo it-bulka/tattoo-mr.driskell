@@ -1,0 +1,17 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@include media-max-tablet-s {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include media-max-mobile-s {
+  .cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -1,0 +1,9 @@
+.paragraph {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+  &:last-child {
+    margin-bottom: 34px;
+  }
+}

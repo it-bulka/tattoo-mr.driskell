@@ -135,6 +135,8 @@ svg {
 
 .pageTitle {
   font: 60px / 100% var(--font-family-third);
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 @include media-max-tablet-s {
@@ -145,6 +147,8 @@ svg {
 
   .pageTitle {
     font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 };
 
