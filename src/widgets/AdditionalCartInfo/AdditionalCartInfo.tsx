@@ -1,4 +1,4 @@
-import cls from './AdditionalInfo.module.scss'
+import cls from './AdditionalCartInfo.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Input, DecoratedLink, Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
@@ -44,7 +44,7 @@ const delivery = [
   }
 ]
 
-export const AdditionalInfo = memo(({ className }: AdditionalInfoProps) => {
+export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const { t } = useTranslation('cart')
   const [paymentSelected, setPaymentSelected] = useState(payment[0])
   const [deliverySelected, setdeliverySelected] = useState(delivery[1])
@@ -140,4 +140,4 @@ export const AdditionalInfo = memo(({ className }: AdditionalInfoProps) => {
   )
 })
 
-AdditionalInfo.displayName = 'AdditionalInfo'
+AdditionalCartInfo.displayName = 'AdditionalInfo'

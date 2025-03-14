@@ -2,7 +2,7 @@ import { createBrowserRouter, Navigate } from 'react-router'
 import { RootRouter } from './RootRouter.tsx'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
-import { CatalogPages, CartPage, NotFound, DiscountPage } from '@/pages'
+import { CatalogPages, CartPage, NotFound, DiscountPage, AdditionalServicePage } from '@/pages'
 import { TattooMachineDetails } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -25,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.cart,
         element: <CartPage />
+      },
+      {
+        path: RoutePaths.additional_service,
+        element: <AdditionalServicePage />
       },
       {
         path: RoutePaths.discounts,

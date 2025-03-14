@@ -1,0 +1,30 @@
+.title {
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+  & > *:nth-child(1) {
+    grid-column: 1 / span 2;
+  }
+}
+
+@include media-max-tablet-s {
+  .content {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    row-gap: 80px;
+  }
+}
+
+@include media-max-mobile-s {
+  .content {
+    padding: 0;
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: 60px;
+  }
+}

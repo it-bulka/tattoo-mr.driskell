@@ -128,17 +128,32 @@ svg {
   text-decoration: line-through;
 }
 
+.pageSpacing {
+  padding-top: 50px;
+  padding-bottom: 200px;
+}
+
 .pageTitle {
   font: 60px / 100% var(--font-family-third);
 }
 
 @include media-max-tablet-s {
+  .pageSpacing {
+    padding-top: 30px;
+    padding-bottom: 160px;
+  }
+
   .pageTitle {
     font-size: 50px;
   }
 };
 
 @include media-max-mobile-s {
+  .pageSpacing {
+    padding-top: 20px;
+    padding-bottom: 120px;
+  }
+
   .pageTitle {
     font-size: 25px;
   }

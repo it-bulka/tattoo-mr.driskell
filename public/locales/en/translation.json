@@ -80,5 +80,26 @@
   "item_one": "item",
   "item_few": "items",
   "item_many": "items",
-  "consumables": "Consumables"
+  "consumables": "Consumables",
+  "additional services": "Additional services",
+  "service cost": "Service cost:",
+  "urgent delivery": {
+    "title": "Urgent delivery",
+    "info": "Your purchases will be packed and shipped on the day the order is placed. As soon as the order is confirmed by a call from the manager, our staff will immediately pack and ship your order. Take advantage of this service — it will save you one day of waiting. This service is especially relevant if the order is placed closer to the weekend."
+  },
+  "postal guarantee": {
+    "title": "Postal guarantee",
+    "info": "Additional protection for your shipment against accidental damage and spoilage during delivery. If anything happens to your purchases during transit—such as damage, breakage, or spillage—we will fully compensate you for the loss. The postal guarantee ensures your order will be delivered safely and intact."
+  },
+  "extended Warranty": {
+    "title": "Extended Warranty",
+    "info": "Protect your purchases from loss and damage! By choosing the extended postal warranty, we will reimburse you for the full cost of the purchased item in case of total loss of the package or damage to the item during transportation by Russian Post or a shipping company. Additionally, you receive our 2-year warranty on all items in your order."
+  },
+  "gift wrapping": {
+    "title": "Gift wrapping",
+    "info": "The best solution for a gift. We will beautifully wrap your order, and the delivery will be carried out by a courier company to you or another recipient, at your discretion. The details of the delivery will be confirmed during the call from the manager to confirm your order."
+  },
+  "add to order": "Add to order",
+  "read more": "Read more…",
+  "read less": "Read less"
 }

@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/shared/ui'
 import { cartList } from '@/mockData.tsx'
 import { Cart } from '@/entities/Cart'
 import { CartForm } from './CartForm/CartForm.tsx'
-import { AdditionalInfo } from './AdditionalInfo/AdditionalInfo.tsx'
+import { AdditionalCartInfo } from '@/widgets'
 
 interface CartPageProps {
   className?: string
@@ -17,7 +17,7 @@ const CartPage = ({ className }: CartPageProps) => {
       <div className={cls.content}>
         <Cart items={cartList} className={cls.cart}/>
         <CartForm className={cls.form}/>
-        <AdditionalInfo className={cls.additional}/>
+        <AdditionalCartInfo className={cls.additional}/>
       </div>
     </div>
   )
