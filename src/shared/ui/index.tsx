@@ -22,3 +22,4 @@ export { NavigationSlider } from './slider/NavigationSlider/NavigationSlider.tsx
 export { CardWithImgTagSlider } from './slider/CardWithImgTagSlider/CardWithImgTagSlider.tsx'
 export { CardWithImgCheckboxSlider } from './slider/CardWithImgCheckboxSlider/CardWithImgCheckboxSlider.tsx'
 export { PaginationSlider } from './slider/PaginationSlider/PaginationSlider.tsx'
+export { Card } from './Card/Card.tsx'

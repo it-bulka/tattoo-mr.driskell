@@ -1,38 +1,3 @@
-.serviceCard {
-  background-color: var(--bg-card-color);
-  display: flex;
-  flex-direction: column;
-}
-
-.img {
-  width: 100%;
-  aspect-ratio: 392 / 230;
-  object-fit: cover;
-}
-
-.content {
-  flex: 1;
-  padding: 22px 40px 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-}
-
-
-.title {
-  font: 24px / 115% var(--font-family-secondary);
-  font-weight: 900;
-}
-
-.descriptionWrapper {
-  flex: 1;
-}
-
-.description {
-  font: 16px / 140% var(--font-family-secondary);
-  margin-top: 10px;
-}
-
 .readMore {
   display: none;
 }
@@ -44,18 +9,6 @@
 }
 
 @include media-max-tablet-s {
-  .content {
-    padding: 30px;
-  }
-
-  .img {
-    aspect-ratio: 354 / 208;
-  }
-
-  .title {
-    font-size: 20px;
-  }
-
   .description {
     &.clamp {
       $rows: 3;
@@ -76,17 +29,5 @@
     margin-top: 10px;
     font: 16px / 140% var(--font-family-secondary);
     color: var(--accent-color);
-  }
-}
-
-
-@include media-max-mobile-s {
-  .content {
-    padding-left: var(--container-padding);
-    padding-right: var(--container-padding);
-  }
-
-  .img {
-    aspect-ratio: 354 / 208;
   }
 }
