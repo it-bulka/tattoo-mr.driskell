@@ -46,7 +46,7 @@ export const OrderInfo = memo(({
       <h4 className={classNames(cls.title, clsGeneral.title)}>{t('order information')}</h4>
       <Info
         title={t('order number')}
-        text={`${orderNumber} ${t('from')} ${dateFormat(date, 'all')}`}
+        text={`${orderNumber} ${t('from_date')} ${dateFormat(date, 'all')}`}
       />
       <Info
         title={t('order number')}

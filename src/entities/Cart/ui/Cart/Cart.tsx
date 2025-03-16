@@ -2,6 +2,7 @@ import cls from './Cart.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { CartItem, type CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+import { useDevice } from '@/shared/libs'
 
 interface CartProps {
   className?: string
@@ -14,7 +15,8 @@ export const Cart = ({
   readonly = false
 }: CartProps) => {
   const { t } = useTranslation('cart')
-  
+  const isMobile = useDevice()
+
   return (
     <div className={classNames(cls.gridTable, {[cls.readOnly]: readonly}, [className])}>
       <p className={classNames(cls.gridHeader, cls.nameHeader)}>{t('name')}</p>
@@ -28,7 +30,10 @@ export const Cart = ({
 
 
       {items.map((item) => (
-        <CartItem key={item.id} {...item} readonly={readonly} />
+        <>
+          <CartItem key={item.id} {...item} readonly={readonly} type={isMobile ? 'mobile' : 'desktop'} />
+          {isMobile && <div className={classNames("decorator static full croppedPoligon gray", cls.decorator)} />}
+        </>
       ))}
     </div>
   )
