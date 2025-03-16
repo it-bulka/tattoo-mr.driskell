@@ -4,7 +4,7 @@ import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
 import {
   CatalogPages, CartPage, NotFound, DiscountPage, AdditionalServicePage,
-  PromocodesPage, TattooMachineDetails
+  PromocodesPage, TattooMachineDetails, Profile
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -39,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.promo_codes,
         element: <PromocodesPage />
+      },
+      {
+        path: RoutePaths.profile,
+        element: <Profile />
       },
       {
         path: RoutePaths.not_found,

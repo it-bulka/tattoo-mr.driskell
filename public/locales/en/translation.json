@@ -1,5 +1,6 @@
 {
   "home": "Main page",
+  "profile": "Profile",
   "catalog": "Catalog",
   "search": "Search",
   "promo codes": "Promo Codes",
@@ -102,5 +103,19 @@
   "add to order": "Add to order",
   "read more": "Read more…",
   "read less": "Read less",
-  "copy promo code": "Copy promo code"
+  "copy promo code": "Copy promo code",
+  "date": "Date:",
+  "order number": "Order number:",
+  "quantity of items": "quantity of items:",
+  "total amount": "Total amount:",
+  "status": "Status:",
+  "order-status": {
+    "processing": "Being processed",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled",
+    "payment error": "Payment error",
+    "delayed": "Delayed",
+    "ready for pickup": "Ready for pickup"
+  }
 }

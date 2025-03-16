@@ -1,8 +1,5 @@
 import i18n from 'i18next'
-const locales = {
-  en: 'en-US',
-  uk: 'uk-UA'
-} as const
+import { locales } from '../../config/i18n/types.ts'
 
 export const currencyFormat = (
   amount: number,

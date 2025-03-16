@@ -6,12 +6,17 @@ import { CartItem, type CartItemType } from '@/entities/Cart/ui/Cart/CartItem.ts
 interface CartProps {
   className?: string
   items: CartItemType[]
+  readonly?: boolean
 }
-export const Cart = ({ className, items }: CartProps) => {
+export const Cart = ({
+  className,
+  items,
+  readonly = false
+}: CartProps) => {
   const { t } = useTranslation('cart')
   
   return (
-    <div className={classNames(cls.gridTable, {}, [className])}>
+    <div className={classNames(cls.gridTable, {[cls.readOnly]: readonly}, [className])}>
       <p className={classNames(cls.gridHeader, cls.nameHeader)}>{t('name')}</p>
       <p className={cls.gridHeader}>{t('price')}</p>
       <p className={cls.gridHeader}>{t('quantity')}</p>
@@ -23,7 +28,7 @@ export const Cart = ({ className, items }: CartProps) => {
 
 
       {items.map((item) => (
-        <CartItem key={item.id} {...item} />
+        <CartItem key={item.id} {...item} readonly={readonly} />
       ))}
     </div>
   )

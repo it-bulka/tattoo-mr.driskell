@@ -62,5 +62,15 @@
       "title": "Nova Poshta",
       "info": "Delivery to a Nova Poshta branch or directly to your address. Delivery time and cost depend on the carrier's rates."
     }
-  }
+  },
+  "order information": "Order Information",
+  "from_date": "from",
+  "order cost": "Order cost",
+  "contact person": "Contact person",
+  "full name": "Full name",
+  "phone": "Phone",
+  "email": "Email",
+  "order content": "Order content",
+  "more about the order": "More about the order",
+  "hide information": "Hide information"
 }

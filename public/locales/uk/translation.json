@@ -1,5 +1,6 @@
 {
   "home": "Основна сторінка",
+  "profile": "Особистий кабінет",
   "catalog": "Каталог",
   "search": "Пошук",
   "promo codes": "Промокоди",
@@ -102,5 +103,19 @@
   "add to order": "Додати до замовлення",
   "read more": "Читати далі…",
   "read less": "Згорнути",
-  "copy promo code": "Скопіювати промокод"
+  "copy promo code": "Скопіювати промокод",
+  "date": "Дата:",
+  "order number": "Номер замовлення:",
+  "quantity of items": "Кількість товарів:",
+  "total amount": "На суму:",
+  "status": "Статус:",
+  "order-status": {
+    "processing": "Обробляється",
+    "shipped": "Відправлено",
+    "delivered": "Доставлено",
+    "cancelled": "Відмінено",
+    "payment error": "Помилка оплати",
+    "delayed": "Затримано",
+    "ready for pickup": "Готове до видачі"
+  }
 }

@@ -1,0 +1,26 @@
+.openBtn {
+  display: none;
+}
+
+@include media-max-mobile-s {
+  .openBtn {
+    position: relative;
+    padding: 23px var(--container-padding) var(--space-l);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    opacity: 1;
+    transition:
+            opacity 0.7s ease 0.2s;
+    will-change: height;
+    overflow: hidden;
+
+    &.hide {
+      opacity: 0;
+      height: 0;
+      padding: 0;
+      transform: scaleY(0.1);
+    }
+  }
+}

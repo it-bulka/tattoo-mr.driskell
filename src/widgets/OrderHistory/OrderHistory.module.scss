@@ -1,0 +1,38 @@
+.history {
+  background: var(--bg-card-color);
+}
+
+.card {
+  padding: var(--space-l);
+}
+
+.title {
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+// animation
+.details {
+  position: relative;
+  z-index: 999;
+  background-color: var(--bg-card-color);
+  transform: scaleY(0);
+  height: 0;
+  transform-origin: top;
+  transition: transform .7s;
+  will-change: transform, height;
+}
+
+.opened {
+  transform: scaleY(1);
+  height: auto;
+}
+
+@include media-max-mobile-s {
+  .card {
+    padding: var(--space-l) var(--container-padding);
+  }
+  .title {
+    font-size: 20px;
+  }
+}

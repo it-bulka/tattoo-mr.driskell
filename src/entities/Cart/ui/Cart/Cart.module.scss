@@ -21,10 +21,30 @@
 .decorator {
   position: sticky;
   top: 40px;
-  grid-column: span 6;
+  grid-column: 1 / -1;
 }
 
 .delete {
   transform: rotate(-45deg);
   padding: 10px;
+}
+
+.readOnly {
+  &.gridTable {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .nameHeader {
+    grid-column: span 3;
+  }
+
+  .totalHeader {
+    grid-column: span 1;
+  }
+
+  :global {
+    .cartTitle {
+      grid-column: span 2;
+    }
+  }
 }

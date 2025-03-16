@@ -1,0 +1,44 @@
+.orderInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, auto);
+  grid-auto-flow: column;
+
+  position: relative;
+  background: var(--white);
+}
+
+.title {
+  margin-bottom: 22px;
+}
+
+.info {
+  font: 17px / 150% var(--font-family-secondary);
+
+  &:not(:nth-child(4n)) {
+    margin-bottom: 28px;
+  }
+}
+
+.infoTitle {
+  color: var(--text-gray-color);
+}
+
+.infoText {
+  font-weight: 700;
+}
+
+@include media-max-mobile-s {
+  .info {
+    font-size: 15px;
+
+    & > *:not(:nth-child(4)),
+    .title {
+      margin-bottom: 20px;
+    }
+
+    & > *:nth-child(4) {
+      margin-bottom: 40px;
+    }
+  }
+}
