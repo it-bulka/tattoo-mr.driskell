@@ -1,0 +1,21 @@
+$font-m: 17px / 150% var(--font-family-secondary);
+
+.linkFull {
+  font: $font-m;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-s);
+
+  &.bold {
+    font-weight: 900;
+  }
+
+  svg {
+    max-width: 28px;
+    max-height: 28px;
+  }
+}
+
+.accent {
+  color: var(--accent-color);
+}

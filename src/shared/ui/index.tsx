@@ -25,3 +25,6 @@ export { PaginationSlider } from './slider/PaginationSlider/PaginationSlider.tsx
 export { Card } from './Card/Card.tsx'
 export { CardsGrid } from './CardsGrid/CardsGrid.tsx'
 export { OnlineStatus, type Status } from './OnlineStatus/OnlineStatus.tsx'
+export { ContactLink } from './ContactLink/ContactLink.tsx'
+export { ContactsWrapper } from './ContactsWrapper/ContactsWrapper.tsx'
+export { ContactsWithSocialMedia } from './ContactsWithSocialMedia/ContactsWithSocialMedia.tsx'

@@ -1,0 +1,22 @@
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--space-s);
+  width: max-content;
+
+  &.space-none {
+    gap: 0;
+  }
+
+  &.space-s {
+    gap: var(--space-s);
+  }
+
+  & > *:first-child {
+    grid-column: span 3;
+  }
+
+  & > *:not(:first-child) {
+    font: 15px / 150% var(--font-family-secondary);
+  }
+}
