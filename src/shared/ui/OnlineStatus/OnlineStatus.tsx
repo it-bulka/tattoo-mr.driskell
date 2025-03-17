@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
 
 
-type Status = 'online' | 'offline'
+export type Status = 'online' | 'offline'
 interface OnlineStatusProps {
   className?: string
   status: Status
