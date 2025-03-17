@@ -1,0 +1,77 @@
+.companyOffice {
+  background-color: var(--bg-card-color);
+  padding: 30px 50px 44px;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 20px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.phone {
+  font: 60px / 150% var(--font-family-secondary);
+  font-weight: 900;
+  margin-bottom: var(--space-s);
+}
+
+.additional {
+  font: 20px / 140% var(--font-family-secondary);
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+  align-items: end;
+}
+
+.info {
+  font: 17px / 150% var(--font-family-secondary);
+
+  &.bold {
+    font-weight: 900;
+  }
+
+  &:not(:first-of-type) {
+    margin-top: var(--space-s);
+  }
+}
+
+.apps {
+  font: 25px / 150% var(--font-family-secondary);
+
+  & > *:first-child {
+    color: var(--gray-2);
+  }
+}
+
+@include media-max-mobile-s {
+  .flex {
+    flex-direction: column;
+    gap: var(--space-m);
+  }
+
+  .links {
+    align-items: start;
+  }
+
+  .phone {
+    font-size: 30px;
+  }
+
+  .additional {
+    font-size: 15px;
+  }
+
+  .apps {
+    font-size: 17px;
+  }
+
+  .info {
+    font-size: 15px;
+  }
+}

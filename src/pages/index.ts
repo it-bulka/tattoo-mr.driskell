@@ -5,4 +5,5 @@ export { TattooMachineDetails } from './TattooMachineDetails/TattooMachineDetail
 export { DiscountPage } from './DiscountPage/DiscountPage.async.tsx'
 export { AdditionalServicePage } from './AdditionalServicePage/AdditionalServicePage.async.tsx'
 export { PromocodesPage } from './PromocodesPage/PromocodesPage.async.tsx'
-export { Profile } from '@/pages/Profile/Profile.async.tsx'
+export { Profile } from './Profile/Profile.async.tsx'
+export { ContactsPage } from './ContactsPage/ContactsPage.async.tsx'

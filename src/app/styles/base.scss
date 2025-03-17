@@ -139,6 +139,11 @@ svg {
   margin-bottom: 40px;
 }
 
+.blockTitle {
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
 @include media-max-tablet-s {
   .pageSpacing {
     padding-top: 30px;
@@ -160,5 +165,9 @@ svg {
 
   .pageTitle {
     font-size: 25px;
+  }
+
+  .blockTitle {
+    font-size: 17px;
   }
 };

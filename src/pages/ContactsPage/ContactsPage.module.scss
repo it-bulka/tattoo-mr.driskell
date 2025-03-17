@@ -1,0 +1,30 @@
+.managers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-m);
+}
+
+.blockTitle {
+  margin-bottom: var(--space-l);
+}
+
+.companyData {
+  margin-bottom: 50px;
+}
+
+@include media-max-tablet-s {
+  .managers {
+    @include container;
+  }
+}
+
+@include media-max-mobile-s {
+  .blockTitle {
+    margin-bottom: var(--space-m);
+  }
+
+  .managers {
+    grid-template-columns: repeat(1, 1fr);
+    @include remove-container;
+  }
+}

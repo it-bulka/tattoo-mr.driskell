@@ -1,7 +1,8 @@
 import cls from './PersonalDataCard.module.scss'
 import classNames from 'classnames'
-import { AppLink, OnlineStatus, Status } from '@/shared/ui'
-import CallIcon from '@/shared/assets/general/call.svg?react'
+import {
+  OnlineStatus, Status, ContactsWrapper, ContactLink, ContactsWithSocialMedia
+} from '@/shared/ui'
 import MailIcon from '@/shared/assets/general/mail.svg?react'
 import { memo, ReactNode } from 'react'
 
@@ -45,23 +46,24 @@ export const PersonalDataCard = memo(({
         </div>
       </div>
 
-      <div className={cls.contacts}>
-        <AppLink to={`tel:${phone}`} className={classNames(cls.linkFull, {}, [cls.bold])}>
-          <CallIcon />
-          <span>{phone}</span>
-        </AppLink>
-        {viber && <AppLink to={viber}>Viber</AppLink>}
-        {whatsup && <AppLink to={whatsup}>Whats Ap</AppLink>}
-        {telegram && <AppLink to={telegram}>Telegram</AppLink>}
-      </div>
+      <ContactsWithSocialMedia
+        phone={phone}
+        viber={viber}
+        whatsup={whatsup}
+        telegram={telegram}
+        gap="s"
+      />
 
       {email && (
-        <div className={cls.contacts}>
-          <AppLink to={`mailto:${email}`} className={cls.linkFull}>
-            <MailIcon />
-            <span className={cls.accent}>{email}</span>
-          </AppLink>
-        </div>
+        <ContactsWrapper className={cls.email}>
+          <ContactLink
+            href={`mailto:${email}`}
+            icon={<MailIcon />}
+            textAccent
+          >
+            {email}
+          </ContactLink>
+        </ContactsWrapper>
       )}
 
       {additionalInfo && <p className={cls.additionalInfo}>{additionalInfo}</p>}

@@ -31,38 +31,10 @@ $font-m: 17px / 150% var(--font-family-secondary);
   }
 }
 
-
-.contacts {
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  gap: var(--space-s);
-  width: max-content;
-
-  &:last-of-type {
-    margin-top: 30px;
-  }
-
-  & > .linkFull {
-    grid-column: span 3;
-
-    font: $font-m;
-    display: flex;
-    align-items: center;
-    gap: var(--space-s);
-
-    &.bold {
-      font-weight: 900;
-    }
-  }
-
-  & > *:not(.linkFull) {
-    font: 15px / 150% var(--font-family-secondary);
-  }
+.email {
+  margin-top: 30px;
 }
 
-.accent {
-  color: var(--accent-color);
-}
 
 .additionalInfo {
   font: $font-m;

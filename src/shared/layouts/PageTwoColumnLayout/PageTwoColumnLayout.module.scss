@@ -3,8 +3,13 @@
   @include container;
 }
 
+.left {
+  flex: 1;
+}
+
 .right {
   flex: 0 0 toPercent(392);
+  width: toPercent(392);
   margin-left: 20px;
 }
 
@@ -15,7 +20,6 @@
   }
 
   .right {
-    margin-top: 20px;
-    margin-left: 0;
+    display: none;
   }
 }
