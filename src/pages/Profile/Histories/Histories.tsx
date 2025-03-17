@@ -1,5 +1,4 @@
 import cls from './Histories.module.scss'
-import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { OrderHistory } from '@/widgets';
 
@@ -10,14 +9,14 @@ export const Histories = ({ className }: HistoriesProps) => {
   const { t } = useTranslation('cart')
 
   return (
-    <>
+    <div className={className}>
       <h4 className={cls.title}>{t('order history')}</h4>
 
-      <div className={classNames(cls.histories, {}, [className])}>
+      <div className={cls.histories}>
         <OrderHistory />
         <OrderHistory />
         <OrderHistory />
       </div>
-    </>
+    </div>
   )
 }

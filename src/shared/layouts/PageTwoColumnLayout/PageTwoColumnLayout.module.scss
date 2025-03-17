@@ -1,0 +1,21 @@
+.pageTwoColumnLayout {
+  display: flex;
+  @include container;
+}
+
+.right {
+  flex: 0 0 toPercent(392);
+  margin-left: 20px;
+}
+
+@include media-max-tablet-s {
+  .pageTwoColumnLayout {
+    display: block;
+    @include remove-container;
+  }
+
+  .right {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}

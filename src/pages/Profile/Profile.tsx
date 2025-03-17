@@ -5,39 +5,32 @@ import { Breadcrumbs } from '@/shared/ui'
 import { CartForm } from '@/entities'
 import { Histories } from './Histories/Histories.tsx'
 import { PersonalManager } from './PersonalManager/PersonalManager.tsx'
-import { personalManager } from '@/mockData.tsx'
+import { PageTwoColumnLayout } from '@/shared/layouts'
 
-interface ProfileProps {
-  className?: string
-}
-const Profile = ({ className }: ProfileProps) => {
+const Profile = () => {
   const { t } = useTranslation()
 
   return (
-    <div className={classNames(cls.profile, {}, [className, 'container', 'pageSpacing'])}>
-      <div>
-        <Breadcrumbs />
-        <h3 className="pageTitle">{t('profile')}</h3>
-        <CartForm />
-        <Histories />
-      </div>
+    <PageTwoColumnLayout
+      className={'pageSpacing'}
+      left={(
+        <>
+          <Breadcrumbs className={cls.withContainer} />
+          <h3 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h3>
+          <CartForm className={cls.withContainer} />
+          <Histories className={classNames(cls.withContainer, cls.histories)}/>
+        </>
+      )}
+      right={(
+        <>
+          <p className={cls.discount}>
+            {t('personal discount')} <span className={cls.amount}>15%</span>
+          </p>
 
-      <div className={cls.additional}>
-        <p className={cls.discount}>
-          {t('personal discount')} <span className={cls.amount}>15%</span>
-        </p>
-
-        <PersonalManager
-          avatar={personalManager.avatar}
-          name={personalManager.name}
-          phone={personalManager.phone}
-          email={personalManager.email}
-          viber={personalManager.viber}
-          telegram={personalManager.telegram}
-          whatsup={personalManager.whatsup}
-        />
-      </div>
-    </div>
+          <PersonalManager />
+        </>
+      )}
+    />
   )
 }
 

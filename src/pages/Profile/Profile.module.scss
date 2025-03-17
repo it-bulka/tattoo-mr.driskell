@@ -17,17 +17,15 @@
 }
 
 @include media-max-tablet-s {
-  .profile {
-    display: block;
-  }
-
-  .additional {
-    margin-top: 20px;
-    margin-left: 0;
+  .withContainer {
+    @include container;
   }
 }
 
 @include media-max-mobile-s {
+  .withContainer.histories {
+    @include remove-container;
+  }
   .additional {
     display: none;
   }
