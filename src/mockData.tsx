@@ -8,6 +8,7 @@ import MachineImg3 from '@/shared/assets/toDelete/tattoo-machine/machine-3.png';
 import MachineImg4 from '@/shared/assets/toDelete/tattoo-machine/machine-4.png';
 import { type Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+import Manager from '@/shared/assets/toDelete/manager.png'
 //PromoCodes
 import PromoCodeImg from '@/shared/assets/toDelete/promocode.png'
 // TODO:connect to back
@@ -70,3 +71,13 @@ export const promoCodes = Array.from({ length: 10 }, (_, index) => ({
   ],
   id: index
 }))
+
+export const personalManager = {
+  avatar: Manager,
+  name: 'Valeria',
+  phone: '+380676276433',
+  email: 'i.it.bulka@gmail.com',
+  viber: 'viber://contact?number=%2B380676276433',
+  whatsup: 'https://wa.me/380676276433',
+  telegram: 'https://t.me/iva147iva147'
+}

@@ -1,0 +1,24 @@
+.onlineStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-gray-color);
+  font: 17px / 150% var(--font-family-secondary);
+}
+
+@mixin status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.online {
+  background-color: var(--hint-color);
+  @include status;
+}
+
+.offline {
+  background-color: var(--red);
+  @include status;
+}

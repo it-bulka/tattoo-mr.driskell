@@ -1,0 +1,70 @@
+$font-m: 17px / 150% var(--font-family-secondary);
+
+.personalManager {
+  padding: 40px;
+  background: var(--bg-card-color);
+}
+
+.general {
+  display: flex;
+  gap: 4.33%;
+  margin-bottom: 42px;
+
+  .img {
+    width: 42.34%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .managerTitle {
+    font: $font-m;
+  }
+
+  .name {
+    font: 20px / 150% var(--font-family-secondary);
+    font-weight: 700;
+    flex: 1;
+  }
+}
+
+
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: var(--space-s);
+  width: max-content;
+
+  &:last-of-type {
+    margin-top: 30px;
+  }
+
+  & > .linkFull {
+    grid-column: span 3;
+
+    font: $font-m;
+    display: flex;
+    align-items: center;
+    gap: var(--space-s);
+
+    &.bold {
+      font-weight: 900;
+    }
+  }
+
+  & > *:not(.linkFull) {
+    font: 15px / 150% var(--font-family-secondary);
+  }
+}
+
+.accent {
+  color: var(--accent-color);
+}
+
+.workingHours {
+  font: $font-m;
+  margin-top: 25px;
+}

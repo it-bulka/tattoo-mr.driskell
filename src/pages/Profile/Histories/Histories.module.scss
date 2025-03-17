@@ -1,0 +1,25 @@
+.title {
+  font: 25px / 115% var(--font-family-secondary);
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+
+.histories {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+@include media-max-tablet-s {
+  .title {
+    margin-top: 70px;
+  }
+}
+
+@include media-max-mobile-s {
+  .title {
+    font-size: 17px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+  }
+}

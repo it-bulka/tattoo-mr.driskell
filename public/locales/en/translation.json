@@ -13,6 +13,8 @@
   "show in catalog": "Show in catalog",
   "privacy policy": "Privacy Policy",
   "working hours": "Working hours: from 9:00 to 20:00 Kyiv time",
+  "working hours 2": "from 9:00 to 20:00 (Kyiv time)",
+  "working days": "Monday — Friday",
   "to top": "Return to top",
 
   "new arrivals": "New arrivals",
@@ -117,5 +119,9 @@
     "payment error": "Payment error",
     "delayed": "Delayed",
     "ready for pickup": "Ready for pickup"
-  }
+  },
+  "personal discount": "Your Personal Discount:",
+  "your manager": "Your manager:",
+  "offline": "Offline",
+  "online": "Online"
 }

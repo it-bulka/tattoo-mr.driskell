@@ -3,7 +3,8 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { useState,  CSSProperties, useMemo, memo } from 'react';
-import { ElPositions, NavbarLink } from './NavbarLink.tsx'
+import { NavbarLink } from './NavbarLink.tsx'
+import { ElPositions } from '@/shared/libs'
 
 interface NavBarProps {
   className?: string

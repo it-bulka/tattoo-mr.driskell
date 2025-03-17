@@ -21,6 +21,13 @@
   overflow: hidden;
 }
 
+@mixin container {
+  max-width: var(--container-max-width);
+  padding: 0 var(--container-padding);
+  width: 100%;
+  margin: auto;
+}
+
 @mixin media-desktop {
   @media (min-width: 1201px) {
     @content

@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { Breadcrumbs } from '@/shared/ui'
 import { cartList } from '@/mockData.tsx'
 import { Cart } from '@/entities/Cart'
-import { CartForm } from './CartForm/CartForm.tsx'
+import { CartForm } from '@/entities'
 import { AdditionalCartInfo } from '@/widgets'
 
 interface CartPageProps {

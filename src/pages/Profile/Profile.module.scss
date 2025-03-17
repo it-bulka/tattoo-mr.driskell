@@ -1,0 +1,34 @@
+.profile {
+  display: flex;
+}
+
+.additional {
+  flex: 0 0 toPercent(392);
+  margin-left: 20px;
+}
+
+.discount {
+  font: 25px / 115% var(--font-family-secondary);
+  margin-bottom: 30px;
+
+  .amount {
+    color: var(--accent-color);
+  }
+}
+
+@include media-max-tablet-s {
+  .profile {
+    display: block;
+  }
+
+  .additional {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+@include media-max-mobile-s {
+  .additional {
+    display: none;
+  }
+}

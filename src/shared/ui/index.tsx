@@ -24,3 +24,4 @@ export { CardWithImgCheckboxSlider } from './slider/CardWithImgCheckboxSlider/Ca
 export { PaginationSlider } from './slider/PaginationSlider/PaginationSlider.tsx'
 export { Card } from './Card/Card.tsx'
 export { CardsGrid } from './CardsGrid/CardsGrid.tsx'
+export { OnlineStatus } from './OnlineStatus/OnlineStatus.tsx'
