@@ -1,0 +1,19 @@
+.mainLayout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  @supports (height: 100dvh) {
+    min-height: 100dvh;
+    transition: max-height 0.2s linear; // remove jumping bug
+  }
+
+  .noGrow {
+    flex: 0 1 auto;
+  }
+
+  & > main {
+    flex: 1;
+    min-height: 50vh;
+  }
+}

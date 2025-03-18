@@ -10,11 +10,12 @@ import { Search } from '@/shared/ui/Search/Search.tsx';
 import { useTranslation } from 'react-i18next'
 import { NavBar } from '@/widgets'
 import { memo } from 'react'
+import classNames from 'classnames';
 
-export const Header = memo(() => {
+export const Header = memo(({className}: { className?: string}) => {
   const { t } = useTranslation()
   return (
-    <header className={cls.header}>
+    <header className={classNames(cls.header, {}, [className])}>
       <div className="container">
         <div className={cls.upper}>
           <div className={"decorator full croppedPoligon" }/>
