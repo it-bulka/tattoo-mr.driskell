@@ -7,3 +7,4 @@ export { AdditionalServicePage } from './AdditionalServicePage/AdditionalService
 export { PromocodesPage } from './PromocodesPage/PromocodesPage.async.tsx'
 export { Profile } from './Profile/Profile.async.tsx'
 export { ContactsPage } from './ContactsPage/ContactsPage.async.tsx'
+export { ToolsBlog } from './ToolsBlog/ToolsBlog.async.tsx'

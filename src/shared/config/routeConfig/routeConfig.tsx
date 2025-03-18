@@ -8,6 +8,7 @@ export enum AppRoutes {
   PROMO_CODES = 'promo_codes',
   DISCOUNTS = 'discounts',
   HELP = 'help',
+  HELP_TOOLS = 'help_tools',
   ABOUT = 'about',
   CONTACTS = 'contacts',
   // CATALOGS
@@ -27,6 +28,7 @@ export const getAdditionalServicePage = () => '/catalog/cart/additional-service'
 export const getPromoCodesPage = () => '/promo-codes'
 export const getDiscountsPage = () => '/discounts'
 export const getHelpPage = () => '/help'
+export const getHelpToolsPage = (slug: string) => `/help/tools/${slug}`
 export const getAboutPage = () => '/about'
 export const getContactsPage = () => '/contacts'
 
@@ -47,6 +49,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.PROMO_CODES]: getPromoCodesPage(),
   [AppRoutes.DISCOUNTS]: getDiscountsPage(),
   [AppRoutes.HELP]: getHelpPage(),
+  [AppRoutes.HELP_TOOLS]: getHelpToolsPage(':slug'),
   [AppRoutes.ABOUT]: getAboutPage(),
   [AppRoutes.CONTACTS]: getContactsPage(),
   // CATALOGS
