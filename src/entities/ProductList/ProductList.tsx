@@ -7,6 +7,8 @@ interface ProductListProps {
   className?: string
   products: Product[]
 }
+
+// TODO: add virtualization
 export const ProductList = ({ className, products }: ProductListProps) => {
   return (
     <div className={classNames(cls.products, {}, [className])}>

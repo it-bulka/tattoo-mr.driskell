@@ -39,16 +39,13 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
 
 .btnWrapper {
   background-color: var(--bg-card-color);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: $padding;
 }
 
 @include media-desktop {
   .productCard {
-    .btnWrapper {
-      padding-left: 15px;
-      padding-right: 15px;
-      padding-bottom: $padding;
-    }
-
     &:not(.staticOnAll),
     &:not(.staticOnMobile),
     &:not(.staticOnTablet) {
