@@ -9,39 +9,22 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
 }
 
+@mixin static-btn {
+  position: static;
+  padding: 0 $padding 20px;
+  margin-top: calc(-1 * ($padding - 16px));
+}
+
 .productCard {
-  padding-bottom: $padding;
-  padding-top: 15px;
   background-color: var(--bg-card-color);
   transition: top 0.7s ease;
   top: 0;
   position: relative;
 
-  &:hover {
+  &:not(.staticOnAll):not(.staticOnMobile):not(.staticOnTablet):hover {
     @include shadow-card;
     top: -5%;
-    padding-bottom: 20px;
   }
-}
-
-.cardContainer {
-  padding-left: $padding;
-  padding-right: $padding;
-}
-
-.content {
-  position: relative;
-}
-
-.additional {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 15px;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
 }
 
 .title {
@@ -49,61 +32,66 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
   margin: 6px 0 10px;
 }
 
-.price {
-  font: 24px / 130% var(--font-family-secondary);
-  font-weight: bold;
-  color: var(--accent-color);
-}
-
-.info {
-  position: relative;
-}
-
 .btnWrapper {
   background-color: var(--bg-card-color);
 }
 
 @include media-desktop {
-  .btnWrapper {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    transform: scaleY(0);
-    transition: transform 0.7s ease;
-    transform-origin: top;
-    z-index: 999;
-    @include shadow-btn;
-
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 30px;
-
-    .btn {
-      transform: scale(0);
-      transition: transform 0.7s ease;
+  .productCard {
+    .btnWrapper {
+      padding-left: 15px;
+      padding-right: 15px;
+      padding-bottom: $padding;
     }
 
-    &.isShown {
-      transform: scaleY(1);
+    &:not(.staticOnAll),
+    &:not(.staticOnMobile),
+    &:not(.staticOnTablet) {
+      .btnWrapper {
+        position: absolute;
+        top: calc(100% - 10px);
+        left: 0;
+        width: 100%;
+        transform: scaleY(0);
+        transition: transform 0.7s ease;
+        transform-origin: top;
+        z-index: 999;
+        @include shadow-btn;
 
-      & > .btn {
-        transform: scale(1);
+        .btn {
+          transform: scale(0);
+          transition: transform 0.7s ease;
+        }
+
+        &.isShown {
+          transform: scaleY(1);
+
+          & > .btn {
+            transform: scale(1);
+          }
+        }
       }
+    }
+
+    &.staticOnAll .btnWrapper{
+      @include static-btn;
     }
   }
 }
 
 @include media-max-tablet-s {
-  .title {
-    font-size: 15px;
-  }
-
   .productCard {
-    padding-bottom: 20px;
+    &.staticOnTablet .btnWrapper{
+      @include static-btn;
+    }
   }
-  .btnWrapper {
-    padding: 16px $padding 0;
+}
+
+@include media-max-mobile-s {
+  .productCard {
+    &.staticOnMobile .btnWrapper{
+      @include static-btn;
+    }
   }
 }
 

@@ -1,8 +1,7 @@
-import { ProductCard } from '@/entities/ProductCard';
-import { currencyFormat } from '@/shared/libs';
+import { ProductCard } from '@/entities/ProductCard'
 import { type Product } from '../ProductCard/ProductCard.tsx'
 import cls from './ProductsList.module.scss'
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 interface ProductListProps {
   className?: string
@@ -14,9 +13,11 @@ export const ProductList = ({ className, products }: ProductListProps) => {
       {products.map((product) => (
         <ProductCard
           key={product.id}
+          id={product.id}
           imgs={product.imgs}
           title={product.title}
-          price={currencyFormat(product.price)}
+          price={product.price}
+          tags={product.tags}
         />
       ))}
     </div>

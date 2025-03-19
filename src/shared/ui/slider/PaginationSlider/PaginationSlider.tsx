@@ -49,7 +49,7 @@ export const PaginationSlider = memo(({
           loop={loop}
           speed={speed}
           pagination={{
-            el: `#${paginationId}`,
+            el: `#swiper-${paginationId}`,
             bulletClass: dotsType === 'small' ? "swiper-custom-bullet-mini" : "swiper-custom-bullet",
             bulletActiveClass: dotsType === 'small' ? "swiper-custom-bullet-mini-active" : "swiper-custom-bullet-active",
             clickable: true,
@@ -62,7 +62,7 @@ export const PaginationSlider = memo(({
 
       <div
         ref={refCb}
-        id={paginationId}
+        id={`swiper-${paginationId}`}
         className={classNames(
           "swiper-bullets-container",
           { "mini": dotsType === 'small'},

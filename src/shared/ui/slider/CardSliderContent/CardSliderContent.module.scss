@@ -28,7 +28,7 @@
 
 
 @include media-max-mobile-s {
-  .cardContent {
+  .cardContent.padding0 {
     padding: 0;
   }
 }

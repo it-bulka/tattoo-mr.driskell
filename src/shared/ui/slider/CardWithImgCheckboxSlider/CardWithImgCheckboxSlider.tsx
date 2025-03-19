@@ -32,7 +32,7 @@ export const CardWithImgCheckboxSlider = memo(({
           </SwiperSlide>
         ))}
       </PaginationSlider>
-      <CardSliderContent title={title} price={price}/>
+      <CardSliderContent title={title} price={price} withAdaptation/>
     </div>
   )
 })

@@ -8,16 +8,18 @@ interface CardSliderContentProps {
   title: string
   price: number
   addToCart?: boolean
+  withAdaptation?: boolean
 }
 
 export const CardSliderContent = ({
   className,
   price,
   title,
-  addToCart = false
+  addToCart = false,
+  withAdaptation
 }: CardSliderContentProps) => {
   return (
-    <div className={classNames(cls.cardContent, {}, [className])}>
+    <div className={classNames(cls.cardContent, { [cls.padding0]: withAdaptation}, [className])}>
       <p className={cls.title}>{title}</p>
       <p className={cls.price}>{currencyFormat(price)}</p>
       {addToCart && <AddToCartBtn />}
