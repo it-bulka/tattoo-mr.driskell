@@ -28,7 +28,7 @@ export const CardWithImgTagSlider = memo(({
   console.log('paginationId', paginationId)
   console.log('imgs', imgs)
   return (
-    <div className={classNames(cls.card, {}, [className])}>
+    <div className={classNames(cls.card, {[cls.clear]: withAdaptation}, [className])}>
       <PaginationSlider paginationId={paginationId}>
         {imgs.map((img) => (
           <SwiperSlide key={img}>

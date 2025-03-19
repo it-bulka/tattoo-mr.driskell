@@ -2,3 +2,9 @@
 .card {
   background-color: var(--bg-card-color);
 }
+
+@include media-max-mobile-s {
+  .card.clear {
+    background-color: transparent;
+  }
+}
