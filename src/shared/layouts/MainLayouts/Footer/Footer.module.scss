@@ -7,6 +7,7 @@
 }
 
 .content {
+  @include container;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
 
@@ -41,7 +42,7 @@
   font: 20px / 135.5% var(--font-family-main);
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
 }
 
 .logoWrapper {
@@ -70,4 +71,61 @@
   display: inline-flex;
   align-content: center;
   gap: 10px;
+}
+
+$block-padding: 70px;
+
+@mixin block-spacing {
+  @include container;
+  padding-top: $block-padding;
+  padding-bottom: $block-padding;
+}
+
+@include media-max-tablet-s {
+  .content {
+    @include remove-container;
+    display: block;
+
+    .linksWrapper,
+    .contacts {
+      @include block-spacing;
+    }
+
+    .linksWrapper {
+      border-bottom: 1px solid var(--accent-color);
+      border-right: none;
+    }
+  }
+
+  .logoWrapper {
+    width: 50%;
+
+    img {
+      max-width: 266px;
+    }
+  }
+}
+
+@include media-max-mobile-s {
+  .content {
+    .linksWrapper {
+      flex-wrap: wrap;
+    }
+  }
+
+  .logoWrapper {
+    flex: 0 0 100%;
+    align-items: center;
+    gap: var(--space-m);
+    margin-bottom: 40px;
+
+    img {
+      max-width: 257px;
+    }
+  }
+
+  .links {
+    font-size: 17px;
+    margin: 0 auto;
+  }
 }

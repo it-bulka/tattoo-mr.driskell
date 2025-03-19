@@ -9,6 +9,8 @@ import TelegramIcon from '@/shared/assets/general/telegram.svg?react'
 import ViberIcon from '@/shared/assets/general/viber.svg?react'
 import RingIcon from '@/shared/assets/general/ring.svg?react'
 import MailIcon from '@/shared/assets/general/mail.svg?react'
+import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
+import { companyData } from '@/mockData.tsx'
 
 interface FooterProps {
   className?: string
@@ -18,45 +20,46 @@ export const Footer = memo(({ className }: FooterProps) => {
 
   return (
     <footer className={classNames(cls.footer, {}, [className])}>
-      <div className={classNames('container', cls.content)}>
+      <div className={cls.content}>
         <div className={cls.linksWrapper}>
           <div className={cls.logoWrapper}>
             <img src={Logo} alt="logo" className={cls.logo}/>
+            {/* TODO: add download file */}
             <AppLink to={'/'}>{t('privacy policy')}</AppLink>
           </div>
           <div className={cls.links}>
-            <AppLink to={'/'}>{t('promo codes')}</AppLink>
-            <AppLink to={'/'}>{t('discounts')}</AppLink>
+            <AppLink to={RoutePaths.promo_codes}>{t('promo codes')}</AppLink>
+            <AppLink to={RoutePaths.discounts}>{t('discounts')}</AppLink>
             <AppLink to={'/'}>{t('help')}</AppLink>
           </div>
           <div className={cls.links}>
-            <AppLink to={'/'}>{t('about')}</AppLink>
-            <AppLink to={'/'}>{t('contact')}</AppLink>
+            <AppLink to={RoutePaths.about}>{t('about')}</AppLink>
+            <AppLink to={RoutePaths.contacts}>{t('contact')}</AppLink>
           </div>
         </div>
 
         <div className={cls.contacts}>
           <div>
-            <AppLink to="tel:+380676276433" className={cls.linkFull}>
+            <AppLink to={`tel:${companyData.tel.link}`} className={cls.linkFull}>
               <CallIcon />
-              <span>+380676276433</span>
+              <span>{companyData.tel.link}</span>
             </AppLink>
             <div className={cls.mediaLinks}>
-              <AppLink to="https://t.me/iva147iva147">
+              <AppLink to={`https://t.me/${companyData.telegram.link}}`}>
                 <TelegramIcon />
               </AppLink>
-              <AppLink to="https://wa.me/380676276433">
+              <AppLink to={`https://wa.me/${companyData.whatsapp.link}}`}>
                 <RingIcon />
               </AppLink>
-              <AppLink to="viber://contact?number=%2B380676276433">
+              <AppLink to={`viber://contact?number=${companyData.viber.link}`}>
                 <ViberIcon />
               </AppLink>
             </div>
           </div>
           <p className={cls.workHours}>{t('working hours')}</p>
-          <AppLink to="mailto:i.it.bulka@gmail.com" className={cls.linkFull}>
+          <AppLink to={`mailto:${companyData.email.link}`} className={cls.linkFull}>
             <MailIcon />
-            <span>Mr.Driskell@gmail.com</span>
+            <span>{companyData.email.text}</span>
           </AppLink>
         </div>
       </div>
