@@ -1,10 +1,12 @@
 import { PropsWithChildren, memo, useState, useCallback, MouseEvent, TouchEvent } from 'react'
 import { Swiper } from 'swiper/react'
+import { SwiperOptions } from 'swiper/types'
 import { Pagination } from 'swiper/modules'
 import ReactDOMServer from 'react-dom/server'
 import classNames from 'classnames'
 
-interface PaginationSliderProps {
+type Options = Omit<SwiperOptions, 'pagination' | 'modules' | 'onTouchStart' | ' onWheel'>
+interface PaginationSliderProps extends Options {
   className?: string
   paginationId: string
   dotsType?: 'small' | 'large',
@@ -12,7 +14,7 @@ interface PaginationSliderProps {
   spaceBetween?: number,
   slidesPerView?: number,
   loop?: boolean,
-  speed?: number,
+  speed?: number
 }
 
 export const PaginationSlider = memo(({
@@ -24,7 +26,8 @@ export const PaginationSlider = memo(({
   spaceBetween = 2,
   slidesPerView = 1,
   loop = false,
-  speed
+  speed,
+  ...rest
 }: PropsWithChildren<PaginationSliderProps>) => {
   const [isReady, setIsReady] = useState<boolean>(false)
 
@@ -55,6 +58,7 @@ export const PaginationSlider = memo(({
             clickable: true,
             renderBullet: (_, className) => ReactDOMServer.renderToString(<div className={className}><div/></div>)
           }}
+          {...rest}
         >
           {children}
         </Swiper>
