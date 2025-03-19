@@ -1,7 +1,10 @@
 .tabs {
-  padding: 0 25px;
   font: 30px / 115% var(--font-family-secondary);
   font-weight: 700;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 24px;
+  @include scroll-snap;
 }
 
 .products {

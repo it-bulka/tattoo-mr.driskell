@@ -9,6 +9,11 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
 }
 
+@mixin remove-card-hovering {
+  box-shadow: none;
+  top: 0;
+}
+
 @mixin static-btn {
   position: static;
   padding: 0 $padding 20px;
@@ -21,7 +26,7 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
   top: 0;
   position: relative;
 
-  &:not(.staticOnAll):not(.staticOnMobile):not(.staticOnTablet):hover {
+  &:not(.staticOnAll):hover {
     @include shadow-card;
     top: -5%;
   }
@@ -80,16 +85,19 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @include media-max-tablet-s {
-  .productCard {
-    &.staticOnTablet .btnWrapper{
+  .productCard.staticOnTablet {
+    @include remove-card-hovering;
+
+    .btnWrapper{
       @include static-btn;
     }
   }
 }
 
 @include media-max-mobile-s {
-  .productCard {
-    &.staticOnMobile .btnWrapper{
+  .productCard.staticOnMobile {
+    @include remove-card-hovering;
+    .btnWrapper{
       @include static-btn;
     }
   }

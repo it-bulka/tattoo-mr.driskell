@@ -13,7 +13,7 @@ interface HomeProps {
 }
 const Home = ({ className }: HomeProps) => {
   return (
-    <div className={classNames(cls.home, {}, [className])}>
+    <div className={classNames(cls.home, {}, [className, 'pageSpacing'])}>
       <Products />
       <Catalog />
       <Brands />
