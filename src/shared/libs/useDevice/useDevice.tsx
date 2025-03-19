@@ -5,9 +5,8 @@ export const useDevice = (size: number = 768) => {
 
   useEffect(() => {
     const handleResize = () => {
-      const isCoarse = window.matchMedia('(pointer: coarse)').matches
       const isSmallScreen = window.innerWidth <= size
-      setIsMobile(isCoarse && isSmallScreen)
+      setIsMobile(isSmallScreen)
     }
     handleResize()
     window.addEventListener('resize', handleResize)
