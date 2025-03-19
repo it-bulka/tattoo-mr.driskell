@@ -10,7 +10,7 @@ interface NavBarProps {
   className?: string
 }
 
-const links = [
+export const navLinks = [
   {
     name: 'promo codes',
     href: RoutePaths.promo_codes
@@ -52,7 +52,7 @@ export const NavBar = memo(({ className }: NavBarProps) => {
       className={classNames(cls.navBar, {}, [className])}
       onMouseLeave={() => setElPosition(null)}
     >
-      {links.map(({name, href}) => (
+      {navLinks.map(({name, href}) => (
         <NavbarLink href={href} text={t(name)} key={href} setPosition={setElPosition} />
       ))}
       <div className="decorator vertical withTransition" style={cursorPosition}/>

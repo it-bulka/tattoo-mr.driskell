@@ -2,7 +2,7 @@ export enum AppRoutes {
   // general
   HOME = 'home',
   PROFILE = 'profile',
-  LIKE_COUNT = 'like_count',
+  FAVORITES = 'favorites',
   CART = 'cart',
   ADDITIONAL_SERVICE = 'additional_service',
   PROMO_CODES = 'promo_codes',
@@ -22,7 +22,7 @@ export enum AppRoutes {
 
 export const getHomePage = () => '/'
 export const getProfilePage = () => '/profile'
-export const getLikeCountPage = () => '/profile/like-count'
+export const getFavoritesPage = () => '/profile/favorites'
 export const getCartPage = () => '/catalog/cart'
 export const getAdditionalServicePage = () => '/catalog/cart/additional-service'
 export const getPromoCodesPage = () => '/promo-codes'
@@ -43,7 +43,7 @@ export const getNotFoundPage = () => '/not-found'
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: getHomePage(),
   [AppRoutes.PROFILE]: getProfilePage(),
-  [AppRoutes.LIKE_COUNT]: getLikeCountPage(),
+  [AppRoutes.FAVORITES]: getFavoritesPage(),
   [AppRoutes.CART]: getCartPage(),
   [AppRoutes.ADDITIONAL_SERVICE]: getAdditionalServicePage(),
   [AppRoutes.PROMO_CODES]: getPromoCodesPage(),

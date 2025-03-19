@@ -4,12 +4,20 @@
   gap: var(--space-s);
   width: max-content;
 
+  &.inline {
+    display: inline-grid;
+  }
+
   &.space-none {
     gap: 0;
   }
 
   &.space-s {
     gap: var(--space-s);
+  }
+
+  &.space-m {
+    gap: var(--space-m);
   }
 
   & > *:first-child {

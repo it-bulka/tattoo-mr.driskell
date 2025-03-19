@@ -5,6 +5,7 @@ $font: $font-size $font-line var(--font-family-secondary);
 $font-size-s: 12px;
 
 .header {
+  position: relative;
   background-color: var(--bg-dark-color);
   color: var(--text-light-color);
 }
@@ -16,21 +17,6 @@ $font-size-s: 12px;
   align-items: center;
   padding: 14px 0;
   font: $font
-}
-
-.contacts {
-  display: inline-grid;
-  grid-template-columns: repeat(3, auto);
-  column-gap: var(--space-s);
-  width: max-content;
-
-  & > .linkFull {
-    grid-column: span 3;
-  }
-
-  & > *:not(.linkFull) {
-    font-size: $font-size-s;
-  }
 }
 
 .linkFull {
@@ -67,3 +53,34 @@ $font-size-s: 12px;
 .navbar {
   flex: 0 1 toPercent(560);
 }
+
+// Mobile Version
+.row {
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .search {
+    max-width: toPercent(274, 768);
+  }
+}
+
+@include media-max-tablet-s {
+  .upper,
+  .lower {
+    display: none;
+  }
+}
+
+@include media-max-mobile-s {
+  .row {
+    .like,
+    .avatar,
+    .search {
+      display: none;
+    }
+  }
+}
+
+

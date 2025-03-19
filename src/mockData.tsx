@@ -16,6 +16,25 @@ import BlogImg from '@/shared/assets/toDelete/blog.png'
 import { ArticleType } from '@/pages/ToolsBlog/model/type/type.ts'
 import i18next from '@/shared/config/i18n/i18n.tsx';
 
+export const companyData = {
+  tel: {
+    link: '+380676276433'
+  },
+  email: {
+    link: 'i.it.bulka@gmail.com',
+    text: 'Mr.Driskell@gmail.com'
+  },
+  whatsapp: {
+    link: '%2B380676276433'
+  },
+  viber: {
+    link: '380676276433'
+  },
+  telegram: {
+    link: 'iva147iva147'
+  },
+}
+
 // TODO:connect to back
 export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => ({
   imgs: [ProductImg, ProductImg2, ProductImg3, ProductImg4],

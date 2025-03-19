@@ -1,0 +1,72 @@
+@mixin burger-rotate($rotate) {
+  top: 50%;
+  transform: translateY(-50%) rotate($rotate);
+}
+.menuBtn {
+  display: flex;
+  align-items: center;
+
+  .burger {
+    padding: 7px 2px;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    .inner {
+      position: relative;
+      height: 14px;
+      width: 24px;
+    }
+
+    .inner > * {
+      position: absolute;
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--accent-color);
+      transition: top 0.7s ease, transform 0.7s ease, opacity 0.7s ease;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      &:nth-child(3) {
+        top: 100%;
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  input[type="checkbox"]:checked + .burger .inner {
+    & > *:nth-child(2) {
+      opacity: 0;
+    }
+
+    & > *:nth-child(1) {
+     @include burger-rotate(45deg)
+    }
+
+    & > *:nth-child(3) {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%) rotate(-45deg);
+    }
+  }
+}
+
+.title {
+  margin-right: var(--space-s);
+}
+

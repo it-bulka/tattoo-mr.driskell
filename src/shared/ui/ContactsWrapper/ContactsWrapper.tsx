@@ -7,6 +7,7 @@ export type ContactWrapperGap = 'none' | 's'
 interface ContactsWrapperProps {
   className?: string
   gap?: ContactWrapperGap
+  inline?: boolean
 }
 
 const gapMap = {
@@ -17,10 +18,11 @@ const gapMap = {
 export const ContactsWrapper = memo(({
   className,
   children,
-  gap = 'none'
+  gap = 'none',
+  inline = false
 }: PropsWithChildren<ContactsWrapperProps>) => {
   return (
-    <div className={classNames(cls.contacts, {}, [className, cls[gapMap[gap]]])}>
+    <div className={classNames(cls.contacts, { [cls.inline]: inline}, [className, cls[gapMap[gap]]])}>
       {children}
     </div>
   )
