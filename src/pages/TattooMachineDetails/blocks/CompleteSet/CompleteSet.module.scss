@@ -84,7 +84,7 @@
   }
 
   .card {
-    min-width: 229px;
+    max-width: none;
     width: 24.18%;
   }
 
@@ -127,7 +127,8 @@
   }
 
   .card {
-    min-width: 130px;
+    max-width: none;
+    width: 48%;
   }
 
   .plus {

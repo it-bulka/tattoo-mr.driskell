@@ -4,6 +4,7 @@
 }
 
 .main {
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(2, 50%);
   align-items: start;
@@ -34,10 +35,13 @@
 
 .price {
   width: fit-content;
+
   .priceCurrent {
     color: var(--accent-color);
     font: 24px / 130% var(--font-family-secondary);
     font-weight: 900;
+    display: inline-block;
+    margin-right: 15px;
   }
 
   .pricePrev {
@@ -50,6 +54,7 @@
 .presence {
   flex-grow: 1;
   font: 17px / 130% var(--font-family-secondary);
+  margin-left: 25px;
 
   .presenceValue {
     color: var(--accent-color);
@@ -76,10 +81,10 @@
   align-items: end;
   margin-bottom: 45px;
   margin-top: 70px;
-}
 
-.blockTitle {
-  font: 60px / 130% var(--font-family-third);
+  .headerLink {
+    white-space: nowrap;
+  }
 }
 
 .blockLink {
@@ -87,10 +92,18 @@
 }
 
 
-
 // MEDIA
 $element-margin-bottom: 24px;
 @include media-max-tablet-s {
+  .main {
+    margin-top: 40px;
+  }
+
+  .blockHeader {
+    margin-bottom: 40px;
+    margin-top: 80px;
+  }
+
   .title {
     grid-column: 1 / -1;
     grid-row: 1;
@@ -149,10 +162,16 @@ $element-margin-bottom: 24px;
   $element-margin-bottom: 20px;
   .main {
     display: block;
+    margin-top: 30px;
   }
 
   .slider {
     margin: 20px 0;
+  }
+
+  .blockHeader {
+    margin-bottom: 30px;
+    margin-top: 60px;
   }
 
   .title {
@@ -173,5 +192,11 @@ $element-margin-bottom: 24px;
 
   .share {
     margin-left: auto;
+  }
+
+  .price {
+    .priceCurrent {
+      margin-right: 5px;
+    }
   }
 }

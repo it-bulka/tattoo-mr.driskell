@@ -42,8 +42,8 @@ export const ProposeProducts = ({
   return (
     <>
       <div className={classNames("container", clsGeneral.blockHeader)}>
-        <h5 className={clsGeneral.blockTitle}>{title}</h5>
-        <AppLink to={linkTo}>{t('see all')}</AppLink>
+        <h5 className="pageTitle margin-0">{title}</h5>
+        <AppLink to={linkTo} className={clsGeneral.headerLink}>{t('see all')}</AppLink>
       </div>
 
       {isTablet ? (
@@ -55,6 +55,7 @@ export const ProposeProducts = ({
           spaceBetween={20}
           speed={1200}
           loop
+          className="container"
         >
           {content}
         </PaginationSlider>

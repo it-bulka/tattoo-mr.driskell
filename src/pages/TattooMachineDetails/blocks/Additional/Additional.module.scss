@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   row-gap: 50px;
-  padding: 48px 0 50px;
+  padding-top: 48px;
+  padding-bottom: 50px;
 }
 
 .specifications {
