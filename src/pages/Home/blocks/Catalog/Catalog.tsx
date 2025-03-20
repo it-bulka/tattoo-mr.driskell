@@ -78,15 +78,20 @@ export const Catalog = () => {
   const { t } = useTranslation()
 
   return (
-    <div className={cls.catalog}>
-      <h3 className={cls.title}>{t('catalog')}</h3>
-      <div className={classNames(cls.grid, 'container')}>
-        {upper.map((item) => (
-          <div style={{ backgroundImage: `url(${item.img})`}}>
-            <p key={item.name} className={cls.cardTitle}>{item.name}</p>
-          </div>
-        ))}
+    <div className={classNames(cls.catalog)}>
+      <div className='container'>
+        <h3 className={classNames(cls.title, 'pageTitle')}>{t('catalog')}</h3>
+        <div className={cls.grid}>
+          {upper.map((item) => (
+            <div>
+              <div style={{ backgroundImage: `url(${item.img})`}} className={cls.img}/>
+
+              <p key={item.name} className={cls.cardTitle}>{item.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
+
       <div className={cls.addition}>
         {down.map((item) => (
           <div style={{ backgroundImage: `url(${item.img})`}} key={item.name}>

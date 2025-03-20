@@ -5,13 +5,10 @@ import { SliderButton } from '@/shared/ui'
 import { Swiper } from 'swiper/react'
 import { Swiper as SwiperType } from 'swiper'
 import { Navigation } from 'swiper/modules'
+import { SwiperOptions } from 'swiper/types'
 
-interface NavigationSliderProps {
+interface NavigationSliderProps extends SwiperOptions{
   className?: string
-  spaceBetween?: number,
-  slidesPerView?: number,
-  loop?: boolean,
-  speed?: number,
 }
 
 interface IBtns {
@@ -44,14 +41,16 @@ export const NavigationSlider = memo(({
   spaceBetween = 20,
   slidesPerView = 4,
   loop = false,
-  speed
+  speed,
+  modules,
+  ...rest
 }: PropsWithChildren<NavigationSliderProps>) => {
   const swiperRef = useRef<SwiperType>(null)
 
   return (
     <div className={classNames('container-slider-nav', {}, [className])}>
       <Swiper
-        modules={[Navigation]}
+        modules={modules ? [...modules, Navigation] : [Navigation]}
         slidesPerView={slidesPerView}
         spaceBetween={spaceBetween}
         loop={loop}
@@ -59,6 +58,7 @@ export const NavigationSlider = memo(({
         onBeforeInit={(swiper) => {
           swiperRef.current = swiper;
         }}
+        {...rest}
       >
         {children}
       </Swiper>

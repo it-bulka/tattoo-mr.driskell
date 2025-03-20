@@ -1,4 +1,8 @@
 // imported as additionalData in vite config
+$max-tablet: 1200px;
+$max-mobile: 767px;
+
+$min-tablet: 768px;
 
 @function toPercent($part, $from: null) {
   @if($from == null) {
@@ -42,13 +46,26 @@
 }
 
 @mixin media-max-tablet-s {
-  @media (max-width: 1200px) {
+  @media (max-width: $max-tablet) {
     @content
   }
 }
 
 @mixin media-max-mobile-s {
-  @media (max-width: 767px) {
+  @media (max-width: $max-mobile) {
     @content
+  }
+}
+
+
+@mixin media-only-tablet-s {
+  @media (min-width: $min-tablet) and (max-width: $max-tablet) {
+    @content
+  }
+}
+
+@mixin media-responsive($min, $max) {
+  @media (min-width: #{$min}) and (max-width: #{$max}) {
+    @content;
   }
 }

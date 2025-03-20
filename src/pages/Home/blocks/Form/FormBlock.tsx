@@ -12,7 +12,7 @@ export const FormBlock = ({ className }: FormProps) => {
   return (
     <div className={classNames(cls.formBlock, 'right-container', {}, [className])}>
       <div>
-        <h3 className={cls.title}>{t('form.first to know')}</h3>
+        <h3 className="pageTitle margin-0">{t('form.first to know')}</h3>
         <p className={cls.text}>{t('form.subscribe text')}</p>
         <Form />
       </div>

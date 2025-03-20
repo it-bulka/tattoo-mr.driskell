@@ -41,15 +41,15 @@ export const Testimonials = memo(() => {
   const swiperRef = useRef<SwiperType>(null)
   return (
     <div>
-      <h3 className={cls.title}>{t('testimonials')}</h3>
+      <h3 className="pageTitle margin-0 container">{t('testimonials')}</h3>
       <div className={cls.testimonials}>
         <Swiper
           className="testimonials-slider"
           modules={[Navigation, Pagination]}
           grabCursor={true}
-          slidesPerView={3.4}
-          slidesPerGroup={2}
-          initialSlide={2}
+          slidesPerView={1}
+          slidesPerGroup={1}
+          initialSlide={1}
           centeredSlides={false}
           spaceBetween={20}
           loop={true}
@@ -63,6 +63,14 @@ export const Testimonials = memo(() => {
             bulletActiveClass: "swiper-custom-bullet-active",
             clickable: true,
             renderBullet: (_, className) => ReactDOMServer.renderToString(<SliderDot className={className}/>)
+          }}
+          breakpoints={{
+            767: {
+              navigation: false,
+              slidesPerGroup: 2,
+              slidesPerView: 3.4,
+              initialSlide: 2
+            }
           }}
         >
           {list.map((_, index) => (

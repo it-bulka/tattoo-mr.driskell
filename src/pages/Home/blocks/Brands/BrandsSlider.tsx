@@ -1,6 +1,4 @@
-import { Swiper as SwiperType } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Grid, Navigation } from 'swiper/modules'
+import { SwiperSlide } from 'swiper/react'
 import cheyenne from '@/shared/assets/pages/brands/cheyenne.png'
 import dermalize from '@/shared/assets/pages/brands/dermalize.png'
 import faceBody from '@/shared/assets/pages/brands/face-body.png'
@@ -11,11 +9,15 @@ import kwadron from '@/shared/assets/pages/brands/kwadron.png'
 import ocean from '@/shared/assets/pages/brands/ocean.png'
 import tattooAloe from '@/shared/assets/pages/brands/tattoo-aloe.png'
 import tattooRive from '@/shared/assets/pages/brands/tattoo-revive.png'
-import { SliderButton } from '@/shared/ui';
 import cls from './Brands.module.scss'
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { memo } from 'react'
+import { NavigationSlider } from '@/shared/ui'
+import { Grid, Mousewheel } from 'swiper/modules'
+import { Swiper } from 'swiper/react'
+import { useDevice } from '@/shared/libs'
+import { SwiperOptions } from 'swiper/types';
 
 const brandsList = [
   { img: cheyenne, name: 'cheyenne' },
@@ -93,40 +95,46 @@ const Decoration = () => {
 }
 
 export const BrandsSlider = memo(() => {
-  const swiperRef = useRef<SwiperType>(null)
+  const isMobile = useDevice(1200)
+
+  const commonOptions: SwiperOptions = {
+    spaceBetween: 40,
+    slidesPerView: 4,
+    slidesPerGroup: 1,
+    grid: {
+    rows: 2,
+      fill: "row"
+    },
+    loop: true
+  }
+
+  if(isMobile) {
+    return (
+      <div className="container">
+        <Swiper
+          {...commonOptions}
+          modules={[Grid, Mousewheel]}
+          mousewheel={{ forceToAxis: true, sensitivity: 1 }}
+        >
+          {brandsList.map((item) => (
+            <SwiperSlide key={item.name}>
+              <img src={item.img} alt={`brand ${item.name}`} className={cls.img}/>
+            </SwiperSlide>
+          ))}
+          <Decoration />
+        </Swiper>
+      </div>
+    )
+  }
 
   return (
-    <div className={cls.sliderWrapper}>
-      <Swiper
-        modules={[Grid, Navigation]}
-        spaceBetween={40}
-        slidesPerView={4}
-        slidesPerGroup={1}
-        grid={{
-          rows: 2,
-          fill: "row"
-        }}
-        onBeforeInit={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-        loop={true}
-      >
-        {brandsList.map((item) => (
-          <SwiperSlide key={item.name}>
-            <img src={item.img} alt={`brand ${item.name}`} className={cls.img}/>
-          </SwiperSlide>
-        ))}
-        <Decoration />
-      </Swiper>
-      <SliderButton
-        className={classNames(cls.btn, cls.prev)}
-        onClick={()=> swiperRef.current?.slidePrev()}
-      />
-      <SliderButton
-        next
-        className={classNames(cls.btn, cls.next)}
-        onClick={()=> swiperRef.current?.slideNext()}
-      />
-    </div>
+    <NavigationSlider {...commonOptions} modules={[Grid]}>
+      {brandsList.map((item) => (
+        <SwiperSlide key={item.name}>
+          <img src={item.img} alt={`brand ${item.name}`} className={cls.img}/>
+        </SwiperSlide>
+      ))}
+      <Decoration />
+    </NavigationSlider>
   )
 })

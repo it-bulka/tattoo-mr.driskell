@@ -14,13 +14,9 @@
   }
 }
 
-.title {
-  font: 60px / 100% var(--font-family-third);
-}
-
 .text {
-  font: 25px / 115% var(--font-family-secondary);
-  font-weight: 700;
+  font: var(--font-l-primary);
+  font-weight: 500;
   margin: 28px 0 30px;
 }
 
@@ -35,5 +31,57 @@
 
   .checkbox {
     margin: 20px 0 30px;
+  }
+}
+
+@include media-max-tablet-s {
+  .formBlock {
+    & > img {
+      display: none;
+    }
+  }
+
+  .form {
+    max-width: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .input {
+      flex: 0 0 toPercent(353, 728);
+      margin-bottom: 30px;
+    }
+
+    .checkbox {
+      order: 4;
+      flex: 0 1 toPercent(388, 728);
+      margin: auto;
+    }
+  }
+}
+
+@include media-max-mobile-s {
+  .text {
+    margin-top: 20px;
+  }
+
+  .form {
+    display: block;
+
+    .input {
+      margin: 0;
+
+      &:first-of-type {
+        margin-bottom: 16px;
+      }
+    }
+
+    .checkbox {
+      margin: 20px 0 30px;
+    }
+
+    .btn {
+      width: 100%;
+    }
   }
 }

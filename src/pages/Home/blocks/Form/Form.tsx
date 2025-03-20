@@ -48,7 +48,7 @@ export const Form = () => {
       />
 
 
-      <Button dark big>{t('form.subscribe btn')}</Button>
+      <Button dark big withMargin className={cls.btn}>{t('form.subscribe btn')}</Button>
     </form>
   )
 }

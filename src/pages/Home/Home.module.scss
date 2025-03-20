@@ -5,12 +5,10 @@
   white-space: nowrap;
   gap: 24px;
   @include scroll-snap;
-}
 
-.products {
-  margin: 37px 0 50px;
+  margin-bottom: 37px;
 }
 
 .seeMore {
-  margin: auto;
+  margin: 50px auto 0;
 }

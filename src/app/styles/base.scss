@@ -1,5 +1,5 @@
 body {
-  font: var(--font-m);
+  font: var(--font-m-primary);
   color: var(--text-dark-color);
   background-color: var(--bg-color);
 }
@@ -158,6 +158,11 @@ svg {
   font: 60px / 100% var(--font-family-third);
   margin-top: 30px;
   margin-bottom: 40px;
+
+  &.margin-0 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .blockTitle {
@@ -173,6 +178,7 @@ svg {
 
   .pageTitle {
     font-size: 50px;
+    line-height: 130%;
     margin-top: 20px;
     margin-bottom: 30px;
   }
