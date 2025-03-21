@@ -32,6 +32,7 @@
   --green: #5FBBA3;
   --gray: #636B78;
   --gray-2: #D0D0D0;
+  --overlay-color: rgba(0, 0, 0, 0.75);
 
   // FONTS
   // sizes
@@ -72,6 +73,9 @@
 
   --container-slider-nav: calc(var(--container) + (var(--slider-nav-padding) * 2));
 
+  --viewport-width-max: 1920;
+  --viewport-height-max: 1259;
+
   // SPACES
   --space-s: 10px;
   --space-m: 20px;
@@ -84,6 +88,14 @@
 
   // slider
   --slider-btn-size: 50px;
+
+  // z-index
+  --overlay-z-index: 99999999;
+  --modal-z-index: 99999999999;
+  --modal-content-z-index: 9999999999999;
+
+  // modal
+  --modal-y-shift: -75.2%;
 }
 
 @include media-max-mobile-s {
@@ -91,5 +103,11 @@
     // FONTS
     --font-m-primary: var(--font-size-s) / var(--font-line-m) var(--font-family-secondary);
     --font-l-primary: var(--font-size-m) / var(--font-line-s) var(--font-family-secondary);
+  }
+}
+
+@media (min-height: 400px) and (min-width: 1000px) {
+  :root {
+    --modal-y-shift: -55%;
   }
 }
