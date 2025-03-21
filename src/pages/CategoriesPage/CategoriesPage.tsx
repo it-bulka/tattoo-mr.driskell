@@ -6,19 +6,17 @@ import { productsList } from '@/mockData.tsx'
 import { useTranslation } from 'react-i18next'
 import { ProductList } from '@/entities'
 
-interface CategoryPageProps {
-  className?: string
-  slug: string
-}
-export const CategoriesPage = ({ className, slug }: CategoryPageProps) => {
-  const { t } = useTranslation('catalog')
+const CategoriesPage = () => {
+  const { t } = useTranslation()
   return (
-    <div className={classNames(cls.categoriesPage, 'container', {}, [className])}>
+    <div className={classNames(cls.categoriesPage, 'container')}>
       <Breadcrumbs />
-      <h3 className={classNames("pageTitle", cls.title)}>{slug}</h3>
+      <h3 className={classNames("pageTitle", cls.title)}>{t('tattoo machines')}</h3>
       <FilterToolbar className={cls.filterToolbar} />
       <ProductList className={cls.products} products={productsList} />
       <Button big className={cls.seeMore}>{t('see more')}</Button>
     </div>
   )
 }
+
+export default CategoriesPage

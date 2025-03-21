@@ -3,9 +3,9 @@ import { RootRouter } from './RootRouter.tsx'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
 import {
-  CatalogPages, CartPage, NotFound, DiscountPage, AdditionalServicePage,
+  CartPage, NotFound, DiscountPage, AdditionalServicePage,
   PromocodesPage, TattooMachineDetails, Profile, ContactsPage,
-  ToolsBlog
+  ToolsBlog, BrandPage, CategoriesPages
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -18,8 +18,12 @@ export const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: RoutePaths.catalog,
-        element: <CatalogPages />
+        path: RoutePaths.brand,
+        element: <BrandPage />
+      },
+      {
+        path: RoutePaths.catalog_tattoo_machine,
+        element: <CategoriesPages />
       },
       {
         path: RoutePaths.tattoo_machine_details,

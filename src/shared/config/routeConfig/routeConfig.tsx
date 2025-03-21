@@ -13,7 +13,8 @@ export enum AppRoutes {
   CONTACTS = 'contacts',
   // CATALOGS
   CATALOG = 'catalog',
-  CATALOG_DETAILS = 'catalog_details',
+  CATALOG_TATTOO_MACHINE = 'catalog_tattoo_machine',
+  BRAND_TATTOO_MACHINE = 'brand',
   TATTOO_MACHINE_DETAILS = 'tattoo_machine_details',
   // additional
   FORBIDDEN = 'forbidden',
@@ -34,6 +35,8 @@ export const getContactsPage = () => '/contacts'
 
 // CATALOG PAGES
 export const getCatalogPage = () => `/catalog`
+export const getCatalogTattooMachinesPage = () => `/catalog/tattoo-machines`
+export const getCatalogBrandsPage = (slug: string) => `/brands/${slug}`
 export const getCatalogDetailsPage = (slug: string) => `/catalog/${slug}`
 export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machine/${slug}`
 
@@ -54,7 +57,8 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.CONTACTS]: getContactsPage(),
   // CATALOGS
   [AppRoutes.CATALOG]: getCatalogPage(),
-  [AppRoutes.CATALOG_DETAILS]: getCatalogDetailsPage(':slug'),
+  [AppRoutes.CATALOG_TATTOO_MACHINE]: getCatalogTattooMachinesPage(),
+  [AppRoutes.BRAND_TATTOO_MACHINE]: getCatalogBrandsPage(':slug'),
   [AppRoutes.TATTOO_MACHINE_DETAILS]: getTattooMachineDetailsPage(':slug'),
   // ADDITIONAL
   [AppRoutes.FORBIDDEN]: getForbiddenPage(),
