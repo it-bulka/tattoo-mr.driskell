@@ -25,8 +25,6 @@ export const CardWithImgTagSlider = memo(({
   price,
   withAdaptation = true
 }: CardWithImgTagSliderProps) => {
-  console.log('paginationId', paginationId)
-  console.log('imgs', imgs)
   return (
     <div className={classNames(cls.card, {[cls.clear]: withAdaptation}, [className])}>
       <PaginationSlider paginationId={paginationId}>

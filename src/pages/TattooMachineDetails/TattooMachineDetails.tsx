@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next'
 import { Additional } from './blocks/Additional/Additional.tsx'
 import { TattooMachineSlider } from './blocks/TattooMachineSlider/TattooMachineSlider.tsx'
 import { type Slide } from '@/shared/ui'
-import { tattooMachineDetails, productsList } from '@/mockData.tsx'
+import { tattooMachineDetails, productsList, tattooWorks } from '@/mockData.tsx'
 import { ProposeProducts } from './blocks/ProposeProducts/ProposeProducts.tsx'
 import { CompleteSet } from './blocks/CompleteSet/CompleteSet.tsx';
+import { TattooWorksModel } from '@/pages/TattooMachineDetails/blocks/TattooWorksSlider/TattooWorksSlider.tsx';
+import { useState } from 'react'
 
 interface TattooMachineDetailsProps {
   className?: string
@@ -19,6 +21,11 @@ interface TattooMachineDetailsProps {
 const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
   const { t } = useTranslation()
   const isMobile = useDevice(1200)
+  const [isModalOpened, setModalOpened] = useState(false)
+
+  const closeModal = () => setModalOpened(false)
+  const openModal = () => setModalOpened(true)
+
   return (
     <div className={classNames(cls.page, {}, [className])}>
       <Breadcrumbs  className="container"/>
@@ -49,7 +56,10 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
           </p>
 
           <div className={cls.link}>
-            <DecoratedLink to={'/'}>{t('works made with this machine')}</DecoratedLink>
+            <DecoratedLink type="button" onClick={openModal}>
+              {t('works made with this machine')}
+            </DecoratedLink>
+            <TattooWorksModel isOpen={isModalOpened} onClose={closeModal} list={tattooWorks}/>
           </div>
           <CounterInput  className={cls.counter}/>
           <Button dark withMargin className={cls.addBtn}>{t('add to cart')}</Button>

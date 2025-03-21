@@ -1,0 +1,9 @@
+.img {
+  width: 100%;
+  aspect-ratio: 832 / 491;
+}
+
+.wrapper {
+  @include container;
+  padding: 0 toPercent(88, 1920);
+}

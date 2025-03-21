@@ -14,7 +14,15 @@ import PromoCodeImg from '@/shared/assets/toDelete/promocode.png'
 // blog article
 import BlogImg from '@/shared/assets/toDelete/blog.png'
 import { ArticleType } from '@/pages/ToolsBlog/model/type/type.ts'
-import i18next from '@/shared/config/i18n/i18n.tsx';
+import i18next from '@/shared/config/i18n/i18n.tsx'
+// tattoo works
+import Work1 from '@/shared/assets/toDelete/tattoo-works/work-1.png'
+import Work2 from '@/shared/assets/toDelete/tattoo-works/work-2.png'
+import Work3 from '@/shared/assets/toDelete/tattoo-works/work-3.png'
+import Work4 from '@/shared/assets/toDelete/tattoo-works/work-4.png'
+import Work5 from '@/shared/assets/toDelete/tattoo-works/work-5.png'
+import Work6 from '@/shared/assets/toDelete/tattoo-works/work-6.png'
+import Work7 from '@/shared/assets/toDelete/tattoo-works/work-7.png'
 
 export const companyData = {
   tel: {
@@ -361,3 +369,13 @@ export const article: ArticleType = {
     }
   ]
 }
+
+export const tattooWorks = [
+  Work1,
+  Work2,
+  Work3,
+  Work4,
+  Work5,
+  Work6,
+  Work7
+]
