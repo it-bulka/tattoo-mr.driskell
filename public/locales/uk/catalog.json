@@ -7,5 +7,20 @@
   },
   "available only": "Тільки в наявності",
   "price": "Ціна",
-  "catalog": "Каталог"
+  "catalog": "Каталог",
+  "sort": {
+    "title": "сортувати",
+    "popular": "Популярні",
+    "alphabetically": "За алфавітом",
+    "cheap": "Дешеві",
+    "expensive": "Дорогі"
+  },
+  "machine types": {
+    "title": "Типи машинок",
+    "rotary": "Роторні",
+    "coil": "Індукційні",
+    "pen-style": "Пен-машинки",
+    "pneumatic": "Пневматичні",
+    "hybrid": "Гібридні"
+  }
 }

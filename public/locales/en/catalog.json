@@ -7,5 +7,20 @@
   },
   "available only": "Available only",
   "price": "Price",
-  "catalog": "Catalog"
+  "catalog": "Catalog",
+  "sort": {
+    "title": "Sort by",
+    "popular": "Popular",
+    "alphabetically": "Alphabetically",
+    "cheap": "Cheap",
+    "expensive": "Expensive"
+  },
+  "machine types": {
+    "title": "machine types",
+    "rotary": "Rotary",
+    "coil": "Coil",
+    "pen-style": "Pen-style",
+    "pneumatic": "Pneumatic",
+    "hybrid": "Hybrid"
+  }
 }

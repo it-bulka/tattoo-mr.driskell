@@ -1,0 +1,13 @@
+.select {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  z-index: 9999999999;
+}
+
+.indicator {
+  width: 5px;
+  height: 5px;
+  background-color: var(--text-dark-color);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
