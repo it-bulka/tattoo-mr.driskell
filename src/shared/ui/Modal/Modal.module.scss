@@ -1,4 +1,5 @@
 $y-shift: -75.2%;
+$scale: 0.2;
 
 .modal {
   position: fixed;
@@ -14,14 +15,27 @@ $y-shift: -75.2%;
 .content {
   position: absolute;
   left: 0;
-  top: 50%;
-  width: 100%;
-  transform: translateY(var(--modal-y-shift)) scale(0.2);
+  top: 0;
+  width: fit-content;
+  height: fit-content;
+  transform: scale($scale);
   transition: 0.7s transform;
   z-index: var(--modal-content-z-index);
   pointer-events: none;
-  display: flex;
-  align-items: center;
+
+  &.center {
+    top: 50%;
+    max-width: 100%;
+
+    transform: translateY(var(--modal-y-shift)) scale($scale);
+    display: flex;
+    align-items: center;
+  }
+
+  &.top.left {
+    transform-origin: top left;
+    top: 0;
+  }
 }
 
 .opened {
@@ -30,17 +44,25 @@ $y-shift: -75.2%;
   z-index: var(--modal-z-index);
 
   .content {
-    transform: translateY(var(--modal-y-shift)) scale(1);
     z-index: var(--modal-content-z-index);
+    transform: scale(1);
 
     & > * {
       pointer-events: auto;
+    }
+
+    &.center {
+      transform: translateY(var(--modal-y-shift)) scale(1);
     }
   }
 }
 
 .isClosing {
   .content {
-    transform: scale(0.2);
+    transform: scale($scale);
+
+    &.center {
+      transform: translateY(var(--modal-y-shift)) scale($scale);
+    }
   }
 }
