@@ -66,3 +66,21 @@ export const RoutePaths: Record<AppRoutes, string> = {
 }
 
 export type RoutePathsType = typeof RoutePaths[keyof typeof RoutePaths]
+
+export const PathsMapToTranslate: Record<string, string> = {
+  'profile': 'profile',
+  'favorites': 'favorites',
+  'catalog': 'catalog',
+  'cart': 'cart',
+  'additional-service': 'additional-service',
+  'promo-codes': 'promo codes',
+  'discounts': 'discounts',
+  'help': 'help',
+  'tools': 'tools',
+  'about': 'about',
+  'contacts': 'contacts',
+  'tattoo-machines': 'tattoo-machines',
+  'brands': 'brands',
+  'forbidden': 'forbidden',
+  'not-found': 'not-found'
+}

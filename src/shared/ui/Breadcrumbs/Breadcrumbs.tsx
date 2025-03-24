@@ -3,11 +3,15 @@ import classNames from 'classnames'
 import { useLocation } from 'react-router'
 import { useMemo } from 'react';
 import { AppLink } from '../AppLink/AppLink.tsx'
+import { useTranslation } from 'react-i18next'
+import { PathsMapToTranslate } from '@/shared/config/routeConfig/routeConfig.tsx'
 
 interface BreadcrumbsProps {
   className?: string
+  customLastCrumb?: string
 }
-export const Breadcrumbs = ({ className }: BreadcrumbsProps) => {
+export const Breadcrumbs = ({ className, customLastCrumb }: BreadcrumbsProps) => {
+  const { t } = useTranslation()
   const { pathname } = useLocation()
 
   const crumbs = useMemo(() => {
@@ -16,17 +20,21 @@ export const Breadcrumbs = ({ className }: BreadcrumbsProps) => {
   
   return (
     <div className={classNames(cls.breadcrumbs, {}, [className])}>
-      <AppLink to={'/'}>Головна</AppLink>
+      <AppLink to={'/'}>{t('home')}</AppLink>
       <span>/</span>
 
       {crumbs.map((crumb, index) => {
+        let mappedCrumb = PathsMapToTranslate[crumb]
+        if (!mappedCrumb) mappedCrumb = crumb
+
         if (index === crumbs.length - 1) {
-          return <p className={cls.active}>{crumb}</p>
+          const c = customLastCrumb || t(mappedCrumb)
+          return <p className={cls.active}>{c}</p>
         }
 
         return (
           <>
-            <AppLink to={'/'}>{crumb}</AppLink>
+            <AppLink to={'/'}>{t(mappedCrumb)}</AppLink>
             <span>/</span>
           </>
         )
