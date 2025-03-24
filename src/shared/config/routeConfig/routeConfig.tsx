@@ -38,7 +38,7 @@ export const getCatalogPage = () => `/catalog`
 export const getCatalogTattooMachinesPage = () => `/catalog/tattoo-machines`
 export const getCatalogBrandsPage = (slug: string) => `/brands/${slug}`
 export const getCatalogDetailsPage = (slug: string) => `/catalog/${slug}`
-export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machine/${slug}`
+export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machines/${slug}`
 
 export const getForbiddenPage = () => '/forbidden'
 export const getNotFoundPage = () => '/not-found'

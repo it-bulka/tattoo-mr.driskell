@@ -4,27 +4,17 @@ import { FilterLevel } from '@/features'
 import { Toggler, RangeInput, CustomSelect } from '@/shared/ui'
 import { useTranslation } from 'react-i18next'
 import { useState, useMemo } from 'react'
+import { FilterMenu } from '../FilterMenu/FilterMenu.tsx'
+import { sortOptions, typeOptions } from './model/types.ts'
+import { useDevice } from '@/shared/libs'
 
 interface FilterToolbarProps {
   className?: string
 }
 
-const sortOptions = [
-  { value: 'popular', label: 'sort.popular' },
-  { value: 'alphabetically', label: 'sort.alphabetically' },
-  { value: 'cheap', label: 'sort.cheap' },
-  { value: 'expensive', label: 'sort.expensive' }
-]
-
-const typeOptions = [
-  { value: 'rotary', label: 'machine types.rotary' },
-  { value: 'coil', label: 'machine types.coil' },
-  { value: 'pen-style', label: 'machine types.pen-style' },
-  { value: 'pneumatic', label: 'machine types.pneumatic' },
-]
-
 export const FilterToolbar = ({ className }: FilterToolbarProps) => {
   const { t } = useTranslation('catalog')
+  const isTablet = useDevice(1200)
   const [range, setRange] = useState({ min: 0, max: 4400 })
 
   const sorts = useMemo(() => {
@@ -36,31 +26,37 @@ export const FilterToolbar = ({ className }: FilterToolbarProps) => {
   }, [t])
 
   return (
-    <div className={classNames(cls.FilterToolbar, {}, [className])}>
+    <div className={classNames(cls.filterToolbar, {}, [className])}>
       <FilterLevel />
-      <div className={cls.selectors}>
-        <RangeInput
-          min={range.min}
-          max={range.max}
-          label={t('price')}
-          onChangeMin={(val) => setRange(prev => ({ ...prev, min: val }))}
-          onChangeMax={(val) => setRange(prev => ({ ...prev, max: val }))}
-        />
 
-        <CustomSelect
-          label={t('sort.title')}
-          options={sorts}
-          defaultValue={sorts[0]}
-        />
+      { isTablet
+        ? <FilterMenu sorts={sorts} types={types} />
+        : (
+          <div className={cls.selectors}>
+            <RangeInput
+              min={range.min}
+              max={range.max}
+              label={t('price')}
+              onChangeMin={(val) => setRange(prev => ({ ...prev, min: val }))}
+              onChangeMax={(val) => setRange(prev => ({ ...prev, max: val }))}
+            />
 
-        <Toggler label={t('available only')} name="available" />
+            <CustomSelect
+              label={t('sort.title')}
+              options={sorts}
+              defaultValue={sorts[0]}
+            />
 
-        <CustomSelect
-          label={t('machine types.title')}
-          options={types}
-          defaultValue={types[0]}
-        />
-      </div>
+            <Toggler label={t('available only')} name="available" />
+
+            <CustomSelect
+              label={t('machine types.title')}
+              options={types}
+              defaultValue={types[0]}
+            />
+          </div>
+        )
+      }
     </div>
   )
 }

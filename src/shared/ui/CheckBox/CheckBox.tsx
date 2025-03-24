@@ -1,9 +1,9 @@
 import SelectedIcon from '@/shared/assets/general/checked.svg?react'
 import classNames from 'classnames';
 import cls from './CheckBox.module.scss'
-import { memo, HTMLAttributes, ReactNode } from 'react'
+import { memo, ReactNode, HTMLProps } from 'react'
 
-interface CheckedButtonProps extends HTMLAttributes<HTMLInputElement> {
+interface CheckedButtonProps extends Omit<HTMLProps<HTMLInputElement>, 'label'>{
   className?: string
   onClick?: () => void
   checked?: boolean

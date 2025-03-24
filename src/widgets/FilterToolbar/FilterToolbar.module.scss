@@ -1,5 +1,10 @@
+.filterToolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
 .selectors {
-  margin-top: 40px;
   display: flex;
   justify-content: space-between;
 }

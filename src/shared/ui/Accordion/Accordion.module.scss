@@ -1,0 +1,56 @@
+.arrow {
+  flex: 0 0 6px;
+  height: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+
+  & svg {
+    transform: rotate(-90deg);
+    transition: transform .7s;
+  }
+
+  &.up svg {
+    transform: rotate(90deg);
+  }
+}
+
+.title {
+  font: 20px / 150% var(--font-family-secondary);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card-color);
+  position: relative;
+  z-index: 2;
+}
+
+.body {
+  $translate-y: -120%;
+  overflow: hidden;
+  padding-bottom: 1px;
+
+  .inner {
+    padding-top: var(--space-m);
+    transform: translateY(0);
+    transform-origin: top;
+    transition: transform .7s, padding-top 0.3s ease-out, height 0.3s ease-out;
+    will-change: transform, height;
+    z-index: 1;
+    background-color: transparent;
+    height: auto;
+
+    &.isClosing {
+      transform: translateY($translate-y);
+    }
+
+    &.closed {
+      transform: translateY($translate-y);
+      height: 0;
+      opacity: 0;
+      padding-top: 0;
+    }
+  }
+}
