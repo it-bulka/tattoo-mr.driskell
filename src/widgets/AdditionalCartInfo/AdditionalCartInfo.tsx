@@ -125,12 +125,12 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
         <Button center max big className={cls.contact}>{t('contact the manager')}</Button>
         <CheckBox
           label={
-            <>
+            <span>
               {t('agreement.agree')}{' '}
               <AppLink to="/" className={cls.agreeLink}>{t('agreement.public offer')}</AppLink>{' '}
               {t('agreement.and')}{' '}
               <AppLink to="/" className={cls.agreeLink}>{t('agreement.personal data')}</AppLink>
-            </>
+            </span>
           }
           className={cls.checkBox}
         />

@@ -21,7 +21,26 @@
   grid-row: 1 / span 2;
 }
 
+@include media-max-tablet-s {
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 80px;
+  }
 
-.title {
-  font: 60px / 100% var(--font-family-third);
+  .additional {
+    width: 50%;
+    min-width: 392px;
+  }
+}
+
+@include media-max-mobile-s {
+  .content {
+    gap: 60px;
+  }
+
+  .additional {
+    width: 100%;
+  }
 }

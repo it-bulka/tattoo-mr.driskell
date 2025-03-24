@@ -44,3 +44,34 @@
 .entryphone {
   grid-column: span 2;
 }
+
+@include media-max-mobile-s {
+  $gap: 20px;
+
+  .receiver {
+    grid-template-columns: repeat(1, 1fr);
+    row-gap: $gap;
+    column-gap: 0;
+  }
+
+  .address {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $gap;
+  }
+
+  .city,
+  .street {
+    grid-column: span 2;
+  }
+
+  .entrance,
+  .apartment,
+  .floor,
+  .entryphone {
+    grid-column: span 1;
+  }
+
+  .title {
+    margin-bottom: 25px;
+  }
+}

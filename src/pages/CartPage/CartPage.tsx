@@ -5,15 +5,18 @@ import { cartList } from '@/mockData.tsx'
 import { Cart } from '@/entities/Cart'
 import { CartForm } from '@/entities'
 import { AdditionalCartInfo } from '@/widgets'
+import { useTranslation } from 'react-i18next'
 
 interface CartPageProps {
   className?: string
 }
 const CartPage = ({ className }: CartPageProps) => {
+  const { t } = useTranslation('cart')
+
   return (
     <div className={classNames(cls.cartPage, 'container', {}, [className])}>
       <Breadcrumbs />
-      <h3 className={cls.title}></h3>
+      <h3 className="pageTitle">{t('cart')}</h3>
       <div className={cls.content}>
         <Cart items={cartList} className={cls.cart}/>
         <CartForm className={cls.form}/>
