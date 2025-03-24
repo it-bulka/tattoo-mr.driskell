@@ -1,6 +1,7 @@
 import {
   useCallback, useEffect, useRef, useState
 } from 'react'
+import { disableBodyScroll, enableBodyScroll } from '@/shared/libs'
 
 /**
  * Custom hook to manage modal open, close, and animation states.
@@ -42,7 +43,7 @@ export const useModal = ({
 
   const closeHandler = useCallback(() => {
     if(onClose) {
-      document.body.classList.remove('no-scroll')
+      enableBodyScroll()
       setIsClosing(true)
       timerRef.current = setTimeout(() => {
         onClose()
@@ -59,7 +60,7 @@ export const useModal = ({
 
   useEffect(() => {
     if(isOpen) {
-      document.body.classList.add('no-scroll')
+      disableBodyScroll()
       window.addEventListener('keydown', onKeyDown)
     }
 
