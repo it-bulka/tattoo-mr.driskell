@@ -7,3 +7,13 @@
     margin-bottom: 34px;
   }
 }
+
+.cardsGrid {
+  @include container;
+}
+
+@include media-max-mobile-s {
+  .cardsGrid {
+    @include remove-container;
+  }
+}

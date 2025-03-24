@@ -15,7 +15,7 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
     <div className={classNames('pageSpacing', {}, [className])}>
       <Breadcrumbs className="container"/>
       <h3 className='pageTitle container'>{t('promo codes')}</h3>
-      <CardsGrid>
+      <CardsGrid className={cls.cardsGrid}>
         {promoCodes.map(promoCode => (
           <Card
             title={promoCode.title}
