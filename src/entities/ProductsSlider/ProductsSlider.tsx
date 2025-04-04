@@ -33,7 +33,7 @@ export const ProductsSlider = memo(({
         <SwiperSlide key={product.id}>
           <ProductCard
             id={product.id}
-            imgs={product.imgs}
+            images={product.images}
             title={product.title}
             price={product.price}
             tags={product.tags}

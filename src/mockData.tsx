@@ -45,7 +45,7 @@ export const companyData = {
 
 // TODO:connect to back
 export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => ({
-  imgs: [ProductImg, ProductImg2, ProductImg3, ProductImg4],
+  images: [ProductImg, ProductImg2, ProductImg3, ProductImg4],
   title: 'Foxxx Kitsune Mini Black Vintage RCA',
   price: 6000,
   id: index,

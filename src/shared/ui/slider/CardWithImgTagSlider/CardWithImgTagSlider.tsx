@@ -15,6 +15,7 @@ interface CardWithImgTagSliderProps {
   price: number
   tags: TagType[]
   withAdaptation?: boolean
+  itemId: string
 }
 export const CardWithImgTagSlider = memo(({
   className,
@@ -23,14 +24,15 @@ export const CardWithImgTagSlider = memo(({
   tags,
   title,
   price,
-  withAdaptation = true
+  withAdaptation = true,
+  itemId
 }: CardWithImgTagSliderProps) => {
   return (
     <div className={classNames(cls.card, {[cls.clear]: withAdaptation}, [className])}>
       <PaginationSlider paginationId={paginationId}>
         {imgs.map((img) => (
           <SwiperSlide key={img}>
-            <ImgSlide img={img} tags={tags} withAdaptation={withAdaptation}/>
+            <ImgSlide img={img} tags={tags} withAdaptation={withAdaptation} id={itemId}/>
           </SwiperSlide>
         ))}
       </PaginationSlider>

@@ -1,0 +1,1 @@
+export type { LikeSchema } from './model/type/likeSchema.ts'

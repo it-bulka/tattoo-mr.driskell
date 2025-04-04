@@ -30,10 +30,11 @@ export const ProposeProducts = ({
         <SwiperSlide key={product.id}>
           <CardWithImgTagSlider
             paginationId={sliderId + product.id}
-            imgs={product.imgs}
+            imgs={product.images}
             title={product.title}
             tags={product.tags}
             price={product.price}
+            itemId={String(product.id)}
           />
         </SwiperSlide>
       ))}

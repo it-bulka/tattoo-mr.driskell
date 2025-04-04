@@ -10,7 +10,8 @@ export interface ButtonProps  extends BtnType {
   big?: boolean
   center?: boolean
   dark?: boolean
-  withMargin?: boolean
+  withMargin?: boolean,
+  type?: 'button' | 'submit' | 'reset'
 }
 export const Button = memo(({
   className,
@@ -19,14 +20,17 @@ export const Button = memo(({
   center = false,
   dark = false,
   withMargin = false,
-  max = false
+  max = false,
+  ...rest
 }: PropsWithChildren<ButtonProps>) => {
 
   return (
     <button className={classNames(
       cls.btn,
       { [cls.full]: max, [cls.big]: big, [cls.center]: center, [cls.dark]: dark, [cls.withMargin]: withMargin },
-      [className])}>
+      [className])}
+      {...rest}
+    >
       {children}
     </button>
   )

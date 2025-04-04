@@ -12,7 +12,6 @@ export type Slide = {
   tags?: TagType[]
 }
 
-type SlideWithoutId = Omit<Slide, 'id'>
 export type WithCheckbox = {
   checked: boolean
   onCheckClick?: () => void
@@ -22,9 +21,9 @@ export type ImgSlideProps =  {
   className?: string
   onLikeClick?: () => void
   withAdaptation?: boolean
-} & SlideWithoutId  & ({} | WithCheckbox)
+} & Slide  & ({} | WithCheckbox)
 
-export const ImgSlide = memo(({ className, withAdaptation, img, ...rest }: ImgSlideProps) => {
+export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: ImgSlideProps) => {
   const actionContent = useMemo(() => {
     if('checked' in rest) {
       return (
@@ -50,7 +49,7 @@ export const ImgSlide = memo(({ className, withAdaptation, img, ...rest }: ImgSl
     >
       <div className={cls.actions}>
         {actionContent}
-        <LikeButton />
+        <LikeButton machineId={id}/>
       </div>
       <img src={img} alt={rest.alt || 'slider image'} className={cls.img}/>
     </div>

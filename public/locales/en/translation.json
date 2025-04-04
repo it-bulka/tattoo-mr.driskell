@@ -137,5 +137,7 @@
   "company code": "OGRN: 1192036006645",
   "article content": "Content of the Article",
   "menu": "Menu",
-  "favorites": "Favorites"
+  "favorites": "Favorites",
+  "loading": "Loading...",
+  "machines not found": "Tattoo machines not found. Try later or choose another category"
 }

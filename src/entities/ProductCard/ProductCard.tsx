@@ -6,7 +6,7 @@ import { Button, CardWithImgTagSlider } from '@/shared/ui'
 import { useTranslation } from 'react-i18next'
 
 export type Product = {
-  imgs: string[]
+  images: string[]
   title: string
   price: number
   id: number | string
@@ -26,7 +26,7 @@ const mapStatic: Record<StaticStatus, string> = {
 }
 
 export const ProductCard = ({
-  imgs,
+  images,
   title,
   price,
   tags,
@@ -43,11 +43,12 @@ export const ProductCard = ({
     >
       <CardWithImgTagSlider
         paginationId={String(id)}
-        imgs={imgs}
+        imgs={images}
         title={title}
         tags={tags}
         price={price}
         withAdaptation={false}
+        itemId={String(id)}
       />
 
       <div className={classNames(cls.btnWrapper,  { [cls.isShown]: isHovered })}>

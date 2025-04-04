@@ -10,6 +10,7 @@ i18n
   .use(LanguageDetector)
   .use(ChainedBackend)
   .init({
+    supportedLngs: ['uk', 'en'],
     fallbackLng: 'uk',
     debug: true,
 
