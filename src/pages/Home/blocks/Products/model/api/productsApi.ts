@@ -25,4 +25,4 @@ const productsApi = rtkApi.injectEndpoints({
   })
 })
 
-export const { useGetProductsQuery } = productsApi
+export const { useGetProductsQuery, useLazyGetProductsQuery } = productsApi
