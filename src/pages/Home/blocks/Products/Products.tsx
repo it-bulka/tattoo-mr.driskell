@@ -1,8 +1,8 @@
 import cls from '../../Home.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Button, Tabs } from '@/shared/ui'
-import { ProductList, ProductsSlider, getProductsByKey, productsActions } from '@/entities'
+import { Tabs } from '@/shared/ui'
+import { ProductsSlider, getProductsByKey, productsActions, ProductListWithBtn } from '@/entities'
 import { useDevice } from '@/shared/libs'
 import { useLazyGetProductsQuery } from './model/api/productsApi.ts'
 import { memo, useEffect } from 'react'
@@ -41,19 +41,17 @@ const ProductView = ({
   handleLoadMore
 }: IProductView) => {
   const isMobile = useDevice(1200)
-  const { t } = useTranslation()
 
   return isMobile
     ? <ProductsSlider list={products} sliderId={'products'} />
     : (
-      <>
-        <ProductList products={products} />
-        {showSeeMoreBtn ? (
-          <Button big className={cls.seeMore} disabled={isFetching} onClick={handleLoadMore}>
-            {isFetching ? t('loading') : t('see more')}
-          </Button>
-        ) : null}
-      </>
+      <ProductListWithBtn
+        btnClass={cls.seeMore}
+        products={products}
+        onLoadMoreClick={handleLoadMore}
+        isLoading={isFetching}
+        showSeeMoreBtn={showSeeMoreBtn}
+      />
     )
 }
 
