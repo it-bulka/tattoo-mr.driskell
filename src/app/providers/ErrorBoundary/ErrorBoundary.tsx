@@ -2,6 +2,7 @@ import { Component, ReactNode, ErrorInfo } from 'react'
 
 interface ErrorBoundaryProps {
   children: ReactNode
+  fallback?: ReactNode | ((error: Error) => ReactNode)
 }
 
 interface ErrorBoundaryState {
@@ -51,10 +52,14 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   render() {
     const { hasError, error } = this.state
-    const { children } = this.props
+    const { children, fallback } = this.props
 
-    if (hasError) {
-      return (
+    if (hasError && error) {
+      if (typeof fallback === 'function') {
+        return fallback(error)
+      }
+
+      return fallback ?? (
         <div>
           {/* TODO: add Error Page */}
           <p>Seems like an error occured!</p>
