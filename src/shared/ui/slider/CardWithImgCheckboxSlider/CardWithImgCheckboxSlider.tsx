@@ -13,6 +13,7 @@ interface CardWithImgTagSliderProps extends WithCheckbox {
   imgs: string[]
   title: string
   price: number
+  productId: string | number
 }
 export const CardWithImgCheckboxSlider = memo(({
   className,
@@ -21,14 +22,15 @@ export const CardWithImgCheckboxSlider = memo(({
   checked,
   onCheckClick,
   title,
-  price
+  price,
+  productId
 }: CardWithImgTagSliderProps) => {
   return (
     <div className={classNames(cls.card, {}, [className])}>
       <PaginationSlider paginationId={paginationId}>
         {imgs.map((img) => (
           <SwiperSlide key={img} >
-            <ImgSlide img={img} checked={checked} onCheckClick={onCheckClick} withAdaptation/>
+            <ImgSlide id={String(productId)} img={img} checked={checked} onCheckClick={onCheckClick} withAdaptation/>
           </SwiperSlide>
         ))}
       </PaginationSlider>
