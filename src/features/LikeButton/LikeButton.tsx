@@ -2,7 +2,7 @@ import cls from './LikeButton.module.scss'
 import classNames from 'classnames'
 import LikeIcon from '@/shared/assets/general/heart.svg?react'
 import LikeFullIcon from '@/shared/assets/general/heart-fill.svg?react'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState, MouseEvent } from 'react'
 import { useAddLikeMutation, useDeleteLikeMutation } from './model/api/likesApi.tsx'
 import { useDebounce } from '@/shared/libs'
 
@@ -31,7 +31,9 @@ export const LikeButton = ({
     }
   })
 
-  const onClick = useCallback((isLiked: boolean) => () => {
+  const onClick = useCallback((isLiked: boolean) => (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    e.stopPropagation()
     const status = !isLiked
     setIsLiked(status)
     // TODO: delete userId after adding auth

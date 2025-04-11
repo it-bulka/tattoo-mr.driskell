@@ -19,7 +19,7 @@ export const CheckBox = memo(({
   return (
     <label
       className={classNames(cls.checkBox, { [cls.checked]: checked }, [className])}
-      onClick={onClick}
+      onClick={(e) => e.stopPropagation()}
     >
       <input type='checkbox' checked={checked} onChange={onClick} {...rest}/>
       <span className={cls.icon}><SelectedIcon /></span>

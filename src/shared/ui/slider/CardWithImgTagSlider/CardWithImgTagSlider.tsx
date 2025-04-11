@@ -6,6 +6,8 @@ import { PaginationSlider } from '@/shared/ui/slider/PaginationSlider/Pagination
 import { memo } from 'react'
 import { CardSliderContent } from '../CardSliderContent/CardSliderContent.tsx';
 import { TagType } from '@/shared/ui'
+import { Link } from 'react-router'
+import { getTattooMachineDetailsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 
 interface CardWithImgTagSliderProps {
   className?: string
@@ -28,7 +30,10 @@ export const CardWithImgTagSlider = memo(({
   itemId
 }: CardWithImgTagSliderProps) => {
   return (
-    <div className={classNames(cls.card, {[cls.clear]: withAdaptation}, [className])}>
+    <Link
+      to={getTattooMachineDetailsPage(itemId)}
+      className={classNames(cls.card, {[cls.clear]: withAdaptation}, [className])}
+    >
       <PaginationSlider paginationId={paginationId}>
         {imgs.map((img) => (
           <SwiperSlide key={img}>
@@ -37,7 +42,7 @@ export const CardWithImgTagSlider = memo(({
         ))}
       </PaginationSlider>
       <CardSliderContent title={title} price={price} withAdaptation={withAdaptation}/>
-    </div>
+    </Link>
   )
 })
 

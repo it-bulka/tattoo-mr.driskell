@@ -3,7 +3,7 @@ import clsGeneral from '../../TattooMachineDetails.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { CardWithImgCheckboxSlider } from '@/shared/ui'
-import { memo, useCallback, useMemo, useState } from 'react'
+import { memo, useCallback, useMemo, useState, useEffect } from 'react'
 import { Button } from '@/shared/ui'
 import { currencyFormat } from '@/shared/libs'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
@@ -19,7 +19,11 @@ const addIntoOrder = (array: Product[]): OrderedProds => {
 
 export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
   const { t } = useTranslation()
-  const [ordered, setOrdered] = useState<Record<string, Product>>(addIntoOrder(combo))
+  const [ordered, setOrdered] = useState<Record<string, Product> | null>(null)
+
+  useEffect(() => {
+    setOrdered(addIntoOrder(combo))
+  }, [combo])
 
   const toggleChecked = useCallback((prod: Product) => {
     setOrdered(prev => {
@@ -57,9 +61,11 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
   }, [])
 
   const sumResult = useMemo(() => {
-    const prods = Object.values(ordered)
+    const prods = Object.values(ordered || {})
     return calculateOrder(prods)
   }, [calculateOrder, ordered])
+
+  if(!ordered) return null
 
   return (
     <>

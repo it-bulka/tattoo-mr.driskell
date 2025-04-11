@@ -6,6 +6,8 @@ import { WithCheckbox } from '../ImgSlide/ImgSlide.tsx'
 import { memo } from 'react'
 import { CardSliderContent } from '@/shared/ui/slider/CardSliderContent/CardSliderContent.tsx';
 import cls from '../general.module.scss'
+import { Link } from 'react-router'
+import { getTattooMachineDetailsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 
 interface CardWithImgTagSliderProps extends WithCheckbox {
   className?: string
@@ -26,7 +28,10 @@ export const CardWithImgCheckboxSlider = memo(({
   productId
 }: CardWithImgTagSliderProps) => {
   return (
-    <div className={classNames(cls.card, {}, [className])}>
+    <Link
+      to={getTattooMachineDetailsPage(String(productId))}
+      className={classNames(cls.card, {}, [className])}
+    >
       <PaginationSlider paginationId={paginationId}>
         {imgs.map((img) => (
           <SwiperSlide key={img} >
@@ -35,7 +40,7 @@ export const CardWithImgCheckboxSlider = memo(({
         ))}
       </PaginationSlider>
       <CardSliderContent title={title} price={price} withAdaptation/>
-    </div>
+    </Link>
   )
 })
 
