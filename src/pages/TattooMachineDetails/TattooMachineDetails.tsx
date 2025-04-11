@@ -50,7 +50,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
 
   return (
     <div className={classNames(cls.page, {}, [className])}>
-      <Breadcrumbs  className="container"/>
+      <Breadcrumbs  className="container" customLastCrumb={data.title} />
       <div className={classNames(cls.main, "container")}>
         <h2 className={cls.title}>
           {data.title}
