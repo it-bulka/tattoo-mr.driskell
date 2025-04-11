@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { Swiper as SwiperType } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Thumbs, Pagination } from 'swiper/modules';
-import { useState, memo, useMemo } from 'react'
+import { useState, memo, useMemo, useId } from 'react'
 import { ImgSlide } from '@/shared/ui'
 import ReactDOMServer from 'react-dom/server'
 import { PropsWithChildren } from 'react'
@@ -19,12 +19,12 @@ interface ThumbsBtnsProps {
   setThumbsSwiper: (swiper: SwiperType) => void
   slides: string[]
 }
-let rerender = 0
+
 const ThumbsBtns = memo(({
   setThumbsSwiper,
   slides,
 }: ThumbsBtnsProps) => {
-  console.log('SHOW: rerender', rerender + 1)
+
   return (
     <Swiper
       onSwiper={setThumbsSwiper}
@@ -49,16 +49,19 @@ const ThumbsSlider = ({
   slides,
   children
 }: PropsWithChildren<TattoMachineSliderProps>) => {
-  const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
+  const [_thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null)
 
   return (
     <>
       <ThumbsBtns slides={slides} setThumbsSwiper={setThumbsSwiper} />
 
       <Swiper
-        thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
+        //TODO: fix swiper bug, thumbs swiper is destroyed all the time, classList not founded
+        //thumbs={{swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null}}
         modules={[Thumbs]}
         className={classNames(cls.slider, cls.withThumbs)}
+        simulateTouch={true}
+        grabCursor={true}
       >
         {children}
       </Swiper>
@@ -69,12 +72,15 @@ const ThumbsSlider = ({
 const PaginationSlider = ({
   children
 }: PropsWithChildren<TattoMachineSliderProps>) => {
+  const id = useId()
+  if (!id) return null
+  const uniqueId = `tattooMachineBullets-${id.replace(/[^a-zA-Z0-9-_]/g, '-')}`
   return (
     <>
       <Swiper
         modules={[Pagination]}
         pagination={{
-          el: "#tattooMachineBullets",
+          el: `#${uniqueId}`,
           bulletClass: "swiper-custom-bullet-mini",
           bulletActiveClass: "swiper-custom-bullet-mini-active",
           clickable: true,
@@ -84,7 +90,7 @@ const PaginationSlider = ({
         {children}
       </Swiper>
 
-      <div id="tattooMachineBullets" className="swiper-bullets-container mini tattoo-machine-bullets"/>
+      <div id={uniqueId} className="swiper-bullets-container mini tattoo-machine-bullets"/>
     </>
   )
 }
