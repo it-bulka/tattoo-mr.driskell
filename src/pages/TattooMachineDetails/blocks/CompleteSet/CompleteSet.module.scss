@@ -64,6 +64,7 @@
   .title {
     grid-column: 1/-1;
     color: var(--gray);
+    white-space: nowrap;
   }
 }
 
