@@ -73,4 +73,10 @@
     margin-left: 11px;
     margin-right: 11px;
   }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: none;
+    pointer-events: none;
+  }
 }
