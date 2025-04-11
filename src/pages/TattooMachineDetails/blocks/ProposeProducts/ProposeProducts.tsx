@@ -4,7 +4,7 @@ import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { NavigationSlider, CardWithImgTagSlider, AppLink, PaginationSlider } from '@/shared/ui'
 import { SwiperSlide } from 'swiper/react'
 import { useTranslation } from 'react-i18next'
-import { useDevice } from '@/shared/libs';
+import { useDevice } from '@/shared/libs'
 
 interface ProposeProductsProps {
   title: string
@@ -23,6 +23,8 @@ export const ProposeProducts = ({
   const {t} = useTranslation()
   const isTablet = useDevice(1200)
   const isMobile = useDevice(768)
+
+  if (!products?.length) return null
 
   const content = (
     <>

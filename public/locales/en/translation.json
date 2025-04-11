@@ -66,12 +66,31 @@
   "share": "Share",
   "specifications": "Specifications",
   "machine": {
-    "needle stroke": "Needle Stroke",
-    "operating voltage": "Operating Voltage",
-    "connector": "Connector",
-    "manufacturer": "Manufacturer",
+    "motorType": "Motor type",
+    "voltage": "Voltage",
+    "frequency": "Frequency",
+    "weight": "Weight",
+    "material": "Material",
+    "color": "Color",
+    "size": "Size",
+    "speed": "Speed",
+    "strokeLength": "Stroke length",
+    "gripType": "Grip type",
+    "inkType": "Ink type",
+    "volume": "Volume",
+    "brand": "Brand",
+    "shelfLife": "Shelf life",
+    "sterilization": "Sterilization",
+    "colorsAvailable": "Available colors",
+    "needleSize": "Needle size",
+    "needleType": "Needle type",
+    "quantityPerBox": "Quantity per box",
+    "safety": "Safety",
+    "compatibility": "Compatibility",
+    "wattage": "Wattage",
     "type": "Type",
-    "purpose": "Purpose"
+    "length": "Length",
+    "capacity": "Capacity"
   },
   "presence": "Presence",
   "works made with this machine": "Works made with this machine",
@@ -139,5 +158,10 @@
   "menu": "Menu",
   "favorites": "Favorites",
   "loading": "Loading...",
-  "machines not found": "Tattoo machines not found. Try later or choose another category"
+  "machines not found": "Tattoo machines not found. Try later or choose another category",
+  "availability": {
+    "run-out": "Out of stock",
+    "limited": "Limited stock",
+    "plenty": "Plenty of stock"
+  }
 }

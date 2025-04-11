@@ -1,6 +1,7 @@
 .additional {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
   row-gap: 50px;
   padding-top: 48px;
   padding-bottom: 50px;

@@ -66,12 +66,31 @@
   "share": "Поділитися",
   "specifications": "Характеристики",
   "machine": {
-    "needle stroke": "Хід голки",
-    "operating voltage": "Робоча напруга",
-    "connector": "Роз'єм",
-    "manufacturer": "Виробник",
+    "motorType": "Тип мотора",
+    "voltage": "Напруга",
+    "frequency": "Частота",
+    "weight": "Вага",
+    "material": "Матеріал",
+    "color": "Колір",
+    "size": "Розмір",
+    "speed": "Швидкість",
+    "strokeLength": "Довжина ходу",
+    "gripType": "Тип тримача",
+    "inkType": "Тип чорнила",
+    "volume": "Обʼєм",
+    "brand": "Бренд",
+    "shelfLife": "Термін придатності",
+    "sterilization": "Стерилізація",
+    "colorsAvailable": "Доступні кольори",
+    "needleSize": "Розмір голки",
+    "needleType": "Тип голки",
+    "quantityPerBox": "Кількість у коробці",
+    "safety": "Безпека",
+    "compatibility": "Сумісність",
+    "wattage": "Потужність",
     "type": "Тип",
-    "purpose": "Призначення"
+    "length": "Довжина",
+    "capacity": "Місткість"
   },
   "presence": "Наявність",
   "works made with this machine": "Роботи, зроблені цією машинкою",
@@ -139,5 +158,10 @@
   "menu": "Меню",
   "favorites": "Вибране",
   "loading": "Загрузка...",
-  "machines not found": "Тату машинок не знайдено. Спробуйте трішки пізніше або оберіть іншу категорію"
+  "machines not found": "Тату машинок не знайдено. Спробуйте трішки пізніше або оберіть іншу категорію",
+  "availability": {
+    "run-out": "Немає",
+    "limited": "Мало",
+    "plenty": "Багато"
+  }
 }

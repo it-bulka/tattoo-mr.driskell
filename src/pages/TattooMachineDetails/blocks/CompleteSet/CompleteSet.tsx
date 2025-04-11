@@ -61,7 +61,6 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
     return calculateOrder(prods)
   }, [calculateOrder, ordered])
 
-  console.log('SEE: sumResult', sumResult)
   return (
     <>
       <h3 className={classNames(clsGeneral.blockTitle, clsGeneral.blockHeader, 'container')}>

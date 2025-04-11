@@ -9,6 +9,7 @@ export type Product = {
   images: string[]
   title: string
   price: number
+  priceCurrent?: number
   id: number | string
   tags: TagType[]
 }
