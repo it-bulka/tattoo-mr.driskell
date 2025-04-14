@@ -87,3 +87,5 @@ export const CounterInput = memo(({
   (prevProps, nextProps) => {
     return prevProps.onChange === nextProps.onChange && prevProps.className === nextProps.className;
   })
+
+CounterInput.displayName = 'CounterInput'

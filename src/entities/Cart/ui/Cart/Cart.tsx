@@ -1,7 +1,8 @@
 import cls from './Cart.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { CartItem, type CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+import { CartItem } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+import { CartItemType } from '@/entities/Cart'
 import { useDevice } from '@/shared/libs'
 
 interface CartProps {
@@ -9,6 +10,7 @@ interface CartProps {
   items: CartItemType[]
   readonly?: boolean
 }
+
 export const Cart = ({
   className,
   items,
@@ -31,7 +33,7 @@ export const Cart = ({
 
       {items.map((item) => (
         <>
-          <CartItem key={item.id} {...item} readonly={readonly} type={isMobile ? 'mobile' : 'desktop'} />
+          <CartItem key={item.productId} {...item} readonly={readonly} type={isMobile ? 'mobile' : 'desktop'} />
           {isMobile && <div className={classNames("decorator static full croppedPoligon gray", cls.decorator)} />}
         </>
       ))}

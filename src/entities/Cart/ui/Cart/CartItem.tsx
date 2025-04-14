@@ -4,15 +4,7 @@ import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { currencyFormat } from '@/shared/libs'
-
-export type CartItemType = {
-  img: string
-  title: string
-  price: number
-  totalPrice: number
-  amount: number
-  id: string | number
-}
+import { CartItemType } from '@/entities/Cart'
 
 interface CartItemProps extends Omit<CartItemType, 'id'>{
   className?: string
@@ -21,17 +13,17 @@ interface CartItemProps extends Omit<CartItemType, 'id'>{
 }
 
 const MobileCartItem = ({
-  img,
+  image,
   title,
   price,
-  totalPrice,
-  amount,
+  total,
+  quantity,
   readonly = false
 }: CartItemProps)=>  {
   const { t } = useTranslation('cart')
   return (
     <div className={cls.cartItemMobile}>
-      <img src={img} alt={title} className={cls.cartImg}/>
+      <img src={image} alt={title} className={cls.cartImg}/>
       <div>
         <p className={classNames('cartTitle', cls.cartTitle)}>{title}</p>
         <p className={cls.cartPrice}>{t('price')}: {currencyFormat(price)}</p>
@@ -42,27 +34,30 @@ const MobileCartItem = ({
         </div>
       )}
 
-      {readonly ? <span className={cls.cartAmount}>{t('quantity')}: {amount}</span> : <CounterInput  className={cls.gridCell} />}
-      <p className={cls.cartTotalPrice}>{t('total cost')}: {currencyFormat(totalPrice)}</p>
+      {readonly
+        ? <span className={cls.cartAmount}>{t('quantity')}: {quantity}</span>
+        : <CounterInput  initialValue={quantity} className={cls.gridCell} />
+      }
+      <p className={cls.cartTotalPrice}>{t('total cost')}: {currencyFormat(total)}</p>
     </div>
   )
 }
 
 const DesktopCartItem = ({
-  img,
+  image,
   title,
   price,
-  totalPrice,
-  amount,
+  total,
+  quantity,
   readonly = false
 }: CartItemProps) => {
   return (
     <>
-      <img src={img} alt={title} />
+      <img src={image} alt={title} />
       <p className={'cartTitle'}>{title}</p>
       <p>{currencyFormat(price)}</p>
-      {readonly ? <span>{amount}</span> : <CounterInput />}
-      <p>{currencyFormat(totalPrice)}</p>
+      {readonly ? <span>{quantity}</span> : <CounterInput initialValue={quantity}/>}
+      <p>{currencyFormat(total)}</p>
       {readonly || (
         <div>
           <button className={cls.delete}>

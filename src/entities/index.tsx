@@ -6,3 +6,5 @@ export { PersonalDataCard, type IPersonalData } from './PersonalDataCard/Persona
 export { PersonalDataCardMini } from './PersonalDataCardMini/PersonalDataCardMini.tsx'
 export { ProductsSlider } from './ProductsSlider/ProductsSlider.tsx'
 export { ProductListWithBtn } from '@/entities/ProductList'
+export type { UserSchema } from '@/entities/User'
+export { getUserId } from './User/model/selector/getUserId.tsx'

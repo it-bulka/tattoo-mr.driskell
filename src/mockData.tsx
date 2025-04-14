@@ -7,7 +7,7 @@ import MachineImg2 from '@/shared/assets/toDelete/tattoo-machine/machine-2.png';
 import MachineImg3 from '@/shared/assets/toDelete/tattoo-machine/machine-3.png';
 import MachineImg4 from '@/shared/assets/toDelete/tattoo-machine/machine-4.png';
 import { type Product } from '@/entities/ProductCard/ProductCard.tsx'
-import { CartItemType } from '@/entities/Cart/ui/Cart/CartItem.tsx'
+import { CartItemType } from '@/entities/Cart'
 import Manager from '@/shared/assets/toDelete/manager.png'
 //PromoCodes
 import PromoCodeImg from '@/shared/assets/toDelete/promocode.png'
@@ -54,12 +54,12 @@ export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => 
 
 
 export const cartList: CartItemType[] = Array.from({ length: 2 }, (_, index) => ({
-  img: ProductImg,
+  image: ProductImg,
   title: 'Foxxx Kitsune Mini Black Vintage RCA',
   price: 6000,
-  amount: 4,
-  totalPrice: 12000,
-  id: index
+  quantity: 4,
+  total: 12000,
+  productId: String(index)
 }))
 
 export const tattooMachineDetails = {
