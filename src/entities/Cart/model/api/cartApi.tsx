@@ -1,13 +1,8 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
-import { CartData } from '@/entities/Cart'
-
-interface SyncCartBody {
-  userId: string,
-  orderItems: { product: string; amount: number }[]
-}
+import { CartDataRes, SyncCartBody } from '@/entities/Cart'
 
 interface ReturnCartData {
-  data: CartData
+  data: CartDataRes
 }
 export const cartApi = rtkApi.injectEndpoints({
   endpoints: build => ({

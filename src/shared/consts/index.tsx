@@ -1,0 +1,1 @@
+export { CART_LOCALSTORAGE, IS_BACK_CART_SYNC_LOCALSTORAGE } from './localStorages.tsx'

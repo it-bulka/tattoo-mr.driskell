@@ -1,10 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { cartApi } from '../api/cartApi.tsx'
-import type { CartData } from '../type/cartSchema.tsx'
+import type { CartDataRes } from '../type/cartSchema.tsx'
 import { RootState } from '@/app/providers/StoreProvider'
 import { getUserId } from '@/entities'
 
-export const fetchCart = createAsyncThunk<CartData>(
+export const fetchCart = createAsyncThunk<CartDataRes>(
   'cart/fetchCart',
   async (_, { dispatch, getState, rejectWithValue }) => {
     try {
@@ -13,6 +13,8 @@ export const fetchCart = createAsyncThunk<CartData>(
       const response = await dispatch(
         cartApi.endpoints.getCart.initiate({ userId })
       ).unwrap()
+
+      console.log('SEE: fetchCart', response)
 
       return response.data
     } catch (error) {

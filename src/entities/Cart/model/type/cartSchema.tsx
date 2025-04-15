@@ -29,4 +29,10 @@ export interface CartDataRes {
 export type CartSchema = EntityState<CartItemType, string> & Omit<CartData, 'items'> & {
   isLoading: boolean
   error?: string
+  isBackSynchronized?: boolean
+}
+
+export interface SyncCartBody {
+  userId: string,
+  orderItems: { product: string; amount: number }[]
 }

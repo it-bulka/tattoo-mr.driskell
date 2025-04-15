@@ -5,12 +5,14 @@ import { useRef, ChangeEvent, FocusEvent, useCallback, memo } from 'react'
 interface CounterInputProps {
   className?: string
   initialValue?: number
-  onChange?: (value: number) => void
+  onChange?: (value: number) => void,
+  min?: number
 }
 export const CounterInput = memo(({
   className,
   initialValue = 0,
-  onChange
+  onChange,
+  min = 0
 }: CounterInputProps) => {
   const inputRef = useRef<HTMLInputElement>(null)
 
@@ -27,10 +29,10 @@ export const CounterInput = memo(({
     if(numValue === null) return
 
     const minusValue = numValue - 1
-    if(minusValue < 0) return
+    if(minusValue < min) return
     inputRef.current!.value = minusValue.toString()
     onChange?.(minusValue)
-  }, [onChange])
+  }, [onChange, min])
 
   const onPlusClick = useCallback(() => {
     if (!inputRef.current) return null;
@@ -42,11 +44,12 @@ export const CounterInput = memo(({
   }, [onChange])
 
   const onBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
-    if(inputRef.current && e.target.value.trim() === "") {
-      inputRef.current.value = '0'
-      onChange?.(0)
+    const targetValue = e.target.value.trim()
+    if(inputRef.current && (targetValue === "" || Number(targetValue) < min)) {
+      inputRef.current.value = String(min)
+      onChange?.(min)
     }
-  }, [onChange])
+  }, [onChange, min])
 
   const onResizeInput = useCallback((value: string, ref: HTMLInputElement) => {
     const style = getComputedStyle(ref)
@@ -63,11 +66,12 @@ export const CounterInput = memo(({
 
   const onInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (!inputRef.current) return;
-    const value = e.target.value.replace(/[^0-9]/g, '')
+    let value = e.target.value.replace(/[^0-9]/g, '')
+
     inputRef.current.value = value
     onChange?.(Number(value))
     onResizeInput(value, inputRef.current)
-  }, [onChange, onResizeInput])
+  }, [onChange, onResizeInput, min])
 
 
   return (

@@ -6,6 +6,7 @@ import { rtkApi } from '@/shared/api/rtkApi.ts'
 import { productsReducer } from '@/entities'
 import { userReducer } from '@/entities/User'
 import { cartSyncMiddleware } from '@/entities/Cart'
+import { Action, ThunkAction } from '@reduxjs/toolkit'
 
 export const createStore = () => {
   const rootReducer: ReducersMapObject<StateSchema> = {
@@ -29,3 +30,9 @@ export const createStore = () => {
 export type RootState = ReturnType<ReturnType<typeof createStore>['getState']>
 export type AppDispatch = ReturnType<typeof createStore>['dispatch']
 export const useAppDispatch = useDispatch.withTypes<AppDispatch>()
+export type AppThunk<ReturnType = void> = ThunkAction<
+  ReturnType,
+  RootState,
+  unknown,
+  Action<string>
+>

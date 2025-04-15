@@ -17,7 +17,7 @@ export const CartCount = memo(({
   const navigate = useNavigate()
   const totalAmount = useSelector(getTotalAmountSelector)
   const totalPrice = useSelector(getTotalPriceSelector)
-
+  console.log('CartCount: quantity', totalAmount)
   const onClick =  useCallback(() => {
     navigate(RoutePaths.cart)
   }, [])

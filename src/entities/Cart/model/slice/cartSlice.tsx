@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { CartSchema } from '../type/cartSchema.tsx'
 import { fetchCart } from '../services/fetchCart.tsx'
-import { CartItemType, CartData } from '../type/cartSchema.tsx'
+import { CartItemType, CartDataRes } from '../type/cartSchema.tsx'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
 import { setCartData } from '../utils/setCartData.tsx'
@@ -47,17 +47,18 @@ const cartSlice = createSlice({
       const newTotals = decreaseTotals({
         totalAmount: state.totalAmount,
         totalPrice: state?.totalPrice || 0,
-        quantity,
+        quantityDifference: Math.abs(previous.quantity - quantity),
         price,
         originalPrice,
         discount: state.discount  || 0,
       })
 
       updateCartTotals(state, newTotals)
-
+      state.isBackSynchronized = false
     },
     setItemAmount: (state, action: PayloadAction<{id: string, quantity: number}>) => {
       const { id, quantity } = action.payload
+
       if(quantity < 1) {
         state.error = 'Add 1 or more quantity of product'
         return
@@ -77,11 +78,11 @@ const cartSlice = createSlice({
         discount: state.discount || 0,
         price: previous.price,
         originalPrice: previous.originalPrice,
-        quantity
+        quantityDifference: Math.abs(previous.quantity - quantity)
       }
       let updatedTotals: ReturnTotals | null = null
 
-      if (previous.quantity > quantity) {
+      if (previous.quantity < quantity) {
         updatedTotals = increaseTotals(prevData)
       } else {
         updatedTotals = decreaseTotals(prevData)
@@ -97,9 +98,14 @@ const cartSlice = createSlice({
           total: previous.price * quantity
         }
       })
+      state.isBackSynchronized = false
     },
-    setCartData: (state, action: PayloadAction<CartData>) => {
+    setCartData: (state, action: PayloadAction<CartDataRes>) => {
+
       setCartData(state, action, cartAdapter)
+    },
+    setBackSync: (state, action: PayloadAction<boolean>) => {
+      state.isBackSynchronized = action.payload
     }
   },
   extraReducers: (builder) => {
@@ -108,9 +114,10 @@ const cartSlice = createSlice({
         state.isLoading = true
         state.error = undefined
       })
-      .addCase(fetchCart.fulfilled, (state, action: PayloadAction<CartData>) => {
+      .addCase(fetchCart.fulfilled, (state, action: PayloadAction<CartDataRes>) => {
         state.isLoading = false
         setCartData(state, action, cartAdapter)
+        state.isBackSynchronized = true
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.isLoading = false

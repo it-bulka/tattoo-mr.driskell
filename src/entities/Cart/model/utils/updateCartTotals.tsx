@@ -5,7 +5,7 @@ export interface RecalculateTotalsProps {
   totalAmount: number
   totalPrice: number
   discount: number
-  quantity: number
+  quantityDifference: number
   price: number
   originalPrice: number
 }
@@ -25,15 +25,15 @@ export const increaseTotals = ({
                           totalAmount,
                           totalPrice,
                           discount,
-                          quantity,
+                          quantityDifference,
                           price,
                           originalPrice
                         }: RecalculateTotalsProps): ReturnTotals => {
-  const newTotalAmount = totalAmount + quantity
+  const newTotalAmount = totalAmount + quantityDifference
 
-  const newItemTotalPrice = quantity * price
+  const newItemTotalPrice = quantityDifference * price
   const newTotalPrice = totalPrice + newItemTotalPrice
-  const newDiscount = discount + (originalPrice - price) * quantity
+  const newDiscount = discount + (originalPrice - price) * quantityDifference
 
   return {
     newTotalAmount: upgradeToZero(newTotalAmount),
@@ -46,15 +46,15 @@ export const decreaseTotals = ({
                           totalAmount,
                           totalPrice,
                           discount,
-                          quantity,
+                          quantityDifference,
                           price,
                           originalPrice
                         }: RecalculateTotalsProps): ReturnTotals => {
-  const newTotalAmount = totalAmount - quantity
+  const newTotalAmount = totalAmount - quantityDifference
 
-  const newItemTotalPrice = quantity * price
+  const newItemTotalPrice = quantityDifference * price
   const newTotalPrice = totalPrice - newItemTotalPrice
-  const newDiscount = discount - (originalPrice - price) * quantity
+  const newDiscount = discount - (originalPrice - price) * quantityDifference
 
   return {
     newTotalAmount: upgradeToZero(newTotalAmount),

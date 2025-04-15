@@ -9,6 +9,9 @@ export const cartSyncMiddleware: Middleware = store => {
   const debouncedSync = debounce(async () => {
     const state = store.getState() as StateSchema
     const cart = state.cart
+
+    if(!navigator.onLine) return
+
     const items = Object.values(cart.entities).map(item => ({
       product: item.productId,
       amount: item.quantity,
@@ -24,10 +27,11 @@ export const cartSyncMiddleware: Middleware = store => {
       ).unwrap();
 
       dispatch(cartActions.setCartData(result?.data || []))
+      dispatch(cartActions.setBackSync(true))
     } catch (error) {
       console.error('Cart sync error:', error)
     }
-  }, 1000)
+  }, 2000)
 
   return next => (action) => {
     const result = next(action)
