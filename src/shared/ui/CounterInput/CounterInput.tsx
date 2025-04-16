@@ -2,7 +2,7 @@ import cls from './CounterInput.module.scss'
 import classNames from 'classnames'
 import { useRef, ChangeEvent, FocusEvent, useCallback, memo } from 'react'
 
-interface CounterInputProps {
+export interface CounterInputProps {
   className?: string
   initialValue?: number
   onChange?: (value: number) => void,
@@ -75,7 +75,7 @@ export const CounterInput = memo(({
 
 
   return (
-    <div className={classNames(cls.counter, {}, [className])}>
+    <div className={classNames(cls.counter, {}, [className])} onClick={(e) => e.stopPropagation()}>
       <button onClick={onMinusClick}>-</button>
       <input
         ref={inputRef}

@@ -2,16 +2,17 @@ import cls from './ProductCard.module.scss'
 import classNames from 'classnames'
 import { TagType } from '@/shared/ui'
 import { useState } from 'react';
-import { Button, CardWithImgTagSlider } from '@/shared/ui'
-import { useTranslation } from 'react-i18next'
+import { CardWithImgTagSlider } from '@/shared/ui'
+import { AddToCartBtnWithCounter } from '@/features'
 
 export type Product = {
   images: string[]
   title: string
   price: number
   priceCurrent?: number
-  id: number | string
+  id: string
   tags: TagType[]
+  onClick?: () => void
 }
 
 type StaticStatus = 'on-all' | 'on-mobile' | 'on-tablet'
@@ -32,15 +33,16 @@ export const ProductCard = ({
   price,
   tags,
   id,
-  staticOn = 'on-tablet'
+  staticOn = 'on-tablet',
+  onClick
 }: ProductCardProps) => {
   const [isHovered, setHovered] = useState(false)
-  const {t} = useTranslation()
   return (
     <div
       className={classNames(cls.productCard, {}, [mapStatic[staticOn]])}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onClick}
     >
       <CardWithImgTagSlider
         paginationId={String(id)}
@@ -53,9 +55,7 @@ export const ProductCard = ({
       />
 
       <div className={classNames(cls.btnWrapper,  { [cls.isShown]: isHovered })}>
-        <Button max className={cls.btn}>
-          {t('add tot cart')}
-        </Button>
+        <AddToCartBtnWithCounter max className={cls.btn} productId={String(id)}/>
       </div>
     </div>
   )

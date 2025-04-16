@@ -7,7 +7,8 @@ export {
   getCartLoadingSelector,
   getTotalAmountSelector,
   getTotalPriceSelector,
-  getCartSyncWithBackSelector
+  getCartSyncWithBackSelector,
+  getCartItemById
 } from "./model/selectors/selectors.tsx"
 export { cartSyncMiddleware } from './model/middleware/cartSyncMiddleware.tsx'
 
@@ -18,3 +19,4 @@ export { useInitCart } from './model/utils/useInitCart.tsx'
 export { offlineSyncLocalStorage } from './model/utils/offlineSync.tsx'
 export { useManualCartSync } from '@/entities/Cart/model/utils/manualSync.tsx'
 export { useSyncCartWithServerBeforeClose } from './model/utils/useSyncCartWithServerBeforeClose.tsx'
+export { addItemToCart } from './model/services/addItemToCart.tsx'

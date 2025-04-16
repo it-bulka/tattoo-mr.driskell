@@ -8,3 +8,4 @@ export const getTotalPriceSelector = (state: StateSchema) => state.cart.totalPri
 export const getCartLoadingSelector = (state: StateSchema) => state.cart.isLoading
 export const getCartErrorSelector = (state: StateSchema) => state.cart.error
 export const getCartSyncWithBackSelector = (state: StateSchema) => state.cart.isBackSynchronized
+export const getCartItemById = (id: string) => (state: StateSchema) => cart.selectById(state, id)

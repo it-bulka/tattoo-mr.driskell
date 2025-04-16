@@ -1,7 +1,7 @@
 import cls from './CartPage.module.scss'
 import classNames from 'classnames'
 import { Breadcrumbs } from '@/shared/ui'
-import { Cart, useInitCart } from '@/entities/Cart'
+import { Cart } from '@/entities/Cart'
 import { CartForm } from '@/entities'
 import { AdditionalCartInfo } from '@/widgets'
 import { useTranslation } from 'react-i18next'
@@ -14,8 +14,6 @@ interface CartPageProps {
 const CartPage = ({ className }: CartPageProps) => {
   const { t } = useTranslation('cart')
   const cartItems = useSelector(getCartItemsSelector)
-
-  useInitCart()
 
   return (
     <div className={classNames(cls.cartPage, 'container', {}, [className])}>

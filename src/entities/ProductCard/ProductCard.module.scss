@@ -44,6 +44,10 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
   padding-bottom: $padding;
 }
 
+.btn {
+  margin: auto;
+}
+
 @include media-desktop {
   .productCard {
     &:not(.staticOnAll),

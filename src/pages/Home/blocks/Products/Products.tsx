@@ -2,7 +2,9 @@ import cls from '../../Home.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Tabs } from '@/shared/ui'
-import { ProductsSlider, getProductsByKey, productsActions, ProductListWithBtn } from '@/entities'
+import {
+  ProductsSlider, getAllProducts, productsActions, ProductListWithBtn, PRODUCT_PAGES
+} from '@/entities'
 import { useDevice } from '@/shared/libs'
 import { useLazyGetProductsQuery } from './model/api/productsApi.ts'
 import { memo, useEffect } from 'react'
@@ -26,7 +28,7 @@ const productsTabs: { id: ProductCategory, name: string }[] = [
   {id: 'sale', name: 'On Sale'},
 ]
 
-const listKey = 'home-page'
+const listKey = PRODUCT_PAGES.HOME
 
 interface IProductView {
   products: Product[]
@@ -58,7 +60,7 @@ const ProductView = ({
 export const Products = memo(({ className }: ProductsProps) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const productsState = useSelector(getProductsByKey(listKey))
+  const productsState = useSelector(getAllProducts(listKey))
   const { products, currentPage, totalPages } = productsState
   const initParams = useInitialParams()
   const [isReady, setIsReady] = useState(false)
@@ -75,7 +77,8 @@ export const Products = memo(({ className }: ProductsProps) => {
 
   useEffect(() => {
     if (initParams) {
-      dispatch(productsActions.setPage({ key: listKey, page: Number(initParams.page) ?? 1 }));
+      console.log('initParams', initParams)
+      dispatch(productsActions.setPage({ key: listKey, page: initParams.page ? Number(initParams.page) : 1 }));
       dispatch(productsActions.setCategory({ key: listKey, category: initParams.category as ProductCategory }));
       setIsReady(true);
     }
@@ -89,7 +92,7 @@ export const Products = memo(({ className }: ProductsProps) => {
         category: productsState.category
       })
     }
-  }, [isReady, currentPage, productsState.category, trigger])
+  }, [isReady, currentPage, productsState.category])
 
   useEffect(() => {
     if (data) {
@@ -99,7 +102,7 @@ export const Products = memo(({ className }: ProductsProps) => {
   }, [data, dispatch])
 
 
-  if (!data) {
+  if (!data && !products) {
     return null
   }
 

@@ -5,6 +5,7 @@ import { CartItemType, CartDataRes } from '../type/cartSchema.tsx'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
 import { setCartData } from '../utils/setCartData.tsx'
+
 import {
   updateCartTotals,
   decreaseTotals,
@@ -36,6 +37,22 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: initialState,
   reducers: {
+    addItem: (state, action: PayloadAction<CartItemType>) => {
+      const item = action.payload
+
+      cartAdapter.addOne(state, item)
+
+      updateCartTotals(state, increaseTotals({
+        totalAmount: state.totalAmount || 0,
+        totalPrice: state.totalPrice || 0,
+        discount: state.discount || 0,
+        price: item.price,
+        originalPrice: item.originalPrice,
+        quantityDifference: item.quantity
+      }))
+
+      state.isBackSynchronized = false
+    },
     removeItem: (state, action: PayloadAction<string>) => {
       if (!state.totalAmount) return
 
@@ -59,7 +76,7 @@ const cartSlice = createSlice({
     setItemAmount: (state, action: PayloadAction<{id: string, quantity: number}>) => {
       const { id, quantity } = action.payload
 
-      if(quantity < 1) {
+      if(quantity < 0) {
         state.error = 'Add 1 or more quantity of product'
         return
       }
@@ -71,6 +88,7 @@ const cartSlice = createSlice({
       }
 
       if(previous.quantity === quantity) return
+
 
       const prevData: RecalculateTotalsProps = {
         totalAmount: state.totalAmount || 0,
@@ -91,17 +109,22 @@ const cartSlice = createSlice({
       if(!updatedTotals) return
       updateCartTotals(state, updatedTotals)
 
-      cartAdapter.updateOne(state, {
-        id,
-        changes: {
-          quantity,
-          total: previous.price * quantity
-        }
-      })
+      if(quantity === 0) {
+        cartAdapter.removeOne(state, id)
+        return
+      } else {
+        cartAdapter.updateOne(state, {
+          id,
+          changes: {
+            quantity,
+            total: previous.price * quantity
+          }
+        })
+      }
       state.isBackSynchronized = false
     },
+    // BACK SYNC
     setCartData: (state, action: PayloadAction<CartDataRes>) => {
-
       setCartData(state, action, cartAdapter)
     },
     setBackSync: (state, action: PayloadAction<boolean>) => {

@@ -5,11 +5,8 @@ export const useBeforeClosePage = () => {
   const handleSyncCart = useSyncCartWithServerBeforeClose()
 
   useEffect(() => {
-    const handleClosePage = async (event: BeforeUnloadEvent) => {
+    const handleClosePage = async () => {
       handleSyncCart()
-
-      event.preventDefault()
-      event.returnValue = ''
     }
 
     window.addEventListener('beforeunload', handleClosePage)
