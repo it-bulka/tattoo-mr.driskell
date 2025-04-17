@@ -4,9 +4,9 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { CardWithImgCheckboxSlider } from '@/shared/ui'
 import { memo, useCallback, useMemo, useState, useEffect } from 'react'
-import { Button } from '@/shared/ui'
 import { currencyFormat } from '@/shared/libs'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
+import { AddToCartBtn } from '@/features'
 
 type OrderedProds = Record<string | number, Product>
 
@@ -65,6 +65,12 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
     return calculateOrder(prods)
   }, [calculateOrder, ordered])
 
+  const orderedIds = useMemo(() => {
+    if (!ordered) return []
+
+    return Object.values(ordered)
+  }, [ordered])
+
   if(!ordered) return null
 
   return (
@@ -101,7 +107,13 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
           <div className={classNames("decorator full gray croppedPoligon static", cls.decorator)}/>
 
           <div className={cls.actions}>
-            <Button withMargin dark className={cls.btn} disabled={!sumResult.itemsAmount}>{t('add to cart')}</Button>
+            <AddToCartBtn
+              withMargin
+              dark
+              className={cls.btn}
+              disabled={!sumResult.itemsAmount || !orderedIds}
+              products={orderedIds}
+            />
 
             <div className={cls.price}>
               <p className={cls.title}>{t("items_count", { count: sumResult.itemsAmount })}</p>

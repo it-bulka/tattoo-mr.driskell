@@ -5,6 +5,7 @@ import { CartItemType, CartDataRes } from '../type/cartSchema.tsx'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
 import { setCartData } from '../utils/setCartData.tsx'
+import { recalculateTotalsWithSingleItem } from '../utils/recalculateTotalsWithSingleItem.tsx'
 
 import {
   updateCartTotals,
@@ -37,19 +38,38 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState: initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<CartItemType>) => {
-      const item = action.payload
+    addItems: (state, action: PayloadAction<CartItemType[]>) => {
+      const items = action.payload
 
-      cartAdapter.addOne(state, item)
-
-      updateCartTotals(state, increaseTotals({
+      const delta = {
         totalAmount: state.totalAmount || 0,
+        totalDiscount: state.discount || 0,
         totalPrice: state.totalPrice || 0,
-        discount: state.discount || 0,
-        price: item.price,
-        originalPrice: item.originalPrice,
-        quantityDifference: item.quantity
-      }))
+      }
+
+      const mergedItems = items.map(item => {
+        const existing = state.entities[item.productId]
+        if (existing) {
+          recalculateTotalsWithSingleItem(delta, existing)
+
+          return {
+            ...item,
+            quantity: existing.quantity + item.quantity,
+            total: existing.total + item.total,
+          }
+        }
+
+        recalculateTotalsWithSingleItem(delta, item)
+        return item
+      })
+
+      updateCartTotals(state, {
+        newTotalAmount: delta.totalAmount,
+        newDiscount: delta.totalDiscount,
+        newTotalPrice: delta.totalPrice,
+      })
+
+      cartAdapter.upsertMany(state, mergedItems)
 
       state.isBackSynchronized = false
     },

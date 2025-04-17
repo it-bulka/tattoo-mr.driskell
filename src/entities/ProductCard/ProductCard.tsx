@@ -12,8 +12,9 @@ export type Product = {
   priceCurrent?: number
   id: string
   tags: TagType[]
-  onClick?: () => void
 }
+
+export type ProductWithAmount = Product & { quantity?: number }
 
 type StaticStatus = 'on-all' | 'on-mobile' | 'on-tablet'
 interface ProductCardProps extends Product{
@@ -35,7 +36,7 @@ export const ProductCard = ({
   id,
   staticOn = 'on-tablet',
   onClick
-}: ProductCardProps) => {
+}: ProductCardProps & { onClick?: () => void }) => {
   const [isHovered, setHovered] = useState(false)
   return (
     <div
