@@ -7,12 +7,14 @@ import { productsReducer } from '@/entities'
 import { userReducer } from '@/entities/User'
 import { cartSyncMiddleware } from '@/entities/Cart'
 import { Action, ThunkAction } from '@reduxjs/toolkit'
+import { orderReducer } from '@/entities/Order'
 
 export const createStore = () => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     cart: cartReducer,
     products: productsReducer,
     user: userReducer,
+    order: orderReducer,
     [rtkApi.reducerPath]: rtkApi.reducer
   }
 

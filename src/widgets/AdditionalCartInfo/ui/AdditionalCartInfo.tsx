@@ -2,55 +2,40 @@ import cls from './AdditionalCartInfo.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Input, DecoratedLink, Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
-import { memo, useState } from 'react'
+import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { getCartTotalsSelector } from '@/entities/Cart'
+import {
+  getOrderDeliverySelector,
+  getOrderPaymentSelector,
+  PaymentType,
+  DeliveryType,
+  orderActions
+} from '@/entities/Order'
+import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
+import { deliveryList, deliveries } from '../model/consts/deliveries.tsx'
+import { payments, paymentList } from '../model/consts/payments.tsx'
 
 interface AdditionalInfoProps {
   className?: string
 }
 
-const payment = [
-  {
-    name: 'payment',
-    value: 'online payment',
-    label: 'payment.online payment.title',
-    info: 'payment.online payment.info'
-  },
-  {
-    name: 'payment',
-    value: 'cash on delivery',
-    label: 'payment.cash on delivery.title',
-    info: 'payment.cash on delivery.info'
-  },
-  {
-    name: 'payment',
-    value: 'bank transfer',
-    label: 'payment.bank transfer.title',
-    info: 'payment.bank transfer.info',
-  }
-]
-
-const delivery = [
-  {
-    name: 'delivery',
-    value: 'courier service',
-    label: 'delivery.courier service.title',
-    info: 'delivery.courier service.info',
-  },
-  {
-    name: 'delivery',
-    value: 'nova poshta',
-    label: 'delivery.nova poshta.title',
-    info: 'delivery.nova poshta.info',
-  }
-]
-
 export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const { t } = useTranslation('cart')
-  const [paymentSelected, setPaymentSelected] = useState(payment[0])
-  const [deliverySelected, setdeliverySelected] = useState(delivery[1])
+  const selectedPaymentType = useSelector(getOrderPaymentSelector)
+  const selectedDeliveryType = useSelector(getOrderDeliverySelector)
+
   const totals = useSelector(getCartTotalsSelector)
+
+  const dispatch = useAppDispatch()
+
+  const updatePayment = useCallback((payment: PaymentType) => {
+    dispatch(orderActions.setPayment(payment))
+  }, [dispatch])
+
+  const updateDelivery = useCallback((delivery: DeliveryType) => {
+    dispatch(orderActions.setDelivery(delivery))
+  }, [dispatch])
 
   return (
     <div className={classNames(cls.additionalInfo, {}, [className])}>
@@ -84,11 +69,11 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
       <div className={cls.block}>
         <div className={cls.radioBtns}>
           <h3 className={cls.radioTitle}>{t('payment.title')}</h3>
-          {payment.map(item => (
+          {paymentList.map(item => (
             <RadioButton
               value={item.value}
-              selectedValue={paymentSelected.value}
-              onChange={()=> setPaymentSelected(item)}
+              selectedValue={payments[selectedPaymentType || 'online'].value}
+              onChange={() => updatePayment(item.value)}
               label={(
                 <InfoLabel
                   label={t(item.label)}
@@ -103,11 +88,11 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
 
         <div className={cls.radioBtns}>
           <h3 className={cls.radioTitle}>{t('delivery.title')}</h3>
-          {delivery.map(item => (
+          {deliveryList.map(item => (
             <RadioButton
               value={item.value}
-              selectedValue={deliverySelected.value}
-              onChange={()=> setdeliverySelected(item)}
+              selectedValue={deliveries[selectedDeliveryType || 'novaPoshta'].value}
+              onChange={()=> updateDelivery(item.value)}
               label={(
                 <InfoLabel
                   label={t(item.label)}
