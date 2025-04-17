@@ -3,6 +3,8 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Input, DecoratedLink, Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
 import { memo, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { getCartTotalsSelector } from '@/entities/Cart'
 
 interface AdditionalInfoProps {
   className?: string
@@ -48,25 +50,26 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const { t } = useTranslation('cart')
   const [paymentSelected, setPaymentSelected] = useState(payment[0])
   const [deliverySelected, setdeliverySelected] = useState(delivery[1])
+  const totals = useSelector(getCartTotalsSelector)
 
   return (
     <div className={classNames(cls.additionalInfo, {}, [className])}>
       <div className={cls.block}>
         <div className={cls.prices}>
           <span>{t('summary.total items')}</span>
-          <span></span>
+          <span>{totals.totalAmount}</span>
         </div>
         <div className={cls.prices}>
           <span>{t('summary.total discount')}</span>
-          <span></span>
+          <span>{totals.totalDiscount}</span>
         </div>
         <div className={cls.prices}>
           <span>{t('summary.additional services')}</span>
-          <span></span>
+          <span>{totals.totalServices}</span>
         </div>
         <div className={(cls.pricesTotal)}>
           <span>{t('summary.grand total')}</span>
-          <span></span>
+          <span>{totals.totalPrice}</span>
         </div>
 
         <Input
