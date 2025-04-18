@@ -12,5 +12,9 @@
   input {
     background-color: var(--bg-card-color);
     padding: 23px 30px;
+
+    &.withErr {
+      border: 1px solid var(--red);
+    }
   }
 }

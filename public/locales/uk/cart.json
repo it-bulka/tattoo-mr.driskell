@@ -76,5 +76,13 @@
   "hide information": "Приховати інформацію",
   "order number": "Номер замовлення:",
   "order history": "Історія замовлень",
-  "no cart products": "Ви не обрали ще жодного продукту"
+  "no cart products": "Ви не обрали ще жодного продукту",
+  "validation": {
+    "enter_name": "Введіть імʼя",
+    "enter_phone": "Введіть телефон",
+    "invalid_email": "Невалідний email",
+    "enter_city": "Введіть місто",
+    "enter_street": "Введіть вулицю",
+    "agree_required": "Погодьтесь з умовами"
+  }
 }

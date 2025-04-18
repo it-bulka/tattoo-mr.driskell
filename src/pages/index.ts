@@ -1,4 +1,4 @@
-export { CartPage } from './CartPage/CartPage.async.tsx'
+export { CartPage } from './CartPage/ui/CartPage.async.tsx'
 export { NotFound } from './NotFound/NotFound.async.tsx'
 export { TattooMachineDetails } from './TattooMachineDetails/TattooMachineDetails.async.tsx'
 export { DiscountPage } from './DiscountPage/DiscountPage.async.tsx'

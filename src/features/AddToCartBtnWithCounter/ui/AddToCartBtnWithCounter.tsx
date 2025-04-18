@@ -1,11 +1,10 @@
 import { useSelector } from 'react-redux'
 import { getCartItemById } from '@/entities/Cart'
 import { CartProductCounter } from '../../CartProductCounter/ui/CartProductCounter.tsx'
-import { AddToCartBtn } from '../../AddToCartBtn/AddToCartBtn.tsx'
+import { AddToCartBtn, AddToCartBtnProps } from '../../AddToCartBtn/AddToCartBtn.tsx'
 import { memo } from 'react'
-import type { ButtonProps } from '@/shared/ui';
 
-export interface AddToCartBtnWithCounterProps extends ButtonProps {
+export interface AddToCartBtnWithCounterProps extends Omit<AddToCartBtnProps, 'products'> {
   productId: string
 }
 

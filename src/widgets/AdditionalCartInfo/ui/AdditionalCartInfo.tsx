@@ -15,6 +15,10 @@ import {
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { deliveryList, deliveries } from '../model/consts/deliveries.tsx'
 import { payments, paymentList } from '../model/consts/payments.tsx'
+import { useSubmit, type CartFormData } from '@/features/CartForm'
+
+import { Controller, useFormContext } from 'react-hook-form'
+import { ErrorMsg } from '@/shared/ui'
 
 interface AdditionalInfoProps {
   className?: string
@@ -36,6 +40,9 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const updateDelivery = useCallback((delivery: DeliveryType) => {
     dispatch(orderActions.setDelivery(delivery))
   }, [dispatch])
+
+  const { control } = useFormContext<CartFormData>()
+  const submitHandler = useSubmit()
 
   return (
     <div className={classNames(cls.additionalInfo, {}, [className])}>
@@ -109,19 +116,32 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
       </div>
 
       <div className={cls.block}>
-        <Button dark center max big>{t('buy now')}</Button>
+        <Button dark center max big onClick={submitHandler}>{t('buy now')}</Button>
         <Button center max big className={cls.contact}>{t('contact the manager')}</Button>
-        <CheckBox
-          label={
-            <span>
-              {t('agreement.agree')}{' '}
-              <AppLink to="/" className={cls.agreeLink}>{t('agreement.public offer')}</AppLink>{' '}
-              {t('agreement.and')}{' '}
-              <AppLink to="/" className={cls.agreeLink}>{t('agreement.personal data')}</AppLink>
-            </span>
-          }
-          className={cls.checkBox}
-        />
+
+        <Controller
+          name="agree"
+          control={control}
+          render={({ field, fieldState }) => (
+            <>
+              <CheckBox
+                {...field}
+                checked={field.value}
+                onChange={(e) => field.onChange(e.target.checked)}
+                label={
+                  <span>
+                  {t('agreement.agree')}{' '}
+                    <AppLink to="/" className={cls.agreeLink}>{t('agreement.public offer')}</AppLink>{' '}
+                    {t('agreement.and')}{' '}
+                    <AppLink to="/" className={cls.agreeLink}>{t('agreement.personal data')}</AppLink>
+                </span>
+                }
+                className={cls.checkBox}
+              />
+              <ErrorMsg text={fieldState.error?.message} />
+            </>
+          )}
+            />
       </div>
 
     </div>

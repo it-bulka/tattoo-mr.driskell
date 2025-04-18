@@ -4,3 +4,4 @@ export {
   getOrderPaymentSelector,
   getOrderDeliverySelector
 } from './model/selectors/orderSelectors.tsx'
+export { makeOrder } from './model/service/makeOrder.tsx'

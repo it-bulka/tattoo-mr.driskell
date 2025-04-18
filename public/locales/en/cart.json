@@ -76,5 +76,13 @@
   "hide information": "Hide information",
   "order number": "Order number:",
   "order history": "Order History",
-  "no cart products": "No any products chosen yet"
+  "no cart products": "No any products chosen yet",
+  "validation": {
+    "enter_name": "Enter your name",
+    "enter_phone": "Enter your phone number",
+    "invalid_email": "Invalid email",
+    "enter_city": "Enter your city",
+    "enter_street": "Enter your street",
+    "agree_required": "Please agree to the terms"
+  }
 }

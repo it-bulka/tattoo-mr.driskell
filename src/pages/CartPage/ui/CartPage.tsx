@@ -7,6 +7,7 @@ import { AdditionalCartInfo } from '@/widgets'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getCartItemsSelector } from '@/entities/Cart'
+import { CartFormProvider } from '@/features/CartForm/model/service/cartFormContext.tsx'
 
 interface CartPageProps {
   className?: string
@@ -21,8 +22,10 @@ const CartPage = ({ className }: CartPageProps) => {
       <h3 className="pageTitle">{t('cart')}</h3>
       <div className={cls.content}>
         <Cart items={cartItems} className={cls.cart}/>
-        <CartForm className={cls.form}/>
-        <AdditionalCartInfo className={cls.additional}/>
+        <CartFormProvider>
+          <CartForm className={cls.form}/>
+          <AdditionalCartInfo className={cls.additional}/>
+        </CartFormProvider>
       </div>
     </div>
   )
