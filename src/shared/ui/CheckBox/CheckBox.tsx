@@ -1,17 +1,17 @@
 import SelectedIcon from '@/shared/assets/general/checked.svg?react'
 import classNames from 'classnames';
 import cls from './CheckBox.module.scss'
-import { memo, ReactNode, HTMLProps } from 'react'
+import { memo, ReactNode, HTMLAttributes, ChangeEvent } from 'react'
 
-interface CheckedButtonProps extends Omit<HTMLProps<HTMLInputElement>, 'label'>{
+interface CheckedButtonProps extends Omit<HTMLAttributes<HTMLInputElement>, 'label'>{
   className?: string
-  onClick?: () => void
   checked?: boolean
   label?: string | ReactNode
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 export const CheckBox = memo(({
   className,
-  onClick,
+  onChange,
   checked,
   label,
   ...rest
@@ -21,7 +21,7 @@ export const CheckBox = memo(({
       className={classNames(cls.checkBox, { [cls.checked]: checked }, [className])}
       onClick={(e) => e.stopPropagation()}
     >
-      <input type='checkbox' checked={checked} onChange={onClick} {...rest}/>
+      <input {...rest} type='checkbox' checked={checked} onChange={onChange} />
       <span className={cls.icon}><SelectedIcon /></span>
       {label}
     </label>
