@@ -46,6 +46,8 @@
   --font-line-l: 150%;
 
   // fonts
+  --font-s-primary: var(--font-size-s) / var(--font-line-s) var(--font-family-secondary);
+
   --font-m-primary: var(--font-size-m) / var(--font-line-m) var(--font-family-secondary);
   --font-m-secondary: var(--font-size-m) / var(--font-line-l) var(--font-family-secondary);
 
