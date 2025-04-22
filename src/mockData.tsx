@@ -48,7 +48,7 @@ export const productsList: Product[] = Array.from({ length: 10 }, (_, index) => 
   images: [ProductImg, ProductImg2, ProductImg3, ProductImg4],
   title: 'Foxxx Kitsune Mini Black Vintage RCA',
   price: 6000,
-  id: index,
+  id: String(index),
   tags: ['new', 'absent']
 }))
 
@@ -57,6 +57,7 @@ export const cartList: CartItemType[] = Array.from({ length: 2 }, (_, index) => 
   image: ProductImg,
   title: 'Foxxx Kitsune Mini Black Vintage RCA',
   price: 6000,
+  originalPrice: 6000,
   quantity: 4,
   total: 12000,
   productId: String(index)
@@ -96,6 +97,7 @@ export const tattooMachineDetails = {
 
 export const promoCodes = Array.from({ length: 10 }, (_, index) => ({
   img: PromoCodeImg,
+  code: 'DISCOUNT2025',
   title: 'Package "Summer"',
   description: [
     'The hottest summer of the century doesn\'t want to leave and is bringing you new colors until the end of the season.',
