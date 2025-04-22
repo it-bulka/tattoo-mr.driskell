@@ -4,6 +4,7 @@ import { cartApi } from '../api/cartApi'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { cartActions } from '@/entities/Cart/model/slice/cartSlice.tsx'
+import { transformCartItemsForBack } from '@/entities/Cart';
 
 let getState: (() => StateSchema) | null = null
 let dispatch: AppDispatch | null = null
@@ -14,10 +15,7 @@ const debouncedSync = debounce(async () => {
   const state = getState()
   const cart = state.cart
 
-  const items = Object.values(cart.entities).map(item => ({
-    product: item.productId,
-    amount: item.quantity,
-  }))
+  const items = transformCartItemsForBack(cart)
 
   try {
     const result = await dispatch(
@@ -38,7 +36,8 @@ const debouncedSync = debounce(async () => {
 const syncTriggerActions = [
   'cart/addItem',
   'cart/removeItem',
-  'cart/setItemAmount'
+  'cart/setItemAmount',
+  'cart/restartPromocode'
 ]
 
 export const cartSyncMiddleware: Middleware = store => {

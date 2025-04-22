@@ -10,3 +10,4 @@ export { disableBodyScroll, enableBodyScroll } from './bodyScrollHelpers/bodyscr
 export { useDebounce } from './useDebounce/useDebounce.ts'
 export { useRestartInternet } from './useRestartInterner/useRestartInterner.tsx'
 export { useBeforeClosePage } from './useBeforeClosePage/useBeforeClosePage.tsx'
+export { fractTwoDigit } from './fractTwoDigit/fractTwoDigit.ts'

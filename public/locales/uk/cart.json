@@ -29,7 +29,9 @@
     "grand total": "Разом до сплати"
   },
   "promo code": "Промокод",
-  "apply promo code": "Активувати промокод",
+  "promo code applied": "Промокод активовано",
+  "promo code restart": "Ввести інший промокод",
+  "promo code apply": "Активувати промокод",
   "buy now": "Buy now",
   "contact the manager": "Зв'язатися з менеджером",
   "agreement": {

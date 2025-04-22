@@ -1,5 +1,6 @@
 import { WritableDraft } from 'immer'
 import { CartSchema } from '@/entities/Cart'
+import { fractTwoDigit } from '@/shared/libs'
 
 export interface RecalculateTotalsProps {
   totalAmount: number
@@ -65,6 +66,6 @@ export const decreaseTotals = ({
 
 export const updateCartTotals = (state: WritableDraft<CartSchema>, newTotals: ReturnTotals) => {
   state.totalAmount = newTotals.newTotalAmount
-  state.totalPrice = newTotals.newTotalPrice
-  state.discount = newTotals.newDiscount
+  state.totalPrice = fractTwoDigit(newTotals.newTotalPrice)
+  state.discount = fractTwoDigit(newTotals.newDiscount)
 }

@@ -1,5 +1,17 @@
 import { EntityState } from '@reduxjs/toolkit'
 
+export type PromoCodeType = {
+  id: string
+  code: string
+  type: 'percentage' | 'fixed'
+  value: number
+}
+
+export type PromoCodeErr = {
+  code: string
+  message: string
+}
+
 export interface CartItemType {
   title: string
   price: number
@@ -16,6 +28,7 @@ export interface CartData {
   totalPrice?: number
   extraServices?: number
   discount?: number
+  promoCode?: PromoCodeType
 }
 
 export interface CartDataRes {
@@ -23,7 +36,9 @@ export interface CartDataRes {
   totalItems: number
   totalToPay: number
   extraServices?: number
-  discount: number
+  discount: number,
+  promocode?: PromoCodeType
+  promoCodeError?: PromoCodeErr
 }
 
 export type CartSchema = EntityState<CartItemType, string> & Omit<CartData, 'items'> & {
@@ -32,7 +47,19 @@ export type CartSchema = EntityState<CartItemType, string> & Omit<CartData, 'ite
   isBackSynchronized?: boolean
 }
 
+export interface CartItem {
+  id: string;
+  quantity: number
+}
+
 export interface SyncCartBody {
   userId: string,
-  orderItems: { product: string; amount: number }[]
+  orderItems: CartItem[]
+}
+
+export interface PromoActivationReq {
+  userId: string
+  promoCode: string
+  items: CartItem[]
+  extraServices?: CartItem[]
 }

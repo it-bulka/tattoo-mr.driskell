@@ -4,6 +4,7 @@ import { cartActions } from '@/entities/Cart/model/slice/cartSlice.tsx'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useCallback } from 'react'
 import { IS_BACK_CART_SYNC_LOCALSTORAGE } from '@/shared/consts'
+import { transformCartItemsForBack } from '@/entities/Cart'
 
 export const manualSync = (): AppThunk => async (dispatch, getState) => {
   if(!navigator.onLine) return
@@ -14,10 +15,7 @@ export const manualSync = (): AppThunk => async (dispatch, getState) => {
 
   if(!cart || cart.isBackSynchronized) return
 
-  const items = Object.values(cart.entities).map(item => ({
-    product: item.productId,
-    amount: item.quantity,
-  }))
+  const items = transformCartItemsForBack(cart)
 
   try {
     const result = await dispatch(

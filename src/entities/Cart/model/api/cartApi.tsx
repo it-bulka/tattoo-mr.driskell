@@ -1,5 +1,6 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
 import { CartDataRes, SyncCartBody } from '@/entities/Cart'
+import { PromoActivationReq } from '../type/cartSchema.tsx'
 
 interface ReturnCartData {
   data: CartDataRes
@@ -19,6 +20,13 @@ export const cartApi = rtkApi.injectEndpoints({
         body,
       }),
     }),
+    activatePromo: build.mutation<ReturnCartData, PromoActivationReq>({
+      query: body => ({
+        url: '/promo/activate',
+        method: 'POST',
+        body
+      })
+    })
   })
 })
 

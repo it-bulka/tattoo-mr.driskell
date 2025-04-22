@@ -6,6 +6,9 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts
 import { PayloadAction, createEntityAdapter } from '@reduxjs/toolkit'
 import { setCartData } from '../utils/setCartData.tsx'
 import { recalculateTotalsWithSingleItem } from '../utils/recalculateTotalsWithSingleItem.tsx'
+import { activatePromo } from '../services/activatePromo.tsx'
+import { recalculatePromoCodeDiscount } from '../utils/recalculatePromoCodeDiscount.tsx'
+import { setPromoCodeData } from '../utils/setPromoCodeData.tsx'
 
 import {
   updateCartTotals,
@@ -63,6 +66,12 @@ const cartSlice = createSlice({
         return item
       })
 
+      if(state.promoCode) {
+        const promoDiscount = recalculatePromoCodeDiscount(delta.totalAmount, state.promoCode)
+        delta.totalPrice -= promoDiscount
+        delta.totalDiscount += promoDiscount
+      }
+
       updateCartTotals(state, {
         newTotalAmount: delta.totalAmount,
         newDiscount: delta.totalDiscount,
@@ -83,12 +92,18 @@ const cartSlice = createSlice({
 
       const newTotals = decreaseTotals({
         totalAmount: state.totalAmount,
-        totalPrice: state?.totalPrice || 0,
+        totalPrice: state.totalPrice || 0,
         quantityDifference: Math.abs(previous.quantity - quantity),
         price,
         originalPrice,
         discount: state.discount  || 0,
       })
+
+      if(state.promoCode) {
+        const promoDiscount = recalculatePromoCodeDiscount(newTotals.newTotalPrice, state.promoCode)
+        newTotals.newTotalPrice -= promoDiscount
+        newTotals.newDiscount += promoDiscount
+      }
 
       updateCartTotals(state, newTotals)
       state.isBackSynchronized = false
@@ -109,7 +124,6 @@ const cartSlice = createSlice({
 
       if(previous.quantity === quantity) return
 
-
       const prevData: RecalculateTotalsProps = {
         totalAmount: state.totalAmount || 0,
         totalPrice: state.totalPrice || 0,
@@ -127,6 +141,13 @@ const cartSlice = createSlice({
       }
 
       if(!updatedTotals) return
+
+      if(state.promoCode) {
+        const promoDiscount = recalculatePromoCodeDiscount(updatedTotals.newTotalAmount, state.promoCode)
+        updatedTotals.newTotalPrice -= promoDiscount
+        updatedTotals.newDiscount += promoDiscount
+      }
+
       updateCartTotals(state, updatedTotals)
 
       if(quantity === 0) {
@@ -142,6 +163,27 @@ const cartSlice = createSlice({
         })
       }
       state.isBackSynchronized = false
+    },
+    restartPromocode: (state) => {
+      state.promoCode = undefined
+      const items = Object.values(state.entities)
+
+      const delta = {
+        totalAmount: state.totalAmount || 0,
+        totalDiscount: state.discount || 0,
+        totalPrice: state.totalPrice || 0,
+      }
+
+      items.forEach(item => {
+        recalculateTotalsWithSingleItem(delta, item)
+        return item
+      })
+
+      updateCartTotals(state, {
+        newTotalAmount: delta.totalAmount,
+        newDiscount: delta.totalDiscount,
+        newTotalPrice: delta.totalPrice,
+      })
     },
     // BACK SYNC
     setCartData: (state, action: PayloadAction<CartDataRes>) => {
@@ -160,15 +202,29 @@ const cartSlice = createSlice({
       .addCase(fetchCart.fulfilled, (state, action: PayloadAction<CartDataRes>) => {
         state.isLoading = false
         setCartData(state, action, cartAdapter)
+        setPromoCodeData(state, action)
         state.isBackSynchronized = true
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.isLoading = false
         state.error = action.error.message
       })
+      .addCase(activatePromo.pending, (state) => {
+        state.isLoading = true
+        state.error = undefined
+      })
+      .addCase(activatePromo.fulfilled, (state, action) => {
+        state.isLoading = false
+        setCartData(state, action, cartAdapter)
+        setPromoCodeData(state, action)
+        state.isBackSynchronized = true
+      })
+      .addCase(activatePromo.rejected, (state, action) => {
+        state.isLoading = false
+        state.error = action.payload
+      })
   }
 })
-
 
 export const {
   reducer: cartReducer,

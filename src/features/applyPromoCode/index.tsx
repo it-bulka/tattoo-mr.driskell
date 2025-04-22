@@ -1,0 +1,1 @@
+export { ActivatePromoButton } from './ui/ActivatePromoButton/ActivatePromoButton.tsx'

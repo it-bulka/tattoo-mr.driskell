@@ -1,7 +1,7 @@
 import cls from './AdditionalCartInfo.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Input, DecoratedLink, Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
+import { Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
 import { memo, useCallback } from 'react'
 import { useSelector } from 'react-redux'
 import { getCartTotalsSelector } from '@/entities/Cart'
@@ -19,6 +19,7 @@ import { useSubmit, type CartFormData } from '@/features/CartForm'
 
 import { Controller, useFormContext } from 'react-hook-form'
 import { ErrorMsg } from '@/shared/ui'
+import { ActivatePromoButton } from '@/features/applyPromoCode';
 
 interface AdditionalInfoProps {
   className?: string
@@ -64,12 +65,8 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
           <span>{totals.totalPrice}</span>
         </div>
 
-        <Input
-          label={t('promo code')}
-          inputClassName={cls.input}
-          className={cls.inputWrapper}
-        />
-        <DecoratedLink to="/" className={cls.link}>{t('apply promo code')}</DecoratedLink>
+        <ActivatePromoButton  className={cls.promoBtn}/>
+
         <div className="decorator full croppedPoligon gray"/>
       </div>
 

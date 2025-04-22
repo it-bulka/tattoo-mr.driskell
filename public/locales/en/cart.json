@@ -29,7 +29,9 @@
     "grand total": "Grand total"
   },
   "promo code": "Promo code",
-  "apply promo code": "Apply promo code",
+  "promo code restart": "Set other promo code",
+  "promo code applied": "Promo code applied",
+  "promo code apply": "Apply promo code",
   "buy now": "Buy now",
   "contact the manager": "Contact the manager",
   "agreement": {

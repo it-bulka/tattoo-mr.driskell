@@ -1,13 +1,14 @@
 import cls from './Input.module.scss'
 import classNames from 'classnames'
-import { HTMLProps, memo } from 'react'
+import { HTMLProps, memo, ChangeEventHandler } from 'react'
 import { ErrorMsg } from '@/shared/ui'
 
-interface InputProps extends HTMLProps<HTMLInputElement>{
+interface InputProps extends Omit<HTMLProps<HTMLInputElement>, 'onChange'>{
   className?: string
   label?: string
   inputClassName?: string
   error?: string
+  onChange?: ChangeEventHandler<HTMLInputElement>
 }
 
 export const Input = memo(({
