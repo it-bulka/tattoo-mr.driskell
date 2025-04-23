@@ -1,0 +1,42 @@
+$draggable-handler-height: 4px;
+
+.drawer {
+  background-color: var(--bg-color);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  height: 50vh;
+
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--modal-z-index);
+}
+
+.content {
+  position: relative;
+  z-index: var(--modal-content-z-index);
+  padding-top: 15px;
+  padding-bottom: 15px;
+  height: calc(100% - $draggable-handler-height);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.dragHandle {
+  box-sizing: content-box;
+  width: 3rem;
+  height: $draggable-handler-height;
+  background-color: #d1d5db;
+  border-radius: 9999px;
+  margin: 0 auto 1rem auto;
+  cursor: grab;
+}
+
