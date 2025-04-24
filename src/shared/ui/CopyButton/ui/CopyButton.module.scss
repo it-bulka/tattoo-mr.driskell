@@ -1,0 +1,10 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  & .svg {
+    width: 32px;
+    height: 32px;
+  }
+}
