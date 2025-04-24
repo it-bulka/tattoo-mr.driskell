@@ -8,6 +8,7 @@ import {
   ComponentType,
   useContext
 } from 'react'
+import { NonNullableFields } from '@/shared/type'
 
 type FramerMotionType = typeof import('framer-motion')
 
@@ -59,7 +60,7 @@ export const withMotionProvider = <P extends object>(WrappedComponent: Component
 }
 
 export const useMotionLib = () => {
-  return useContext(FramerMotionContext) as Required<FramerMotionContextPayload>
+  return useContext(FramerMotionContext) as NonNullableFields<FramerMotionContextPayload>
 }
 
 export function withMotionLoaded<P extends Object>(WrappedComponent: ComponentType<P>) {

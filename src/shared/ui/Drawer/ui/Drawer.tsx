@@ -3,8 +3,7 @@ import cls from './Drawer.module.scss'
 import classNames from 'classnames'
 import { Portal } from '../../Portal/Portal.tsx'
 import { Overlay } from '../../Overlay/Overlay.tsx'
-import { motion, AnimatePresence } from 'framer-motion'
-import { withMotion } from '@/shared/libs/components'
+import { useMotionLib, withMotion } from '@/shared/libs/components'
 
 interface DrawerProps {
   className?: string
@@ -18,6 +17,7 @@ export const DrawerContent = memo(({
   onClose
 }: PropsWithChildren<DrawerProps>) => {
   const [isClosing, setIsClosing] = useState(false)
+  const { motion, AnimatePresence } = useMotionLib().Motion
 
   useEffect(() => {
     if(!isOpen && isClosing) {
