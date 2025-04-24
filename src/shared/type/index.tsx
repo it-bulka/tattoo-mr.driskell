@@ -1,1 +1,1 @@
-export { type ApiError } from './general.ts'
+export type { ApiError, NonNullableFields } from './general.ts'

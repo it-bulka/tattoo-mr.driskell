@@ -1,0 +1,9 @@
+.share {
+  font: 17px / 130% var(--font-family-secondary);
+}
+
+@include media-max-tablet-s {
+  .share {
+    font-size: 15px;
+  }
+}

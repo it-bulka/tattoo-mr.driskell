@@ -10,6 +10,7 @@ import { AddToCartBtn } from '@/features'
 import { useCallback, useRef, useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ProductExtended } from '@/shared/type/tattoo-machine.ts'
+import { ShareButton } from '@/widgets'
 
 interface MainBlockProps {
   data: ProductExtended
@@ -85,7 +86,8 @@ export const MainBlock = memo(({ data, slug }: MainBlockProps) => {
             quantity: amountRef.current
           }]}
         />
-        <p className={cls.share}>{t('share')}</p>
+
+        <ShareButton  className={cls.share}/>
       </div>
     </div>
   )

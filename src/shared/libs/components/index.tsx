@@ -1,1 +1,2 @@
 export { withMotionProvider, useMotionLib, withMotion } from './FramerMotionProvider/FramerMotionProvider.tsx'
+export { withShareLib, useShareLib } from './ShareSocialMediaProvider/ShareSocialMediaProvider.tsx'
