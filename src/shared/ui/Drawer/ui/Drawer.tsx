@@ -77,4 +77,4 @@ export const DrawerContent = memo(({
 
 DrawerContent.displayName = 'DrawerContent'
 
-export const Drawer = withMotion<DrawerProps>(DrawerContent)
+export const Drawer = withMotion<PropsWithChildren<DrawerProps>>(DrawerContent)
