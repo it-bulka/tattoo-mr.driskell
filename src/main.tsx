@@ -11,9 +11,13 @@ import "../node_modules/swiper/modules/pagination.min.css"
 import "../node_modules/swiper/modules/thumbs.min.css"
 import "@/app/styles/swiperAdditional.scss"
 import { App } from '@/app/App.tsx'
+import { CustomToastContainer } from '@/shared/ui/CustomToastContainer';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <>
+      <App />
+      <CustomToastContainer />
+    </>
   </StrictMode>,
 )
