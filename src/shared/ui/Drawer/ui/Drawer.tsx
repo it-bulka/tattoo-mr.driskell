@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { Portal } from '../../Portal/Portal.tsx'
 import { Overlay } from '../../Overlay/Overlay.tsx'
 import { motion, AnimatePresence } from 'framer-motion'
+import { withMotion } from '@/shared/libs/components'
 
 interface DrawerProps {
   className?: string
@@ -11,7 +12,7 @@ interface DrawerProps {
   onClose?: () => void
 }
 
-export const Drawer = memo(({
+export const DrawerContent = memo(({
   children,
   isOpen = true,
   onClose
@@ -51,7 +52,6 @@ export const Drawer = memo(({
           }}
           initial={{ y: '100%' }}
           animate={{ y: isClosing ? '100%' : 0 }}
-          /*exit={{ y: '100%' }}*/
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
           onAnimationComplete={() => {
             console.log('Drawer: onAnimationComplete')
@@ -74,4 +74,7 @@ export const Drawer = memo(({
   )
 })
 
-Drawer.displayName = 'Drawer'
+
+DrawerContent.displayName = 'DrawerContent'
+
+export const Drawer = withMotion<DrawerProps>(DrawerContent)
