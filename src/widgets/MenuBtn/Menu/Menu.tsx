@@ -4,9 +4,8 @@ import { useTranslation } from 'react-i18next'
 import { navLinks } from '../../NavBar/NavBar.tsx'
 import { RoutePaths, getCatalogDetailsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { catalogContent } from '@/features/CatalogTabs/data.ts'
-import { AppLink, Search } from '@/shared/ui'
+import { AppLink, ContactLink } from '@/shared/ui'
 import { useState } from 'react'
-import { ContactLink } from '@/shared/ui'
 import { companyData } from '@/mockData.tsx'
 import ViberIcon from '@/shared/assets/general/viber.svg?react'
 import TelegramIcon from '@/shared/assets/general/telegram.svg?react'
@@ -14,7 +13,8 @@ import WhatsupIcon from '@/shared/assets/general/whatsup.svg?react'
 import CallIcon from '@/shared/assets/general/call.svg?react'
 import MailIcon from '@/shared/assets/general/mail.svg?react'
 import ArrowLeft from '@/shared/assets/general/arrow-left.svg?react'
-import { useUpdateContentWidth } from '@/shared/libs';
+import { useUpdateContentWidth } from '@/shared/libs'
+import { SearchTattooMachine } from '@/features'
 
 interface MenuProps {
   className?: string
@@ -107,7 +107,7 @@ export const Menu = ({ className, isOpen }: MenuProps) => {
           </ul>
 
           <div className="container">
-            <Search className={cls.search}/>
+            <SearchTattooMachine className={cls.search}/>
           </div>
         </div>
 

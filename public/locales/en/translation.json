@@ -165,5 +165,7 @@
     "plenty": "Plenty of stock"
   },
   "copied": "Copied",
-  "copy url": "Copy url"
+  "copy url": "Copy url",
+  "nothing is found": "Nothing is found",
+  "write more that 2 characters": "Enter more that 2 characters for search"
 }

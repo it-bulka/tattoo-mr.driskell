@@ -12,5 +12,6 @@ export const rtkApi = createApi({
       return headers
     }
   }),
-  endpoints: () => ({})
+  endpoints: () => ({}),
+  tagTypes: ['Search'],
 })

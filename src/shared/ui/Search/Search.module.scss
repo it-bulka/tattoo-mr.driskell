@@ -1,5 +1,5 @@
 .search {
-
+  width: 100%;
   border: 1px solid var(--accent-color);
   padding: 8px 8px 8px 16px;
   display: inline-flex;
@@ -16,4 +16,10 @@
       color: var(--text-gray-color);
     }
   }
+}
+
+.clearBtn {
+  height: 100%;
+  padding: 0 5px;
+  color: var(--gray);
 }

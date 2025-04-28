@@ -5,20 +5,17 @@ import { AppLink, ContactLink, ContactsWrapper, HStack } from '@/shared/ui'
 import { CartCount, LikeCount, AvatarBtn } from '@/features'
 import Logo from '@/shared/assets/general/logo.png'
 import { Catalog, MenuBtn, NavBar } from '@/widgets'
-import { Search } from '@/shared/ui/Search/Search.tsx';
-import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
 import classNames from 'classnames'
 import { companyData } from '@/mockData.tsx'
-import { useDevice } from '@/shared/libs';
+import { useDevice } from '@/shared/libs'
+import { SearchTattooMachine } from '@/features'
 
 const MobileHeader = () => {
-  const { t } = useTranslation()
   return (
     <div className={cls.row}>
       <MenuBtn />
-      <Search
-        placeholder={t('search')}
+      <SearchTattooMachine
         className={cls.search}
       />
       <div className={cls.actions}>
@@ -31,7 +28,6 @@ const MobileHeader = () => {
 }
 
 const DesktopHeader = () => {
-  const { t } = useTranslation()
   return (
     <>
       <div className={cls.upper}>
@@ -66,8 +62,7 @@ const DesktopHeader = () => {
       </div>
       <div className={cls.lower}>
         <Catalog />
-        <Search
-          placeholder={t('search')}
+        <SearchTattooMachine
           className={cls.search}
         />
         <NavBar className={cls.navbar}/>
