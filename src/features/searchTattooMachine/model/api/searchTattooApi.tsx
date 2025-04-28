@@ -34,4 +34,4 @@ export const clearSearchTattooMachine = (cachedSearchBy: string) => {
     })
 }
 
-export const { useLazyGetSearchedProductsQuery } = searchTattooApi
+export const { useLazyGetSearchedProductsQuery, useGetSearchedProductsQuery } = searchTattooApi

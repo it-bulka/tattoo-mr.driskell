@@ -1,0 +1,1 @@
+export { SearchResultPage } from './ui/SearchResultPage.async.tsx'

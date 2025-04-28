@@ -1,6 +1,7 @@
 export enum AppRoutes {
   // general
   HOME = 'home',
+  SEARCH = 'search_result',
   PROFILE = 'profile',
   FAVORITES = 'favorites',
   CART = 'cart',
@@ -22,6 +23,7 @@ export enum AppRoutes {
 }
 
 export const getHomePage = () => '/'
+export const getSearchResultPage = () => '/search'
 export const getProfilePage = () => '/profile'
 export const getFavoritesPage = () => '/profile/favorites'
 export const getCartPage = () => '/catalog/cart'
@@ -45,6 +47,7 @@ export const getNotFoundPage = () => '/not-found'
 
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: getHomePage(),
+  [AppRoutes.SEARCH]: getSearchResultPage(),
   [AppRoutes.PROFILE]: getProfilePage(),
   [AppRoutes.FAVORITES]: getFavoritesPage(),
   [AppRoutes.CART]: getCartPage(),

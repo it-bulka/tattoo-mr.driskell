@@ -5,7 +5,8 @@ import { HomePage } from '@/pages/Home/Home.async.tsx'
 import {
   CartPage, NotFound, DiscountPage, AdditionalServicePage,
   PromocodesPage, TattooMachineDetails, Profile, ContactsPage,
-  ToolsBlog, BrandPage, CategoriesPages
+  ToolsBlog, BrandPage, CategoriesPages,
+  SearchResultPage
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -16,6 +17,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <HomePage />
+      },
+      {
+        path: RoutePaths.search_result,
+        element: <SearchResultPage />
       },
       {
         path: RoutePaths.brand,

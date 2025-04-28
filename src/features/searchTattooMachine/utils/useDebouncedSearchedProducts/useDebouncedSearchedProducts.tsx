@@ -5,11 +5,14 @@ import {
 import { useCallback, useEffect, useRef } from 'react'
 import debounce from 'lodash.debounce'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
+import { searchActions } from '../../model/slice/searchSlice.tsx'
+
 
 export const useDebouncedSearchedProducts = (search: string) => {
   const [trigger, { data, isFetching }] = useLazyGetSearchedProductsQuery()
   const lastRequestRef = useRef<ReturnType<typeof trigger> | null>(null)
   const lastRequestSearchRef = useRef<string| null>(null)
+  const dispatch = useAppDispatch()
 
   const debouncedRequest = useCallback(debounce((searchBy: string) => {
     if (lastRequestRef.current) {
@@ -19,9 +22,8 @@ export const useDebouncedSearchedProducts = (search: string) => {
     const request = trigger({ search: searchBy})
     lastRequestRef.current = request
     lastRequestSearchRef.current = searchBy
-  }, 1000), [trigger])
-
-  const dispatch = useAppDispatch()
+    dispatch(searchActions.setSearchValue(searchBy))
+  }, 1000), [trigger, dispatch])
 
   const clearLastRequestData = () => {
     dispatch(clearSearchTattooMachine(lastRequestSearchRef.current || ''))
