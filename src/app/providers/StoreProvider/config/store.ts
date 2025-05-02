@@ -9,6 +9,7 @@ import { cartSyncMiddleware } from '@/entities/Cart'
 import { Action, ThunkAction } from '@reduxjs/toolkit'
 import { orderReducer } from '@/entities/Order'
 import { searchReducer } from '@/features/searchTattooMachine'
+import { favouritesReducer, likedIdsMiddleware } from '@/features/addFavourite'
 
 export const createStore = () => {
   const rootReducer: ReducersMapObject<StateSchema> = {
@@ -17,6 +18,7 @@ export const createStore = () => {
     user: userReducer,
     order: orderReducer,
     search: searchReducer,
+    favourites: favouritesReducer,
     [rtkApi.reducerPath]: rtkApi.reducer
   }
 
@@ -24,7 +26,7 @@ export const createStore = () => {
     devTools: __IS_DEV__,
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(rtkApi.middleware, cartSyncMiddleware)
+      getDefaultMiddleware().concat(rtkApi.middleware, cartSyncMiddleware, likedIdsMiddleware)
   })
 
   return store
