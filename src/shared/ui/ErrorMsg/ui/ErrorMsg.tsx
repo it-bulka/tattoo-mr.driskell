@@ -8,6 +8,7 @@ interface ErrorMsgProps {
   text?: string
   className?: string
   size?: ErrSizeType
+  type?: 'error' | 'warning' | 'info'
 }
 
 const errSizeToMap: Record<ErrSizeType, string> = {
@@ -21,10 +22,15 @@ export const ErrorMsg = memo(({
   text,
   className,
   size = 'small',
+  type = 'error'
 }: ErrorMsgProps) => {
   if(!text) return null
 
   const Tag = as
 
-  return <Tag className={classNames(cls.err, {}, [className, errSizeToMap[size]])}>{text}</Tag>
+  return <Tag className={
+    classNames(cls.err, {}, [className, errSizeToMap[size], cls[type]])
+  }>
+    {text}
+  </Tag>
 })

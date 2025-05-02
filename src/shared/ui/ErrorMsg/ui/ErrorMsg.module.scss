@@ -1,5 +1,16 @@
 .err {
-  color: var(--red);
+  &.error {
+    color: var(--red);
+  }
+
+  &.warning {
+    color: var(--accent-color);
+  }
+
+  &.info {
+    color: var(--text-dark-color);
+    font-weight: 700;
+  }
 }
 
 .s {
