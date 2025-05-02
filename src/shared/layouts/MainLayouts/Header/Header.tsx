@@ -10,6 +10,8 @@ import classNames from 'classnames'
 import { companyData } from '@/mockData.tsx'
 import { useDevice } from '@/shared/libs'
 import { SearchTattooMachine } from '@/features'
+import { Link } from 'react-router'
+import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 
 const MobileHeader = () => {
   return (
@@ -51,7 +53,9 @@ const DesktopHeader = () => {
         </HStack>
 
         <div>
-          <img src={Logo} alt="logo" className={cls.logo}/>
+          <Link to={RoutePaths.home} className={cls.logo}>
+            <img src={Logo} alt="logo" />
+          </Link>
         </div>
 
         <div className={cls.actions}>

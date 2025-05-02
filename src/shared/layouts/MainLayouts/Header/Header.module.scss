@@ -29,6 +29,11 @@ $font-size-s: 12px;
   max-width: 186px;
   display: block;
   margin: auto;
+
+  & > img {
+    display: block;
+    width: 100%;
+  }
 }
 
 .actions {

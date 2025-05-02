@@ -14,7 +14,7 @@ export const LikeCount = memo(({
   const navigate = useNavigate()
 
   const onClick =  useCallback(() => {
-    navigate(RoutePaths.like_count)
+    navigate(RoutePaths.favorites)
   }, [])
   return (
     <button
