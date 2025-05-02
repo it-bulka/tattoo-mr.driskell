@@ -3,15 +3,11 @@ import { favouriteApi } from '../api/favouriteApi.tsx'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { likedProductsActions } from '../slice/likedProductsSlice.tsx'
 import { getRejectedError } from '@/shared/libs'
-import {
-  getLikedTotalCountSelector,
-  getLikedActualAmountSelector,
-  getLikedCurrentPageSelector, getItemsPerPageSelector
-} from '../selector/likedProductsSelectors.tsx'
+import { getItemsPerPageSelector, getLikedInitedSelector } from '../selector/likedProductsSelectors.tsx'
 import { getUserId } from '@/entities'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 
-export const fetchNextPageLikedProducts = createAsyncThunk<
+export const initFavouriteProducts = createAsyncThunk<
   void,
   void,
   { state: StateSchema, rejectValue: string, dispatch: AppDispatch }
@@ -19,15 +15,10 @@ export const fetchNextPageLikedProducts = createAsyncThunk<
   'favourites/addLikedProducts',
   async (_, { getState, dispatch }) => {
     const state = getState()
-    const totalCount = getLikedTotalCountSelector(state)
-    const currentItemsAmount = getLikedActualAmountSelector(state)
+    const isInited = getLikedInitedSelector(state)
+    if (isInited) return
 
-    if(totalCount === currentItemsAmount) return
-
-    const currentLikedPage = getLikedCurrentPageSelector(state)
-    const nextPage = currentLikedPage + 1
     const limit = getItemsPerPageSelector(state)
-
     const userId = getUserId(state)
 
     try {
@@ -35,23 +26,18 @@ export const fetchNextPageLikedProducts = createAsyncThunk<
       const data = await dispatch(
         favouriteApi.endpoints.getFavourites.initiate({
           userId,
-          page: nextPage,
+          page: 1,
           limit
         })
       ).unwrap()
 
       if(!data) return
 
-      const {
-        items,
-        totalCount,
-        totalPages,
-        currentPage,
-      } = data.data
+      const { items, totalCount, totalPages, currentPage } = data.data
 
       console.log('See: endpoints', data)
 
-      dispatch(likedProductsActions.addProducts(items))
+      dispatch(likedProductsActions.initProducts(items))
       dispatch(likedProductsActions.setPage({ totalCount, totalPages, currentPage }))
       dispatch(likedProductsActions.setLoading(false))
 

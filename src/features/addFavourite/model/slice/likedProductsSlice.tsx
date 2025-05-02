@@ -22,17 +22,22 @@ const initialState: LikedProductsSchema = likedProductsAdapter.getInitialState({
   ids: [],
   totalCount: 0,
   totalPages: 1,
-  currentPage: 1,
+  currentPage: 0,
   itemsPerPage: 10,
 
   error: null,
   isLoading: false,
+  _inited: false,
 })
 
 const sliceLikedProducts = createSlice({
   name: 'liked/products',
   initialState,
   reducers: {
+    initProducts: (state, action: PayloadAction<Product[]>) => {
+      likedProductsAdapter.setMany(state, action.payload)
+      state._inited = true
+    },
     addProducts: (state, action: PayloadAction<Product[]>) => {
       likedProductsAdapter.addMany(state, action.payload)
     },

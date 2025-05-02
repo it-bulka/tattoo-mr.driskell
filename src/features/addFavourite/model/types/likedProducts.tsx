@@ -21,4 +21,5 @@ export type LikedProductsSchema = EntityState<Product, string> & {
 
   error: null | string
   isLoading: boolean
+  _inited: boolean
 }

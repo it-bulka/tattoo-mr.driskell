@@ -6,7 +6,8 @@ import {
   CartPage, NotFound, DiscountPage, AdditionalServicePage,
   PromocodesPage, TattooMachineDetails, Profile, ContactsPage,
   ToolsBlog, BrandPage, CategoriesPages,
-  SearchResultPage
+  SearchResultPage,
+  FavouritesPage
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.help_tools,
         element: <ToolsBlog />
+      },
+      {
+        path: RoutePaths.favorites,
+        element: <FavouritesPage />
       },
       {
         path: RoutePaths.not_found,
