@@ -2,7 +2,7 @@ import cls from './ImgSlide.module.scss'
 import classNames from 'classnames'
 import { Tag, type TagType } from '../../Tag/Tag.tsx'
 import { CheckBox } from '../../CheckBox/CheckBox.tsx'
-import { LikeButton } from '@/features'
+import { LikeProductButton } from '@/features'
 import { memo, useMemo } from 'react'
 
 export type Slide = {
@@ -49,7 +49,7 @@ export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: I
     >
       <div className={cls.actions}>
         {actionContent}
-        <LikeButton machineId={id}/>
+        <LikeProductButton machineId={id}/>
       </div>
       <img src={img} alt={rest.alt || 'slider image'} className={cls.img}/>
     </div>

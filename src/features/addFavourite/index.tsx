@@ -13,6 +13,9 @@ export { useCheckIfLiked } from './utils/useCheckIfLiked/useCheckIfLiked.tsx'
 export {
   getLikedIsLoadingSelector,
   getLikedErrorSelector,
-  canLoadMoreLikedSelector
+  canLoadMoreLikedSelector,
+  getLikedTotalCountSelector
 } from './model/selector/likedProductsSelectors.tsx'
 export { initFavouriteProducts } from './model/service/initFavouriteProducts.tsx'
+export { isLikedSelector } from './model/selector/likedIdsSelectors.tsx'
+export { likedIdsActions } from './model/slice/likedIdsSlice.tsx'

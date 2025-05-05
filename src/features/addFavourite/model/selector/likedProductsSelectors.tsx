@@ -11,5 +11,5 @@ export const getLikedIsLoadingSelector = (state: StateSchema) => state.favourite
 export const getLikedErrorSelector = (state: StateSchema) => state.favourites.products.error
 export const canLoadMoreLikedSelector = createSelector(
   [getLikedTotalCountSelector, getLikedActualAmountSelector],
-  (totalAmount, actualLoadedAmount) => totalAmount ===actualLoadedAmount
+  (totalAmount, actualLoadedAmount) => totalAmount !== actualLoadedAmount
 )

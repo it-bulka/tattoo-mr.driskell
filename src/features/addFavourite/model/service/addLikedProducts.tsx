@@ -49,8 +49,7 @@ export const fetchNextPageLikedProducts = createAsyncThunk<
         currentPage,
       } = data.data
 
-      console.log('See: endpoints', data)
-
+      console.log('See: endpoints', data.data)
       dispatch(likedProductsActions.addProducts(items))
       dispatch(likedProductsActions.setPage({ totalCount, totalPages, currentPage }))
       dispatch(likedProductsActions.setLoading(false))

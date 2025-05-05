@@ -5,20 +5,20 @@ import cls from './FavouritesPage.module.scss'
 import { useGetLikedProducts } from '../../utils/useGetLikedProducts/useGetLikedProducts.tsx'
 import {
   useInitFavouritesFullData
-} from '../../utils/useInitFavouritesFullData/useInitFavouritesFullData.tsx';
+} from '../../utils/useInitFavouritesFullData/useInitFavouritesFullData.tsx'
 
 const FavouritesPage = () => {
   useInitFavouritesFullData()
 
   const { t } = useTranslation('favourites')
   const {
-    data, error, handleLoadMore, canLoadMore, isFetching
+    data, error, handleLoadMore, canLoadMore, isFetching, totalAmount
   } = useGetLikedProducts()
 
   return (
     <div className="container pageSpacing">
       <p className="pageTitle">{t('liked items')}</p>
-      <p className={cls.foundedAmount}>{t('founded liked items', { count: data.length || 0 })}</p>
+      <p className={cls.foundedAmount}>{t('founded liked items', { count: totalAmount || 0 })}</p>
       {error && <ErrorMsg text={error}/>}
       {
         (!error && !data.length)
@@ -37,10 +37,8 @@ const FavouritesPage = () => {
                 showSeeMoreBtn={canLoadMore}
               />
             </>
-
           )
       }
-
     </div>
   )
 }

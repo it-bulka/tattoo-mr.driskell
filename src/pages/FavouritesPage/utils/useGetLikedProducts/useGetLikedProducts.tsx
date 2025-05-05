@@ -3,7 +3,8 @@ import {
   canLoadMoreLikedSelector, fetchNextPageLikedProducts,
   getLikedErrorSelector,
   getLikedIsLoadingSelector,
-  likedProductsSelector
+  likedProductsSelector,
+  getLikedTotalCountSelector
 } from '@/features/addFavourite'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useCallback } from 'react'
@@ -13,6 +14,7 @@ export const useGetLikedProducts = () => {
   const isFetching = useSelector(getLikedIsLoadingSelector)
   const error = useSelector(getLikedErrorSelector)
   const canLoadMore = useSelector(canLoadMoreLikedSelector)
+  const totalAmount = useSelector(getLikedTotalCountSelector)
   const dispatch = useAppDispatch()
 
   const handleLoadMore = useCallback(() => {
@@ -26,6 +28,7 @@ export const useGetLikedProducts = () => {
     error,
     isFetching,
     handleLoadMore,
-    canLoadMore
+    canLoadMore,
+    totalAmount
   }
 }

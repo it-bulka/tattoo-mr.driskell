@@ -44,7 +44,8 @@ export const favouriteApi = rtkApi.injectEndpoints({
       query: ({ userId, page = 1, limit = 10 }) => ({
         url: '/favourites',
         method: 'POST',
-        body: { userId, page, limit }
+        body: { userId },
+        params: { limit, page },
       })
     }),
     getAllFavouritesIds: build.mutation<FavouritesIdsRes, string>({

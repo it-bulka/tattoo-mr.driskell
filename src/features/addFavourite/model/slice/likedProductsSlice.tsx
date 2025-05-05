@@ -39,6 +39,7 @@ const sliceLikedProducts = createSlice({
       state._inited = true
     },
     addProducts: (state, action: PayloadAction<Product[]>) => {
+      console.log('See: addProducts:', action.payload)
       likedProductsAdapter.addMany(state, action.payload)
     },
     setPage: (state, action: PayloadAction<Pages>) => {

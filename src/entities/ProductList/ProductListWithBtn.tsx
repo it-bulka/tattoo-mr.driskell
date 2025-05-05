@@ -3,6 +3,8 @@ import { Button } from '@/shared/ui'
 import { type Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
+import classNames from 'classnames'
+import cls from './ProductsList.module.scss'
 
 interface ProductListWithBtnProps {
   productListClass?: string
@@ -30,7 +32,7 @@ export const ProductListWithBtn = memo(({
         <Button
           big
           center
-          className={btnClass}
+          className={classNames(cls.btn, btnClass)}
           disabled={isLoading}
           onClick={onLoadMoreClick}
         >

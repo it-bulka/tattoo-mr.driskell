@@ -13,3 +13,9 @@ export const selectPendingLikes = createSelector(
     pendingRemoveIds
   })
 )
+
+export const isLikedSelector = (productId: string) =>
+  createSelector(
+    [getLikedIdsSelector],
+    (ids) => ids[productId]
+  )

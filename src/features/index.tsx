@@ -1,7 +1,7 @@
 export { LikeCount } from './LikeCount/ui/LikeCount.tsx'
 export { CartCount } from './CartCount/CartCount.tsx'
 export { AvatarBtn } from './AvatarBtn/AvatarBtn.tsx'
-export { LikeButton } from './LikeButton/LikeButton.tsx'
+export { LikeProductButton } from './LikeButton/LikeProductButton.tsx'
 export { CatalogTabsWrapper as CatalogTabs } from './CatalogTabs/CatalogTabsWrapper.tsx'
 export { FilterLevel } from './FilterLevel/FilterLevel.tsx'
 export { AddToCartBtn } from './AddToCartBtn/AddToCartBtn.tsx'
