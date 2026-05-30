@@ -9,3 +9,4 @@ export { CartProductCounter } from './CartProductCounter/ui/CartProductCounter.t
 export { AddToCartBtnWithCounter } from './AddToCartBtnWithCounter/ui/AddToCartBtnWithCounter.tsx'
 export { SearchTattooMachine } from './searchTattooMachine/ui/SearchTattooMachine.tsx'
 export { useGetSearchedProductsQuery } from './searchTattooMachine/model/api/searchTattooApi.tsx'
+export { RegistrationModal } from '@/features/auth'

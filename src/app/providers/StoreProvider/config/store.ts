@@ -10,15 +10,19 @@ import { Action, ThunkAction } from '@reduxjs/toolkit'
 import { orderReducer } from '@/entities/Order'
 import { searchReducer } from '@/features/searchTattooMachine'
 import { favouritesReducer, likedIdsMiddleware } from '@/features/addFavourite'
+import { sessionReducer } from '@/entities/session'
+import { authReducer } from '@/features/auth'
 
 export const createStore = () => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     cart: cartReducer,
     products: productsReducer,
     user: userReducer,
+    auth: authReducer,
     order: orderReducer,
     search: searchReducer,
     favourites: favouritesReducer,
+    session: sessionReducer,
     [rtkApi.reducerPath]: rtkApi.reducer
   }
 

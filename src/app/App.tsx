@@ -3,7 +3,7 @@ import { router } from './config/router/router.tsx'
 import { I18nextProvider } from 'react-i18next'
 import i18n from '@/shared/config/i18n/i18n.tsx';
 import { Suspense } from 'react'
-import ErrorBoundary from '@/app/providers/ErrorBoundary/ErrorBoundary.tsx';
+import { ErrorBoundary } from '@/shared/providers';
 import { StoreProvider } from './providers/StoreProvider'
 
 export const App = () => {
