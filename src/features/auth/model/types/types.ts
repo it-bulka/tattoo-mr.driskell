@@ -1,0 +1,1 @@
+export type InputType<T> = { name: T , label: string }

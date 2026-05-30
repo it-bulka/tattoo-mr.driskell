@@ -1,0 +1,9 @@
+export { RegistrationModal } from './registration/ui/RegistrationModal.tsx'
+export { LoginModal } from './login/ui/LoginModal.tsx'
+
+export { ForgotPasswordModal } from './forgotPassword/ui/ForgotPasswordModal.tsx'
+export { ResetPasswordModal } from './resetPassword/ui/ResetPasswordModal.tsx'
+export { VerifyEmailModal } from './verifyEmail/ui/VerifyEmailModal.tsx'
+
+export type { AuthSchema } from './model/types/AuthSchema.ts'
+export { authReducer } from '@/features/auth/model/slice/authSlice.ts'
