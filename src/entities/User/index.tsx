@@ -1,2 +1,2 @@
-export type { UserSchema } from './model/type/userSchema.tsx'
-export { userReducer } from './model/slice/userSlice.tsx'
+export type { UserSchema, User } from './model/type/userSchema.tsx'
+export { userReducer, userActions } from './model/slice/userSlice.tsx'
