@@ -7,7 +7,6 @@ import { About } from './blocks/about/About.tsx'
 import { Testimonials } from './blocks/Testimonials/Testimonials.tsx'
 import { FormBlock } from './blocks/Form/FormBlock.tsx'
 
-
 interface HomeProps {
   className?: string
 }
