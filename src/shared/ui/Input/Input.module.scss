@@ -11,10 +11,21 @@
 
   input {
     background-color: var(--bg-card-color);
-    padding: 23px 30px;
 
     &.withErr {
       border: 1px solid var(--red);
+    }
+  }
+
+  &.normal {
+    input {
+      padding: 23px 30px;
+    }
+  }
+
+  &.small {
+    input {
+      padding: 15px 25px;
     }
   }
 }
