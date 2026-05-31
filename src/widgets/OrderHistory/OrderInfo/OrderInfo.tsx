@@ -49,7 +49,7 @@ export const OrderInfo = memo(({
         text={`${orderNumber} ${t('from_date')} ${dateFormat(date, 'all')}`}
       />
       <Info
-        title={t('order number')}
+        title={t('info about address')}
         text={address}
       />
       <Info
