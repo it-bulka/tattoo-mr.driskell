@@ -27,5 +27,5 @@ export const rtkApi = createApi({
     }
   }),
   endpoints: () => ({}),
-  tagTypes: ['Search'],
+  tagTypes: ['Search', 'User', 'UserOrders'],
 })
