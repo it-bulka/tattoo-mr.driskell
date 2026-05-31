@@ -24,12 +24,11 @@ i18n
       ],
       backendOptions: [
         {
-          // TODO: uncommit after finish project
-          /* expirationTime: 1 * 24 * 60 * 60 * 1000,  // 2 days
+          expirationTime: 1 * 24 * 60 * 60 * 1000,  // 1 day
           versions: {
-            en: 'v1.0',
-            uk: 'v1.0',
-          } */
+            en: 'v1.1',
+            uk: 'v1.1',
+          }
         },
         // options for HttpBackend
         { loadPath: '/locales/{{lng}}/{{ns}}.json' }

@@ -45,14 +45,28 @@
 
   "testimonials": "Testimonials",
   "form" : {
-    "email": "email",
+    "email": "Email",
     "name": "Name",
+    "phone": "Phone",
+    "city": "City",
+    "street": "Street",
+    "apartment": "Apartment",
+    "entrance": "Entrance",
+    "floor": "Floor",
+    "doorphone": "Entryphone",
     "first to know": "Be the first to know",
     "subscribe text": "Subscribe to the newsletter for the most interesting news and offers",
     "enter your name": "Enter your name",
     "agree to process personal data": "You agree to the processing of your personal data",
     "subscribe btn": "Subscribe"
   },
+  "placeholder": {
+    "name": "John Smith",
+    "city": "Kyiv",
+    "street": "12 Khreshchatyk Street"
+  },
+  "info about receiver": "Information about the recipient",
+  "info about address": "Information about the address",
   "filter": {
     "by category": "By category",
     "by brands": "By brands"
@@ -167,5 +181,24 @@
   "copy url": "Copy url",
   "nothing is found": "Nothing is found",
   "write more that 2 characters": "Enter more that 2 characters for search",
-  "go home button": "Go to main page"
+  "go home button": "Go to main page",
+  "validation": {
+    "enter_name": "Please enter your name",
+    "invalid_email": "Invalid email",
+    "enter_password": "Please enter your password",
+    "password_min": "Minimum 6 characters",
+    "password_match": "Passwords do not match"
+  },
+  "profileForm": {
+    "personal_info": "Personal info",
+    "save": "Save",
+    "saved": "Profile updated",
+    "save_error": "Failed to save",
+    "change_password": "Change password",
+    "password_changed": "Password changed",
+    "wrong_password": "Current password is incorrect",
+    "old_password": "Current password",
+    "new_password": "New password",
+    "confirm_password": "Confirm new password"
+  }
 }

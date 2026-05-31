@@ -6,7 +6,8 @@ import { Breadcrumbs } from '@/shared/ui'
 import { Histories } from './Histories/Histories.tsx'
 import { PersonalManager } from './PersonalManager/PersonalManager.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
-import { ProfileForm } from '@/features/ProfileForm'
+import { ProfileEditForm } from '@/features/ProfileForm'
+import { ChangePasswordForm } from '@/features/ChangePasswordForm'
 import { getUserId, useGetUserQuery } from '@/entities/User'
 
 const Profile = () => {
@@ -21,7 +22,8 @@ const Profile = () => {
         <>
           <Breadcrumbs className={cls.withContainer} />
           <h3 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h3>
-          <ProfileForm />
+          <ProfileEditForm className={cls.withContainer} />
+          <ChangePasswordForm className={cls.withContainer} />
           <Histories className={classNames(cls.withContainer, cls.histories)}/>
         </>
       )}

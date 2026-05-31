@@ -46,13 +46,27 @@
   "testimonials": "Відгуки",
   "form" : {
     "email": "Ел.пошта",
-    "name": "Ім'я",
+    "name": "Ім’я",
+    "phone": "Тел.",
+    "city": "Місто",
+    "street": "Вулиця, дім",
+    "apartment": "Квартира / офіс",
+    "entrance": "Підїзд",
+    "floor": "Поверх",
+    "doorphone": "Домофон",
     "first to know": "Дізнавайтеся першими",
     "subscribe text": "Підпишіться на новинну розсилку з найцікавішими новинами та акціями",
     "enter your name": "Введіть ім’я",
     "agree to process personal data": "Ви погоджуєтесь на обробку ваших персональних даних",
     "subscribe btn": "Підписатися"
   },
+  "placeholder": {
+    "name": "Петро Петрович Петриченко",
+    "city": "Київ",
+    "street": "вул.Хрещатик, буд.3"
+  },
+  "info about receiver": "Інформація про одержувача",
+  "info about address": "Інформація про адресу",
   "filter": {
     "by category": "За категорією",
     "by brands": "За брендами"
@@ -167,5 +181,24 @@
   "copy url": "Скопіювати ссилку",
   "nothing is found": "Нічого не знайдено",
   "write more that 2 characters": "Для пошуку введи більше ніж 2 символи",
-  "go home button": "Повернутися на головну сторінку"
+  "go home button": "Повернутися на головну сторінку",
+  "validation": {
+    "enter_name": "Введіть ім'я",
+    "invalid_email": "Невалідний email",
+    "enter_password": "Введіть пароль",
+    "password_min": "Мінімум 6 символів",
+    "password_match": "Паролі не збігаються"
+  },
+  "profileForm": {
+    "personal_info": "Особисті дані",
+    "save": "Зберегти",
+    "saved": "Профіль оновлено",
+    "save_error": "Помилка збереження",
+    "change_password": "Змінити пароль",
+    "password_changed": "Пароль змінено",
+    "wrong_password": "Поточний пароль невірний",
+    "old_password": "Поточний пароль",
+    "new_password": "Новий пароль",
+    "confirm_password": "Підтвердіть новий пароль"
+  }
 }
