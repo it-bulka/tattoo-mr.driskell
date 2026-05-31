@@ -1,1 +1,1 @@
-export { ProfileForm } from './ui/ProfileForm.tsx'
+export { ProfileEditForm } from './ui/ProfileEditForm.tsx'
