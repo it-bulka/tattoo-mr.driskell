@@ -1,7 +1,7 @@
 import { CartFormData } from '@/features/CartForm/model/types/cartFormTypes.tsx'
 export type PaymentType = 'online' | 'cashOnDelivery' | 'bankTransfer'
 export type DeliveryType = 'courier' | 'novaPoshta'
-export type OrderStatus = 'pending' | 'paid' | 'cancelled' | 'expired'
+export type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
 
 export interface OrderSchema {
   payment: PaymentType
