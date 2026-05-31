@@ -5,29 +5,31 @@ import { memo, PropsWithChildren } from 'react'
 
 export interface ServiceCardProps {
   className?: string
-  img: string
+  img?: string
   title: string
-  btnTitle: string,
-  onBtnClick?: () => void,
+  btnTitle: string
+  btnDark?: boolean
+  onBtnClick?: () => void
 }
 export const Card = memo(({
    className,
    title,
    img,
    btnTitle,
+   btnDark,
    onBtnClick,
   children
 }: PropsWithChildren<ServiceCardProps>) => {
   return (
     <div className={classNames(cls.card, {}, [className])}>
-      <img src={img} alt={'Image of ' + title} className={cls.img}/>
+      {img && <img src={img} alt={'Image of ' + title} className={cls.img}/>}
 
       <div className={cls.content}>
         <p className={cls.title}>{title}</p>
         <div className={cls.body}>
           {children}
         </div>
-        <Button big max onClick={onBtnClick}>{btnTitle}</Button>
+        <Button big max dark={btnDark} onClick={onBtnClick}>{btnTitle}</Button>
       </div>
     </div>
   )

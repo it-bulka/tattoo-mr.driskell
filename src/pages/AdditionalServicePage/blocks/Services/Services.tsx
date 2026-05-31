@@ -1,53 +1,38 @@
 import cls from './Services.module.scss'
 import { useTranslation } from 'react-i18next'
-import { ServiceCard, ServiceCardProps } from '@/entities';
-import urgentDelivery from '@/shared/assets/pages/additionalServices/urgent-delivery.png';
-import guarantee from '@/shared/assets/pages/additionalServices/guarantee.png';
-import extendedWarranty from '@/shared/assets/pages/additionalServices/extended-warranty.png';
-import gift from '@/shared/assets/pages/additionalServices/gift.png';
+import { ServiceCard } from '@/entities'
+import { useGetServicesQuery } from '@/entities/Service'
+import { getSelectedServicesSelector, orderActions } from '@/entities/Order'
+import { useSelector } from 'react-redux'
+import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
+import { useCallback } from 'react'
 
-interface ServicesProps {
-}
-
-const services: ServiceCardProps[] = [
-  {
-    title: 'urgent delivery.title',
-    description: 'urgent delivery.info',
-    img: urgentDelivery,
-    price: 250
-  },
-  {
-    title: 'postal guarantee.title',
-    description: 'postal guarantee.info',
-    img: guarantee,
-    price: 250
-  },
-  {
-    title: 'extended warranty.title',
-    description: 'extended warranty.info',
-    img: extendedWarranty,
-    price: 250
-  },
-  {
-    title: 'gift wrapping.title',
-    description: 'gift wrapping.info',
-    img: gift,
-    price: 250
-  }
-]
-
-export const Services = ({ }: ServicesProps) => {
+export const Services = () => {
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+  const { data: services, isLoading, isError } = useGetServicesQuery()
+  const selectedServices = useSelector(getSelectedServicesSelector)
+
+  const handleToggle = useCallback((id: string) => {
+    dispatch(orderActions.toggleService(id))
+  }, [dispatch])
+
+  if (isLoading) return null
+  if (isError) return <p>{t('error loading services')}</p>
+  if (!services?.length) return null
 
   return (
     <div className={cls.services}>
       {services.map(service => (
         <ServiceCard
-          title={t(service.title)}
-          description={t(service.description)}
-          price={service.price}
-          img={service.img}
-          key={service.title}
+          key={service._id}
+          title={service.name}
+          description={service.description}
+          price={service.type === 'fixed'
+            ? `${service.value} ${service.currency}`
+            : `${service.value}%`}
+          isSelected={selectedServices.includes(service._id)}
+          onToggle={() => handleToggle(service._id)}
         />
       ))}
     </div>

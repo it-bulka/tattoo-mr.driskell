@@ -2,16 +2,18 @@ import cls from './AdditionalCartInfo.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
-import { memo, useCallback } from 'react'
+import { memo, useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { getCartTotalsSelector } from '@/entities/Cart'
+import { getCartTotalsSelector, getTotalPriceSelector } from '@/entities/Cart'
 import {
   getOrderDeliverySelector,
   getOrderPaymentSelector,
+  getSelectedServicesSelector,
   PaymentType,
   DeliveryType,
   orderActions
 } from '@/entities/Order'
+import { useGetServicesQuery } from '@/entities/Service'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { deliveryList, deliveries } from '../model/consts/deliveries.tsx'
 import { payments, paymentList } from '../model/consts/payments.tsx'
@@ -29,8 +31,22 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const { t } = useTranslation('cart')
   const selectedPaymentType = useSelector(getOrderPaymentSelector)
   const selectedDeliveryType = useSelector(getOrderDeliverySelector)
+  const selectedServices = useSelector(getSelectedServicesSelector)
+  const cartSubtotal = useSelector(getTotalPriceSelector)
 
   const totals = useSelector(getCartTotalsSelector)
+
+  const { data: servicesData } = useGetServicesQuery()
+
+  const totalServices = useMemo(() => {
+    if (!servicesData || !selectedServices.length) return 0
+    return servicesData
+      .filter(s => selectedServices.includes(s._id))
+      .reduce((sum, s) => {
+        if (s.type === 'fixed') return sum + s.value
+        return sum + (cartSubtotal * s.value) / 100
+      }, 0)
+  }, [servicesData, selectedServices, cartSubtotal])
 
   const dispatch = useAppDispatch()
 
@@ -58,7 +74,7 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
         </div>
         <div className={cls.prices}>
           <span>{t('summary.additional services')}</span>
-          <span>{totals.totalServices}</span>
+          <span>{totalServices}</span>
         </div>
         <div className={(cls.pricesTotal)}>
           <span>{t('summary.grand total')}</span>

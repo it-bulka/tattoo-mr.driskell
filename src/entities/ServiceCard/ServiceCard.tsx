@@ -7,23 +7,34 @@ import { Card } from '@/shared/ui';
 
 export interface ServiceCardProps {
   className?: string
-  img: string
+  img?: string
   title: string
   description: string
   price: number | string
+  isSelected?: boolean
+  onToggle?: () => void
 }
 export const ServiceCard = memo(({
   className,
   title,
   description,
   img,
-  price
+  price,
+  isSelected = false,
+  onToggle,
 }: ServiceCardProps) => {
   const { t } = useTranslation()
   const [expanded, setExpanded] = useState(false)
 
   return (
-    <Card title={title} btnTitle={t('add to order')} img={img} className={className}>
+    <Card
+      title={title}
+      btnTitle={isSelected ? t('remove from order') : t('add to order')}
+      btnDark={isSelected}
+      img={img}
+      className={className}
+      onBtnClick={onToggle}
+    >
       <p className={classNames(cls.description, { [cls.expanded]: expanded }, [cls.clamp])}>{description}</p>
       <button className={cls.readMore} onClick={()=> setExpanded(prev => !prev)}>
         {expanded ? t('read less') : t('read more')}
