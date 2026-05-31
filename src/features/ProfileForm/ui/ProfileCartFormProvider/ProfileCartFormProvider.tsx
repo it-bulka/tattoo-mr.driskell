@@ -21,7 +21,7 @@ export const ProfileCartFormProvider = ({ children }: PropsWithChildren) => {
       apartment: '',
       entrance: '',
       floor: '',
-      entryphone: ''
+      doorphone: ''
     }
   })
 

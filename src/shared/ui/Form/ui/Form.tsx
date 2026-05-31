@@ -34,8 +34,8 @@ export const Form = memo(({ className, handleSubmit }: CartFormProps) => {
         { name: 'apartment', label: t('form.apartment'), placeholder: '25' },
         { name: 'entrance', label: t('form.entrance'), placeholder: '2' },
         { name: 'floor', label: t('form.floor'), placeholder: '6' },
-        { name: 'entryphone', label: t('form.entryphone'), placeholder: '6565' },
-      ] satisfies FieldConfig<keyof Pick<FormData, 'city' | 'street' | 'apartment' | 'entrance' | 'floor' | 'entryphone'>>[]
+        { name: 'doorphone', label: t('form.doorphone'), placeholder: '6565' },
+      ] satisfies FieldConfig<keyof Pick<FormData, 'city' | 'street' | 'apartment' | 'entrance' | 'floor' | 'doorphone'>>[]
     }
   }, [t])
 

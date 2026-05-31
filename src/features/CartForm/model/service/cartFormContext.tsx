@@ -21,7 +21,7 @@ export const CartFormProvider = ({ children }: PropsWithChildren) => {
       apartment: '',
       entrance: '',
       floor: '',
-      entryphone: ''
+      doorphone: ''
     }
   })
 

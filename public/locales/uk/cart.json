@@ -13,7 +13,7 @@
     "apartment": "Квартира / офіс",
     "entrance": "Підїзд",
     "floor": "Поверх",
-    "entryphone": "Домофон"
+    "doorphone": "Домофон"
   },
   "placeholder": {
     "name": "Петро Петрович Петриченко",

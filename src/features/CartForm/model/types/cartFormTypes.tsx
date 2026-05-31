@@ -10,7 +10,7 @@ export const CartFormSchema = z.object({
   apartment: z.string().optional(),
   entrance: z.string().optional(),
   floor: z.string().optional(),
-  entryphone: z.string().optional(),
+  doorphone: z.string().optional(),
   agree: z.boolean().refine(Boolean, {
     message: i18n.t('validation.agree_required'),
   })

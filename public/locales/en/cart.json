@@ -13,7 +13,7 @@
     "apartment": "Apartment",
     "entrance": "Entrance",
     "floor": "Floor",
-    "entryphone": "Entryphone"
+    "doorphone": "Entryphone"
   },
   "placeholder": {
     "name": "John Sterro",
