@@ -2,10 +2,11 @@ import cls from './DiscountPage.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { ProductCategory } from '@/entities'
-import { Breadcrumbs,  FilterButton } from '@/shared/ui'
+import { Breadcrumbs, ErrorMsg, FilterButton } from '@/shared/ui'
 import { useCallback, useState } from 'react'
 import { useLazyGetProductsQuery } from '@/pages/Home/blocks/Products/model/api/productsApi.ts'
 import { ProductListWithBtn } from '@/entities'
+import { LoaderCircle } from '@/shared/ui/Loaders'
 import useFilters from './model/utils/useFilters/useFilters.tsx';
 
 interface DiscountPageProps {
@@ -24,14 +25,12 @@ const DiscountPage = ({ className }: DiscountPageProps) => {
   const { t } = useTranslation()
   const [limit, setLimit] = useState<number>(itemPerPage)
 
-  const [trigger, { data, isFetching }] = useLazyGetProductsQuery()
+  const [trigger, { data, isFetching, isError }] = useLazyGetProductsQuery()
   const { activeFilters, handleFilterClick } = useFilters(trigger, limit)
 
   const onLoadMore = useCallback(() => {
     setLimit(prev => prev + itemPerPage)
   }, [setLimit])
-
-  if(!data) return null
 
   return (
     <div className={classNames(cls.discountPage, 'container', {}, [className])}>
@@ -49,13 +48,17 @@ const DiscountPage = ({ className }: DiscountPageProps) => {
         ))}
       </div>
 
-      <ProductListWithBtn
-        productListClass={cls.products}
-        products={data.machines}
-        onLoadMoreClick={onLoadMore}
-        isLoading={isFetching}
-        showSeeMoreBtn={data.currentPage < data.totalPages}
-      />
+      {isFetching && !data && <LoaderCircle />}
+      {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
+      {data && (
+        <ProductListWithBtn
+          productListClass={cls.products}
+          products={data.machines}
+          onLoadMoreClick={onLoadMore}
+          isLoading={isFetching}
+          showSeeMoreBtn={data.currentPage < data.totalPages}
+        />
+      )}
     </div>
   )
 }
