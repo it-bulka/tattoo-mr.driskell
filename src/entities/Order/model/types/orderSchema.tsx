@@ -34,3 +34,15 @@ export interface OrderRes {
   orderId: string
   status: OrderStatus
 }
+
+export interface OrderHistoryItemProps {
+  date: Date
+  orderNumber: string
+  quantity: number
+  totalCost: number
+  status: OrderStatus
+  fullName: string
+  address: string
+  phone: string
+  email: string
+}
