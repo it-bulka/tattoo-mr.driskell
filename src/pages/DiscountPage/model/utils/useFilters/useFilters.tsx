@@ -28,7 +28,8 @@ const useFilters = (trigger: any, limit: number) => {
     trigger({
       page: 1,
       limit: limit,
-      category: currentCategories
+      category: currentCategories,
+      tags: 'discount'
     })
   }, [searchParams, setSearchParams, trigger, limit])
 
@@ -37,7 +38,8 @@ const useFilters = (trigger: any, limit: number) => {
     trigger({
       page: 1,
       limit: limit,
-      category: activeFilters
+      category: activeFilters,
+      tags: 'discount'
     })
   }, [trigger, limit, activeFilters, isParamsChecked])
 

@@ -12,16 +12,17 @@ type SearchParams = {
   page: number
   limit: number
   category?: ProductCategory | ProductCategory[]
+  tags?: string
 }
 
 const productsApi = rtkApi.injectEndpoints({
   endpoints: build => ({
     getProducts: build.query<ProductsType , SearchParams>({
-      query: ({ page = 1, limit, category }) => {
-        const categoryParam = Array.isArray(category) ? category.join(',') : category; // Якщо це масив, то об'єднуємо його в рядок через кому
+      query: ({ page = 1, limit, category, tags }) => {
+        const categoryParam = Array.isArray(category) ? category.join(',') : category;
         return {
           url: '/tattoo-machines',
-          params: { page, limit, category: categoryParam }
+          params: { page, limit, category: categoryParam, tags }
         };
       },
     }),
