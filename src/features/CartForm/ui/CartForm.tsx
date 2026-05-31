@@ -26,7 +26,7 @@ export const CartForm = ({ className }: CartFormProps) => {
       receiver: [
         { name: 'name', label: t('form.name'), placeholder: t('placeholder.name')},
         { name: 'phone', label: t('form.phone'), placeholder: '+380682635999'},
-        { name: 'email', label: t('form.name'), placeholder: 'myemail@gmail.com'},
+        { name: 'email', label: t('form.email'), placeholder: 'myemail@gmail.com'},
       ] satisfies FieldConfig<keyof Pick<CartFormData, 'name' | 'phone' | 'email'>>[],
       address: [
         { name: 'city', label: t('form.city'), placeholder: t('placeholder.city')},
