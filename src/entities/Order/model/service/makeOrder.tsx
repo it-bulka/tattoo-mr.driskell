@@ -9,7 +9,7 @@ import {
 import { getSelectedServicesSelector } from '../selectors/orderSelectors.tsx'
 import { orderApi } from '../api/orderApi.tsx'
 import { OrderRes } from '../types/orderSchema.tsx'
-import { getCartItemsSelector } from '@/entities/Cart'
+import { getCartItemsSelector, getPromoCodeName } from '@/entities/Cart'
 
 
 export const makeOrder = createAsyncThunk<
@@ -28,6 +28,7 @@ export const makeOrder = createAsyncThunk<
     const paymentType = getOrderPaymentSelector(state)
     const itemsToBuy = getCartItemsSelector(state)
     const selectedServices = getSelectedServicesSelector(state)
+    const promoCode = getPromoCodeName(state)
 
     const errors = []
     if(!userId) errors.push(`user id`)
@@ -54,6 +55,7 @@ export const makeOrder = createAsyncThunk<
         quantity: item.quantity,
       })),
       selectedServices,
+      promoCode,
     }
 
     try {

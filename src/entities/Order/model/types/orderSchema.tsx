@@ -30,6 +30,7 @@ export interface Order {
   buyer: Buyer
   shippingAddress: ShippingAddress
   selectedServices: string[]
+  promoCode?: string
 }
 
 export interface OrderRes {
