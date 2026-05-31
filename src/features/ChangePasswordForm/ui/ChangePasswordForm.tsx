@@ -35,15 +35,20 @@ export const ChangePasswordForm = ({ className }: ChangePasswordFormProps) => {
     resolver: zodResolver(changePasswordSchema),
     defaultValues: { oldPassword: '', newPassword: '', confirmNewPassword: '' },
   })
-  const { handleSubmit, reset, setError } = methods
+  const { handleSubmit, reset, setError, formState: { errors } } = methods
 
   const onSubmit = async ({ oldPassword, newPassword }: ChangePasswordFormData) => {
     try {
       await updatePassword({ id: userId!, body: { oldPassword, newPassword } }).unwrap()
       toast.success(t('profileForm.password_changed'))
       reset()
-    } catch {
-      setError('oldPassword', { message: t('profileForm.wrong_password') })
+    } catch (err) {
+      const status = (err as { status?: number })?.status
+      if (status === 400) {
+        setError('oldPassword', { message: t('profileForm.wrong_password') })
+      } else {
+        setError('root', { message: t('profileForm.save_error') })
+      }
     }
   }
 
@@ -59,6 +64,9 @@ export const ChangePasswordForm = ({ className }: ChangePasswordFormProps) => {
         className={classNames(cls.form, {}, [className])}
         onSubmit={handleSubmit(onSubmit)}
       >
+        {errors.root && (
+          <p className={cls.error}>{errors.root.message}</p>
+        )}
         <FormSection<ChangePasswordFormData>
           title={t('profileForm.change_password')}
           titleClassName={cls.title}
