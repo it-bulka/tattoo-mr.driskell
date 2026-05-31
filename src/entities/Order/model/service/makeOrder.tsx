@@ -6,6 +6,7 @@ import {
   getOrderDeliverySelector,
   getOrderPaymentSelector,
 } from '@/entities'
+import { getSelectedServicesSelector } from '../selectors/orderSelectors.tsx'
 import { orderApi } from '../api/orderApi.tsx'
 import { OrderRes } from '../types/orderSchema.tsx'
 import { getCartItemsSelector } from '@/entities/Cart'
@@ -26,6 +27,7 @@ export const makeOrder = createAsyncThunk<
     const delivery = getOrderDeliverySelector(state)
     const paymentType = getOrderPaymentSelector(state)
     const itemsToBuy = getCartItemsSelector(state)
+    const selectedServices = getSelectedServicesSelector(state)
 
     const errors = []
     if(!userId) errors.push(`user id`)
@@ -50,7 +52,8 @@ export const makeOrder = createAsyncThunk<
       items: itemsToBuy.map(item => ({
         id: item.productId,
         quantity: item.quantity,
-      }))
+      })),
+      selectedServices,
     }
 
     try {

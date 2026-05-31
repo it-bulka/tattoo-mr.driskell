@@ -5,6 +5,7 @@ import { makeOrder } from '../service/makeOrder.tsx'
 const initialState: OrderSchema = {
   payment: 'online',
   delivery: 'novaPoshta',
+  services: [],
   loading: false,
 }
 
@@ -17,7 +18,13 @@ const orderSlice = createSlice({
     },
     setDelivery: (state, action: PayloadAction<DeliveryType>) => {
       state.delivery = action.payload
-    }
+    },
+    toggleService: (state, action: PayloadAction<string>) => {
+      const id = action.payload
+      const idx = state.services.indexOf(id)
+      if (idx === -1) state.services.push(id)
+      else state.services.splice(idx, 1)
+    },
   },
   extraReducers: (builder) => {
     builder

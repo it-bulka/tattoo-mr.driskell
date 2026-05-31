@@ -6,6 +6,7 @@ export type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expire
 export interface OrderSchema {
   payment: PaymentType
   delivery: DeliveryType
+  services: string[]
   status?: OrderStatus
   id?: string
   loading: boolean
@@ -28,6 +29,7 @@ export interface Order {
   deliveryMethod: DeliveryType
   buyer: Buyer
   shippingAddress: ShippingAddress
+  selectedServices: string[]
 }
 
 export interface OrderRes {
