@@ -5,7 +5,7 @@ import { HomePage } from '@/pages/Home/Home.async.tsx'
 import {
   CartPage, NotFound, DiscountPage, AdditionalServicePage,
   PromocodesPage, TattooMachineDetails, Profile, ContactsPage,
-  ToolsBlog, BrandPage, CategoriesPages,
+  ToolsBlog, BrandPage, CategoriesPages, CatalogPage,
   SearchResultPage,
   FavouritesPage
 } from '@/pages'
@@ -26,6 +26,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.brand,
         element: <BrandPage />
+      },
+      {
+        path: RoutePaths.catalog,
+        element: <CatalogPage />
       },
       {
         path: RoutePaths.catalog_tattoo_machine,
