@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
         element: <CategoriesPages />
       },
       {
+        path: '/catalog/:slug',
+        element: <CategoriesPages />
+      },
+      {
         path: RoutePaths.tattoo_machine_details,
         element: <TattooMachineDetails />
       },
