@@ -132,13 +132,12 @@
   "total amount": "На суму:",
   "status": "Статус:",
   "order-status": {
-    "processing": "Обробляється",
+    "pending": "Обробляється",
     "shipped": "Відправлено",
     "delivered": "Доставлено",
-    "cancelled": "Відмінено",
-    "payment error": "Помилка оплати",
-    "delayed": "Затримано",
-    "ready for pickup": "Готове до видачі"
+    "paid": "Оплачено",
+    "expired": "Прострочено",
+    "cancelled": "Відмінено"
   },
   "personal discount": "Ваша персональна знижка:",
   "your manager": "Ваш менеджер:",

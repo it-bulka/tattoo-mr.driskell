@@ -132,13 +132,12 @@
   "total amount": "Total amount:",
   "status": "Status:",
   "order-status": {
-    "processing": "Being processed",
+    "pending": "Pending",
     "shipped": "Shipped",
     "delivered": "Delivered",
-    "cancelled": "Cancelled",
-    "payment error": "Payment error",
-    "delayed": "Delayed",
-    "ready for pickup": "Ready for pickup"
+    "paid": "Paid",
+    "expired": "Expired",
+    "cancelled": "Cancelled"
   },
   "personal discount": "Your Personal Discount:",
   "your manager": "Your manager:",
