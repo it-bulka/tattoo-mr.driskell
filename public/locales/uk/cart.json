@@ -78,6 +78,7 @@
   "hide information": "Приховати інформацію",
   "order number": "Номер замовлення:",
   "order history": "Історія замовлень",
+  "no orders": "Замовлень ще немає",
   "no cart products": "Ви не обрали ще жодного продукту",
   "validation": {
     "enter_name": "Введіть імʼя",
