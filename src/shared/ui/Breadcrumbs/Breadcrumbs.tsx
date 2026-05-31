@@ -32,9 +32,10 @@ export const Breadcrumbs = ({ className, customLastCrumb }: BreadcrumbsProps) =>
           return <p className={cls.active}>{c}</p>
         }
 
+        const breadcrumbPath = '/' + crumbs.slice(0, index + 1).join('/')
         return (
           <>
-            <AppLink to={'/'}>{t(mappedCrumb)}</AppLink>
+            <AppLink to={breadcrumbPath}>{t(mappedCrumb)}</AppLink>
             <span>/</span>
           </>
         )
