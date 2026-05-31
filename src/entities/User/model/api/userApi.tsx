@@ -3,7 +3,17 @@ import { User } from '../type/userSchema.tsx'
 
 interface UpdateUserArg {
   id: string
-  body: { name?: string; email?: string }
+  body: {
+    name?: string
+    email?: string
+    phone?: string
+    city?: string
+    street?: string
+    apartment?: string
+    entrance?: string
+    floor?: string
+    doorphone?: string
+  }
 }
 
 export const userApi = rtkApi.injectEndpoints({
@@ -22,7 +32,14 @@ export const userApi = rtkApi.injectEndpoints({
       transformResponse: (res: { data: User }) => res.data,
       invalidatesTags: (_, __, { id }) => [{ type: 'User' as const, id }],
     }),
+    updatePassword: build.mutation<void, { id: string; body: { oldPassword: string; newPassword: string } }>({
+      query: ({ id, body }) => ({
+        url: `/users/${id}/update-password`,
+        method: 'PATCH',
+        body,
+      }),
+    }),
   }),
 })
 
-export const { useGetUserQuery, useUpdateUserMutation } = userApi
+export const { useGetUserQuery, useUpdateUserMutation, useUpdatePasswordMutation } = userApi
