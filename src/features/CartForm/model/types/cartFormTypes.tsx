@@ -17,9 +17,3 @@ export const CartFormSchema = z.object({
 })
 
 export type CartFormData = z.infer<typeof CartFormSchema>
-
-export type FieldConfig<K extends keyof CartFormData> = {
-  name: K
-  label: string
-  placeholder: string
-}

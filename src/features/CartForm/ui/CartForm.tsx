@@ -1,11 +1,11 @@
 import cls from './CartForm.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Input } from '@/shared/ui'
 import { useMemo } from 'react'
-import { Controller, useFormContext } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
+import { FormSection, FieldConfig } from '@/shared/ui'
 import { useSubmit } from '../model/service/cartFormContext.tsx'
-import { FieldConfig, CartFormData } from '../model/types/cartFormTypes.tsx'
+import { CartFormData } from '../model/types/cartFormTypes.tsx'
 
 interface CartFormProps {
   className?: string
@@ -13,75 +13,38 @@ interface CartFormProps {
 
 export const CartForm = ({ className }: CartFormProps) => {
   const { t } = useTranslation()
-
-  const {
-    control,
-    formState: { errors },
-    clearErrors
-  } = useFormContext<CartFormData>()
+  useFormContext<CartFormData>()
   const handleSubmit = useSubmit()
 
-  const inputs = useMemo(() => {
-    return {
-      receiver: [
-        { name: 'name', label: t('form.name'), placeholder: t('placeholder.name')},
-        { name: 'phone', label: t('form.phone'), placeholder: '+380682635999'},
-        { name: 'email', label: t('form.email'), placeholder: 'myemail@gmail.com'},
-      ] satisfies FieldConfig<keyof Pick<CartFormData, 'name' | 'phone' | 'email'>>[],
-      address: [
-        { name: 'city', label: t('form.city'), placeholder: t('placeholder.city')},
-        { name: 'street', label: t('form.street'), placeholder: t('placeholder.street')},
-        { name: 'apartment', label: t('form.apartment'), placeholder: '25' },
-        { name: 'entrance', label: t('form.entrance'), placeholder: '2' },
-        { name: 'floor', label: t('form.floor'), placeholder: '6' },
-        { name: 'doorphone', label: t('form.doorphone'), placeholder: '6565' },
-      ] satisfies FieldConfig<keyof Pick<CartFormData, 'city' | 'street' | 'apartment' | 'entrance' | 'floor' | 'doorphone'>>[]
-    }
-  }, [t])
+  const receiverFields = useMemo<FieldConfig<CartFormData>[]>(() => [
+    { name: 'name',  label: t('form.name'),  placeholder: t('placeholder.name'), className: cls.name },
+    { name: 'phone', label: t('form.phone'), placeholder: '+380682635999',        className: cls.phone },
+    { name: 'email', label: t('form.email'), placeholder: 'myemail@gmail.com',    className: cls.email },
+  ], [t])
+
+  const addressFields = useMemo<FieldConfig<CartFormData>[]>(() => [
+    { name: 'city',      label: t('form.city'),      placeholder: t('placeholder.city'),   className: cls.city },
+    { name: 'street',    label: t('form.street'),    placeholder: t('placeholder.street'), className: cls.street },
+    { name: 'apartment', label: t('form.apartment'), placeholder: '25',                    className: cls.apartment },
+    { name: 'entrance',  label: t('form.entrance'),  placeholder: '2',                     className: cls.entrance },
+    { name: 'floor',     label: t('form.floor'),     placeholder: '6',                     className: cls.floor },
+    { name: 'doorphone', label: t('form.doorphone'), placeholder: '6565',                  className: cls.doorphone },
+  ], [t])
 
   return (
     <form className={classNames(cls.form, {}, [className])} onSubmit={handleSubmit}>
-      <h3 className={cls.title}>01. {t('info about receiver')}</h3>
-      <div className={cls.receiver}>
-        {inputs.receiver.map((item) => (
-          <Controller
-            key={item.name}
-            name={item.name}
-            control={control}
-            render={({ field }) => (
-              <Input
-                {...field}
-                label={item.label}
-                placeholder={item.placeholder}
-                className={cls[item.name]}
-                error={errors[item.name]?.message}
-                onInput={() => clearErrors(item.name)}
-              />
-            )}
-          />
-        ))}
-      </div>
-
-      <h3 className={cls.title}>01. {t('info about address')}</h3>
-      <div className={cls.address}>
-        {inputs.address.map((item) => (
-          <Controller
-            key={item.name}
-            name={item.name}
-            control={control}
-            render={({ field }) => (
-              <Input
-                {...field}
-                label={item.label}
-                placeholder={item.placeholder}
-                className={cls[item.name]}
-                error={errors[item.name]?.message}
-                onInput={() => clearErrors(item.name)}
-              />
-            )}
-          />
-        ))}
-      </div>
+      <FormSection<CartFormData>
+        title={`01. ${t('info about receiver')}`}
+        titleClassName={cls.title}
+        fields={receiverFields}
+        gridClassName={cls.receiver}
+      />
+      <FormSection<CartFormData>
+        title={`01. ${t('info about address')}`}
+        titleClassName={cls.title}
+        fields={addressFields}
+        gridClassName={cls.address}
+      />
     </form>
   )
 }
