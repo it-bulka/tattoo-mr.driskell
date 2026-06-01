@@ -1,26 +1,28 @@
 import { AppThunk } from '@/app/providers/StoreProvider/config/store.ts'
-import { cartApi } from '@/entities/Cart/model/api/cartApi.tsx'
-import { cartActions } from '@/entities/Cart/model/slice/cartSlice.tsx'
+import { cartApi } from '../api/cartApi.tsx'
+import { cartActions } from '../slice/cartSlice.tsx'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useCallback } from 'react'
 import { IS_BACK_CART_SYNC_LOCALSTORAGE } from '@/shared/consts'
-import { transformCartItemsForBack } from '@/entities/Cart'
+import { transformCartItemsForBack } from '../selectors/selectors.tsx'
+import { getUserId } from '@/entities/User'
 
 export const manualSync = (): AppThunk => async (dispatch, getState) => {
   if(!navigator.onLine) return
   if (!localStorage.getItem(IS_BACK_CART_SYNC_LOCALSTORAGE)) return
 
   const state = getState()
-  const cart = state.cart
+  const userId = getUserId(state)
 
-  if(!cart || cart.isBackSynchronized) return
+  if (!userId) return
+  if (!state.cart || state.cart.isBackSynchronized) return
 
-  const items = transformCartItemsForBack(cart)
+  const items = transformCartItemsForBack(state.cart)
 
   try {
     const result = await dispatch(
       cartApi.endpoints.syncCart.initiate({
-        userId: state.user.id,
+        userId,
         orderItems: items,
       })
     ).unwrap()

@@ -14,8 +14,6 @@ export const fetchCart = createAsyncThunk<CartDataRes>(
         cartApi.endpoints.getCart.initiate({ userId })
       ).unwrap()
 
-      console.log('SEE: fetchCart', response)
-
       return response.data
     } catch (error) {
       return rejectWithValue(error)
