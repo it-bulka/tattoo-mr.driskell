@@ -54,6 +54,10 @@
     "entrance": "Підїзд",
     "floor": "Поверх",
     "doorphone": "Домофон",
+    "comment": "Коментар до замовлення",
+    "np_city": "Місто",
+    "np_delivery_type": "Тип доставки",
+    "np_warehouse": "Відділення / Поштомат",
     "first to know": "Дізнавайтеся першими",
     "subscribe text": "Підпишіться на новинну розсилку з найцікавішими новинами та акціями",
     "enter your name": "Введіть ім’я",
@@ -63,8 +67,16 @@
   "placeholder": {
     "name": "Петро Петрович Петриченко",
     "city": "Київ",
-    "street": "вул.Хрещатик, буд.3"
+    "street": "вул.Хрещатик, буд.3",
+    "comment": "Ваш коментар...",
+    "np_city_search": "Почніть вводити назву міста..."
   },
+  "np_delivery_type": {
+    "warehouse": "Відділення",
+    "postomat": "Поштомат",
+    "courier": "Кур’єр Нової Пошти"
+  },
+  "nova_poshta_section_title": "Доставка Новою Поштою",
   "info about receiver": "Інформація про одержувача",
   "info about address": "Інформація про адресу",
   "filter": {
@@ -187,7 +199,13 @@
     "invalid_email": "Невалідний email",
     "enter_password": "Введіть пароль",
     "password_min": "Мінімум 6 символів",
-    "password_match": "Паролі не збігаються"
+    "password_match": "Паролі не збігаються",
+    "enter_phone": "Введіть телефон",
+    "enter_city": "Введіть місто",
+    "enter_street": "Введіть вулицю",
+    "agree_required": "Погодьтесь з умовами",
+    "enter_np_delivery_type": "Оберіть тип доставки",
+    "enter_np_warehouse": "Оберіть відділення або поштомат"
   },
   "profileForm": {
     "personal_info": "Особисті дані",

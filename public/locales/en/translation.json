@@ -54,6 +54,10 @@
     "entrance": "Entrance",
     "floor": "Floor",
     "doorphone": "Entryphone",
+    "comment": "Order comment",
+    "np_city": "City",
+    "np_delivery_type": "Delivery type",
+    "np_warehouse": "Branch / Parcel locker",
     "first to know": "Be the first to know",
     "subscribe text": "Subscribe to the newsletter for the most interesting news and offers",
     "enter your name": "Enter your name",
@@ -63,8 +67,16 @@
   "placeholder": {
     "name": "John Smith",
     "city": "Kyiv",
-    "street": "12 Khreshchatyk Street"
+    "street": "12 Khreshchatyk Street",
+    "comment": "Your comment...",
+    "np_city_search": "Start typing city name..."
   },
+  "np_delivery_type": {
+    "warehouse": "Branch",
+    "postomat": "Parcel locker",
+    "courier": "Nova Poshta Courier"
+  },
+  "nova_poshta_section_title": "Nova Poshta Delivery",
   "info about receiver": "Information about the recipient",
   "info about address": "Information about the address",
   "filter": {
@@ -187,7 +199,13 @@
     "invalid_email": "Invalid email",
     "enter_password": "Please enter your password",
     "password_min": "Minimum 6 characters",
-    "password_match": "Passwords do not match"
+    "password_match": "Passwords do not match",
+    "enter_phone": "Please enter your phone number",
+    "enter_city": "Please enter your city",
+    "enter_street": "Please enter your street",
+    "agree_required": "Please agree to the terms",
+    "enter_np_delivery_type": "Please select delivery type",
+    "enter_np_warehouse": "Please select a branch or parcel locker"
   },
   "profileForm": {
     "personal_info": "Personal info",
