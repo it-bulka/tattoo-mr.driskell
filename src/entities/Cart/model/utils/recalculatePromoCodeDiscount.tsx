@@ -6,7 +6,7 @@ export const recalculatePromoCodeDiscount = (
   if(promoCode.type === 'fixed') return promoCode.value
   if (promoCode.type === 'percentage') {
     const discount = totalAmount / 100 * promoCode.value
-    return discount * discount
+    return discount
   }
 
   return 0
