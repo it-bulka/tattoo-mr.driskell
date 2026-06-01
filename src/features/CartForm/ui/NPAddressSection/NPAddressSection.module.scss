@@ -19,6 +19,16 @@
 
 .select {
   width: 100%;
+
+  > label {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  > *:last-child {
+    flex: 1;
+    min-width: 0;
+  }
 }
 
 .title {
