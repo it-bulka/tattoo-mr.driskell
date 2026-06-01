@@ -19,7 +19,9 @@ export enum AppRoutes {
   TATTOO_MACHINE_DETAILS = 'tattoo_machine_details',
   // additional
   FORBIDDEN = 'forbidden',
-  NOT_FOUND = 'not_found'
+  NOT_FOUND = 'not_found',
+  ORDER_SUCCESS = 'order_success',
+  ORDER_FAILURE = 'order_failure',
 }
 
 export const getHomePage = () => '/'
@@ -44,6 +46,8 @@ export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-ma
 
 export const getForbiddenPage = () => '/forbidden'
 export const getNotFoundPage = () => '/not-found'
+export const getOrderSuccessPage = () => '/catalog/cart/payment-success'
+export const getOrderFailurePage = () => '/catalog/cart/payment-failure'
 
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: getHomePage(),
@@ -66,6 +70,8 @@ export const RoutePaths: Record<AppRoutes, string> = {
   // ADDITIONAL
   [AppRoutes.FORBIDDEN]: getForbiddenPage(),
   [AppRoutes.NOT_FOUND]: getNotFoundPage(),
+  [AppRoutes.ORDER_SUCCESS]: getOrderSuccessPage(),
+  [AppRoutes.ORDER_FAILURE]: getOrderFailurePage(),
 }
 
 export type RoutePathsType = typeof RoutePaths[keyof typeof RoutePaths]

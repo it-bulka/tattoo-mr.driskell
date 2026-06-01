@@ -6,8 +6,8 @@ import {
   CartPage, NotFound, DiscountPage, AdditionalServicePage,
   PromocodesPage, TattooMachineDetails, Profile, ContactsPage,
   ToolsBlog, BrandPage, CategoriesPages, CatalogPage,
-  SearchResultPage,
-  FavouritesPage
+  SearchResultPage, FavouritesPage,
+  OrderSuccessPage, OrderFailurePage,
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -46,6 +46,14 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.cart,
         element: <CartPage />
+      },
+      {
+        path: RoutePaths.order_success,
+        element: <OrderSuccessPage />
+      },
+      {
+        path: RoutePaths.order_failure,
+        element: <OrderFailurePage />
       },
       {
         path: RoutePaths.additional_service,
