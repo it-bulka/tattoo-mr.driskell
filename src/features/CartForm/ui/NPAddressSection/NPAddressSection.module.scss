@@ -1,0 +1,43 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.city {
+  grid-column: span 4;
+}
+
+.deliveryType {
+  grid-column: span 4;
+}
+
+.warehouse {
+  grid-column: span 8;
+}
+
+.select {
+  width: 100%;
+}
+
+.title {
+  font: 25px / 115% var(--font-family-secondary);
+  font-weight: 900;
+}
+
+@include media-max-mobile-s {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .city,
+  .deliveryType {
+    grid-column: span 2;
+  }
+
+  .warehouse {
+    grid-column: span 2;
+  }
+}
