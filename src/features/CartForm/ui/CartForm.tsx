@@ -6,6 +6,8 @@ import { useFormContext } from 'react-hook-form'
 import { FormSection, FieldConfig } from '@/shared/ui'
 import { useSubmit } from '../model/service/cartFormContext.tsx'
 import { CartFormData } from '../model/types/cartFormTypes.tsx'
+import { NPAddressSection } from './NPAddressSection/NPAddressSection.tsx'
+import { CourierCommentSection } from './CourierCommentSection/CourierCommentSection.tsx'
 
 interface CartFormProps {
   className?: string
@@ -13,8 +15,9 @@ interface CartFormProps {
 
 export const CartForm = ({ className }: CartFormProps) => {
   const { t } = useTranslation()
-  useFormContext<CartFormData>()
+  const { watch } = useFormContext<CartFormData>()
   const handleSubmit = useSubmit()
+  const deliveryMethod = watch('deliveryMethod')
 
   const receiverFields = useMemo<FieldConfig<CartFormData>[]>(() => [
     { name: 'name',  label: t('form.name'),  placeholder: t('placeholder.name'), className: cls.name },
@@ -39,12 +42,24 @@ export const CartForm = ({ className }: CartFormProps) => {
         fields={receiverFields}
         gridClassName={cls.receiver}
       />
-      <FormSection<CartFormData>
-        title={`01. ${t('info about address')}`}
-        titleClassName={cls.title}
-        fields={addressFields}
-        gridClassName={cls.address}
-      />
+
+      {deliveryMethod === 'courier' ? (
+        <>
+          <FormSection<CartFormData>
+            title={`02. ${t('info about address')}`}
+            titleClassName={cls.title}
+            fields={addressFields}
+            gridClassName={cls.address}
+          />
+          <CourierCommentSection />
+        </>
+      ) : (
+        <NPAddressSection
+          title={`02. ${t('nova_poshta_section_title')}`}
+          titleClassName={cls.title}
+          className={cls.npSection}
+        />
+      )}
     </form>
   )
 }
