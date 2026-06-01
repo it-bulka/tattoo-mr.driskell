@@ -27,7 +27,7 @@ export const CartCount = memo(({
       type="button"
       onClick={onClick}
     >
-      {Boolean(totalPrice) && <span>{currencyFormat(totalPrice)}</span>}
+      {Boolean(totalPrice) && <span className={cls.price}>{currencyFormat(totalPrice)}</span>}
       <CartIcon />
       {Boolean(totalAmount) && <span className={cls.amount}>{totalAmount}</span>}
     </button>

@@ -10,6 +10,12 @@
   }
 }
 
+.price {
+  @media (max-width: 450px) {
+    display: none;
+  }
+}
+
 .amount {
   padding: 5px;
   min-width: 24px;
