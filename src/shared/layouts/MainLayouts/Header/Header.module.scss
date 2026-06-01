@@ -80,8 +80,6 @@ $font-size-s: 12px;
 
 @include media-max-mobile-s {
   .row {
-    .like,
-    .avatar,
     .search {
       display: none;
     }
