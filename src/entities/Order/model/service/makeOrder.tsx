@@ -10,6 +10,7 @@ import { getSelectedServicesSelector } from '../selectors/orderSelectors.tsx'
 import { orderApi } from '../api/orderApi.tsx'
 import { OrderRes } from '../types/orderSchema.tsx'
 import { getCartItemsSelector, getPromoCodeName } from '@/entities/Cart'
+import { CART_FORM_LOCALSTORAGE } from '@/shared/consts/localStorages.tsx'
 
 
 export const makeOrder = createAsyncThunk<
@@ -31,26 +32,43 @@ export const makeOrder = createAsyncThunk<
     const promoCode = getPromoCodeName(state)
 
     const errors = []
-    if(!userId) errors.push(`user id`)
-    if(!delivery) errors.push(`delivery type`)
-    if(!paymentType) errors.push(`payment type`)
-    if(!itemsToBuy.length) errors.push(`items to buy`)
+    if (!userId) errors.push(`user id`)
+    if (!delivery) errors.push(`delivery type`)
+    if (!paymentType) errors.push(`payment type`)
+    if (!itemsToBuy.length) errors.push(`items to buy`)
 
-    if(errors.length) {
+    if (errors.length) {
       const errorsString = errors.join(', ')
       const err = `Provide the following data: ${errorsString}`
       return rejectWithValue(err)
     }
 
-    const { name, email, phone, ...rest } = buyerData
+    const {
+      name, email, phone,
+      deliveryMethod: _dm,
+      agree: _agree,
+      city, street, apartment, entrance, floor, doorphone, comment,
+      npCityRef, npCityName, npDeliveryType, npWarehouseRef, npWarehouseName,
+    } = buyerData
+
+    const shippingAddress = delivery === 'courier'
+      ? { city, street, apartment, entrance, floor, doorphone }
+      : {
+          npCityRef: npCityRef!,
+          npCityName: npCityName!,
+          npDeliveryType: npDeliveryType!,
+          npWarehouseRef,
+          npWarehouseName,
+        }
 
     const data = {
       userId,
       paymentMethod: paymentType,
       deliveryMethod: delivery,
       buyer: { name, email, phone },
-      shippingAddress: rest,
-      items: itemsToBuy.map(item => ({
+      shippingAddress,
+      comment,
+      items: itemsToBuy.map((item) => ({
         id: item.productId,
         quantity: item.quantity,
       })),
@@ -62,6 +80,8 @@ export const makeOrder = createAsyncThunk<
       const response = await dispatch(
         orderApi.endpoints.sendOrder.initiate(data)
       ).unwrap()
+
+      localStorage.removeItem(CART_FORM_LOCALSTORAGE)
 
       return response
     } catch (e) {
