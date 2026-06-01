@@ -42,6 +42,14 @@
   },
   "payment": {
     "title": "Payment",
+    "pay now": "Pay now",
+    "confirm order": "Confirm order",
+    "cod modal": {
+      "title": "Delivery terms",
+      "body": "Payment is made upon receipt at a Nova Poshta branch. Carrier fees may apply. Delivery time: 1–3 days.",
+      "confirm": "Confirm order",
+      "cancel": "Cancel"
+    },
     "online payment": {
       "title": "Online payment",
       "info": "You can pay for your order via a secure payment service using a bank card"
@@ -80,6 +88,21 @@
   "order history": "Order History",
   "no orders": "No orders yet",
   "no cart products": "No any products chosen yet",
+  "order": {
+    "error": "Failed to place the order. Please try again."
+  },
+  "order success": {
+    "title": "Order placed!",
+    "order number": "Order number:",
+    "description": "Thank you for your purchase. We will notify you about the delivery status.",
+    "to profile": "My orders",
+    "continue shopping": "Continue shopping"
+  },
+  "order failure": {
+    "title": "Payment failed",
+    "description": "An error occurred while processing your payment. Please try again or choose a different payment method.",
+    "back to cart": "Back to cart"
+  },
   "validation": {
     "enter_name": "Enter your name",
     "enter_phone": "Enter your phone number",
