@@ -185,6 +185,16 @@ const cartSlice = createSlice({
         newTotalPrice: delta.totalPrice,
       })
     },
+    clearCart: (state) => {
+      cartAdapter.removeAll(state)
+      state.totalAmount = 0
+      state.totalPrice = 0
+      state.discount = 0
+      state.extraServices = 0
+      state.promoCode = undefined
+      state.error = undefined
+      state.isBackSynchronized = false
+    },
     // BACK SYNC
     setCartData: (state, action: PayloadAction<CartDataRes>) => {
       setCartData(state, action, cartAdapter)

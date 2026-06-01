@@ -9,7 +9,7 @@ import {
 import { getSelectedServicesSelector } from '../selectors/orderSelectors.tsx'
 import { orderApi } from '../api/orderApi.tsx'
 import { OrderRes } from '../types/orderSchema.tsx'
-import { getCartItemsSelector, getPromoCodeName } from '@/entities/Cart'
+import { getCartItemsSelector, getPromoCodeName, cartActions, cartApi } from '@/entities/Cart'
 import { CART_FORM_LOCALSTORAGE } from '@/shared/consts/localStorages.tsx'
 import { getRtkApiMessage } from '@/shared/libs'
 
@@ -83,6 +83,13 @@ export const makeOrder = createAsyncThunk<
       ).unwrap()
 
       localStorage.removeItem(CART_FORM_LOCALSTORAGE)
+
+      dispatch(cartActions.clearCart())
+      if (userId) {
+        await dispatch(
+          cartApi.endpoints.syncCart.initiate({ userId, orderItems: [] })
+        )
+      }
 
       return response
     } catch (e) {
