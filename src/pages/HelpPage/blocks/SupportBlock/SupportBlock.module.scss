@@ -1,0 +1,43 @@
+.support {
+  padding: 70px 0;
+}
+
+.contactsCard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.supportDesc {
+  font: var(--font-m-secondary);
+  color: var(--text-gray-color);
+  line-height: 1.7;
+}
+
+.hoursCard {
+  background: var(--bg-card-color);
+  padding: var(--card-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.hoursTitle {
+  font: var(--font-l-primary);
+  color: var(--text-dark-color);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.hoursText {
+  font: var(--font-m-primary);
+  color: var(--text-gray-color);
+}
+
+@include media-max-mobile-s {
+  .support {
+    padding: 50px 0;
+  }
+}

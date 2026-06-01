@@ -1,0 +1,19 @@
+.categories {
+  padding: 70px 0;
+}
+
+.grid {
+  margin-top: 40px;
+}
+
+.cardText {
+  font: var(--font-m-secondary);
+  color: var(--text-gray-color);
+  line-height: 1.6;
+}
+
+@include media-max-mobile-s {
+  .categories {
+    padding: 50px 0;
+  }
+}
