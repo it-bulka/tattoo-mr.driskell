@@ -3,25 +3,35 @@ import debounce from 'lodash.debounce'
 import { cartApi } from '../api/cartApi'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { cartActions } from '@/entities/Cart/model/slice/cartSlice.tsx'
-import { transformCartItemsForBack } from '@/entities/Cart';
+import { cartActions } from '../slice/cartSlice.tsx'
+import { transformCartItemsForBack, getCartItemsSelector } from '../selectors/selectors.tsx'
+import { getUserId } from '@/entities/User'
+import { guestCartStorage } from '../utils/guestCartStorage.tsx'
 
 let getState: (() => StateSchema) | null = null
 let dispatch: AppDispatch | null = null
 
 const debouncedSync = debounce(async () => {
-  if (!getState || !dispatch || !navigator.onLine) return
+  if (!getState || !dispatch) return
 
   const state = getState()
-  const cart = state.cart
+  const userId = getUserId(state)
 
-  const items = transformCartItemsForBack(cart)
+  if (!userId) {
+    guestCartStorage.set(getCartItemsSelector(state))
+    return
+  }
+
+  if (!navigator.onLine) return
+
+  const items = transformCartItemsForBack(state.cart)
 
   try {
     const result = await dispatch(
       cartApi.endpoints.syncCart.initiate({
-        userId: state.user.id,
+        userId,
         orderItems: items,
+        promoCode: state.cart.promoCode?.code,
       })
     ).unwrap()
 
@@ -34,7 +44,7 @@ const debouncedSync = debounce(async () => {
 
 
 const syncTriggerActions = [
-  'cart/addItem',
+  'cart/addItems',
   'cart/removeItem',
   'cart/setItemAmount',
   'cart/restartPromocode'

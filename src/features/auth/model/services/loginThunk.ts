@@ -6,6 +6,7 @@ import { AppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { DEVICE_ID_LOCALSTORAGE } from '@/shared/consts'
 import { setUUID } from '@/shared/libs'
 import { userActions } from '@/entities/User'
+import { guestCartStorage, cartActions } from '@/entities/Cart'
 
 export const loginThunk = createAsyncThunk<
   { token: string; deviceId: string },
@@ -30,6 +31,13 @@ export const loginThunk = createAsyncThunk<
       if(response.data) {
         await dispatch(userActions.setUser(response.data))
       }
+
+      const guestItems = guestCartStorage.get()
+      if (guestItems.length > 0) {
+        dispatch(cartActions.addItems(guestItems))
+        guestCartStorage.clear()
+      }
+
       return {
         token: response.accessToken,
         deviceId: deviceId
