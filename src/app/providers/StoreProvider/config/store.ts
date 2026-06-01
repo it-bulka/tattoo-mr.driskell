@@ -3,6 +3,7 @@ import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts
 import { cartReducer } from '@/entities/Cart/model/slice/cartSlice.tsx'
 import { useDispatch } from 'react-redux'
 import { rtkApi } from '@/shared/api/rtkApi.ts'
+import { novaPoshtaApi } from '@/shared/api/novaPoshtaApi.ts'
 import { productsReducer } from '@/entities'
 import { userReducer } from '@/entities/User'
 import { cartSyncMiddleware } from '@/entities/Cart'
@@ -23,14 +24,15 @@ export const createStore = () => {
     search: searchReducer,
     favourites: favouritesReducer,
     session: sessionReducer,
-    [rtkApi.reducerPath]: rtkApi.reducer
+    [rtkApi.reducerPath]: rtkApi.reducer,
+    [novaPoshtaApi.reducerPath]: novaPoshtaApi.reducer,
   }
 
   const store = configureStore({
     devTools: __IS_DEV__,
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(rtkApi.middleware, cartSyncMiddleware, likedIdsMiddleware)
+      getDefaultMiddleware().concat(rtkApi.middleware, novaPoshtaApi.middleware, cartSyncMiddleware, likedIdsMiddleware)
   })
 
   return store

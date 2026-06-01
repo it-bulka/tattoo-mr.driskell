@@ -1,5 +1,6 @@
 import { CartSchema } from '@/entities/Cart'
 import { rtkApi } from '@/shared/api/rtkApi.ts'
+import { novaPoshtaApi } from '@/shared/api/novaPoshtaApi.ts'
 import { ProductsSchema, UserSchema, OrderSchema } from '@/entities'
 import { SearchSchema } from '@/features/searchTattooMachine'
 import { FavouritesSchema } from '@/features/addFavourite/model/types'
@@ -16,4 +17,5 @@ export interface StateSchema {
   favourites: FavouritesSchema
   session: SessionSchema
   [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
+  [novaPoshtaApi.reducerPath]: ReturnType<typeof novaPoshtaApi.reducer>
 }
