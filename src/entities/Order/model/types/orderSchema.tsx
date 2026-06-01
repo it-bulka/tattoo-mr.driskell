@@ -1,6 +1,6 @@
-import { CartFormData } from '@/features/CartForm/model/types/cartFormTypes.tsx'
 export type PaymentType = 'online' | 'cashOnDelivery' | 'bankTransfer'
 export type DeliveryType = 'courier' | 'novaPoshta'
+export type NPDeliverySubType = 'warehouse' | 'postomat' | 'courier'
 export type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
 
 export interface OrderSchema {
@@ -18,9 +18,28 @@ type OrderItem = {
   quantity: number
 }
 
-type BuyerData = 'name' | 'phone' | 'email'
-type Buyer = Pick<CartFormData, BuyerData>
-type ShippingAddress = Omit<CartFormData, BuyerData>
+interface Buyer {
+  name: string
+  phone: string
+  email: string
+}
+
+export interface CourierShippingAddress {
+  city?: string
+  street?: string
+  apartment?: string
+  entrance?: string
+  floor?: string
+  doorphone?: string
+}
+
+export interface NPShippingAddress {
+  npCityRef: string
+  npCityName: string
+  npDeliveryType: NPDeliverySubType
+  npWarehouseRef?: string
+  npWarehouseName?: string
+}
 
 export interface Order {
   userId: string
@@ -28,9 +47,10 @@ export interface Order {
   paymentMethod: PaymentType
   deliveryMethod: DeliveryType
   buyer: Buyer
-  shippingAddress: ShippingAddress
+  shippingAddress: CourierShippingAddress | NPShippingAddress
   selectedServices: string[]
   promoCode?: string
+  comment?: string
 }
 
 export interface OrderRes {
