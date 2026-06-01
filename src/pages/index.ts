@@ -14,3 +14,5 @@ export { SearchResultPage } from './SearchResultPage/ui/SearchResultPage.async.t
 export { FavouritesPage } from './FavouritesPage/ui/page/FavouritesPage.async.tsx'
 export { OrderSuccessPage } from './OrderSuccessPage/ui/OrderSuccessPage.async.tsx'
 export { OrderFailurePage } from './OrderFailurePage/ui/OrderFailurePage.async.tsx'
+export { AboutPage } from './AboutPage'
+export { HelpPage } from './HelpPage'

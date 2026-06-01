@@ -8,6 +8,7 @@ import {
   ToolsBlog, BrandPage, CategoriesPages, CatalogPage,
   SearchResultPage, FavouritesPage,
   OrderSuccessPage, OrderFailurePage,
+  AboutPage, HelpPage,
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -74,6 +75,14 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.contacts,
         element: <ContactsPage />
+      },
+      {
+        path: RoutePaths.about,
+        element: <AboutPage />
+      },
+      {
+        path: RoutePaths.help,
+        element: <HelpPage />
       },
       {
         path: RoutePaths.help_tools,
