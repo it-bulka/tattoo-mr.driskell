@@ -25,9 +25,10 @@ $scale: 0.2;
 
   &.center {
     top: 50%;
+    left: 50%;
     max-width: 100%;
 
-    transform: translateY(var(--modal-y-shift)) scale($scale);
+    transform: translateX(-50%) translateY(var(--modal-y-shift)) scale($scale);
     display: flex;
     align-items: center;
   }
@@ -52,7 +53,7 @@ $scale: 0.2;
     }
 
     &.center {
-      transform: translateY(var(--modal-y-shift)) scale(1);
+      transform: translateX(-50%) translateY(var(--modal-y-shift)) scale(1);
     }
   }
 }
@@ -62,7 +63,7 @@ $scale: 0.2;
     transform: scale($scale);
 
     &.center {
-      transform: translateY(var(--modal-y-shift)) scale($scale);
+      transform: translateX(-50%) translateY(var(--modal-y-shift)) scale($scale);
     }
   }
 }
