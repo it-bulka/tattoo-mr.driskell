@@ -1,0 +1,14 @@
+.values {
+  padding: 70px 0;
+  background-color: var(--bg-color-2);
+
+  .list {
+    margin-top: 10px;
+  }
+}
+
+@include media-max-mobile-s {
+  .values {
+    padding: 50px 0;
+  }
+}
