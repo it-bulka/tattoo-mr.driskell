@@ -1,7 +1,24 @@
 export type PaymentType = 'online' | 'cashOnDelivery' | 'bankTransfer'
 export type DeliveryType = 'courier' | 'novaPoshta'
 export type NPDeliverySubType = 'warehouse' | 'postomat' | 'courier'
-export type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
+export type OrderStatus = 'pending' | 'pending_payment' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
+
+export interface WayForPayFormData {
+  merchantAccount: string
+  merchantDomainName: string
+  orderReference: string
+  orderDate: number
+  amount: number
+  currency: string
+  productName: string[]
+  productCount: number[]
+  productPrice: number[]
+  merchantSignature: string
+  serviceUrl: string
+  returnUrl: string
+  language: string
+  paymentSystems: string
+}
 
 export interface OrderSchema {
   payment: PaymentType
@@ -56,6 +73,7 @@ export interface Order {
 export interface OrderRes {
   orderId: string
   status: OrderStatus
+  paymentData?: WayForPayFormData
 }
 
 export interface OrderHistoryItemProps {

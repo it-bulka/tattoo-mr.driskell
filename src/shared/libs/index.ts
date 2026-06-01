@@ -16,3 +16,4 @@ export { useCheckPathnameChanging } from './usePathnameChanged/usePathnameChange
 export { getRtkApiMessage } from './getRtkApiMessage/getRtkApiMessage.tsx'
 export { getRejectedError } from './getRejectedError/getRejectedError.tsx'
 export { generateUUID, setUUID } from './generateUUID/generateUUID.ts'
+export { submitWayForPayForm } from './wayforpay/submitWayForPayForm.ts'

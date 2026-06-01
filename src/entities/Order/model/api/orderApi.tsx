@@ -1,6 +1,11 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
 import { Order, OrderRes, OrderHistoryItemProps, OrderStatus } from '../types/orderSchema.tsx'
 
+interface CreateOrderRes {
+  data: OrderRes
+  success: boolean
+}
+
 interface BackendOrder {
   _id: string
   orderDate: string
@@ -33,7 +38,8 @@ export const orderApi = rtkApi.injectEndpoints({
         url: '/orders',
         body: order,
         method: 'POST',
-      })
+      }),
+      transformResponse: (res: CreateOrderRes) => res.data,
     }),
     getUserOrders: build.query<OrderHistoryItemProps[], string>({
       query: (userId) => `/users/${userId}/orders`,

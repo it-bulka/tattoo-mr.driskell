@@ -1,5 +1,5 @@
 export { orderReducer, orderActions } from './model/slice/orderSlice.tsx'
-export type { OrderSchema, PaymentType, DeliveryType, NPDeliverySubType, CourierShippingAddress, NPShippingAddress, OrderHistoryItemProps } from './model/types/orderSchema.tsx'
+export type { OrderSchema, PaymentType, DeliveryType, NPDeliverySubType, CourierShippingAddress, NPShippingAddress, OrderHistoryItemProps, WayForPayFormData, OrderRes } from './model/types/orderSchema.tsx'
 export {
   getOrderPaymentSelector,
   getOrderDeliverySelector,

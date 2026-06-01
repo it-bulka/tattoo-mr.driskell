@@ -11,6 +11,7 @@ import { orderApi } from '../api/orderApi.tsx'
 import { OrderRes } from '../types/orderSchema.tsx'
 import { getCartItemsSelector, getPromoCodeName } from '@/entities/Cart'
 import { CART_FORM_LOCALSTORAGE } from '@/shared/consts/localStorages.tsx'
+import { getRtkApiMessage } from '@/shared/libs'
 
 
 export const makeOrder = createAsyncThunk<
@@ -85,8 +86,8 @@ export const makeOrder = createAsyncThunk<
 
       return response
     } catch (e) {
-      console.log(e)
-      return rejectWithValue('')
+      const message = getRtkApiMessage(e as Parameters<typeof getRtkApiMessage>[0])
+      return rejectWithValue(message)
     }
   }
 )
