@@ -17,11 +17,12 @@ import { useGetServicesQuery } from '@/entities/Service'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { deliveryList, deliveries } from '../model/consts/deliveries.tsx'
 import { payments, paymentList } from '../model/consts/payments.tsx'
-import { useSubmit, type CartFormData } from '@/features/CartForm'
-
+import { type CartFormData } from '@/features/CartForm'
 import { Controller, useFormContext } from 'react-hook-form'
 import { ErrorMsg } from '@/shared/ui'
-import { ActivatePromoButton } from '@/features/applyPromoCode';
+import { ActivatePromoButton } from '@/features/applyPromoCode'
+import { CodConfirmModal } from './CodConfirmModal/CodConfirmModal.tsx'
+import { useCheckoutSubmit } from '../model/hooks/useCheckoutSubmit.ts'
 
 interface AdditionalInfoProps {
   className?: string
@@ -33,7 +34,6 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const selectedDeliveryType = useSelector(getOrderDeliverySelector)
   const selectedServices = useSelector(getSelectedServicesSelector)
   const cartSubtotal = useSelector(getTotalPriceSelector)
-
   const totals = useSelector(getCartTotalsSelector)
 
   const { data: servicesData } = useGetServicesQuery()
@@ -59,7 +59,16 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   }, [dispatch])
 
   const { control } = useFormContext<CartFormData>()
-  const submitHandler = useSubmit()
+
+  const {
+    isCod,
+    isCodModalOpen,
+    closeCodModal,
+    handleMainButtonClick,
+    handleCodConfirm,
+  } = useCheckoutSubmit()
+
+  const buttonLabel = isCod ? t('payment.confirm order') : t('payment.pay now')
 
   return (
     <div className={classNames(cls.additionalInfo, {}, [className])}>
@@ -129,7 +138,7 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
       </div>
 
       <div className={cls.block}>
-        <Button dark center max big onClick={submitHandler}>{t('buy now')}</Button>
+        <Button dark center max big onClick={handleMainButtonClick}>{buttonLabel}</Button>
         <Button center max big className={cls.contact}>{t('contact the manager')}</Button>
 
         <Controller
@@ -157,6 +166,11 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
             />
       </div>
 
+      <CodConfirmModal
+        isOpen={isCodModalOpen}
+        onClose={closeCodModal}
+        onConfirm={handleCodConfirm}
+      />
     </div>
   )
 })
