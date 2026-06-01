@@ -44,10 +44,11 @@ export const Accordion = memo(({
 
   return (
     <div className={classNames('', {}, [className])}>
-      <div className={cls.title}>
+      <div className={cls.title} onClick={toggle}>
         <p>{title}</p>
         <button
-          onClick={toggle}
+          tabIndex={-1}
+          aria-hidden="true"
           className={classNames(cls.arrow, { [cls.up]:  isUp })}>
           <ArrowLeft />
         </button>
