@@ -1,9 +1,10 @@
 {
   "filter-level": {
-    "beginners": "Для початківців",
-    "builders": "Від білдерів",
-    "professionals": "Для професіоналів",
-    "consumables": "Розхідні матеріали"
+    "new": "Новинка",
+    "hit": "Хіт",
+    "discount": "Знижка",
+    "beginner": "Для початківців",
+    "professional": "Для профі"
   },
   "available only": "Тільки в наявності",
   "price": "Ціна",
@@ -22,6 +23,13 @@
     "pen-style": "Пен-машинки",
     "pneumatic": "Пневматичні",
     "hybrid": "Гібридні"
+  },
+  "needle types": {
+    "title": "Тип голки",
+    "round-liner": "Round Liner",
+    "magnum": "Magnum",
+    "shader": "Shader",
+    "flat": "Flat"
   },
   "filter": "Фільтр"
 }
