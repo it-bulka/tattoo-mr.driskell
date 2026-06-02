@@ -5,7 +5,9 @@ $font: $font-size $font-line var(--font-family-secondary);
 $font-size-s: 12px;
 
 .header {
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background-color: var(--bg-dark-color);
   color: var(--text-light-color);
 }

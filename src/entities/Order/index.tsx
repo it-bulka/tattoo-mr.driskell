@@ -6,4 +6,5 @@ export {
   getSelectedServicesSelector,
 } from './model/selectors/orderSelectors.tsx'
 export { makeOrder } from './model/service/makeOrder.tsx'
-export { useGetUserOrdersQuery } from './model/api/orderApi.tsx'
+export { useGetUserOrdersQuery, useGetUserOrdersPaginatedQuery } from './model/api/orderApi.tsx'
+export type { OrdersPageResponse } from './model/api/orderApi.tsx'

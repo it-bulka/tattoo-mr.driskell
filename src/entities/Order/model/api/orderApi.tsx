@@ -16,6 +16,20 @@ interface BackendOrder {
   shippingAddress?: { city?: string; street?: string }
 }
 
+export interface OrdersPageResponse {
+  orders: OrderHistoryItemProps[]
+  totalPages: number
+  currentPage: number
+  hasMore: boolean
+}
+
+interface OrdersPageBackendRes {
+  data: BackendOrder[]
+  totalPages: number
+  currentPage: number
+  hasMore: boolean
+}
+
 function mapOrderToHistoryItem(order: BackendOrder): OrderHistoryItemProps {
   return {
     date: order.orderDate,
@@ -46,7 +60,32 @@ export const orderApi = rtkApi.injectEndpoints({
       transformResponse: (res: { data: BackendOrder[] }) => res.data.map(mapOrderToHistoryItem),
       providesTags: (_, __, userId) => [{ type: 'UserOrders' as const, id: userId }],
     }),
+    getUserOrdersPaginated: build.query<OrdersPageResponse, { userId: string; page: number; limit: number }>({
+      query: ({ userId, page, limit }) => ({
+        url: `/users/${userId}/orders`,
+        params: { page, limit },
+      }),
+      transformResponse: (res: OrdersPageBackendRes) => ({
+        orders: res.data.map(mapOrderToHistoryItem),
+        totalPages: res.totalPages,
+        currentPage: res.currentPage,
+        hasMore: res.hasMore,
+      }),
+      serializeQueryArgs: ({ queryArgs }) => queryArgs.userId,
+      merge: (currentCache, newItems) => {
+        if (newItems.currentPage === 1) {
+          currentCache.orders = newItems.orders
+        } else {
+          currentCache.orders.push(...newItems.orders)
+        }
+        currentCache.currentPage = newItems.currentPage
+        currentCache.totalPages = newItems.totalPages
+        currentCache.hasMore = newItems.hasMore
+      },
+      forceRefetch: ({ currentArg, previousArg }) =>
+        currentArg?.page !== previousArg?.page,
+    }),
   })
 })
 
-export const { useGetUserOrdersQuery } = orderApi
+export const { useGetUserOrdersQuery, useGetUserOrdersPaginatedQuery } = orderApi
