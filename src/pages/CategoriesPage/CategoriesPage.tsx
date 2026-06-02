@@ -1,22 +1,52 @@
 import cls from './CategoriesPage.module.scss'
 import classNames from 'classnames'
-import { Breadcrumbs, Button } from '@/shared/ui'
+import { Breadcrumbs, ErrorMsg } from '@/shared/ui'
 import { FilterToolbar } from '@/widgets'
-import { productsList } from '@/mockData.tsx'
 import { useTranslation } from 'react-i18next'
-import { ProductList } from '@/entities'
+import { ProductListWithBtn } from '@/entities'
+import { useGetProductsQuery } from '@/entities/ProductList'
+import { ProductCategory } from '@/entities/ProductList'
 import { useParams } from 'react-router'
+import { useState, useCallback } from 'react'
+import { LoaderCircle } from '@/shared/ui/Loaders'
+
+const LIMIT = 20
 
 const CategoriesPage = () => {
   const { t } = useTranslation()
-  const { slug } = useParams()
+  const { slug } = useParams<{ slug: string }>()
+  const [page, setPage] = useState(1)
+
+  const { data, isFetching, isError } = useGetProductsQuery({
+    page,
+    limit: LIMIT,
+    category: slug as ProductCategory,
+  })
+
+  const handleLoadMore = useCallback(() => {
+    if (data && page < data.totalPages) {
+      setPage(p => p + 1)
+    }
+  }, [data, page])
+
   return (
     <div className={classNames(cls.categoriesPage, 'container')}>
       <Breadcrumbs />
-      <h3 className={classNames("pageTitle", cls.title)}>{slug ? t(slug) : t('tattoo machines')}</h3>
+      <h3 className={classNames('pageTitle', cls.title)}>
+        {slug ? t(slug) : t('tattoo machines')}
+      </h3>
       <FilterToolbar className={cls.filterToolbar} />
-      <ProductList className={cls.products} products={productsList} />
-      <Button big className={cls.seeMore}>{t('see more')}</Button>
+
+      {isFetching && !data && <LoaderCircle />}
+      {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
+      {data && (
+        <ProductListWithBtn
+          products={data.machines}
+          onLoadMoreClick={handleLoadMore}
+          isLoading={isFetching}
+          showSeeMoreBtn={page < data.totalPages}
+        />
+      )}
     </div>
   )
 }
