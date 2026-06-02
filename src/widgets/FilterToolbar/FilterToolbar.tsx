@@ -12,7 +12,7 @@ import { ProductCategory } from '@/entities/ProductList'
 
 interface FilterToolbarProps {
   className?: string
-  category: ProductCategory
+  category?: ProductCategory
   filterState: FilterState
   handlers: FilterHandlers
 }

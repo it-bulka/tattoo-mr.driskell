@@ -10,7 +10,7 @@ import { ProductCategory } from '@/entities/ProductList'
 interface FiltersProps {
   className?: string
   sorts: Option<Sorts>[]
-  category: ProductCategory
+  category?: ProductCategory
   filterState: FilterState
   handlers: FilterHandlers
   onClose?: () => void

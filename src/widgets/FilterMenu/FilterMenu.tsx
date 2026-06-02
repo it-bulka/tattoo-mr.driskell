@@ -11,7 +11,7 @@ import { ProductCategory } from '@/entities/ProductList'
 interface FilterMenuProps {
   className?: string
   sorts: Option<Sorts>[]
-  category: ProductCategory
+  category?: ProductCategory
   filterState: FilterState
   handlers: FilterHandlers
 }
