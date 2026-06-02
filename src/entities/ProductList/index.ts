@@ -1,4 +1,4 @@
-export { productsReducer, productsActions } from './model/slice/productsSlice.ts'
-export type { ProductsSchema, ProductCategory } from './model/type/productSchema.ts'
-export { getProductsByKey, getAllProducts } from './model/selector/getProductsSelector.ts'
+export type { ProductCategory, ProductLabel } from './model/type/productSchema.ts'
 export { ProductListWithBtn } from './ProductListWithBtn.tsx'
+export { useGetProductsQuery, useLazyGetProductsQuery } from './model/api/productsApi.ts'
+export type { ProductsType } from './model/api/productsApi.ts'

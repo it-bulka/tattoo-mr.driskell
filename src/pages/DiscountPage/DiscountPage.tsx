@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ProductCategory } from '@/entities'
 import { Breadcrumbs, ErrorMsg, FilterButton } from '@/shared/ui'
 import { useCallback, useState } from 'react'
-import { useLazyGetProductsQuery } from '@/pages/Home/blocks/Products/model/api/productsApi.ts'
+import { useLazyGetProductsQuery } from '@/entities/ProductList'
 import { ProductListWithBtn } from '@/entities'
 import { LoaderCircle } from '@/shared/ui/Loaders'
 import useFilters from './model/utils/useFilters/useFilters.tsx';

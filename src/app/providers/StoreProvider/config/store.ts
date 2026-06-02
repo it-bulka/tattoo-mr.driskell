@@ -4,7 +4,6 @@ import { cartReducer } from '@/entities/Cart/model/slice/cartSlice.tsx'
 import { useDispatch } from 'react-redux'
 import { rtkApi } from '@/shared/api/rtkApi.ts'
 import { novaPoshtaApi } from '@/shared/api/novaPoshtaApi.ts'
-import { productsReducer } from '@/entities'
 import { userReducer } from '@/entities/User'
 import { cartSyncMiddleware } from '@/entities/Cart'
 import { Action, ThunkAction } from '@reduxjs/toolkit'
@@ -17,7 +16,6 @@ import { authReducer } from '@/features/auth'
 export const createStore = () => {
   const rootReducer: ReducersMapObject<StateSchema> = {
     cart: cartReducer,
-    products: productsReducer,
     user: userReducer,
     auth: authReducer,
     order: orderReducer,
