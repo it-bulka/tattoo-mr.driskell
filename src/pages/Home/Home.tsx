@@ -6,6 +6,7 @@ import { Brands } from './blocks/Brands/Brands.tsx'
 import { About } from './blocks/about/About.tsx'
 import { Testimonials } from './blocks/Testimonials/Testimonials.tsx'
 import { FormBlock } from './blocks/Form/FormBlock.tsx'
+import { ErrorBoundary } from '@/shared/providers'
 
 interface HomeProps {
   className?: string
@@ -13,12 +14,12 @@ interface HomeProps {
 const Home = ({ className }: HomeProps) => {
   return (
     <div className={classNames(cls.home, {}, [className, 'pageSpacing'])}>
-      <Products />
-      <Catalog />
-      <Brands />
-      <About />
-      <Testimonials />
-      <FormBlock />
+      <ErrorBoundary><Products /></ErrorBoundary>
+      <ErrorBoundary><Catalog /></ErrorBoundary>
+      <ErrorBoundary><Brands /></ErrorBoundary>
+      <ErrorBoundary><About /></ErrorBoundary>
+      <ErrorBoundary><Testimonials /></ErrorBoundary>
+      <ErrorBoundary><FormBlock /></ErrorBoundary>
     </div>
   )
 }

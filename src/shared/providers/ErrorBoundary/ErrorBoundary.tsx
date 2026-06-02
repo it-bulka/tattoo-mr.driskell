@@ -16,38 +16,13 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
     this.state = { hasError: false, error: null }
   }
 
-  private handleError = (event: ErrorEvent) => {
-    this.setState({
-      hasError: true,
-      error: event.error instanceof Error ? event.error : new Error(String(event.error))
-    })
-  }
-
-  private handlePromiseRejection = (event: PromiseRejectionEvent) => {
-    this.setState({
-      hasError: true,
-      error: event.reason instanceof Error ? event.reason : new Error(String(event.reason))
-    })
-  }
-
   static getDerivedStateFromError(error: Error) {
     return { hasError: true, error }
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    // log the error to an error reporting service
     // eslint-disable-next-line  no-console
     console.log(error, errorInfo)
-  }
-
-  componentDidMount() {
-    window.addEventListener('error', this.handleError)
-    window.addEventListener('unhandledrejection', this.handlePromiseRejection)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('error', this.handleError)
-    window.removeEventListener('unhandledrejection', this.handlePromiseRejection)
   }
 
   render() {
