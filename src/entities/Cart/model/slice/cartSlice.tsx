@@ -108,8 +108,12 @@ const cartSlice = createSlice({
       updateCartTotals(state, newTotals)
       state.isBackSynchronized = false
     },
-    setItemAmount: (state, action: PayloadAction<{id: string, quantity: number}>) => {
-      const { id, quantity } = action.payload
+    setItemAmount: (state, action: PayloadAction<{
+      id: string
+      quantity: number
+      snapshot?: Pick<CartItemType, 'price' | 'originalPrice' | 'title' | 'image'>
+    }>) => {
+      const { id, quantity, snapshot } = action.payload
 
       if(quantity < 0) {
         state.error = 'Add 1 or more quantity of product'
@@ -154,11 +158,18 @@ const cartSlice = createSlice({
         cartAdapter.removeOne(state, id)
         return
       } else {
+        const effectivePrice = snapshot?.price ?? previous.price
         cartAdapter.updateOne(state, {
           id,
           changes: {
             quantity,
-            total: previous.price * quantity
+            total: effectivePrice * quantity,
+            ...(snapshot && {
+              price: snapshot.price,
+              originalPrice: snapshot.originalPrice,
+              title: snapshot.title,
+              image: snapshot.image,
+            }),
           }
         })
       }
