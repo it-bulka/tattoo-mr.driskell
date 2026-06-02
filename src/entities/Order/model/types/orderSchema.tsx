@@ -77,7 +77,7 @@ export interface OrderRes {
 }
 
 export interface OrderHistoryItemProps {
-  date: Date
+  date: string
   orderNumber: string
   quantity: number
   totalCost: number

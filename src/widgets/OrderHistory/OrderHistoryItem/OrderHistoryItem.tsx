@@ -11,7 +11,7 @@ type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'c
 
 interface OrderHistoryItemProps {
   className?: string
-  date: Date,
+  date: string,
   orderNumber: number | string,
   quantity: number | string,
   totalCost: number,
@@ -43,7 +43,7 @@ const OrderHistoryItemContent = memo(({
 
       {children}
 
-      <p className={cls.gridCell}>{dateFormat(date)}</p>
+      <p className={cls.gridCell}>{dateFormat(new Date(date))}</p>
       <p className={cls.gridCell}>{orderNumber}</p>
       <p className={cls.gridCell}>{quantity}</p>
       <p className={cls.gridCell}>{currencyFormat(totalCost)}</p>

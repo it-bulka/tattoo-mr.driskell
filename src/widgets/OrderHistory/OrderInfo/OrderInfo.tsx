@@ -7,7 +7,7 @@ import { memo } from 'react'
 
 interface OrderInfoProps {
   className?: string
-  date: Date
+  date: string
   orderNumber: number | string
   address: string
   totalCost: number
@@ -46,7 +46,7 @@ export const OrderInfo = memo(({
       <h4 className={classNames(cls.title, clsGeneral.title)}>{t('order information')}</h4>
       <Info
         title={t('order number')}
-        text={`${orderNumber} ${t('from_date')} ${dateFormat(date, 'all')}`}
+        text={`${orderNumber} ${t('from_date')} ${dateFormat(new Date(date), 'all')}`}
       />
       <Info
         title={t('info about address')}

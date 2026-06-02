@@ -18,7 +18,7 @@ interface BackendOrder {
 
 function mapOrderToHistoryItem(order: BackendOrder): OrderHistoryItemProps {
   return {
-    date: new Date(order.orderDate),
+    date: order.orderDate,
     orderNumber: order._id,
     quantity: order.items.reduce((sum, item) => sum + item.quantity, 0),
     totalCost: order.totalPrice,
