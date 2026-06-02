@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useCallback, useContext, FormEventHandler } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
+import { getCartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
 import { makeOrder } from '@/entities/Order'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 

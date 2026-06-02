@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useCallback, useContext, FormEventHandler, useEffect, useMemo } from 'react'
 import { useForm, FormProvider, DefaultValues } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { CartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
+import { getCartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
 import { makeOrder } from '@/entities/Order'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useSelector } from 'react-redux'
@@ -39,7 +39,7 @@ export const CartFormProvider = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation('cart')
 
   const methods = useForm<CartFormData>({
-    resolver: zodResolver(CartFormSchema),
+    resolver: zodResolver(getCartFormSchema()),
     mode: 'onBlur',
     defaultValues: { ...CART_FORM_DEFAULTS, deliveryMethod: delivery },
   })
