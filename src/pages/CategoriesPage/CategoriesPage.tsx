@@ -4,7 +4,7 @@ import { Breadcrumbs, ErrorMsg } from '@/shared/ui'
 import { FilterToolbar } from '@/widgets'
 import { useTranslation } from 'react-i18next'
 import { ProductListWithBtn } from '@/entities'
-import { useGetProductsQuery } from '@/entities/ProductList'
+import { useGetProductsPaginatedQuery } from '@/entities/ProductList'
 import { ProductCategory } from '@/entities/ProductList'
 import { useParams } from 'react-router'
 import { useState, useCallback } from 'react'
@@ -15,12 +15,21 @@ const LIMIT = 20
 const CategoriesPage = () => {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
+
+  const normalizedSlug = slug?.toLowerCase().replace(/[,\s]+/g, '-') as ProductCategory
+
+  const [prevSlug, setPrevSlug] = useState(normalizedSlug)
   const [page, setPage] = useState(1)
 
-  const { data, isFetching, isError } = useGetProductsQuery({
+  if (normalizedSlug !== prevSlug) {
+    setPrevSlug(normalizedSlug)
+    setPage(1)
+  }
+
+  const { data, isFetching, isError } = useGetProductsPaginatedQuery({
     page,
     limit: LIMIT,
-    category: slug as ProductCategory,
+    category: normalizedSlug,
   })
 
   const handleLoadMore = useCallback(() => {
