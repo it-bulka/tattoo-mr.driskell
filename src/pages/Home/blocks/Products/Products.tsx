@@ -1,129 +1,92 @@
 import cls from '../../Home.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Tabs } from '@/shared/ui'
-import {
-  ProductsSlider, getAllProducts, productsActions, ProductListWithBtn, PRODUCT_PAGES
-} from '@/entities'
+import { Tabs, ErrorMsg } from '@/shared/ui'
+import { ProductsSlider, ProductListWithBtn } from '@/entities'
 import { useDevice } from '@/shared/libs'
-import { useLazyGetProductsQuery } from './model/api/productsApi.ts'
-import { memo, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { useLoadMore } from './utils/useLoadMoreProducts.tsx'
-import { ProductCategory } from '@/entities'
-import { useTabClick } from './utils/useTabClick.tsx'
+import { useLazyGetProductsQuery } from '@/entities/ProductList'
+import { memo, useEffect, useState, useCallback } from 'react'
+import { useSearchParams } from 'react-router'
+import { ProductLabel } from '@/entities/ProductList'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { useInitialParams } from './utils/useInitialParams/useInitialParams.tsx'
-import { useState } from 'react'
+
+const LIMIT = 10
+
+const productsTabs: { id: ProductLabel; name: string }[] = [
+  { id: 'bestseller', name: 'Bestsellers' },
+  { id: 'popular', name: 'Most Popular' },
+  { id: 'new', name: 'New Arrivals' },
+  { id: 'sale', name: 'On Sale' },
+]
 
 interface ProductsProps {
   className?: string
 }
 
-const productsTabs: { id: ProductCategory, name: string }[] = [
-  {id: 'bestseller', name: 'Bestsellers'},
-  {id: 'popular', name: 'Most Popular'},
-  {id: 'new', name: 'New Arrivals'},
-  {id: 'sale', name: 'On Sale'},
-]
-
-const listKey = PRODUCT_PAGES.HOME
-
-interface IProductView {
-  products: Product[]
-  showSeeMoreBtn: boolean
-  isFetching: boolean
-  handleLoadMore: () => void
-}
-const ProductView = ({
-  products,
-  showSeeMoreBtn,
-  isFetching,
-  handleLoadMore
-}: IProductView) => {
-  const isMobile = useDevice(1200)
-
-  return isMobile
-    ? <ProductsSlider list={products} sliderId={'products'} />
-    : (
-      <ProductListWithBtn
-        btnClass={cls.seeMore}
-        products={products}
-        onLoadMoreClick={handleLoadMore}
-        isLoading={isFetching}
-        showSeeMoreBtn={showSeeMoreBtn}
-      />
-    )
-}
-
 export const Products = memo(({ className }: ProductsProps) => {
   const { t } = useTranslation()
-  const dispatch = useAppDispatch()
-  const productsState = useSelector(getAllProducts(listKey))
-  const { products, currentPage, totalPages } = productsState
+  const [, setSearchParams] = useSearchParams()
   const initParams = useInitialParams()
-  const [isReady, setIsReady] = useState(false)
+  const isMobile = useDevice(1200)
 
-  const [trigger, { data, isFetching }] = useLazyGetProductsQuery()
+  const [products, setProducts] = useState<Product[]>([])
+  const [currentPage, setCurrentPage] = useState(Number(initParams.page) || 1)
+  const [label, setLabel] = useState<ProductLabel>(
+    (initParams.category as ProductLabel) || 'bestseller'
+  )
+  const [totalPages, setTotalPages] = useState(1)
 
-  const handleLoadMore = useLoadMore({
-    key: listKey,
-    currentPage,
-    totalPages
-  })
-
-  const handleTabClick = useTabClick({ key: listKey })
-
-  useEffect(() => {
-    if (initParams) {
-      console.log('initParams', initParams)
-      dispatch(productsActions.setPage({ key: listKey, page: initParams.page ? Number(initParams.page) : 1 }));
-      dispatch(productsActions.setCategory({ key: listKey, category: initParams.category as ProductCategory }));
-      setIsReady(true);
-    }
-  }, [initParams])
+  const [trigger, { isFetching, isError }] = useLazyGetProductsQuery()
 
   useEffect(() => {
-    if (isReady) {
-      trigger({
-        page: currentPage,
-        limit: 10,
-        category: productsState.category
+    trigger({ page: currentPage, limit: LIMIT, label })
+      .unwrap()
+      .then(data => {
+        setProducts(prev => currentPage === 1 ? data.machines : [...prev, ...data.machines])
+        setTotalPages(data.totalPages)
       })
+      .catch(() => {})
+  }, [currentPage, label])
+
+  const handleLoadMore = useCallback(() => {
+    if (currentPage < totalPages) {
+      setCurrentPage(p => p + 1)
     }
-  }, [isReady, currentPage, productsState.category])
+  }, [currentPage, totalPages])
 
-  useEffect(() => {
-    if (data) {
-      dispatch(productsActions.setProducts({ key: listKey, products: data.machines, replace: currentPage === 1 }))
-      dispatch(productsActions.setTotalPages({ key: listKey, totalPages: data.totalPages }))
-    }
-  }, [data, dispatch])
-
-
-  if (!data && !products) {
-    return null
-  }
+  const handleTabClick = useCallback((tab: { id: ProductLabel }) => {
+    setLabel(tab.id)
+    setCurrentPage(1)
+    setSearchParams({ category: tab.id })
+  }, [setSearchParams])
 
   return (
     <div className={classNames('', 'container', {}, [className])}>
       <Tabs
         className={cls.tabs}
         tabs={productsTabs}
-        initialActiveTabId={initParams.category as ProductCategory}
+        initialActiveTabId={label}
         justify="between"
-        onClick={handleTabClick}/>
-      {products?.length
-        ? (
-          <ProductView
-            isFetching={isFetching}
-            handleLoadMore={handleLoadMore}
-            products={products}
-            showSeeMoreBtn={currentPage < totalPages}
-          />
-        ) : <p>{t('machines not found')}</p>
-      }
+        onClick={handleTabClick}
+      />
+      {isError && <ErrorMsg as="p" text={t('Failed to load products')} size="medium" />}
+      {!isError && products.length > 0 && (
+        isMobile
+          ? <ProductsSlider list={products} sliderId="products" />
+          : (
+            <ProductListWithBtn
+              btnClass={cls.seeMore}
+              products={products}
+              onLoadMoreClick={handleLoadMore}
+              isLoading={isFetching}
+              showSeeMoreBtn={currentPage < totalPages}
+            />
+          )
+      )}
+      {!isError && !products.length && !isFetching && (
+        <p>{t('machines not found')}</p>
+      )}
     </div>
   )
 })
