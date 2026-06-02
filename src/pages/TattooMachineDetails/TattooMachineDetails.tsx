@@ -3,7 +3,6 @@ import classNames from 'classnames'
 import { Breadcrumbs } from '@/shared/ui'
 import { useTranslation } from 'react-i18next'
 import { Additional } from './blocks/Additional/Additional.tsx'
-import { productsList } from '@/mockData.tsx'
 import { ProposeProducts } from './blocks/ProposeProducts/ProposeProducts.tsx'
 import { CompleteSet } from './blocks/CompleteSet/CompleteSet.tsx'
 import { useGetTattooMachineQuery, useGetRelatedTattooMachineQuery } from './model/api/tattooMachineApi.tsx'
@@ -63,7 +62,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
       {related?.brands && (
         <ProposeProducts
           title={t('products from this brand')}
-          products={productsList}
+          products={related.brands}
           sliderId={'brands_products'}
         />
       )}
