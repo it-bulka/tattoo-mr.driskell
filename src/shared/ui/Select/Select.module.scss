@@ -2,7 +2,7 @@
   display: flex;
   gap: 20px;
   align-items: center;
-  z-index: 9999999999;
+  z-index: var(--select-z-index);
 }
 
 .indicator {
