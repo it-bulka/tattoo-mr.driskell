@@ -35,7 +35,6 @@ const debouncedSync = debounce(async () => {
       })
     ).unwrap()
 
-    dispatch(cartActions.setCartData(result?.data || []))
     dispatch(cartActions.setBackSync(true))
   } catch (error) {
     console.error('Cart sync error:', error)
