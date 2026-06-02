@@ -33,7 +33,7 @@ const menuLinks: MenuLink[] = [
     href:  RoutePaths.catalog,
     subLinks: catalogContent.category.map((item) => ({
       name: item,
-      href: getCatalogDetailsPage(item)
+      href: getCatalogDetailsPage(item.toLowerCase().replace(/[,\s]+/g, '-'))
     }))
   },
   ...navLinks,
