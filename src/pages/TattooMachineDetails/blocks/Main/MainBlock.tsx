@@ -7,7 +7,7 @@ import { CounterInput, DecoratedLink } from '@/shared/ui'
 import { TattooWorksModel } from '@/pages/TattooMachineDetails/blocks/TattooWorksSlider/TattooWorksSlider.tsx';
 import { tattooWorks } from '@/mockData.tsx'
 import { AddToCartBtn } from '@/features'
-import { useCallback, useRef, useState, memo } from 'react'
+import { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ProductExtended } from '@/shared/type/tattoo-machine.ts'
 import { ShareButton } from '@/widgets'
@@ -21,21 +21,10 @@ export const MainBlock = memo(({ data, slug }: MainBlockProps) => {
   const { t } = useTranslation()
   const isMobile = useDevice(1200)
   const [isModalOpened, setModalOpened] = useState(false)
-  const amountRef = useRef(0)
-  const [isNullProduct, setNullProduct] = useState(amountRef.current === 0)
+  const [quantity, setQuantity] = useState(0)
 
   const closeModal = () => setModalOpened(false)
   const openModal = () => setModalOpened(true)
-
-  const updateQuantity = useCallback((prevQuantity: number) => (newQuantity: number) => {
-    if(prevQuantity > 0 && newQuantity === 0) {
-      setNullProduct(true)
-    } else if (prevQuantity === 0 &&  newQuantity > 0) {
-      setNullProduct(false)
-    }
-
-    amountRef.current = newQuantity
-  }, [setNullProduct])
 
   return (
     <div className={classNames(cls.main, "container")}>
@@ -74,17 +63,14 @@ export const MainBlock = memo(({ data, slug }: MainBlockProps) => {
         </div>
         <CounterInput
           className={cls.counter}
-          onChange={updateQuantity(amountRef.current)}
+          onChange={setQuantity}
         />
         <AddToCartBtn
           dark
           withMargin
           className={cls.addBtn}
-          disabled={isNullProduct}
-          products={[{
-            ...data,
-            quantity: amountRef.current
-          }]}
+          disabled={quantity === 0}
+          product={{ ...data, quantity }}
         />
 
         <ShareButton  className={cls.share}/>
