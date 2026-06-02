@@ -22,3 +22,5 @@ export const ScrollUpButton = memo(({ className }: ScrollUpButtonProps) => {
     </button>
   )
 })
+
+ScrollUpButton.displayName = 'ScrollUpButton'
