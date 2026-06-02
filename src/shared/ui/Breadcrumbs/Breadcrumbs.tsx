@@ -1,7 +1,7 @@
 import cls from './Breadcrumbs.module.scss'
 import classNames from 'classnames'
 import { useLocation } from 'react-router'
-import { useMemo } from 'react';
+import { Fragment, useMemo } from 'react';
 import { AppLink } from '../AppLink/AppLink.tsx'
 import { useTranslation } from 'react-i18next'
 import { PathsMapToTranslate } from '@/shared/config/routeConfig/routeConfig.tsx'
@@ -29,15 +29,15 @@ export const Breadcrumbs = ({ className, customLastCrumb }: BreadcrumbsProps) =>
 
         if (index === crumbs.length - 1) {
           const c = customLastCrumb || t(mappedCrumb)
-          return <p className={cls.active}>{c}</p>
+          return <p key={crumb} className={cls.active}>{c}</p>
         }
 
         const breadcrumbPath = '/' + crumbs.slice(0, index + 1).join('/')
         return (
-          <>
+          <Fragment key={crumb}>
             <AppLink to={breadcrumbPath}>{t(mappedCrumb)}</AppLink>
             <span>/</span>
-          </>
+          </Fragment>
         )
       })}
     </div>

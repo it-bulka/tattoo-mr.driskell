@@ -10,7 +10,7 @@ export const CategoryContents = () => {
   return (
     <ul className={classNames(cls.contents, cls.categories)}>
       {catalogContent.category.map((category) => (
-        <AppLink to={getCatalogDetailsPage(toSlug(category))} state={{ type: 'category'}}>{category}</AppLink>
+        <AppLink key={category} to={getCatalogDetailsPage(toSlug(category))} state={{ type: 'category'}}>{category}</AppLink>
       ))}
     </ul>
   )

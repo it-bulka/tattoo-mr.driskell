@@ -37,6 +37,7 @@ export const Tabs = <T extends string, K extends string | number>({
     <ul className={classNames(cls.tabs, {}, [cls[justify], className])}>
       {tabs.map((item) => (
         <Tab
+          key={item.id}
           isActive={activeTab === item.id}
           onClick={onClickItem(item)}
           tab={item}

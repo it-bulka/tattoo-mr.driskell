@@ -47,6 +47,7 @@ export const RegistrationContent = memo(({ onSubmit }: RegistrationContentProps)
         <Auth.Title>{t('registration')}</Auth.Title>
         {registrationInputs.map(({name, label}) => (
           <Controller
+            key={name}
             control={control}
             name={name}
             render={({ field }) => (
