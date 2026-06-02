@@ -1,16 +1,15 @@
 import { Search } from '@/shared/ui'
 import { useSearchParams } from 'react-router'
-import { useCallback, useState } from 'react'
-import Select, { SingleValue } from 'react-select'
+import { useCallback, useRef, useState } from 'react'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
-import { type OptionType, CustomOption } from './CustomOption/CustomOption.tsx'
 import { useTranslation } from 'react-i18next'
 import {
   useDebouncedSearchedProducts
-} from '../utils/useDebouncedSearchedProducts/useDebouncedSearchedProducts.tsx';
+} from '../utils/useDebouncedSearchedProducts/useDebouncedSearchedProducts.tsx'
 import {
   useNavigateToTattooMachinePage
 } from '../utils/useNavigateToTattooMachinePage/useNavigateToTattooMachinePage.tsx'
+import { SearchDropdown } from './SearchDropdown/SearchDropdown.tsx'
 
 interface SearchTattooMachineProps {
   className?: string
@@ -21,60 +20,50 @@ export const SearchTattooMachine = ({ className }: SearchTattooMachineProps) => 
   const search = UrlSearchParams.get('search') || ''
   const { data, isFetching, clearLastRequestData } = useDebouncedSearchedProducts(search)
   const goToProductPage = useNavigateToTattooMachinePage()
-
   const [isFocused, setFocused] = useState<boolean>(false)
   const { t } = useTranslation()
+  const wrapperRef = useRef<HTMLDivElement>(null)
 
-  const handleSelectChange = (selectedOption: SingleValue<OptionType>) => {
-    if (!selectedOption) return
-    goToProductPage(selectedOption.id)
-  }
-
-  const handleEmptyMessage = useCallback(() => {
-    return search.trim().length <= 2
-      ? t('write more that 2 characters')
-      : t('nothing is found')
-  }, [t, search])
+  const handleSelect = useCallback((product: Product) => {
+    goToProductPage(String(product.id))
+    clearLastRequestData()
+    setUrlSearchParams({})
+    setFocused(false)
+  }, [goToProductPage, clearLastRequestData, setUrlSearchParams])
 
   const onSearchChange = (val: string) => {
-    setUrlSearchParams({ search: val.trim() })
+    setUrlSearchParams(val ? { search: val.trim() } : {})
 
-    if(val === '' && data?.data.length) {
+    if (!val && data?.data.length) {
       clearLastRequestData()
     }
   }
 
+  const isDropdownOpen = isFocused && search.length > 0 && data?.data !== undefined
+
   return (
-    <div className={className}>
+    <div className={className} ref={wrapperRef}>
       <Search
         defaultValue={search}
         onChange={onSearchChange}
         isLoading={isFetching}
-        onBlur={() => setFocused(false)}
         onFocus={() => setFocused(true)}
         withClearBtn={!!search}
-        onClear={clearLastRequestData}
+        onClear={() => {
+          clearLastRequestData()
+          setUrlSearchParams({})
+        }}
+        placeholder={t('search')}
       />
 
-      <Select<Product>
-        options={data?.data || []}
-        value={null}
-        onChange={handleSelectChange}
-        noOptionsMessage={handleEmptyMessage}
-        components={{
-          Control: () => null,
-          Input: () => null,
-          DropdownIndicator: () => null,
-          IndicatorSeparator: () => null,
-          Placeholder: () => null,
-          SingleValue: () => null,
-          Option: CustomOption
-        }}
-        getOptionLabel={(e) => e.title}
-        getOptionValue={(e) => e.id}
-        menuIsOpen={isFocused && !!data?.data && search.length > 0}
+      <SearchDropdown
+        items={data?.data || []}
+        anchorRef={wrapperRef}
+        isOpen={isDropdownOpen}
+        onSelect={handleSelect}
+        onClose={() => setFocused(false)}
+        emptyMessage={t('nothing is found')}
       />
     </div>
-
   )
 }

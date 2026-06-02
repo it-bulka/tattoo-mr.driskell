@@ -3,6 +3,7 @@ import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 
 interface SearchTattooMachineState {
   search: string
+  lang: string
 }
 
 interface SearchTattooMachineRes {
@@ -13,9 +14,9 @@ interface SearchTattooMachineRes {
 const searchTattooApi = rtkApi.injectEndpoints({
   endpoints: build => ({
     getSearchedProducts: build.query<SearchTattooMachineRes, SearchTattooMachineState>({
-      query: ({ search }) => ({
+      query: ({ search, lang }) => ({
         url: '/tattoo-machines/search',
-        params: { search }
+        params: { search, lang }
       }),
       providesTags: (result) =>
         result?.data ? [{ type: 'Search' as const }] : [],
@@ -24,10 +25,10 @@ const searchTattooApi = rtkApi.injectEndpoints({
 })
 
 
-export const clearSearchTattooMachine = (cachedSearchBy: string) => {
+export const clearSearchTattooMachine = (cachedState: SearchTattooMachineState) => {
   return searchTattooApi.util.upsertQueryData(
     'getSearchedProducts',
-    { search: cachedSearchBy },
+    cachedState,
     {
       data: [],
       success: false,
