@@ -1,28 +1,38 @@
 import cls from './FilterLevel.module.scss'
 import classNames from 'classnames'
 import { FilterButton } from '@/shared/ui/FilterButton/FilterButton.tsx'
-import { memo, useMemo } from 'react'
-import { useTranslation } from 'react-i18next';
+import { memo } from 'react'
 
+interface FilterLevelOption {
+  value: string
+  label: string
+}
 
 interface FilterLevelProps {
   className?: string
+  options: FilterLevelOption[]
+  selectedValues: string[]
+  onSelectionChange: (values: string[]) => void
 }
-export const FilterLevel = memo(({ className }: FilterLevelProps) => {
-  const { t } = useTranslation('catalog')
 
-  const filters = useMemo(() => {
-    return [
-      { id: 0, name: t('filter-level.beginners') },
-      { id: 1, name: t('filter-level.builders') },
-      { id: 2, name: t('filter-level.professionals') },
-      { id: 3, name: t('filter-level.consumables') },
-    ]
-  }, [t])
+export const FilterLevel = memo(({ className, options, selectedValues, onSelectionChange }: FilterLevelProps) => {
+  const handleClick = (value: string) => {
+    const next = selectedValues.includes(value)
+      ? selectedValues.filter(v => v !== value)
+      : [...selectedValues, value]
+    onSelectionChange(next)
+  }
+
   return (
     <div className={classNames(cls.filters, {}, [className])}>
-      {filters.map((filter) => (
-        <FilterButton key={filter.id}>{filter.name}</FilterButton>
+      {options.map(({ value, label }) => (
+        <FilterButton
+          key={value}
+          isActive={selectedValues.includes(value)}
+          onClick={() => handleClick(value)}
+        >
+          {label}
+        </FilterButton>
       ))}
     </div>
   )
