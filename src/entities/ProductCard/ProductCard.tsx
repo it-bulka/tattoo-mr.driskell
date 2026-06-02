@@ -1,7 +1,7 @@
 import cls from './ProductCard.module.scss'
 import classNames from 'classnames'
 import { TagType } from '@/shared/ui'
-import { useState } from 'react';
+import { useState } from 'react'
 import { CardWithImgTagSlider } from '@/shared/ui'
 import { AddToCartBtnWithCounter } from '@/features'
 
@@ -17,27 +17,28 @@ export type Product = {
 export type ProductWithAmount = Product & { quantity?: number }
 
 type StaticStatus = 'on-all' | 'on-mobile' | 'on-tablet'
-interface ProductCardProps extends Product{
+
+interface ProductCardProps {
+  product: Product
   className?: string
   staticOn?: StaticStatus
+  onClick?: () => void
 }
 
 const mapStatic: Record<StaticStatus, string> = {
   'on-mobile': cls.staticOnMobile,
   'on-all': cls.staticOnAll,
-  'on-tablet': cls.staticOnTablet
+  'on-tablet': cls.staticOnTablet,
 }
 
 export const ProductCard = ({
-  images,
-  title,
-  price,
-  tags,
-  id,
+  product,
   staticOn = 'on-tablet',
-  onClick
-}: ProductCardProps & { onClick?: () => void }) => {
+  onClick,
+}: ProductCardProps) => {
   const [isHovered, setHovered] = useState(false)
+  const { id, images, title, price, priceCurrent, tags } = product
+
   return (
     <div
       className={classNames(cls.productCard, {}, [mapStatic[staticOn]])}
@@ -50,13 +51,13 @@ export const ProductCard = ({
         imgs={images}
         title={title}
         tags={tags}
-        price={price}
+        price={priceCurrent ?? price}
         withAdaptation={false}
         itemId={String(id)}
       />
 
-      <div className={classNames(cls.btnWrapper,  { [cls.isShown]: isHovered })}>
-        <AddToCartBtnWithCounter max className={cls.btn} productId={String(id)}/>
+      <div className={classNames(cls.btnWrapper, { [cls.isShown]: isHovered })}>
+        <AddToCartBtnWithCounter max className={cls.btn} product={product} />
       </div>
     </div>
   )

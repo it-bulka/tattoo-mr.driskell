@@ -32,11 +32,7 @@ export const ProductsSlider = memo(({
       {list.map((product) => (
         <SwiperSlide key={product.id}>
           <ProductCard
-            id={product.id}
-            images={product.images}
-            title={product.title}
-            price={product.price}
-            tags={product.tags}
+            product={product}
             staticOn="on-all"
           />
         </SwiperSlide>

@@ -19,11 +19,7 @@ export const ProductList = ({ className, products }: ProductListProps) => {
       {products.map((product) => (
         <ProductCard
           key={product.id}
-          id={product.id}
-          images={product.images}
-          title={product.title}
-          price={product.price}
-          tags={product.tags}
+          product={product}
           onClick={() => navigate(getTattooMachineDetailsPage(String(product.id)))}
         />
       ))}
