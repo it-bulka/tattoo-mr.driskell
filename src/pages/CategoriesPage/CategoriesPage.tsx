@@ -9,6 +9,7 @@ import { ProductCategory } from '@/entities/ProductList'
 import { useParams } from 'react-router'
 import { useState, useCallback } from 'react'
 import { LoaderCircle } from '@/shared/ui/Loaders'
+import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
 
 const LIMIT = 20
 
@@ -17,6 +18,8 @@ const CategoriesPage = () => {
   const { slug } = useParams<{ slug: string }>()
 
   const normalizedSlug = slug?.toLowerCase().replace(/[,\s]+/g, '-') as ProductCategory
+
+  const { filterState, handlers, apiParams } = useProductFilters()
 
   const [prevSlug, setPrevSlug] = useState(normalizedSlug)
   const [page, setPage] = useState(1)
@@ -30,6 +33,7 @@ const CategoriesPage = () => {
     page,
     limit: LIMIT,
     category: normalizedSlug,
+    ...apiParams,
   })
 
   const handleLoadMore = useCallback(() => {
@@ -38,13 +42,46 @@ const CategoriesPage = () => {
     }
   }, [data, page])
 
+  const wrappedHandlers = {
+    ...handlers,
+    handleTagsChange: (tags: typeof filterState.tags) => {
+      setPage(1)
+      handlers.handleTagsChange(tags)
+    },
+    handleSortChange: (sort: typeof filterState.sort) => {
+      setPage(1)
+      handlers.handleSortChange(sort)
+    },
+    handlePriceChange: (min: number, max: number) => {
+      setPage(1)
+      handlers.handlePriceChange(min, max)
+    },
+    handleInStockChange: (inStock: boolean) => {
+      setPage(1)
+      handlers.handleInStockChange(inStock)
+    },
+    handleMotorTypesChange: (motorTypes: typeof filterState.motorTypes) => {
+      setPage(1)
+      handlers.handleMotorTypesChange(motorTypes)
+    },
+    handleNeedleTypesChange: (needleTypes: typeof filterState.needleTypes) => {
+      setPage(1)
+      handlers.handleNeedleTypesChange(needleTypes)
+    },
+  }
+
   return (
     <div className={classNames(cls.categoriesPage, 'container')}>
       <Breadcrumbs />
       <h3 className={classNames('pageTitle', cls.title)}>
         {slug ? t(slug) : t('tattoo machines')}
       </h3>
-      <FilterToolbar className={cls.filterToolbar} />
+      <FilterToolbar
+        className={cls.filterToolbar}
+        category={normalizedSlug}
+        filterState={filterState}
+        handlers={wrappedHandlers}
+      />
 
       {isFetching && !data && <LoaderCircle />}
       {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}

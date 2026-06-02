@@ -1,45 +1,46 @@
 import cls from './FilterModal.module.scss'
-import {
-  Modal, ModalProps, RadioButton, CheckBox, CloseBtn, RangeInput, Toggler
-} from '@/shared/ui'
-import { Sorts, Types, Option } from '../../FilterToolbar/model/types.ts'
-import { useCallback, useState, memo } from 'react'
+import { Modal, ModalProps, RadioButton, CheckBox, CloseBtn, RangeInput, Toggler, Accordion } from '@/shared/ui'
+import { sortOptions, typeOptions, needleTypeOptions, Option, Sorts, FilterState } from '../../FilterToolbar/model/types.ts'
+import { FilterHandlers } from '../../FilterToolbar/model/useProductFilters.ts'
+import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
-import classNames from 'classnames';
-import { Accordion } from '@/shared/ui'
+import classNames from 'classnames'
+import { ProductCategory } from '@/entities/ProductList'
 
-export interface FiltersProps {
+interface FiltersProps {
   className?: string
   sorts: Option<Sorts>[]
-  types: Option<Types>[]
+  category: ProductCategory
+  filterState: FilterState
+  handlers: FilterHandlers
   onClose?: () => void
 }
 
 const Filters = memo(({
   sorts,
-  types,
-  onClose
+  category,
+  filterState,
+  handlers,
+  onClose,
 }: FiltersProps) => {
   const { t } = useTranslation('catalog')
-  const [sortsSelected, setSortSelected] = useState<Sorts>(sorts[0].value)
-  const [typesSelected, setTypesSelected] = useState<Partial<Record<Types, undefined>>>({})
-  const [range, setRange] = useState({ min: 0, max: 4400 })
 
-  const handleCheckBoxes = useCallback((value: Types) => {
-    const removeKey = (key: Types) => {
-      setTypesSelected(({ [key]: _, ...rest }) => rest)
-    }
+  const handleMotorTypeToggle = (value: typeof typeOptions[number]['value']) => {
+    const next = filterState.motorTypes.includes(value)
+      ? filterState.motorTypes.filter(v => v !== value)
+      : [...filterState.motorTypes, value]
+    handlers.handleMotorTypesChange(next)
+  }
 
-    const addKey = (key: Types) => {
-      setTypesSelected(prev => ({ ...prev, [key]:  undefined}))
-    }
+  const handleNeedleTypeToggle = (value: typeof needleTypeOptions[number]['value']) => {
+    const next = filterState.needleTypes.includes(value)
+      ? filterState.needleTypes.filter(v => v !== value)
+      : [...filterState.needleTypes, value]
+    handlers.handleNeedleTypesChange(next)
+  }
 
-    if (typesSelected[value]) {
-      removeKey(value)
-    } else {
-      addKey(value)
-    }
-  }, [setTypesSelected, typesSelected])
+  const showMotorTypes = category === 'tattoo-machines' || category === 'tattoo-sets'
+  const showNeedleTypes = category === 'tattoo-needles'
 
   return (
     <div className={cls.content}>
@@ -51,52 +52,78 @@ const Filters = memo(({
       <Accordion title={t('price')}>
         <>
           <RangeInput
-            min={range.min}
-            max={range.max}
-            onChangeMin={(val) => setRange(prev => ({ ...prev, min: val }))}
-            onChangeMax={(val) => setRange(prev => ({ ...prev, max: val }))}
+            min={filterState.minPrice}
+            max={filterState.maxPrice}
+            onChangeMin={(val) => handlers.handlePriceChange(val, filterState.maxPrice)}
+            onChangeMax={(val) => handlers.handlePriceChange(filterState.minPrice, val)}
           />
         </>
       </Accordion>
-      <div className={classNames("decorator full static gray croppedPoligon", {}, [cls.decorator])}/>
-
+      <div className={classNames('decorator full static gray croppedPoligon', {}, [cls.decorator])} />
 
       <Accordion title={t('sort.title')}>
         <>
           {sorts.map((sort) => (
             <RadioButton
+              key={sort.value}
               label={sort.label}
               value={sort.value}
-              selectedValue={sortsSelected}
-              onChange={setSortSelected}
+              selectedValue={filterState.sort}
+              onChange={(val) => handlers.handleSortChange(val as Sorts)}
               name="sort"
             />
           ))}
         </>
       </Accordion>
-      <div className={classNames("decorator full static gray croppedPoligon", {}, [cls.decorator])}/>
+      <div className={classNames('decorator full static gray croppedPoligon', {}, [cls.decorator])} />
 
-      <Accordion title={t('machine types.title')}>
-        {types.map((type) => (
-          <CheckBox
-            label={type.label}
-            checked={typesSelected[type.value]}
-            onChange={() => handleCheckBoxes(type.value)}
-            name="types"
-          />
-        ))}
-      </Accordion>
-      <div className={classNames("decorator full static gray croppedPoligon", {}, [cls.decorator])}/>
+      {showMotorTypes && (
+        <>
+          <Accordion title={t('machine types.title')}>
+            {typeOptions.map((opt) => (
+              <CheckBox
+                key={opt.value}
+                label={t(opt.label)}
+                checked={filterState.motorTypes.includes(opt.value)}
+                onChange={() => handleMotorTypeToggle(opt.value)}
+                name="motorType"
+              />
+            ))}
+          </Accordion>
+          <div className={classNames('decorator full static gray croppedPoligon', {}, [cls.decorator])} />
+        </>
+      )}
 
-      <Toggler label={t('available only')} name="available" />
-      <div className={classNames("decorator full static gray croppedPoligon", {}, [cls.decorator])}/>
+      {showNeedleTypes && (
+        <>
+          <Accordion title={t('needle types.title')}>
+            {needleTypeOptions.map((opt) => (
+              <CheckBox
+                key={opt.value}
+                label={t(opt.label)}
+                checked={filterState.needleTypes.includes(opt.value)}
+                onChange={() => handleNeedleTypeToggle(opt.value)}
+                name="needleType"
+              />
+            ))}
+          </Accordion>
+          <div className={classNames('decorator full static gray croppedPoligon', {}, [cls.decorator])} />
+        </>
+      )}
 
+      <Toggler
+        label={t('available only')}
+        name="available"
+        isChecked={filterState.inStock}
+        onChange={(e) => handlers.handleInStockChange((e.target as HTMLInputElement).checked)}
+      />
+      <div className={classNames('decorator full static gray croppedPoligon', {}, [cls.decorator])} />
     </div>
   )
 })
 Filters.displayName = 'Filters'
 
-export type FilterModalProps = FiltersProps & ModalProps
+export type FilterModalProps = Omit<FiltersProps, 'onClose'> & ModalProps
 
 export const FilterModal = memo(({
   isOpen,
@@ -105,7 +132,7 @@ export const FilterModal = memo(({
 }: FilterModalProps) => {
   return (
     <Modal position="top left" isOpen={isOpen} onClose={onClose}>
-      {(closeModalHandler) => <Filters {...rest} onClose={closeModalHandler}/>}
+      {(closeModalHandler) => <Filters {...rest} onClose={closeModalHandler} />}
     </Modal>
   )
 })

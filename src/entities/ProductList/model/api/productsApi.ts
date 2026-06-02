@@ -1,6 +1,7 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
 import type { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { ProductCategory, ProductLabel } from '../type/productSchema.ts'
+import type { Sorts } from '@/widgets/FilterToolbar/model/types'
 
 export interface ProductsType {
   currentPage: number
@@ -15,15 +16,21 @@ type SearchParams = {
   category?: ProductCategory | ProductCategory[]
   label?: ProductLabel | ProductLabel[]
   tags?: string
+  sort?: Sorts
+  minPrice?: number
+  maxPrice?: number
+  inStock?: boolean
+  motorType?: string
+  needleType?: string
 }
 
 const buildQuery = (params: SearchParams) => {
-  const { page = 1, limit, category, label, tags } = params
+  const { page = 1, limit, category, label, tags, sort, minPrice, maxPrice, inStock, motorType, needleType } = params
   const categoryParam = Array.isArray(category) ? category.join(',') : category
   const labelParam = Array.isArray(label) ? label.join(',') : label
   return {
     url: '/tattoo-machines',
-    params: { page, limit, category: categoryParam, label: labelParam, tags }
+    params: { page, limit, category: categoryParam, label: labelParam, tags, sort, minPrice, maxPrice, inStock, motorType, needleType }
   }
 }
 
