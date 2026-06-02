@@ -2,6 +2,29 @@ html {
   scrollbar-gutter: stable;
 }
 
+// Кастомний скролбар для темних контейнерів (пошук, модальні вікна тощо)
+.scrollbar-dark {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: var(--accent-dark-color);
+  }
+}
+
 body {
   font: var(--font-m-primary);
   color: var(--text-dark-color);

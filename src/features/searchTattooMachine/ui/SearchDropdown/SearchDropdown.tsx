@@ -58,7 +58,7 @@ export const SearchDropdown = ({
 
   return (
     <Portal>
-      <div ref={dropdownRef} className={cls.dropdown} style={{ top }}>
+      <div ref={dropdownRef} className={`${cls.dropdown} scrollbar-dark`} style={{ top }}>
         {items.length === 0 ? (
           <div className={cls.empty}>{emptyMessage}</div>
         ) : (
