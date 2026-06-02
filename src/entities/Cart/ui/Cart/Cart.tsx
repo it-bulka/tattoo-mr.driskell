@@ -6,7 +6,7 @@ import { CartItemType } from '@/entities/Cart'
 import { useDevice } from '@/shared/libs'
 import { cartActions } from '../../model/slice/cartSlice.tsx'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { useCallback } from 'react'
+import { Fragment, useCallback } from 'react'
 
 interface CartProps {
   className?: string
@@ -52,9 +52,8 @@ export const Cart = ({
 
 
       {items.map((item) => (
-        <>
+        <Fragment key={item.productId}>
           <CartItem
-            key={item.productId}
             {...item}
             readonly={readonly}
             type={isMobile ? 'mobile' : 'desktop'}
@@ -64,7 +63,7 @@ export const Cart = ({
             onDeleteClick={() => onDelete(item.productId)}
           />
           {isMobile && <div className={classNames("decorator static full croppedPoligon gray", cls.decorator)} />}
-        </>
+        </Fragment>
       ))}
     </div>
   )
