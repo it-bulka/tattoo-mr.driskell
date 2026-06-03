@@ -23,15 +23,16 @@ type SearchParams = {
   motorType?: string
   needleType?: string
   brandSlug?: string
+  onlyDiscounted?: boolean
 }
 
 const buildQuery = (params: SearchParams) => {
-  const { page = 1, limit, category, label, tags, sort, minPrice, maxPrice, inStock, motorType, needleType, brandSlug } = params
+  const { page = 1, limit, category, label, tags, sort, minPrice, maxPrice, inStock, motorType, needleType, brandSlug, onlyDiscounted } = params
   const categoryParam = Array.isArray(category) ? category.join(',') : category
   const labelParam = Array.isArray(label) ? label.join(',') : label
   return {
     url: '/tattoo-machines',
-    params: { page, limit, category: categoryParam, label: labelParam, tags, sort, minPrice, maxPrice, inStock, motorType, needleType, brandSlug }
+    params: { page, limit, category: categoryParam, label: labelParam, tags, sort, minPrice, maxPrice, inStock, motorType, needleType, brandSlug, onlyDiscounted }
   }
 }
 
