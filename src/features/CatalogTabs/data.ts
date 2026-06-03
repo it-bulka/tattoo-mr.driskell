@@ -19,11 +19,5 @@ export const catalogContent: CatalogTabsObject<string[]> = {
     'new arrivals', 'tattoo sets', 'tattoo machines', 'tattoo inks', 'tattoo needles', 'tattoo holders',
     'tattoo tips', 'power supplies', 'pedals and wires', 'accessories', 'printers and tablets', 'protection, containers, consumables'
   ],
-  brands: [
-    'Aliance', 'Aloe Tattoo', 'Anchored by Nikko Hurtado', 'BC Invention Comrany', 'Beauty Bit', 'Bishop Rotary', 'Burlak Tattoo Machines', 'Cheyenne HAWK', 'Critical Tattoo', 'Dermalize Protective', 'Dynamic Colors',
-    'EGO Rotary', 'Eikon Device Inc.', 'Electrum', 'EQUALISER by Kwadron', 'Eternal', 'Excalibur', 'Fantasia Art Supply', 'FKirons', 'Hanafy', 'HM Tattoo Machines', 'Ink Machines',
-    'InkJecta Tattoo Machine', 'Intenze', 'JACK & ALEXX', 'Kashalot Rotary', 'Kuro Sumi', 'KWADRON', 'Lauro Paolini', 'Lithuanian Irons', 'Lucky Supply', 'Mercator Medical', 'Millenium Moms Ink',
-    'NEMESIS', 'Nocturnal Tattoo Ink', 'Panthera', 'Perma Blend', 'Precision Needles', 'Precision Tattoo Supply', 'Premier Products', 'Radiant', 'Reprofx Spirit', 'Right Stuuf', 'S8TATTOO',
-    'Skinductor', 'Starbrite', 'Tattoorevive', 'TURANIUM Fabrika Rotary', 'UNI-CART', 'Vlad Blad', 'World Famous Bala', 'World Famous Tattoo Ink', '2K2BT'
-  ]
+  brands: []
 }
