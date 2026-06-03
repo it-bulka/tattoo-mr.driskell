@@ -32,6 +32,7 @@ const initialState: CartSchema = cartAdapter.getInitialState({
   totalAmount: 0,
   totalPrice: 0,
   discount: 0,
+  bundleDiscount: 0,
   extraServices: 0,
   ids: [],
   entities: {},
@@ -105,6 +106,7 @@ const cartSlice = createSlice({
         newTotals.newDiscount += promoDiscount
       }
 
+      state.bundleDiscount = 0
       updateCartTotals(state, newTotals)
       state.isBackSynchronized = false
     },
@@ -152,6 +154,7 @@ const cartSlice = createSlice({
         updatedTotals.newDiscount += promoDiscount
       }
 
+      state.bundleDiscount = 0
       updateCartTotals(state, updatedTotals)
 
       if(quantity === 0) {

@@ -81,6 +81,12 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
           <span>{t('summary.total discount')}</span>
           <span>{totals.totalDiscount}</span>
         </div>
+        {!!totals.bundleDiscount && (
+          <div className={cls.prices}>
+            <span>{t('summary.bundle discount')}</span>
+            <span>− {totals.bundleDiscount}</span>
+          </div>
+        )}
         <div className={cls.prices}>
           <span>{t('summary.additional services')}</span>
           <span>{totalServices}</span>

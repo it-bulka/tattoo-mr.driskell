@@ -14,5 +14,6 @@ export const setCartData: SetCartData = (state, action, cartAdapter) => {
   state.totalAmount = action.payload?.totalItems || 0
   state.totalPrice = action.payload?.totalToPay || 0
   state.discount = action.payload?.discount || 0
+  state.bundleDiscount = action.payload?.bundleDiscount ?? 0
   state.extraServices = action.payload?.extraServices || 0
 }

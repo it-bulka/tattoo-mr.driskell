@@ -30,6 +30,7 @@ export const getCartTotalsSelector = createSelector(
     totalPrice: cart.totalPrice || 0,
     totalAmount: cart.totalAmount || 0,
     totalDiscount: cart.discount || 0,
+    bundleDiscount: cart.bundleDiscount || 0,
     totalServices: cart.extraServices || 0
   })
 )

@@ -1,10 +1,16 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
-import { CartDataRes, SyncCartBody } from '@/entities/Cart'
+import { CartDataRes, CartItem, SyncCartBody } from '@/entities/Cart'
 import { PromoActivationReq } from '../type/cartSchema.tsx'
 
 interface ReturnCartData {
   data: CartDataRes
 }
+
+interface CalculateCartBody {
+  items: CartItem[]
+  lang?: string
+}
+
 export const cartApi = rtkApi.injectEndpoints({
   endpoints: build => ({
     getCart: build.query({
@@ -16,6 +22,13 @@ export const cartApi = rtkApi.injectEndpoints({
     syncCart: build.mutation<ReturnCartData, SyncCartBody>({
       query: body => ({
         url: '/carts/sync',
+        method: 'POST',
+        body,
+      }),
+    }),
+    calculateCart: build.mutation<ReturnCartData, CalculateCartBody>({
+      query: body => ({
+        url: '/carts/calculate',
         method: 'POST',
         body,
       }),

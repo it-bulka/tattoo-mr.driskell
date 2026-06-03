@@ -16,15 +16,23 @@ const debouncedSync = debounce(async () => {
 
   const state = getState()
   const userId = getUserId(state)
+  const items = transformCartItemsForBack(state.cart)
 
   if (!userId) {
     guestCartStorage.set(getCartItemsSelector(state))
+    if (!items.length || !navigator.onLine) return
+    try {
+      const result = await dispatch(
+        cartApi.endpoints.calculateCart.initiate({ items })
+      ).unwrap()
+      if (result?.data) dispatch(cartActions.setCartData(result.data))
+    } catch (error) {
+      console.error('Cart calculate error:', error)
+    }
     return
   }
 
   if (!navigator.onLine) return
-
-  const items = transformCartItemsForBack(state.cart)
 
   try {
     const result = await dispatch(
@@ -35,6 +43,7 @@ const debouncedSync = debounce(async () => {
       })
     ).unwrap()
 
+    if (result?.data) dispatch(cartActions.setCartData(result.data))
     dispatch(cartActions.setBackSync(true))
   } catch (error) {
     console.error('Cart sync error:', error)
