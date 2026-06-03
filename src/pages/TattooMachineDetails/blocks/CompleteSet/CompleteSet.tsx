@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 import { CardWithImgCheckboxSlider } from '@/shared/ui'
 import { memo, useCallback, useMemo, useState, useEffect } from 'react'
 import { currencyFormat } from '@/shared/libs'
-import { Product } from '@/entities/ProductCard/ProductCard.tsx'
+import { Product, ProductWithAmount } from '@/entities/ProductCard/ProductCard.tsx'
 import { AddToCartBtn } from '@/features'
 import { DiscountTier } from '@/shared/type/discount.ts'
 
@@ -97,7 +97,7 @@ export const CompleteSet = memo(({ combo, bundleDiscountTiers }: CompleteSetProp
   const totalDiscount = sumResult.discount + bundleTierDiscount
   const finalPrice = sumResult.current - bundleTierDiscount
 
-  const orderedIds = useMemo(() => {
+  const orderedIds = useMemo<ProductWithAmount[]>(() => {
     if (!ordered) return []
     return Object.values(ordered)
   }, [ordered])

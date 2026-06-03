@@ -6,19 +6,21 @@ import { addItemsToCart } from '@/entities/Cart'
 import { ProductWithAmount } from '@/entities/ProductCard/ProductCard.tsx'
 
 export interface AddToCartBtnProps extends Omit<ButtonProps, 'onClick'> {
-  product: ProductWithAmount
+  product?: ProductWithAmount
+  products?: ProductWithAmount[]
   onClick?: () => void
 }
 
-export const AddToCartBtn = memo(({ product, onClick, ...rest }: AddToCartBtnProps) => {
+export const AddToCartBtn = memo(({ product, products, onClick, ...rest }: AddToCartBtnProps) => {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
 
   const handleAddToCart = useCallback((e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation()
-    dispatch(addItemsToCart([product]))
+    const items = products ?? (product ? [product] : [])
+    if (items.length) dispatch(addItemsToCart(items))
     onClick?.()
-  }, [dispatch, product, onClick])
+  }, [dispatch, product, products, onClick])
 
   return <Button {...rest} onClick={handleAddToCart}>{t('add to cart')}</Button>
 })
