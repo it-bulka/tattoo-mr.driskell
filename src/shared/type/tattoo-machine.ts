@@ -103,5 +103,5 @@ export interface ProductExtended extends Product {
   priceCurrent: number
   specs: SpecsUnion
   category: Category
-  brand?: string
+  brand?: { id: string; slug: string; imgUrl: string; name: string }
 }
