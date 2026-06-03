@@ -1,6 +1,6 @@
 import cls from './ProductCard.module.scss'
 import classNames from 'classnames'
-import { TagType } from '@/shared/ui'
+import { TagType, DiscountBadge } from '@/shared/ui'
 import { useState } from 'react'
 import { CardWithImgTagSlider } from '@/shared/ui'
 import { AddToCartBtnWithCounter } from '@/features'
@@ -46,6 +46,7 @@ export const ProductCard = ({
       onMouseLeave={() => setHovered(false)}
       onClick={onClick}
     >
+      {priceCurrent != null && <DiscountBadge price={price} priceCurrent={priceCurrent} />}
       <CardWithImgTagSlider
         paginationId={String(id)}
         imgs={images}
