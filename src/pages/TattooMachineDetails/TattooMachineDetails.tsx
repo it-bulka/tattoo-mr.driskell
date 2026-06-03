@@ -36,7 +36,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
 
   if(!slug || (!isLoading && !data)) return <Navigate to={RoutePaths.not_found} />
   if (!data) return null
-  console.log('brand', data.brand)
+
   return (
     <div className={classNames(cls.page, {}, [className])}>
       <Breadcrumbs  className="container" customLastCrumb={data.title} />
@@ -65,7 +65,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
           title={t('products from this brand')}
           products={related.brands}
           sliderId={'brands_products'}
-          linkTo={data.brand ? getCatalogBrandsPage(data.brand) : '/'}
+          linkTo={data.brand ? getCatalogBrandsPage(data.brand.slug) : '/'}
         />
       )}
 
