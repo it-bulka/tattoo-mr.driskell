@@ -123,6 +123,8 @@
   "works made with this machine": "Роботи, зроблені цією машинкою",
   "complete the set with the necessary items": "Доповніть набір необхідними товарами",
   "more products — bigger discount": "Більше товарів — більша знижка",
+  "bundle_tier_progress": "Ще {{n}} для -{{discount}}",
+  "cart_discount_applied": "-{{value}} автоматична знижка",
   "recommended product": "Рекомендовані товари",
   "products from this brand": "Товари цього бренду",
   "similar products": "Схожі товари",

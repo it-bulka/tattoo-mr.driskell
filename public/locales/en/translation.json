@@ -123,6 +123,8 @@
   "works made with this machine": "Works made with this machine",
   "complete the set with the necessary items": "Complete the set with the necessary items",
   "more products — bigger discount": "More products — bigger discount",
+  "bundle_tier_progress": "{{n}} more for -{{discount}}",
+  "cart_discount_applied": "-{{value}} auto discount",
   "recommended product": "Recommended product",
   "products from this brand": "Products from this brand",
   "similar products": "Similar products",
