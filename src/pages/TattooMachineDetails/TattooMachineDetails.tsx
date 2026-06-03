@@ -7,7 +7,7 @@ import { ProposeProducts } from './blocks/ProposeProducts/ProposeProducts.tsx'
 import { CompleteSet } from './blocks/CompleteSet/CompleteSet.tsx'
 import { useGetTattooMachineQuery, useGetRelatedTattooMachineQuery } from './model/api/tattooMachineApi.tsx'
 import { useParams, Navigate } from 'react-router'
-import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
+import { RoutePaths, getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { MainBlock } from './blocks/Main/MainBlock.tsx'
 
 interface TattooMachineDetailsProps {
@@ -36,7 +36,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
 
   if(!slug || (!isLoading && !data)) return <Navigate to={RoutePaths.not_found} />
   if (!data) return null
-
+  console.log('brand', data.brand)
   return (
     <div className={classNames(cls.page, {}, [className])}>
       <Breadcrumbs  className="container" customLastCrumb={data.title} />
@@ -56,6 +56,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
           title={t('recommended product')}
           products={related.recommended}
           sliderId={'recommended_products'}
+          hideLink
         />
       )}
 
@@ -64,6 +65,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
           title={t('products from this brand')}
           products={related.brands}
           sliderId={'brands_products'}
+          linkTo={data.brand ? getCatalogBrandsPage(data.brand) : '/'}
         />
       )}
 
@@ -72,6 +74,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
           title={t('similar products')}
           products={related?.similar}
           sliderId={'similar_products'}
+          hideLink
         />
       )}
     </div>

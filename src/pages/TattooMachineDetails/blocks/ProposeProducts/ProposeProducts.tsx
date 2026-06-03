@@ -11,6 +11,7 @@ interface ProposeProductsProps {
   products: Product[]
   sliderId: string
   linkTo?: string
+  hideLink?: boolean
 }
 
 
@@ -18,7 +19,8 @@ export const ProposeProducts = ({
   title,
   sliderId,
   products,
-  linkTo = '/'
+  linkTo = '/',
+  hideLink = false,
 }: ProposeProductsProps) => {
   const {t} = useTranslation()
   const isTablet = useDevice(1200)
@@ -46,7 +48,8 @@ export const ProposeProducts = ({
     <>
       <div className={classNames("container", clsGeneral.blockHeader)}>
         <h5 className="pageTitle margin-0">{title}</h5>
-        <AppLink to={linkTo} className={clsGeneral.headerLink}>{t('see all')}</AppLink>
+        {/* TODO: add logic later */}
+        <AppLink to={linkTo} className={clsGeneral.headerLink} style={hideLink ? { display: 'none' } : undefined}>{t('see all')}</AppLink>
       </div>
 
       {isTablet ? (
