@@ -7,10 +7,10 @@ import { useGetProductsPaginatedQuery } from '@/entities/ProductList'
 import { ProductCategory } from '@/entities/ProductList'
 import { FilterToolbar } from '@/widgets'
 import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
-import BrandImg from '@/shared/assets/pages/brands/kuro-sumi.png'
 import { memo, useState, useCallback } from 'react'
 import { useParams } from 'react-router'
 import { LoaderCircle } from '@/shared/ui/Loaders'
+import { useGetBrandsQuery } from '@/entities/Brand'
 
 const LIMIT = 20
 
@@ -29,8 +29,10 @@ const CATEGORY_TABS: Array<{ value: ProductCategory; labelKey: string }> = [
 ]
 
 const BrandPage = memo(() => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
+  const { data: brands = [] } = useGetBrandsQuery(i18n.language)
+  const brand = brands.find(b => b.slug === slug)
 
   const [selectedCategories, setSelectedCategories] = useState<ProductCategory[]>([])
   const [page, setPage] = useState(1)
@@ -94,8 +96,8 @@ const BrandPage = memo(() => {
     <div className={classNames(cls.brandsPage, 'container')}>
       <Breadcrumbs />
       <div className={cls.brand}>
-        <img src={BrandImg} alt={`${slug} logo`} />
-        <h3 className="pageTitle">{slug}</h3>
+        {brand?.imgUrl && <img src={brand.imgUrl} alt={brand.name} />}
+        <h3 className="pageTitle">{brand?.name ?? slug}</h3>
       </div>
 
       <div className={cls.filters}>
