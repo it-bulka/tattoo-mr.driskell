@@ -1,14 +1,4 @@
 import { SwiperSlide } from 'swiper/react'
-import cheyenne from '@/shared/assets/pages/brands/cheyenne.png'
-import dermalize from '@/shared/assets/pages/brands/dermalize.png'
-import faceBody from '@/shared/assets/pages/brands/face-body.png'
-import hanafy from '@/shared/assets/pages/brands/hanafy.png'
-import inkMachines from '@/shared/assets/pages/brands/ink-machines.png'
-import kuroSumi from '@/shared/assets/pages/brands/kuro-sumi.png'
-import kwadron from '@/shared/assets/pages/brands/kwadron.png'
-import ocean from '@/shared/assets/pages/brands/ocean.png'
-import tattooAloe from '@/shared/assets/pages/brands/tattoo-aloe.png'
-import tattooRive from '@/shared/assets/pages/brands/tattoo-revive.png'
 import cls from './Brands.module.scss'
 import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
@@ -18,20 +8,8 @@ import { Grid, Mousewheel } from 'swiper/modules'
 import { Swiper } from 'swiper/react'
 import { useDevice } from '@/shared/libs'
 import { SwiperOptions } from 'swiper/types';
-
-const brandsList = [
-  { img: cheyenne, name: 'cheyenne' },
-  { img: dermalize, name: 'dermalize' },
-  { img: faceBody, name: 'faceBody' },
-  { img: hanafy, name: 'hanafy' },
-  { img: inkMachines, name: 'ink machines' },
-  { img: kuroSumi, name: 'kuroSumi' },
-  { img: kwadron, name: 'kwadron' },
-  { img: ocean, name: 'ocean' },
-  { img: tattooAloe, name: 'tattooAloe' },
-  { img: tattooRive, name: 'tattooRive' },
-]
-
+import { useGetBrandsQuery } from '@/entities/Brand'
+import { useTranslation } from 'react-i18next'
 
 const Decoration = () => {
   const [verticalArrows, setVerticalArrows] = useState<number[] | null>(null)
@@ -39,16 +17,13 @@ const Decoration = () => {
 
   const getGepCenter = (containerWidth: number) => {
     const numItems = 4;
-    const gap = 50; // Розмір gap
-
+    const gap = 50;
     const widthItem = (containerWidth - (numItems - 1) * gap) / numItems;
-
     let middleGaps = [];
     for (let i = 1; i < numItems; i++) {
       const middleGap = (i * widthItem) + (i - 1) * gap + gap / 2;
       middleGaps.push(middleGap);
     }
-
     return middleGaps
   }
 
@@ -65,7 +40,6 @@ const Decoration = () => {
     }
   }, [])
 
-
   const handleResize = useCallback(() => {
     if (containerEl) {
       updatePositions(containerEl)
@@ -80,31 +54,29 @@ const Decoration = () => {
 
   return (
     <div className={cls.sliderDecor} ref={refCallback}>
-      <div className={classNames("decorator full croppedPoligon gray", cls.horizontal)}/>
-      {verticalArrows?.map(position => {
-        return (
-          <div
-            className={classNames("decorator full croppedPoligon vertical gray", cls.vertical)}
-            style={{ left: `${position}px` }}
-            key={position}
-          />
-        )
-      })}
+      <div className={classNames('decorator full croppedPoligon gray', cls.horizontal)}/>
+      {verticalArrows?.map(position => (
+        <div
+          className={classNames('decorator full croppedPoligon vertical gray', cls.vertical)}
+          style={{ left: `${position}px` }}
+          key={position}
+        />
+      ))}
     </div>
   )
 }
 
 export const BrandsSlider = memo(() => {
   const isMobile = useDevice(1200)
+  const { i18n } = useTranslation()
+  const { data: brands = [] } = useGetBrandsQuery(i18n.language)
+  const brandsWithImages = brands.filter(b => b.imgUrl)
 
   const commonOptions: SwiperOptions = {
     spaceBetween: 40,
     slidesPerView: 4,
     slidesPerGroup: 1,
-    grid: {
-    rows: 2,
-      fill: "row"
-    },
+    grid: { rows: 2, fill: 'row' },
     loop: true
   }
 
@@ -116,9 +88,9 @@ export const BrandsSlider = memo(() => {
           modules={[Grid, Mousewheel]}
           mousewheel={{ forceToAxis: true, sensitivity: 1 }}
         >
-          {brandsList.map((item) => (
-            <SwiperSlide key={item.name}>
-              <img src={item.img} alt={`brand ${item.name}`} className={cls.img}/>
+          {brandsWithImages.map((brand) => (
+            <SwiperSlide key={brand.slug}>
+              <img src={brand.imgUrl} alt={brand.name} className={cls.img}/>
             </SwiperSlide>
           ))}
           <Decoration />
@@ -129,9 +101,9 @@ export const BrandsSlider = memo(() => {
 
   return (
     <NavigationSlider {...commonOptions} modules={[Grid]}>
-      {brandsList.map((item) => (
-        <SwiperSlide key={item.name}>
-          <img src={item.img} alt={`brand ${item.name}`} className={cls.img}/>
+      {brandsWithImages.map((brand) => (
+        <SwiperSlide key={brand.slug}>
+          <img src={brand.imgUrl} alt={brand.name} className={cls.img}/>
         </SwiperSlide>
       ))}
       <Decoration />
