@@ -19,6 +19,7 @@ const MobileCartItem = ({
   image,
   title,
   price,
+  originalPrice,
   total,
   quantity,
   readonly = false,
@@ -31,7 +32,10 @@ const MobileCartItem = ({
       <img src={image} alt={title} className={cls.cartImg}/>
       <div>
         <p className={classNames('cartTitle', cls.cartTitle)}>{title}</p>
-        <p className={cls.cartPrice}>{t('price')}: {currencyFormat(price)}</p>
+        <p className={cls.cartPrice}>
+          {t('price')}: {currencyFormat(price)}
+          {originalPrice > price && <span className="prevPrice"> {currencyFormat(originalPrice)}</span>}
+        </p>
       </div>
       {readonly || (
         <div className={cls.gridCell}>
@@ -52,6 +56,7 @@ const DesktopCartItem = ({
   image,
   title,
   price,
+  originalPrice,
   total,
   quantity,
   readonly = false,
@@ -62,7 +67,10 @@ const DesktopCartItem = ({
     <>
       <img src={image} alt={title} />
       <p className={'cartTitle'}>{title}</p>
-      <p>{currencyFormat(price)}</p>
+      <div>
+        <p>{currencyFormat(price)}</p>
+        {originalPrice > price && <p className="prevPrice">{currencyFormat(originalPrice)}</p>}
+      </div>
       {readonly ? <span>{quantity}</span> : <CounterInput initialValue={quantity} min={1} onChange={onQuantityChange}/>}
       <p>{currencyFormat(total)}</p>
       {readonly || (
