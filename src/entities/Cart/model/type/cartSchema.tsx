@@ -36,7 +36,8 @@ export interface CartDataRes {
   totalItems: number
   totalToPay: number
   extraServices?: number
-  discount: number,
+  discount: number
+  cartDiscount?: number
   promocode?: PromoCodeType
   promoCodeError?: PromoCodeErr
 }
