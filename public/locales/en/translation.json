@@ -159,6 +159,7 @@
   "status": "Status:",
   "order-status": {
     "pending": "Pending",
+    "pending_payment": "Pending payment",
     "shipped": "Shipped",
     "delivered": "Delivered",
     "paid": "Paid",

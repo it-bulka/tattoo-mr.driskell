@@ -159,6 +159,7 @@
   "status": "Статус:",
   "order-status": {
     "pending": "Обробляється",
+    "pending_payment": "Очікує оплати",
     "shipped": "Відправлено",
     "delivered": "Доставлено",
     "paid": "Оплачено",

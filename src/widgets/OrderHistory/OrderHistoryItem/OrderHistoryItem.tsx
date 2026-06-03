@@ -7,7 +7,7 @@ import ArrowLeft from '@/shared/assets/general/arrow-left.svg?react'
 import { currencyFormat, dateFormat } from '@/shared/libs'
 
 // equal to translation
-type OrderStatus = 'pending' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
+type OrderStatus = 'pending' | 'pending_payment' | 'shipped' | 'delivered' | 'paid' | 'expired' | 'cancelled'
 
 interface OrderHistoryItemProps {
   className?: string
