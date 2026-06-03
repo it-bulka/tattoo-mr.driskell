@@ -1,10 +1,11 @@
 import { rtkApi } from '@/shared/api/rtkApi.ts'
 import { ProductExtended } from '@/shared/type/tattoo-machine.ts'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
+import { DiscountTier } from '@/shared/type/discount.ts'
 
-
-interface RelatedProducts {
+export interface RelatedProducts {
   combo: Product[]
+  bundleDiscountTiers: DiscountTier[] | null
   recommended: Product[]
   brands: Product[]
   similar: Product[]

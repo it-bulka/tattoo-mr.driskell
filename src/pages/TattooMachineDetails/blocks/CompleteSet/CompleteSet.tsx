@@ -7,6 +7,7 @@ import { memo, useCallback, useMemo, useState, useEffect } from 'react'
 import { currencyFormat } from '@/shared/libs'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { AddToCartBtn } from '@/features'
+import { DiscountTier } from '@/shared/type/discount.ts'
 
 type OrderedProds = Record<string | number, Product>
 
@@ -17,7 +18,18 @@ const addIntoOrder = (array: Product[]): OrderedProds => {
   }, {} as OrderedProds)
 }
 
-export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
+const getBestTier = (tiers: DiscountTier[], itemsAmount: number): DiscountTier | null => {
+  const applicable = tiers.filter(t => t.minItems <= itemsAmount)
+  if (!applicable.length) return null
+  return applicable.reduce((best, t) => t.value > best.value ? t : best)
+}
+
+interface CompleteSetProps {
+  combo: Product[]
+  bundleDiscountTiers?: DiscountTier[] | null
+}
+
+export const CompleteSet = memo(({ combo, bundleDiscountTiers }: CompleteSetProps) => {
   const { t } = useTranslation()
   const [ordered, setOrdered] = useState<Record<string, Product> | null>(null)
 
@@ -41,7 +53,7 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
 
   const calculateOrder = useCallback((arr: Product[]) => {
     return arr.reduce((acc, item) => {
-      const priceCurrent = item.priceCurrent || 0
+      const priceCurrent = item.priceCurrent ?? item.price
       const discount = item.price - priceCurrent
 
       const newAcc = {
@@ -65,9 +77,28 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
     return calculateOrder(prods)
   }, [calculateOrder, ordered])
 
+  const bundleTierDiscount = useMemo(() => {
+    if (!bundleDiscountTiers?.length) return 0
+    const bestTier = getBestTier(bundleDiscountTiers, sumResult.itemsAmount)
+    if (!bestTier) return 0
+    return bestTier.isPercentage
+      ? Math.round((sumResult.current * bestTier.value) / 100 * 100) / 100
+      : Math.min(bestTier.value, sumResult.current)
+  }, [bundleDiscountTiers, sumResult.itemsAmount, sumResult.current])
+
+  const nextTier = useMemo(() => {
+    if (!bundleDiscountTiers?.length) return null
+    const upcoming = bundleDiscountTiers
+      .filter(t => t.minItems > sumResult.itemsAmount)
+      .sort((a, b) => a.minItems - b.minItems)
+    return upcoming[0] || null
+  }, [bundleDiscountTiers, sumResult.itemsAmount])
+
+  const totalDiscount = sumResult.discount + bundleTierDiscount
+  const finalPrice = sumResult.current - bundleTierDiscount
+
   const orderedIds = useMemo(() => {
     if (!ordered) return []
-
     return Object.values(ordered)
   }, [ordered])
 
@@ -82,6 +113,16 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
       <div className={classNames(cls.completeSet, 'container')}>
         <div className={cls.content}>
           <p className={cls.info}>{t('complete the set with the necessary items')}</p>
+
+          {nextTier && (
+            <p className={cls.tierHint}>
+              {t('bundle_tier_progress', {
+                n: nextTier.minItems - sumResult.itemsAmount,
+                discount: nextTier.isPercentage ? `${nextTier.value}%` : currencyFormat(nextTier.value)
+              })}
+            </p>
+          )}
+
           <div className={cls.cards}>
             {combo.map((product, i) => {
               return (
@@ -91,7 +132,7 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
                     imgs={product.images}
                     title={product.title}
                     paginationId={'more_prods' + product.id}
-                    price={product.price}
+                    price={product.priceCurrent ?? product.price}
                     checked={!!ordered[product.id]}
                     className={cls.card}
                     productId={product.id}
@@ -117,11 +158,11 @@ export const CompleteSet = memo(({ combo }: { combo: Product[]}) => {
 
             <div className={cls.price}>
               <p className={cls.title}>{t("items_count", { count: sumResult.itemsAmount })}</p>
-              <p className={'currentPrice'}>{currencyFormat(sumResult.current)}</p>
+              <p className={'currentPrice'}>{currencyFormat(finalPrice)}</p>
               {!!sumResult.total && <p className={'prevPrice'}>{sumResult.total}</p>}
             </div>
 
-            <p className={cls.discount}>{currencyFormat(sumResult.discount)}</p>
+            <p className={cls.discount}>{currencyFormat(totalDiscount)}</p>
           </div>
         </div>
       </div>

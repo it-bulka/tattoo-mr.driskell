@@ -49,7 +49,12 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
         category={data.category}
       />
 
-      {related?.combo && <CompleteSet combo={related?.combo}/>}
+      {related?.combo && (
+        <CompleteSet
+          combo={related.combo}
+          bundleDiscountTiers={related.bundleDiscountTiers}
+        />
+      )}
 
       {related?.recommended && (
         <ProposeProducts
