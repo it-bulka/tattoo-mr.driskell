@@ -15,6 +15,7 @@ export enum AppRoutes {
   // CATALOGS
   CATALOG = 'catalog',
   CATALOG_TATTOO_MACHINE = 'catalog_tattoo_machine',
+  BRANDS = 'brands',
   BRAND_TATTOO_MACHINE = 'brand',
   TATTOO_MACHINE_DETAILS = 'tattoo_machine_details',
   // additional
@@ -40,6 +41,7 @@ export const getContactsPage = () => '/contacts'
 // CATALOG PAGES
 export const getCatalogPage = () => `/catalog`
 export const getCatalogTattooMachinesPage = () => `/catalog/tattoo-machines`
+export const getBrandsPage = () => `/brands`
 export const getCatalogBrandsPage = (slug: string) => `/brands/${slug}`
 export const getCatalogDetailsPage = (slug: string) => `/catalog/${slug}`
 export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machines/${slug}`
@@ -65,6 +67,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   // CATALOGS
   [AppRoutes.CATALOG]: getCatalogPage(),
   [AppRoutes.CATALOG_TATTOO_MACHINE]: getCatalogTattooMachinesPage(),
+  [AppRoutes.BRANDS]: getBrandsPage(),
   [AppRoutes.BRAND_TATTOO_MACHINE]: getCatalogBrandsPage(':slug'),
   [AppRoutes.TATTOO_MACHINE_DETAILS]: getTattooMachineDetailsPage(':slug'),
   // ADDITIONAL
