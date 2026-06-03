@@ -22,10 +22,12 @@
 
 .infoTitle {
   color: var(--text-gray-color);
+  overflow-wrap: break-word;
 }
 
 .infoText {
   font-weight: 700;
+  overflow-wrap: break-word;
 }
 
 @include media-max-mobile-s {

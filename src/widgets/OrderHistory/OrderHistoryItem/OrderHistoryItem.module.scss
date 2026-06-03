@@ -10,10 +10,18 @@
 
 .gridHeader {
   color: var(--text-gray-color);
+  overflow-wrap: break-word;
+  min-width: 0;
+  font-size: 14px;
+  padding-inline: 6px;
 }
 
 .gridCell {
   font-weight: 700;
+  overflow-wrap: break-word;
+  min-width: 0;
+  font-size: 14px;
+  padding-inline: 6px;
 }
 
 .arrow {
