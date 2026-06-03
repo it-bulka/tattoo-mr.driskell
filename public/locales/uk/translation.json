@@ -62,7 +62,8 @@
     "subscribe text": "Підпишіться на новинну розсилку з найцікавішими новинами та акціями",
     "enter your name": "Введіть ім’я",
     "agree to process personal data": "Ви погоджуєтесь на обробку ваших персональних даних",
-    "subscribe btn": "Підписатися"
+    "subscribe btn": "Підписатися",
+    "subscription_success": "Підписка успішно оформлена"
   },
   "placeholder": {
     "name": "Петро Петрович Петриченко",

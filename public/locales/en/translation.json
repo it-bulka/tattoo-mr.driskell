@@ -62,7 +62,8 @@
     "subscribe text": "Subscribe to the newsletter for the most interesting news and offers",
     "enter your name": "Enter your name",
     "agree to process personal data": "You agree to the processing of your personal data",
-    "subscribe btn": "Subscribe"
+    "subscribe btn": "Subscribe",
+    "subscription_success": "Subscription successfully completed"
   },
   "placeholder": {
     "name": "John Smith",
