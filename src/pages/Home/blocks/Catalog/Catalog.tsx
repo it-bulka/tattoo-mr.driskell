@@ -13,7 +13,8 @@ import ProtectionImg from '@/shared/assets/pages/catalog/protection.png'
 import PrintersImg from '@/shared/assets/pages/catalog/printers.png'
 import TattooMachinesImg from '@/shared/assets/pages/catalog/tattoo-machines.png'
 import PowerSuppliesImg from '@/shared/assets/pages/catalog/power-supplies.png'
-import { DecoratedLink } from '@/shared/ui';
+import { AppLink, DecoratedLink } from '@/shared/ui';
+import { getCatalogDetailsPage } from '@/shared/config/routeConfig/routeConfig';
 import classNames from 'classnames';
 
 const down = [
@@ -28,50 +29,17 @@ const down = [
 ]
 
 const upper = [
-  {
-    name: 'tattoo sets',
-    img: TattooSetsImg
-  },
-  {
-    name: 'holders',
-    img: HoldersImg
-  },
-  {
-    name: 'tattoo machines',
-    img: TattooMachinesImg
-  },
-  {
-    name: 'pedals and wires',
-    img: WiresImg
-  },
-  {
-    name: 'inks',
-    img: InksImg
-  },
-  {
-    name: 'power supplies',
-    img: PowerSuppliesImg
-  },
-  {
-    name: 'tips',
-    img: TipsImg
-  },
-  {
-    name: 'tattoo needles',
-    img: NeedlesImg
-  },
-  {
-    name: 'protection, containers, consumables',
-    img: ProtectionImg
-  },
-  {
-    name: 'accessories',
-    img: AccessoriesImg
-  },
-  {
-    name: 'printers and tablets',
-    img: PrintersImg
-  }
+  { name: 'tattoo sets', slug: 'tattoo-sets', img: TattooSetsImg },
+  { name: 'holders', slug: 'tattoo-holders', img: HoldersImg },
+  { name: 'tattoo machines', slug: 'tattoo-machines', img: TattooMachinesImg },
+  { name: 'pedals and wires', slug: 'pedals-and-wires', img: WiresImg },
+  { name: 'inks', slug: 'tattoo-inks', img: InksImg },
+  { name: 'power supplies', slug: 'power-supplies', img: PowerSuppliesImg },
+  { name: 'tips', slug: 'tattoo-tips', img: TipsImg },
+  { name: 'tattoo needles', slug: 'tattoo-needles', img: NeedlesImg },
+  { name: 'protection, containers, consumables', slug: 'protection-containers-consumables', img: ProtectionImg },
+  { name: 'accessories', slug: 'accessories', img: AccessoriesImg },
+  { name: 'printers and tablets', slug: 'printers-and-tablets', img: PrintersImg },
 ]
 
 export const Catalog = () => {
@@ -83,11 +51,10 @@ export const Catalog = () => {
         <h3 className={classNames(cls.title, 'pageTitle')}>{t('catalog')}</h3>
         <div className={cls.grid}>
           {upper.map((item) => (
-            <div>
+            <AppLink key={item.slug} to={getCatalogDetailsPage(item.slug)} state={{ type: 'category' }}>
               <div style={{ backgroundImage: `url(${item.img})`}} className={cls.img}/>
-
-              <p key={item.name} className={cls.cardTitle}>{item.name}</p>
-            </div>
+              <p className={cls.cardTitle}>{item.name}</p>
+            </AppLink>
           ))}
         </div>
       </div>
