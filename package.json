@@ -19,7 +19,6 @@
     "i18next-chained-backend": "^4.6.2",
     "i18next-http-backend": "^3.0.2",
     "i18next-localstorage-backend": "^4.2.0",
-    "install": "^0.13.0",
     "lodash.debounce": "^4.0.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
