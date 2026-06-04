@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Auth } from '../../components/index.tsx'
-import { AppLink, CheckBox, ErrorMsg } from '@/shared/ui'
+import { CheckBox, ErrorMsg } from '@/shared/ui'
 import { memo } from 'react'
 
 const registrationInputs = [
@@ -15,15 +15,17 @@ const registrationInputs = [
 
 interface RegistrationContentProps {
   onSubmit: (data: RegistrationFormData) => void
+  onOpenLogin: () => void
 }
-export const RegistrationContent = memo(({ onSubmit }: RegistrationContentProps) => {
+
+export const RegistrationContent = memo(({ onSubmit, onOpenLogin }: RegistrationContentProps) => {
   const { t } = useTranslation('auth')
 
   const {
     handleSubmit,
     control,
     formState: { errors },
-    clearErrors
+    clearErrors,
   } = useForm({
     defaultValues: {
       email: '',
@@ -32,12 +34,10 @@ export const RegistrationContent = memo(({ onSubmit }: RegistrationContentProps)
       confirmPassword: '',
       agree: false
     },
-    resolver: zodResolver(getRegistrationSchema())
+    resolver: zodResolver(getRegistrationSchema()),
   })
 
   const submitHandler = handleSubmit((data: RegistrationFormData) => {
-    //TODO: add api
-    console.log('RegistrationModal: ', data)
     onSubmit(data)
   })
 
@@ -61,7 +61,6 @@ export const RegistrationContent = memo(({ onSubmit }: RegistrationContentProps)
           />
         ))}
 
-        <Auth.Button>{t('confirm')}</Auth.Button>
         <Controller
           control={control}
           name="agree"
@@ -72,9 +71,11 @@ export const RegistrationContent = memo(({ onSubmit }: RegistrationContentProps)
             />
           )}
         />
-        <ErrorMsg  text={errors['agree']?.message} />
+        <ErrorMsg text={errors['agree']?.message} />
+
+        <Auth.Button>{t('confirm')}</Auth.Button>
       </form>
-      <AppLink to={'/'}>{t('already have account')}</AppLink>
+      <button type="button" onClick={onOpenLogin}>{t('already have account')}</button>
     </>
   )
 })

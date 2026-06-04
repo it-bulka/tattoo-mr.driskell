@@ -8,9 +8,10 @@ import { RegistrationSuccess } from './RegistrationSuccess.tsx'
 interface RegistrationModalProps {
   isOpen: boolean
   onClose: () => void
+  onOpenLogin: () => void
 }
 
-export const RegistrationModal = ({ isOpen, onClose }: RegistrationModalProps) => {
+export const RegistrationModal = ({ isOpen, onClose, onOpenLogin }: RegistrationModalProps) => {
   const [registration, { isLoading, isSuccess, error }] = useRegisterMutation()
 
   return (
@@ -19,8 +20,8 @@ export const RegistrationModal = ({ isOpen, onClose }: RegistrationModalProps) =
         isLoading={isLoading}
         error={error && getRtkApiMessage(error)}
       >
-        { !isSuccess
-          ? <RegistrationContent onSubmit={registration}/>
+        {!isSuccess
+          ? <RegistrationContent onSubmit={registration} onOpenLogin={onOpenLogin} />
           : <RegistrationSuccess />
         }
       </Auth.Content>
