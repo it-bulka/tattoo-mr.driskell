@@ -6,6 +6,7 @@ import { useGetLikedProducts } from '../../utils/useGetLikedProducts/useGetLiked
 import {
   useInitFavouritesFullData
 } from '../../utils/useInitFavouritesFullData/useInitFavouritesFullData.tsx'
+import { useSeoMeta } from '@/shared/libs'
 
 const FavouritesPage = () => {
   useInitFavouritesFullData()
@@ -17,6 +18,7 @@ const FavouritesPage = () => {
 
   return (
     <div className="container pageSpacing">
+      {useSeoMeta({ title: 'Обрані товари', noIndex: true })}
       <p className="pageTitle">{t('liked items')}</p>
       <p className={cls.foundedAmount}>{t('founded liked items', { count: totalAmount || 0 })}</p>
       {error && <ErrorMsg text={error}/>}

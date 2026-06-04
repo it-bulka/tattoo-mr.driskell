@@ -1,14 +1,17 @@
 import { ProductList } from '@/entities'
 import { ErrorMsg } from '@/shared/ui'
-import { getRtkApiMessage } from '@/shared/libs'
+import { getRtkApiMessage, useSeoMeta } from '@/shared/libs'
 import { useTranslation } from 'react-i18next'
 import {
   useGetCachedSearchProducts
 } from '../utils/useGetCachedSearchProducts/useGetCachedSearchProducts.tsx'
+import { useSelector } from 'react-redux'
+import { getSearchValueSelectors } from '@/features/searchTattooMachine'
 
 const SearchResultPage = () => {
   const { t } = useTranslation('search-result')
   const { data, isFetching, isError, error } = useGetCachedSearchProducts()
+  const searchQuery = useSelector(getSearchValueSelectors)
 
   // TODO: add loader
   if (isFetching) {
@@ -21,6 +24,10 @@ const SearchResultPage = () => {
 
   return (
     <div className="container pageSpacing">
+      {useSeoMeta({
+        title: searchQuery ? `Пошук: ${searchQuery}` : 'Пошук',
+        noIndex: true,
+      })}
       {t('founded', { count: data?.data?.length ?? 0})}
       {!data?.data?.length || <ProductList products={data.data}/>}
       {(isError && error) && <ErrorMsg as="p" text={getRtkApiMessage(error)} />}

@@ -10,6 +10,7 @@ import { PageTwoColumnLayout } from '@/shared/layouts'
 import { ProfileEditForm } from '@/features/ProfileForm'
 import { ChangePasswordForm } from '@/features/ChangePasswordForm'
 import { getUserId, useGetUserQuery } from '@/entities/User'
+import { useSeoMeta } from '@/shared/libs'
 
 const Profile = () => {
   const { t } = useTranslation()
@@ -21,8 +22,9 @@ const Profile = () => {
       className={'pageSpacing'}
       left={(
         <>
+          {useSeoMeta({ title: 'Профіль', noIndex: true })}
           <Breadcrumbs className={cls.withContainer} />
-          <h3 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h3>
+          <h1 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h1>
           <ProfileEditForm className={cls.withContainer} />
           <ChangePasswordForm className={cls.withContainer} />
           <Histories className={classNames(cls.withContainer, cls.histories)}/>
