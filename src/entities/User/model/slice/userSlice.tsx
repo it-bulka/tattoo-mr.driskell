@@ -1,13 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import type { UserSchema, User } from '../type/userSchema.tsx'
 
-// TODO: add dynamic id later
 const initialState: UserSchema = {
-  data: {
-    id: '67e423a7338425de0b07ed80',
-    email: 'user@gmail.com',
-    name: 'user'
-  },
   loading: false
 }
 

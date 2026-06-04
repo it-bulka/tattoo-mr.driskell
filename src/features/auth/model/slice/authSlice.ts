@@ -2,13 +2,26 @@ import { createSlice } from '@reduxjs/toolkit'
 import { loginThunk } from '../services/loginThunk.ts'
 import { AuthSchema } from '../types/AuthSchema.ts'
 import { PayloadAction } from '@reduxjs/toolkit'
+import { ACCESS_TOKEN_LOCALSTORAGE, DEVICE_ID_LOCALSTORAGE } from '@/shared/consts'
 
-const initialState: AuthSchema = {}
+const initialState: AuthSchema = {
+  accessToken: localStorage.getItem(ACCESS_TOKEN_LOCALSTORAGE),
+  deviceId: localStorage.getItem(DEVICE_ID_LOCALSTORAGE),
+}
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  reducers: {},
+  reducers: {
+    setAccessToken: (state, action: PayloadAction<string>) => {
+      state.accessToken = action.payload
+    },
+    logout: (state) => {
+      state.accessToken = null
+      state.deviceId = null
+      localStorage.removeItem(ACCESS_TOKEN_LOCALSTORAGE)
+    },
+  },
   extraReducers: builder =>
     builder
       .addCase(loginThunk.pending, () => {
@@ -25,4 +38,5 @@ const authSlice = createSlice({
 
 export const {
   reducer: authReducer,
+  actions: authActions,
 } = authSlice

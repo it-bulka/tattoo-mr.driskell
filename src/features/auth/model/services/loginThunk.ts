@@ -3,7 +3,7 @@ import { auth } from '../api/auth.tsx'
 import { LoginFormData } from '../types/login.ts'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
 import { AppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { DEVICE_ID_LOCALSTORAGE } from '@/shared/consts'
+import { DEVICE_ID_LOCALSTORAGE, ACCESS_TOKEN_LOCALSTORAGE } from '@/shared/consts'
 import { setUUID } from '@/shared/libs'
 import { userActions } from '@/entities/User'
 import { guestCartStorage, cartActions } from '@/entities/Cart'
@@ -31,6 +31,8 @@ export const loginThunk = createAsyncThunk<
       if(response.data) {
         await dispatch(userActions.setUser(response.data))
       }
+
+      localStorage.setItem(ACCESS_TOKEN_LOCALSTORAGE, response.accessToken)
 
       const guestItems = guestCartStorage.get()
       if (guestItems.length > 0) {
