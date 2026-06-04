@@ -46,7 +46,6 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
         className="container"
         description={data.longDescription}
         specs={data.specs}
-        category={data.category}
       />
 
       {related?.combo && (

@@ -1,5 +1,7 @@
 import { Product } from '@/entities/ProductCard/ProductCard.tsx';
 
+export type Spec = { name: string; value: string }
+
 
 export const specsPropertyList = {
   'tattoo-sets': [
@@ -101,7 +103,7 @@ export interface ProductExtended extends Product {
   shortDescription: string
   longDescription: string[]
   priceCurrent: number
-  specs: SpecsUnion
+  specs: Spec[]
   category: Category
   brand?: { id: string; slug: string; imgUrl: string; name: string }
 }
