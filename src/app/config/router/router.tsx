@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from 'react-router'
+import { PrivateRoute } from './PrivateRoute.tsx'
 import { RootRouter } from './RootRouter.tsx'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { HomePage } from '@/pages/Home/Home.async.tsx'
@@ -74,7 +75,7 @@ export const router = createBrowserRouter([
       },
       {
         path: RoutePaths.profile,
-        element: <Profile />
+        element: <PrivateRoute><Profile /></PrivateRoute>
       },
       {
         path: RoutePaths.contacts,
