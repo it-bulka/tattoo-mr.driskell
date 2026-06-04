@@ -1,4 +1,4 @@
-import { ProductList } from '@/entities'
+import { ProductList } from '@/entities/ProductList/ProductList'
 import { ErrorMsg } from '@/shared/ui'
 import { getRtkApiMessage, useSeoMeta } from '@/shared/libs'
 import { useTranslation } from 'react-i18next'

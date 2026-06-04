@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { AppLink } from '@/shared/ui'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import type { Brand } from '@/entities/Brand'
 import cls from './BrandCard.module.scss'

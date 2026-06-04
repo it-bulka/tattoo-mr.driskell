@@ -3,7 +3,7 @@ import cls from './Brands.module.scss'
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { memo } from 'react'
-import { NavigationSlider } from '@/shared/ui'
+import { NavigationSlider } from '@/shared/ui/slider/NavigationSlider/NavigationSlider'
 import { Grid, Mousewheel } from 'swiper/modules'
 import { Swiper } from 'swiper/react'
 import { useDevice } from '@/shared/libs'

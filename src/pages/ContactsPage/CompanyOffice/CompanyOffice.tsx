@@ -1,7 +1,7 @@
 import cls from './CompanyOffice.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { AppLink } from '@/shared/ui'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { memo } from 'react'
 
 interface CompanyOfficeProps {

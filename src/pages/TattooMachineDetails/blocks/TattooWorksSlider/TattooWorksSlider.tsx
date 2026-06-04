@@ -1,5 +1,6 @@
 import { memo } from 'react'
-import { NavigationSlider, Modal, type ModalProps } from '@/shared/ui'
+import { NavigationSlider } from '@/shared/ui/slider/NavigationSlider/NavigationSlider';
+import { Modal, type ModalProps } from '@/shared/ui/Modal/Modal';
 import { SwiperSlide } from 'swiper/react'
 import cls from './TattooWorksSlider.module.scss'
 

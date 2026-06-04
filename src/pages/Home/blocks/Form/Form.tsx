@@ -1,5 +1,8 @@
 import { useTranslation } from 'react-i18next'
-import { Button, Input, CheckBox, ErrorMsg } from '@/shared/ui';
+import { Button } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input/Input';
+import { CheckBox } from '@/shared/ui/CheckBox/CheckBox';
+import { ErrorMsg } from '@/shared/ui/ErrorMsg';
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { toast } from 'react-toastify'

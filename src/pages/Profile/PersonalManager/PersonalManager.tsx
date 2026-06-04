@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { memo } from 'react'
-import { PersonalDataCard } from '@/entities'
+import { PersonalDataCard } from '@/entities/PersonalDataCard/PersonalDataСard'
 import { personalManager } from '@/mockData.tsx';
 
 export const PersonalManager = memo(() => {

@@ -2,11 +2,11 @@ import cls from './CompleteSet.module.scss'
 import clsGeneral from '../../TattooMachineDetails.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { CardWithImgCheckboxSlider } from '@/shared/ui'
+import { CardWithImgCheckboxSlider } from '@/shared/ui/slider/CardWithImgCheckboxSlider/CardWithImgCheckboxSlider'
 import { memo, useCallback, useMemo, useState, useEffect } from 'react'
 import { currencyFormat } from '@/shared/libs'
 import { Product, ProductWithAmount } from '@/entities/ProductCard/ProductCard.tsx'
-import { AddToCartBtn } from '@/features'
+import { AddToCartBtn } from '@/features/AddToCartBtn/AddToCartBtn'
 import { DiscountTier } from '@/shared/type/discount.ts'
 
 type OrderedProds = Record<string | number, Product>

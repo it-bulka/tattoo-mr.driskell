@@ -1,6 +1,6 @@
 import cls from './SupportBlock.module.scss'
 import { useTranslation } from 'react-i18next'
-import { ContactsWithSocialMedia } from '@/shared/ui'
+import { ContactsWithSocialMedia } from '@/shared/ui/ContactsWithSocialMedia/ContactsWithSocialMedia'
 import { PageTwoColumnLayout } from '@/shared/layouts'
 import { companyData } from '@/mockData'
 

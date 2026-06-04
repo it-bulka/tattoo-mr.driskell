@@ -2,7 +2,7 @@ import cls from '../../Home.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Tabs, ErrorMsg } from '@/shared/ui'
-import { ProductListWithBtn } from '@/entities'
+import { ProductListWithBtn } from '@/entities/ProductList/ProductListWithBtn'
 import { useDevice } from '@/shared/libs'
 import { lazy, Suspense } from 'react'
 

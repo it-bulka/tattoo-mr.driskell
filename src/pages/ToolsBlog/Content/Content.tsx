@@ -1,5 +1,5 @@
 import cls from './Content.module.scss'
-import { AppLink } from '@/shared/ui';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { SubSectionType, SubSubSectionType, SectionType } from '../model/type/type.ts';
 import classNames from 'classnames';
 

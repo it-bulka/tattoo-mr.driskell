@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux'
+import { fetchNextPageLikedProducts } from '@/features/addFavourite/model/service/addLikedProducts';
+import { likedProductsSelector } from '@/features/addFavourite/model/slice/likedProductsSlice';
 import {
-  canLoadMoreLikedSelector, fetchNextPageLikedProducts,
+  canLoadMoreLikedSelector,
   getLikedErrorSelector,
   getLikedIsLoadingSelector,
-  likedProductsSelector,
   getLikedTotalCountSelector
-} from '@/features/addFavourite'
+} from '@/features/addFavourite/model/selector/likedProductsSelectors'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useCallback } from 'react'
 

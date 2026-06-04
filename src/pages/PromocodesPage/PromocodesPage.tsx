@@ -1,7 +1,8 @@
 import cls from './PromocodesPage.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
-import { Card, CardsGrid } from '@/shared/ui'
+import { Card } from '@/shared/ui/Card/Card';
+import { CardsGrid } from '@/shared/ui/CardsGrid/CardsGrid';
 import { promoCodes } from '@/mockData.tsx'
 import { Breadcrumbs } from '@/shared/ui'
 import { useHandleCopy, useSeoMeta } from '@/shared/libs'

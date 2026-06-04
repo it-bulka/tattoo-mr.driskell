@@ -1,6 +1,7 @@
 import cls from './CategoriesBlock.module.scss'
 import { useTranslation } from 'react-i18next'
-import { Card, CardsGrid } from '@/shared/ui'
+import { Card } from '@/shared/ui/Card/Card';
+import { CardsGrid } from '@/shared/ui/CardsGrid/CardsGrid';
 import { useNavigate } from 'react-router'
 import { getCatalogPage } from '@/shared/config/routeConfig/routeConfig'
 

@@ -6,7 +6,7 @@ import { getAvailability } from '@/pages/TattooMachineDetails/utils/getAvailabil
 import { CounterInput, DecoratedLink } from '@/shared/ui'
 import { TattooWorksModel } from '@/pages/TattooMachineDetails/blocks/TattooWorksSlider/TattooWorksSlider.tsx';
 import { tattooWorks } from '@/mockData.tsx'
-import { AddToCartBtn } from '@/features'
+import { AddToCartBtn } from '@/features/AddToCartBtn/AddToCartBtn'
 import { useState, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { ProductExtended } from '@/shared/type/tattoo-machine.ts'

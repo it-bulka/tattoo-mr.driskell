@@ -1,8 +1,9 @@
 import cls from './Services.module.scss'
 import { useTranslation } from 'react-i18next'
-import { ServiceCard } from '@/entities'
+import { ServiceCard } from '@/entities/ServiceCard/ServiceCard'
 import { useGetServicesQuery } from '@/entities/Service'
-import { getSelectedServicesSelector, orderActions } from '@/entities/Order'
+import { getSelectedServicesSelector } from '@/entities/Order/model/selectors/orderSelectors';
+import { orderActions } from '@/entities/Order/model/slice/orderSlice'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 import { useCallback } from 'react'

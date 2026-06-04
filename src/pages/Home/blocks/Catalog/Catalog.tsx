@@ -13,7 +13,8 @@ import ProtectionImg from '@/shared/assets/pages/catalog/protection.png'
 import PrintersImg from '@/shared/assets/pages/catalog/printers.png'
 import TattooMachinesImg from '@/shared/assets/pages/catalog/tattoo-machines.png'
 import PowerSuppliesImg from '@/shared/assets/pages/catalog/power-supplies.png'
-import { AppLink, DecoratedLink } from '@/shared/ui';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { DecoratedLink } from '@/shared/ui/DecoratedLink/DecoratedLink';
 import { getCatalogDetailsPage } from '@/shared/config/routeConfig/routeConfig';
 import classNames from 'classnames';
 

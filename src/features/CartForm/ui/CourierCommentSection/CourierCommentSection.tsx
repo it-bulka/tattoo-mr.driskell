@@ -1,7 +1,7 @@
 import cls from './CourierCommentSection.module.scss'
 import { Controller, useFormContext } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { Textarea } from '@/shared/ui'
+import { Textarea } from '@/shared/ui/Textarea/Textarea'
 import { CartFormData } from '../../model/types/cartFormTypes.tsx'
 
 export const CourierCommentSection = () => {

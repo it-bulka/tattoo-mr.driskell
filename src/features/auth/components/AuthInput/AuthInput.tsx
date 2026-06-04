@@ -1,4 +1,4 @@
-import { Input, type InputProps } from '@/shared/ui'
+import { Input, type InputProps } from '@/shared/ui/Input/Input'
 
 interface AuthInputProps extends Omit<InputProps, 'size'> {}
 

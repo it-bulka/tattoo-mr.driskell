@@ -1,7 +1,10 @@
 import clsGeneral from '../../TattooMachineDetails.module.scss'
 import classNames from 'classnames'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
-import { NavigationSlider, CardWithImgTagSlider, AppLink, PaginationSlider } from '@/shared/ui'
+import { NavigationSlider } from '@/shared/ui/slider/NavigationSlider/NavigationSlider';
+import { CardWithImgTagSlider } from '@/shared/ui/slider/CardWithImgTagSlider/CardWithImgTagSlider';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
+import { PaginationSlider } from '@/shared/ui/slider/PaginationSlider/PaginationSlider';
 import { SwiperSlide } from 'swiper/react'
 import { useTranslation } from 'react-i18next'
 import { useDevice } from '@/shared/libs'

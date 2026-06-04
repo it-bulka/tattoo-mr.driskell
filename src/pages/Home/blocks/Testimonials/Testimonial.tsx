@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import InstagramIcon from '@/shared/assets/general/inst.svg?react'
 import AvatartImg from '@/shared/assets/pages/testimonials/avatar.png'
 
-import { AppLink } from '@/shared/ui';
+import { AppLink } from '@/shared/ui/AppLink/AppLink';
 
 interface TestimonialProps {
   className?: string

@@ -1,7 +1,7 @@
 import cls from './OrderSuccessPage.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useSearchParams } from 'react-router'
-import { AppLink } from '@/shared/ui'
+import { AppLink } from '@/shared/ui/AppLink/AppLink'
 import { getProfilePage, getCartPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 
 const OrderSuccessPage = () => {

@@ -1,5 +1,6 @@
-import { ProductListWithBtn } from '@/entities'
-import { ErrorMsg, GoHomeButton } from '@/shared/ui'
+import { ProductListWithBtn } from '@/entities/ProductList/ProductListWithBtn';
+import { ErrorMsg } from '@/shared/ui';
+import { GoHomeButton } from '@/shared/ui/GoHomeButton/GoHomeButton'
 import { useTranslation } from 'react-i18next'
 import cls from './FavouritesPage.module.scss'
 import { useGetLikedProducts } from '../../utils/useGetLikedProducts/useGetLikedProducts.tsx'

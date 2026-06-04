@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { initFavouriteProducts } from '@/features/addFavourite'
+import { initFavouriteProducts } from '@/features/addFavourite/model/service/initFavouriteProducts'
 
 export const useInitFavouritesFullData = () => {
   const dispatch = useAppDispatch()
