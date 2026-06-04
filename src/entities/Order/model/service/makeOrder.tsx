@@ -63,7 +63,7 @@ export const makeOrder = createAsyncThunk<
         }
 
     const data = {
-      userId,
+      userId: userId!,
       paymentMethod: paymentType,
       deliveryMethod: delivery,
       buyer: { name, email, phone },
