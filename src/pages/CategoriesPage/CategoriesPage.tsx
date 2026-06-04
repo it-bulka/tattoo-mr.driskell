@@ -8,8 +8,8 @@ import { useGetProductsPaginatedQuery } from '@/entities/ProductList'
 import { ProductCategory } from '@/entities/ProductList'
 import { useParams } from 'react-router'
 import { useState, useCallback } from 'react'
-import { LoaderCircle } from '@/shared/ui/Loaders'
 import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
+import { CategoriesProductsLoader } from './CategoriesProductsLoader'
 
 const LIMIT = 20
 
@@ -83,7 +83,7 @@ const CategoriesPage = () => {
         handlers={wrappedHandlers}
       />
 
-      {isFetching && !data && <LoaderCircle />}
+      {isFetching && !data && <CategoriesProductsLoader />}
       {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
       {data && (
         <ProductListWithBtn

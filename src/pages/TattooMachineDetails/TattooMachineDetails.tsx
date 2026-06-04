@@ -9,6 +9,7 @@ import { useGetTattooMachineQuery, useGetRelatedTattooMachineQuery } from './mod
 import { useParams, Navigate } from 'react-router'
 import { RoutePaths, getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { MainBlock } from './blocks/Main/MainBlock.tsx'
+import { TattooMachineDetailsPageLoader } from './TattooMachineDetailsPageLoader'
 
 interface TattooMachineDetailsProps {
   className?: string
@@ -35,7 +36,7 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
   )
 
   if(!slug || (!isLoading && !data)) return <Navigate to={RoutePaths.not_found} />
-  if (!data) return null
+  if (!data) return <TattooMachineDetailsPageLoader />
 
   return (
     <div className={classNames(cls.page, {}, [className])}>

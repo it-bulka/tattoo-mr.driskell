@@ -9,8 +9,8 @@ import { FilterToolbar } from '@/widgets'
 import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
 import { memo, useState, useCallback } from 'react'
 import { useParams } from 'react-router'
-import { LoaderCircle } from '@/shared/ui/Loaders'
 import { useGetBrandsQuery } from '@/entities/Brand'
+import { BrandProductsLoader } from './BrandProductsLoader'
 
 const LIMIT = 20
 
@@ -119,7 +119,7 @@ const BrandPage = memo(() => {
         handlers={wrappedHandlers}
       />
 
-      {isFetching && !data && <LoaderCircle />}
+      {isFetching && !data && <BrandProductsLoader />}
       {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
       {data && (
         <ProductListWithBtn

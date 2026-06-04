@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { Breadcrumbs } from '@/shared/ui'
+import { Skeleton } from '@/shared/ui/Skeleton'
 import { Histories } from './Histories/Histories.tsx'
 import { PersonalManager } from './PersonalManager/PersonalManager.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
@@ -33,7 +34,10 @@ const Profile = () => {
             {t('personal discount')}
             {' '}
             <span className={cls.amount}>
-              {isLoading ? '—' : `${user?.discount ?? 0}%`}
+              {isLoading
+                ? <Skeleton height={22} width={48} border="4px" />
+                : `${user?.discount ?? 0}%`
+              }
             </span>
           </p>
 

@@ -10,6 +10,7 @@ import { useSearchParams } from 'react-router'
 import { ProductLabel } from '@/entities/ProductList'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import { useInitialParams } from './utils/useInitialParams/useInitialParams.tsx'
+import { ProductsLoader } from './ProductsLoader'
 
 const LIMIT = 10
 
@@ -70,6 +71,7 @@ export const Products = memo(({ className }: ProductsProps) => {
         justify="between"
         onClick={handleTabClick}
       />
+      {isFetching && products.length === 0 && <ProductsLoader />}
       {isError && <ErrorMsg as="p" text={t('Failed to load products')} size="medium" />}
       {!isError && products.length > 0 && (
         isMobile
