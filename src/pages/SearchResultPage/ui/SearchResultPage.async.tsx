@@ -1,8 +1,7 @@
 import { lazy } from 'react'
 import { withSuspense } from '@/shared/libs'
 
-const SearchResultPageLazy = lazy(
-  () => import('./SearchResultPage.tsx')
-)
+import { SearchResultPageLoader } from './SearchResultPageLoader'
 
-export const SearchResultPage = withSuspense(SearchResultPageLazy)
+const SearchResultPageLazy = lazy(() => import('./SearchResultPage.tsx'))
+export const SearchResultPage = withSuspense(SearchResultPageLazy, <SearchResultPageLoader />)

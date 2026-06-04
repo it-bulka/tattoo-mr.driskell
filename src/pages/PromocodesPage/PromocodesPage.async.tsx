@@ -2,6 +2,7 @@ import { lazy } from 'react'
 import { withSuspense } from '@/shared/libs'
 
 
-const PromocodesPageAsync = lazy(() => import('./PromocodesPage.tsx'))
+import { PromocodesPageLoader } from './PromocodesPageLoader'
 
-export const PromocodesPage = withSuspense(PromocodesPageAsync)
+const PromocodesPageAsync = lazy(() => import('./PromocodesPage.tsx'))
+export const PromocodesPage = withSuspense(PromocodesPageAsync, <PromocodesPageLoader />)

@@ -8,6 +8,7 @@ interface SkeletonProps {
   width?: string | number
   border?: string
   variant?: 'light' | 'dark'
+  style?: CSSProperties
 }
 
 export const Skeleton = memo(({
@@ -16,17 +17,19 @@ export const Skeleton = memo(({
   width,
   border,
   variant = 'light',
+  style,
 }: SkeletonProps) => {
-  const style: CSSProperties = {
+  const inlineStyle: CSSProperties = {
     height,
     width,
     borderRadius: border,
+    ...style,
   }
 
   return (
     <div
       className={classNames(cls.skeleton, { [cls.dark]: variant === 'dark' }, [className])}
-      style={style}
+      style={inlineStyle}
     />
   )
 })
