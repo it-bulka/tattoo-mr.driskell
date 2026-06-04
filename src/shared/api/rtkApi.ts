@@ -26,6 +26,9 @@ export const rtkApi = createApi({
       return headers
     }
   }),
+  refetchOnFocus: false,
+  refetchOnReconnect: true,
+  refetchOnMountOrArgChange: false,
   endpoints: () => ({}),
   tagTypes: ['Search', 'User', 'UserOrders', 'Services'],
 })
