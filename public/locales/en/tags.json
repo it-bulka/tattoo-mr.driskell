@@ -3,5 +3,7 @@
   "hit": "Best Seller",
   "promotion": "Special Offer",
   "absent": "Out of Stock",
-  "discount": "Discount"
+  "discount": "Discount",
+  "beginner": "For Beginners",
+  "professional": "Pro"
 }

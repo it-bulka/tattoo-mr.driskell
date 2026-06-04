@@ -3,5 +3,7 @@
   "hit": "Хіт продаж",
   "promotion": "Акція",
   "absent": "Немає на складі",
-  "discount": "Скидка"
+  "discount": "Знижка",
+  "beginner": "Для початківців",
+  "professional": "Для профі"
 }
