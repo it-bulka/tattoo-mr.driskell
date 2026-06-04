@@ -14,6 +14,8 @@ export const BrandCard = memo(({ brand }: BrandCardProps) => (
       src={brand.imgUrl || '/default.png'}
       alt={brand.name}
       className={cls.img}
+      loading="lazy"
+      decoding="async"
       onError={(e) => { e.currentTarget.src = '/default.png' }}
     />
     <span className={cls.name}>{brand.name}</span>

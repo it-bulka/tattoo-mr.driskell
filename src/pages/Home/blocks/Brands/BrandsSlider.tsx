@@ -90,7 +90,7 @@ export const BrandsSlider = memo(() => {
         >
           {brandsWithImages.map((brand) => (
             <SwiperSlide key={brand.slug}>
-              <img src={brand.imgUrl} alt={brand.name} className={cls.img}/>
+              <img src={brand.imgUrl} alt={brand.name} className={cls.img} loading="lazy" decoding="async" />
             </SwiperSlide>
           ))}
           <Decoration />
