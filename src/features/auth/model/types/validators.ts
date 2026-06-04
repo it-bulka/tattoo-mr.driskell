@@ -6,12 +6,10 @@ export const i18nOptions = { ns: "auth"}
 export const emailField = () =>
   z.string().email(i18n.t('validation.email.invalid', i18nOptions))
 
-export const agreeField = () => {
-  console.log("SEE: i18n", i18n.language, i18n.hasResourceBundle('uk', 'auth'), i18n.t('validation.email.invalid', { ns: 'auth' }))
-  return z.boolean().refine(Boolean, {
+export const agreeField = () =>
+  z.boolean().refine(Boolean, {
     message: i18n.t('validation.agree.required')
   })
-}
 
 export const passwordField = () =>
   z.string()
