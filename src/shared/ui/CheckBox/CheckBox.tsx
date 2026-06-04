@@ -7,6 +7,7 @@ interface CheckedButtonProps extends Omit<HTMLAttributes<HTMLInputElement>, 'lab
   className?: string
   checked?: boolean
   label?: string | ReactNode
+  name?: string
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 export const CheckBox = memo(({
