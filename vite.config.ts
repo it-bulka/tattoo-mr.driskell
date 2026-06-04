@@ -34,42 +34,17 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      chunkSizeWarningLimit: 600,
+      chunkSizeWarningLimit: 400,
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (!id.includes('node_modules')) return
-            if (
-              id.includes('/react-dom/') ||
-              id.includes('/react/') ||
-              id.includes('/react-router/') ||
-              id.includes('/scheduler/')
-            ) return 'vendor-react'
-            if (
-              id.includes('/@reduxjs/') ||
-              id.includes('/react-redux/') ||
-              id.includes('/redux/') ||
-              id.includes('/immer/') ||
-              id.includes('/reselect/') ||
-              id.includes('/redux-thunk/')
-            ) return 'vendor-redux'
-            if (id.includes('/framer-motion/')) return 'vendor-motion'
-            if (id.includes('/swiper/')) return 'vendor-swiper'
-            if (
-              id.includes('/react-hook-form/') ||
-              id.includes('/zod/') ||
-              id.includes('/@hookform/')
-            ) return 'vendor-form'
-            if (
-              id.includes('/i18next') ||
-              id.includes('/react-i18next/') ||
-              id.includes('/@babel/')
-            ) return 'vendor-i18n'
-            if (
-              id.includes('/react-select/') ||
-              id.includes('/react-toastify/') ||
-              id.includes('/@emotion/')
-            ) return 'vendor-ui'
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router'],
+            'vendor-redux': ['@reduxjs/toolkit', 'react-redux'],
+            'vendor-motion': ['framer-motion'],
+            'vendor-swiper': ['swiper'],
+            'vendor-form': ['react-hook-form', 'zod'],
+            'vendor-i18n': ['i18next', 'react-i18next', 'i18next-http-backend', 'i18next-localstorage-backend', 'i18next-chained-backend'],
+            'vendor-ui': ['react-select', 'react-toastify'],
           },
         },
       },
