@@ -15,6 +15,7 @@ export const deleteProductFromFavourites = createAsyncThunk<
   async (favouriteId, { dispatch, getState }) => {
     const state = getState()
     const userId = getUserId(state)
+    if (!userId) return
 
     try {
       await dispatch(

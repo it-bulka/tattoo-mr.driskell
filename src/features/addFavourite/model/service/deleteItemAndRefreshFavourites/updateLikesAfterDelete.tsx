@@ -20,6 +20,7 @@ export const updateLikesAfterDeletingOne = createAsyncThunk<
     const state = getState()
 
     const userId = getUserId(state)
+    if (!userId) return
 
     const actualFavourites = likedProductsSelector.selectAll(state)
 

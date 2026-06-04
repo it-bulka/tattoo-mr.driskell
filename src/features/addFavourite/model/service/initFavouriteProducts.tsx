@@ -20,6 +20,7 @@ export const initFavouriteProducts = createAsyncThunk<
 
     const limit = getItemsPerPageSelector(state)
     const userId = getUserId(state)
+    if (!userId) return
 
     try {
       dispatch(likedProductsActions.setLoading(true))

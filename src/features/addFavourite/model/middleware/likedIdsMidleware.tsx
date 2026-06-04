@@ -16,6 +16,8 @@ const debounceSyncLikedIdsWithBack = debounce(async () => {
 
   const state = getState()
   const userId = getUserId(state)
+  if (!userId) return
+
   const { pendingAddIds, pendingRemoveIds } = selectPendingLikes(state)
 
   if(!pendingAddIds.length && !pendingRemoveIds.length) return
