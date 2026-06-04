@@ -2,12 +2,16 @@ import cls from './CartPage.module.scss'
 import classNames from 'classnames'
 import { Breadcrumbs } from '@/shared/ui'
 import { Cart } from '@/entities/Cart'
-import { CartForm } from '@/entities'
 import { AdditionalCartInfo } from '@/widgets'
 import { useTranslation } from 'react-i18next'
 import { useSelector } from 'react-redux'
 import { getCartItemsSelector } from '@/entities/Cart'
 import { CartFormProvider } from '@/features/CartForm/model/service/cartFormContext.tsx'
+import { lazy, Suspense } from 'react'
+
+const CartForm = lazy(() =>
+  import('@/features/CartForm/ui/CartForm').then(m => ({ default: m.CartForm }))
+)
 
 interface CartPageProps {
   className?: string
@@ -23,7 +27,9 @@ const CartPage = ({ className }: CartPageProps) => {
       <div className={cls.content}>
         <Cart items={cartItems} className={cls.cart}/>
         <CartFormProvider>
-          <CartForm className={cls.form}/>
+          <Suspense fallback={null}>
+            <CartForm className={cls.form}/>
+          </Suspense>
           <AdditionalCartInfo className={cls.additional}/>
         </CartFormProvider>
       </div>

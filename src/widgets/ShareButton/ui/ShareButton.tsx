@@ -1,9 +1,13 @@
-import { Drawer, useDrawer } from '@/shared/ui'
+import { useDrawer } from '@/shared/ui'
 import { ShareContent } from './blocks/ShareContent.lazy.tsx'
 import { useTranslation } from 'react-i18next'
-import { memo } from 'react'
+import { lazy, Suspense, memo } from 'react'
 import classNames from 'classnames'
 import cls from './ShareButton.module.scss'
+
+const Drawer = lazy(() =>
+  import('@/shared/ui/Drawer/ui/Drawer').then(m => ({ default: m.Drawer }))
+)
 
 interface ShareButtonProps {
   className?: string
@@ -19,9 +23,13 @@ export const ShareButton = memo(({ className }: ShareButtonProps) => {
         {t('share')}
       </button>
 
-      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
-        {isDrawerOpen && <ShareContent />}
-      </Drawer>
+      {isDrawerOpen && (
+        <Suspense fallback={null}>
+          <Drawer isOpen={isDrawerOpen} onClose={closeDrawer}>
+            <ShareContent />
+          </Drawer>
+        </Suspense>
+      )}
     </>
   )
 })

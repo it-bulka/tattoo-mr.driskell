@@ -3,7 +3,12 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { getBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
-import { BrandsSlider } from './BrandsSlider.tsx'
+import { lazy, Suspense } from 'react'
+import { Skeleton } from '@/shared/ui/Skeleton'
+
+const BrandsSlider = lazy(() =>
+  import('./BrandsSlider.tsx').then(m => ({ default: m.BrandsSlider }))
+)
 
 export const Brands = () => {
   const { t } = useTranslation()
@@ -18,7 +23,9 @@ export const Brands = () => {
         </button>
       </div>
 
-      <BrandsSlider />
+      <Suspense fallback={<Skeleton height={200} variant="dark" />}>
+        <BrandsSlider />
+      </Suspense>
     </>
   )
 }

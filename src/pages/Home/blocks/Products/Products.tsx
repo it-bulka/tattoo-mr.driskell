@@ -2,8 +2,13 @@ import cls from '../../Home.module.scss'
 import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Tabs, ErrorMsg } from '@/shared/ui'
-import { ProductsSlider, ProductListWithBtn } from '@/entities'
+import { ProductListWithBtn } from '@/entities'
 import { useDevice } from '@/shared/libs'
+import { lazy, Suspense } from 'react'
+
+const ProductsSlider = lazy(() =>
+  import('@/entities/ProductsSlider/ProductsSlider').then(m => ({ default: m.ProductsSlider }))
+)
 import { useLazyGetProductsQuery } from '@/entities/ProductList'
 import { memo, useEffect, useState, useCallback } from 'react'
 import { useSearchParams } from 'react-router'
@@ -75,7 +80,11 @@ export const Products = memo(({ className }: ProductsProps) => {
       {isError && <ErrorMsg as="p" text={t('Failed to load products')} size="medium" />}
       {!isError && products.length > 0 && (
         isMobile
-          ? <ProductsSlider list={products} sliderId="products" />
+          ? (
+            <Suspense fallback={null}>
+              <ProductsSlider list={products} sliderId="products" />
+            </Suspense>
+          )
           : (
             <ProductListWithBtn
               btnClass={cls.seeMore}
