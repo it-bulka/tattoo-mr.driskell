@@ -5,7 +5,7 @@ import cls from './SearchDropdown.module.scss'
 
 interface SearchDropdownProps {
   items: Product[]
-  anchorRef: RefObject<HTMLDivElement>
+  anchorRef: RefObject<HTMLDivElement | null>
   isOpen: boolean
   onSelect: (product: Product) => void
   onClose: () => void
