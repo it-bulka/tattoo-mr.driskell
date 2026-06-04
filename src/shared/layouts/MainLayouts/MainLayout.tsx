@@ -17,21 +17,21 @@ const ForgotPasswordModal = lazy(() =>
   import('@/features/auth/forgotPassword/ui/ForgotPasswordModal').then(m => ({ default: m.ForgotPasswordModal }))
 )
 
+const preloadAuthModals = () => {
+  import('@/features/auth/registration/ui/RegistrationModal')
+  import('@/features/auth/forgotPassword/ui/ForgotPasswordModal')
+}
+
 export const MainLayout = () => {
   const [isRegistrationOpen, setIsRegistrationOpen] = useState(false)
-  const [registrationMounted, setRegistrationMounted] = useState(false)
-
   const [isLoginOpen, setIsLoginOpen] = useState(false)
   const [loginMounted, setLoginMounted] = useState(false)
-
   const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false)
-  const [forgotPasswordMounted, setForgotPasswordMounted] = useState(false)
 
-  useEffect(() => { if (isRegistrationOpen) setRegistrationMounted(true) }, [isRegistrationOpen])
   useEffect(() => { if (isLoginOpen) setLoginMounted(true) }, [isLoginOpen])
-  useEffect(() => { if (isForgotPasswordOpen) setForgotPasswordMounted(true) }, [isForgotPasswordOpen])
 
   const openLogin = useCallback(() => {
+    preloadAuthModals()
     setIsRegistrationOpen(false)
     setIsForgotPasswordOpen(false)
     setIsLoginOpen(true)
@@ -58,15 +58,13 @@ export const MainLayout = () => {
       <Footer className={cls.noGrow}/>
       <ScrollUpToolbar />
 
-      {registrationMounted && (
-        <Suspense fallback={null}>
-          <RegistrationModal
-            isOpen={isRegistrationOpen}
-            onClose={() => setIsRegistrationOpen(false)}
-            onOpenLogin={openLogin}
-          />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <RegistrationModal
+          isOpen={isRegistrationOpen}
+          onClose={() => setIsRegistrationOpen(false)}
+          onOpenLogin={openLogin}
+        />
+      </Suspense>
 
       {loginMounted && (
         <Suspense fallback={null}>
@@ -79,16 +77,14 @@ export const MainLayout = () => {
         </Suspense>
       )}
 
-      {forgotPasswordMounted && (
-        <Suspense fallback={null}>
-          <ForgotPasswordModal
-            isOpen={isForgotPasswordOpen}
-            onClose={() => setIsForgotPasswordOpen(false)}
-            onOpenLogin={openLogin}
-            onOpenRegister={openRegister}
-          />
-        </Suspense>
-      )}
+      <Suspense fallback={null}>
+        <ForgotPasswordModal
+          isOpen={isForgotPasswordOpen}
+          onClose={() => setIsForgotPasswordOpen(false)}
+          onOpenLogin={openLogin}
+          onOpenRegister={openRegister}
+        />
+      </Suspense>
     </div>
   )
 }
