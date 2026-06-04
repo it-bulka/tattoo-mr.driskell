@@ -1,45 +1,39 @@
-import { Modal, CheckBox, AppLink } from '@/shared/ui'
+import { Modal } from '@/shared/ui'
 import { Auth } from '@/features/auth/components'
-import { useTranslation } from 'react-i18next'
-import { useForm, SubmitHandler, Controller } from 'react-hook-form'
-import { ForgotPasswordInputs } from '../model/types/forgotPassword.tsx'
-import { useSendForgotPasswordEmailMutation } from '../../model/api/auth.tsx'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { getForgotPasswordSchema } from '../../model/types/forgotPassword.ts';
+import { useSendForgotPasswordEmailMutation } from '@/features/auth/model/api/auth.tsx'
+import { getRtkApiMessage } from '@/shared/libs'
+import { ForgotPasswordContent } from './ForgotPasswordContent.tsx'
+import { ForgotPasswordSuccess } from './ForgotPasswordSuccess.tsx'
 
-export const ForgotPasswordModal = () => {
-  const { t } = useTranslation('auth')
-  const [sendEmail, { isLoading, isError, isSuccess }] = useSendForgotPasswordEmailMutation()
-  const {
-    handleSubmit,
-    control
-  } = useForm<ForgotPasswordInputs>({
-    resolver: zodResolver(getForgotPasswordSchema())
-  })
+interface ForgotPasswordModalProps {
+  isOpen: boolean
+  onClose: () => void
+  onOpenLogin: () => void
+  onOpenRegister: () => void
+}
 
-  const onSubmit: SubmitHandler<ForgotPasswordInputs> = async (data) => {
-    sendEmail(data.email)
-  }
+export const ForgotPasswordModal = ({
+  isOpen,
+  onClose,
+  onOpenLogin,
+  onOpenRegister,
+}: ForgotPasswordModalProps) => {
+  const [sendEmail, { isLoading, isSuccess, error }] = useSendForgotPasswordEmailMutation()
 
   return (
-    <Modal isOpen>
-      <Auth.Content error={'cnfkkkkkkk kkkk'}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Auth.Title>{t('password recovery')}</Auth.Title>
-          <Controller
-            name="email"
-            control={control}
-            render={({ field }) => (
-              <Auth.Input  {...field} label={t('enter email')}  />
-            )}
-          />
-          <Auth.Button>{t('recover password')}</Auth.Button>
-          <CheckBox
-            label={t('agree to the Terms of Service')}
-          />
-          <AppLink to={'/'}>{t('back to login')}</AppLink>
-          <AppLink to={'/'}>{t('register account')}</AppLink>
-        </form>
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <Auth.Content isLoading={isLoading} error={error ? getRtkApiMessage(error) : undefined}>
+        {!isSuccess
+          ? (
+            <ForgotPasswordContent
+              onSubmit={sendEmail}
+              onOpenLogin={onOpenLogin}
+              onOpenRegister={onOpenRegister}
+              isSubmitting={isLoading}
+            />
+          )
+          : <ForgotPasswordSuccess onOpenLogin={onOpenLogin} />
+        }
       </Auth.Content>
     </Modal>
   )

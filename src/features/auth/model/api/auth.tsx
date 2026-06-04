@@ -53,5 +53,6 @@ export const auth = rtkApi.injectEndpoints({
 export const {
   useSendForgotPasswordEmailMutation,
   useRegisterMutation,
-  useLogoutMutation
+  useLogoutMutation,
+  useResetPasswordMutation,
 } = auth
