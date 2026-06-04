@@ -1,4 +1,4 @@
-import { PropsWithChildren, createContext, useCallback, useContext, FormEventHandler, useEffect, useMemo } from 'react'
+import { PropsWithChildren, createContext, useCallback, useContext, useEffect, useMemo, BaseSyntheticEvent } from 'react'
 import { useForm, FormProvider, DefaultValues } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { getCartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
@@ -31,7 +31,9 @@ const CART_FORM_DEFAULTS: DefaultValues<CartFormData> = {
   agree: false,
 }
 
-const SubmitContext = createContext<FormEventHandler | undefined>(undefined)
+type SubmitFn = (e?: BaseSyntheticEvent) => void | Promise<void>
+
+const SubmitContext = createContext<SubmitFn | undefined>(undefined)
 
 export const CartFormProvider = ({ children }: PropsWithChildren) => {
   const dispatch = useAppDispatch()
@@ -82,3 +84,5 @@ export const useSubmit = () => {
   const submitHandler = useContext(SubmitContext)
   return submitHandler
 }
+
+export type { CartFormData }
