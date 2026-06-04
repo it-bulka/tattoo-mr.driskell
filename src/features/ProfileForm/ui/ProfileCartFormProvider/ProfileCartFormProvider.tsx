@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useCallback, useContext, FormEventHandler } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { getCartFormSchema, CartFormData } from '../types/cartFormTypes.tsx'
+import { getCartFormSchema, CartFormData } from '@/features/CartForm/model/types/cartFormTypes.tsx'
 import { makeOrder } from '@/entities/Order'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
 
@@ -10,7 +10,7 @@ const SubmitContext = createContext<FormEventHandler | undefined>(undefined)
 export const ProfileCartFormProvider = ({ children }: PropsWithChildren) => {
   const dispatch = useAppDispatch()
   const methods = useForm<CartFormData>({
-    resolver: zodResolver(CartFormSchema),
+    resolver: zodResolver(getCartFormSchema()),
     mode: 'onBlur',
     defaultValues: {
       name: '',

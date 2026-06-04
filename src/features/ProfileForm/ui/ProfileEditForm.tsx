@@ -13,14 +13,14 @@ import i18n from '@/shared/config/i18n/i18n.tsx'
 
 const profileEditSchema = z.object({
   name: z.string().min(3, i18n.t('validation.enter_name')).max(50),
-  phone: z.string().optional().default(''),
+  phone: z.string(),
   email: z.string().email(i18n.t('validation.invalid_email')),
-  city: z.string().optional().default(''),
-  street: z.string().optional().default(''),
-  apartment: z.string().optional().default(''),
-  entrance: z.string().optional().default(''),
-  floor: z.string().optional().default(''),
-  doorphone: z.string().optional().default(''),
+  city: z.string(),
+  street: z.string(),
+  apartment: z.string(),
+  entrance: z.string(),
+  floor: z.string(),
+  doorphone: z.string(),
 })
 
 type ProfileEditFormData = z.infer<typeof profileEditSchema>
