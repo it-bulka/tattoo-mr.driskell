@@ -1,5 +1,5 @@
 export type {
-  CartSchema, CartData, CartItemType, CartDataRes, SyncCartBody,
+  CartSchema, CartData, CartItemType, CartDataRes, SyncCartBody, CartItem,
   PromoActivationReq
 } from './model/type/cartSchema.tsx'
 export {
