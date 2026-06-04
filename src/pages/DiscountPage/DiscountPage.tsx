@@ -7,7 +7,8 @@ import { useCallback, useState } from 'react'
 import { useLazyGetProductsQuery } from '@/entities/ProductList'
 import { ProductListWithBtn } from '@/entities'
 import { LoaderCircle } from '@/shared/ui/Loaders'
-import useFilters from './model/utils/useFilters/useFilters.tsx';
+import useFilters from './model/utils/useFilters/useFilters.tsx'
+import { useSeoMeta } from '@/shared/libs'
 
 interface DiscountPageProps {
   className?: string
@@ -34,8 +35,12 @@ const DiscountPage = ({ className }: DiscountPageProps) => {
 
   return (
     <div className={classNames(cls.discountPage, 'container', {}, [className])}>
+      {useSeoMeta({
+        title: 'Знижки та акції',
+        description: 'Актуальні акції та знижки на тату-обладнання.',
+      })}
       <Breadcrumbs />
-      <h3 className={classNames("pageTitle", cls.title)}>{t('discounts')}</h3>
+      <h1 className={classNames("pageTitle", cls.title)}>{t('discounts')}</h1>
       <div className={cls.filters}>
         {filters.map((category) => (
           <FilterButton

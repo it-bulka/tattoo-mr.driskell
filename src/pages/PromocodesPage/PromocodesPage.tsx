@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Card, CardsGrid } from '@/shared/ui'
 import { promoCodes } from '@/mockData.tsx'
 import { Breadcrumbs } from '@/shared/ui'
-import { useHandleCopy } from '@/shared/libs'
+import { useHandleCopy, useSeoMeta } from '@/shared/libs'
 
 interface PromocodesPageProps {
   className?: string
@@ -15,8 +15,12 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
 
   return (
     <div className={classNames('pageSpacing', {}, [className])}>
+      {useSeoMeta({
+        title: 'Промокоди',
+        description: 'Промокоди та купони на знижку в магазині тату-обладнання.',
+      })}
       <Breadcrumbs className="container"/>
-      <h3 className='pageTitle container'>{t('promo codes')}</h3>
+      <h1 className='pageTitle container'>{t('promo codes')}</h1>
       <CardsGrid className={cls.cardsGrid}>
         {promoCodes.map(promoCode => (
           <Card

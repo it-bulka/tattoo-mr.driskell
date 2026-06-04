@@ -4,15 +4,20 @@ import { useTranslation } from 'react-i18next'
 import { Breadcrumbs } from '@/shared/ui'
 import { AdditionalCartInfo } from '@/widgets'
 import { Services } from './blocks/Services/Services.tsx'
+import { useSeoMeta } from '@/shared/libs'
 
 const AdditionalServicePage = () => {
   const { t } = useTranslation()
 
   return (
     <div className="pageSpacing">
+      {useSeoMeta({
+        title: 'Додаткові послуги',
+        description: 'Послуги тату-магазину: навчання, сервісне обслуговування обладнання.',
+      })}
       <div className="container">
         <Breadcrumbs />
-        <h3 className={classNames('pageTitle', cls.title)}>{t('additional services')}</h3>
+        <h1 className={classNames('pageTitle', cls.title)}>{t('additional services')}</h1>
       </div>
 
       <div className={classNames(cls.content, 'container')}>

@@ -10,6 +10,8 @@ import { useParams, Navigate } from 'react-router'
 import { RoutePaths, getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { MainBlock } from './blocks/Main/MainBlock.tsx'
 import { TattooMachineDetailsPageLoader } from './TattooMachineDetailsPageLoader'
+import { useSeoMeta } from '@/shared/libs'
+import { ProductSchema } from '@/shared/ui/SeoSchemas'
 
 interface TattooMachineDetailsProps {
   className?: string
@@ -40,6 +42,19 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
 
   return (
     <div className={classNames(cls.page, {}, [className])}>
+      {useSeoMeta({
+        title: data.title,
+        description: data.longDescription?.slice(0, 155),
+        ogImage: data.images?.[0],
+      })}
+      <ProductSchema
+        name={data.title}
+        description={data.longDescription?.slice(0, 300)}
+        image={data.images?.[0]}
+        price={data.priceCurrent ?? data.price}
+        brand={(data.brand as { name?: string })?.name}
+        sku={slug}
+      />
       <Breadcrumbs  className="container" customLastCrumb={data.title} />
       <MainBlock data={data} slug={slug} />
 

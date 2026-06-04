@@ -7,6 +7,8 @@ import { About } from './blocks/about/About.tsx'
 import { Testimonials } from './blocks/Testimonials/Testimonials.tsx'
 import { FormBlock } from './blocks/Form/FormBlock.tsx'
 import { ErrorBoundary } from '@/shared/providers'
+import { useSeoMeta } from '@/shared/libs'
+import { OrganizationSchema } from '@/shared/ui/SeoSchemas'
 
 interface HomeProps {
   className?: string
@@ -14,6 +16,11 @@ interface HomeProps {
 const Home = ({ className }: HomeProps) => {
   return (
     <div className={classNames(cls.home, {}, [className, 'pageSpacing'])}>
+      {useSeoMeta({
+        title: 'Магазин тату-обладнання',
+        description: 'Купити тату-машинки, голки, чорнило та аксесуари. Офіційні бренди, швидка доставка по Україні.',
+      })}
+      <OrganizationSchema />
       <ErrorBoundary><Products /></ErrorBoundary>
       <ErrorBoundary><Catalog /></ErrorBoundary>
       <ErrorBoundary><Brands /></ErrorBoundary>

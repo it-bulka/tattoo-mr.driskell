@@ -7,6 +7,7 @@ import { personalManager } from '@/mockData.tsx'
 import { PersonalDataCardMini } from '@/entities'
 import { CompanyOffice } from './CompanyOffice/CompanyOffice.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
+import { useSeoMeta } from '@/shared/libs'
 
 const cards = Array.from({ length: 4 }, (_, i) => ({ id: i, ...personalManager}))
 
@@ -15,8 +16,12 @@ const ContactsPage = () => {
 
   return (
     <div>
+      {useSeoMeta({
+        title: 'Контакти',
+        description: "Зв'яжіться з нами: адреса, телефон, email, графік роботи.",
+      })}
       <Breadcrumbs className="container" />
-      <h3 className={classNames("pageTitle container")}>{t('contacts')}</h3>
+      <h1 className={classNames("pageTitle container")}>{t('contacts')}</h1>
 
       <h4 className={classNames(cls.blockTitle, "blockTitle container")}>{t('company office')}</h4>
       <PageTwoColumnLayout
