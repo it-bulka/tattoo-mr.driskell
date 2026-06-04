@@ -51,7 +51,7 @@ export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: I
         {actionContent}
         <LikeProductButton machineId={id}/>
       </div>
-      <img src={img} alt={rest.alt || 'зображення товару'} className={cls.img} loading="lazy" decoding="async" />
+      <img src={img || '/default.png'} alt={rest.alt || 'зображення товару'} className={cls.img} loading="lazy" decoding="async" onError={(e) => { e.currentTarget.src = '/default.png' }} />
     </div>
   )
 })

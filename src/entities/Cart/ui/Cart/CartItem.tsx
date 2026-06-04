@@ -29,7 +29,7 @@ const MobileCartItem = ({
   const { t } = useTranslation('cart')
   return (
     <div className={cls.cartItemMobile}>
-      <img src={image} alt={title} className={cls.cartImg}/>
+      <img src={image || '/default.png'} alt={title} className={cls.cartImg} onError={(e) => { e.currentTarget.src = '/default.png' }}/>
       <div>
         <p className={classNames('cartTitle', cls.cartTitle)}>{title}</p>
         <p className={cls.cartPrice}>
@@ -65,7 +65,7 @@ const DesktopCartItem = ({
 }: CartItemProps) => {
   return (
     <>
-      <img src={image} alt={title} />
+      <img src={image || '/default.png'} alt={title} onError={(e) => { e.currentTarget.src = '/default.png' }} />
       <p className={'cartTitle'}>{title}</p>
       <div>
         <p>{currencyFormat(price)}</p>
