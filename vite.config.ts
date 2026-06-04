@@ -22,6 +22,22 @@ export default defineConfig(({ mode }) => {
           additionalData: `@use "@/app/styles/_mixins.scss" as *;`
         }
       }
-    }
+    },
+    build: {
+      chunkSizeWarningLimit: 400,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router'],
+            'vendor-redux': ['@reduxjs/toolkit', 'react-redux'],
+            'vendor-motion': ['framer-motion'],
+            'vendor-swiper': ['swiper'],
+            'vendor-form': ['react-hook-form', 'zod'],
+            'vendor-i18n': ['i18next', 'react-i18next', 'i18next-http-backend', 'i18next-localstorage-backend', 'i18next-chained-backend'],
+            'vendor-ui': ['react-select', 'react-toastify'],
+          },
+        },
+      },
+    },
   }
 })
