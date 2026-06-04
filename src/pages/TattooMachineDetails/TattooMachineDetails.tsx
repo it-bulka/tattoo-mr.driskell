@@ -44,12 +44,12 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
     <div className={classNames(cls.page, {}, [className])}>
       {useSeoMeta({
         title: data.title,
-        description: data.longDescription?.slice(0, 155),
+        description: data.longDescription?.join(' ').slice(0, 155),
         ogImage: data.images?.[0],
       })}
       <ProductSchema
         name={data.title}
-        description={data.longDescription?.slice(0, 300)}
+        description={data.longDescription?.join(' ').slice(0, 300)}
         image={data.images?.[0]}
         price={data.priceCurrent ?? data.price}
         brand={(data.brand as { name?: string })?.name}
