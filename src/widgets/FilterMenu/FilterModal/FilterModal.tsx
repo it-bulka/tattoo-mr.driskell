@@ -1,6 +1,6 @@
 import cls from './FilterModal.module.scss'
 import { Modal, ModalProps, RadioButton, CheckBox, CloseBtn, RangeInput, Toggler, Accordion } from '@/shared/ui'
-import { sortOptions, typeOptions, needleTypeOptions, Option, Sorts, FilterState } from '../../FilterToolbar/model/types.ts'
+import { typeOptions, needleTypeOptions, Option, Sorts, FilterState } from '../../FilterToolbar/model/types.ts'
 import { FilterHandlers } from '../../FilterToolbar/model/useProductFilters.ts'
 import { memo } from 'react'
 import { useTranslation } from 'react-i18next'

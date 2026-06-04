@@ -62,8 +62,11 @@ export const FilterToolbar = ({ className, category, filterState, handlers }: Fi
               label={t('sort.title')}
               options={sorts}
               defaultValue={sorts.find(s => s.value === filterState.sort) ?? sorts[0]}
-              onChange={(opt: { value: string } | null) => {
-                if (opt) handlers.handleSortChange(opt.value as FilterState['sort'])
+              onChange={(opt) => {
+                const selected = opt as { value: string } | null
+                if (selected && !Array.isArray(selected)) {
+                  handlers.handleSortChange(selected.value as FilterState['sort'])
+                }
               }}
             />
 
