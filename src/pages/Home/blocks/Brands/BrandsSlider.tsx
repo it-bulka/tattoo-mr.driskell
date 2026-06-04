@@ -1,6 +1,6 @@
 import { SwiperSlide } from 'swiper/react'
 import cls from './Brands.module.scss'
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import { memo } from 'react'
 import { NavigationSlider } from '@/shared/ui'
@@ -10,8 +10,9 @@ import { useDevice } from '@/shared/libs'
 import { SwiperOptions } from 'swiper/types';
 import { useGetBrandsQuery } from '@/entities/Brand'
 import { useTranslation } from 'react-i18next'
+import debounce from 'lodash.debounce'
 
-const Decoration = () => {
+const Decoration = memo(function Decoration() {
   const [verticalArrows, setVerticalArrows] = useState<number[] | null>(null)
   const [containerEl, setContainerEl] = useState<HTMLDivElement | null>(null)
 
@@ -40,17 +41,21 @@ const Decoration = () => {
     }
   }, [])
 
-  const handleResize = useCallback(() => {
-    if (containerEl) {
-      updatePositions(containerEl)
-    }
-  }, [containerEl])
+  const handleResize = useMemo(
+    () => debounce(() => {
+      if (containerEl) updatePositions(containerEl)
+    }, 150),
+    [containerEl, updatePositions]
+  )
 
   useEffect(() => {
     if(!containerEl) return
     window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [containerEl]);
+    return () => {
+      handleResize.cancel()
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [containerEl, handleResize]);
 
   return (
     <div className={cls.sliderDecor} ref={refCallback}>
@@ -64,7 +69,7 @@ const Decoration = () => {
       ))}
     </div>
   )
-}
+})
 
 export const BrandsSlider = memo(() => {
   const isMobile = useDevice(1200)

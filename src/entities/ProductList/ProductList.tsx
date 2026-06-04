@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { ProductCard } from '@/entities/ProductCard'
 import { type Product } from '../ProductCard/ProductCard.tsx'
 import cls from './ProductsList.module.scss'
@@ -10,8 +11,7 @@ interface ProductListProps {
   products: Product[]
 }
 
-// TODO: add virtualization
-export const ProductList = ({ className, products }: ProductListProps) => {
+export const ProductList = memo(({ className, products }: ProductListProps) => {
   const navigate = useNavigate()
 
   return (
@@ -25,4 +25,4 @@ export const ProductList = ({ className, products }: ProductListProps) => {
       ))}
     </div>
   )
-}
+})
