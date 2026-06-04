@@ -40,9 +40,11 @@ const productsApi = rtkApi.injectEndpoints({
   endpoints: build => ({
     getProducts: build.query<ProductsType, SearchParams>({
       query: buildQuery,
+      keepUnusedDataFor: 300,
     }),
     getProductsPaginated: build.query<ProductsType, SearchParams>({
       query: buildQuery,
+      keepUnusedDataFor: 300,
       serializeQueryArgs: ({ queryArgs }) => {
         const { page: _page, ...rest } = queryArgs
         return rest

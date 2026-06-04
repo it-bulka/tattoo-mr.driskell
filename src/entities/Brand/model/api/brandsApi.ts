@@ -5,6 +5,7 @@ const brandsApi = rtkApi.injectEndpoints({
   endpoints: build => ({
     getBrands: build.query<Brand[], string>({
       query: () => ({ url: '/brands' }),
+      keepUnusedDataFor: 3600,
     }),
   }),
 })

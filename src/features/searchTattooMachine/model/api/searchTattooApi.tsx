@@ -20,6 +20,7 @@ const searchTattooApi = rtkApi.injectEndpoints({
       }),
       providesTags: (result) =>
         result?.data ? [{ type: 'Search' as const }] : [],
+      keepUnusedDataFor: 60,
     })
   })
 })

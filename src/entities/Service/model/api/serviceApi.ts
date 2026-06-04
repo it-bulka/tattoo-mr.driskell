@@ -7,6 +7,7 @@ export const serviceApi = rtkApi.injectEndpoints({
       query: () => ({ url: '/services' }),
       transformResponse: (res: { data: Service[] }) => res.data,
       providesTags: ['Services'],
+      keepUnusedDataFor: 3600,
     }),
   }),
 })
