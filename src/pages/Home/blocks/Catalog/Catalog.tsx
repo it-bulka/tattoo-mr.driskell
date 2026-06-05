@@ -15,17 +15,19 @@ import TattooMachinesImg from '@/shared/assets/pages/catalog/tattoo-machines.png
 import PowerSuppliesImg from '@/shared/assets/pages/catalog/power-supplies.png'
 import { AppLink } from '@/shared/ui/AppLink/AppLink';
 import { DecoratedLink } from '@/shared/ui/DecoratedLink/DecoratedLink';
-import { getCatalogDetailsPage } from '@/shared/config/routeConfig/routeConfig';
+import { getCatalogDetailsPage, getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig';
 import classNames from 'classnames';
 
 const down = [
   {
     img: CatalogLeft,
-    name: 'Фарби Lip Nitn'
+    name: 'KWADRON',
+    to: getCatalogBrandsPage('kwadron')
   },
   {
     img: CatalogRight,
-    name: 'Foxx viper - хіт 2021 року'
+    name: 'Cheyenne HAWK',
+    to: getCatalogBrandsPage('cheyenne-hawk')
   }
 ]
 
@@ -64,7 +66,7 @@ export const Catalog = () => {
         {down.map((item) => (
           <div style={{ backgroundImage: `url(${item.img})`}} key={item.name}>
             <p className={cls.additionTitle}>{item.name}</p>
-            <DecoratedLink to="/" className={cls.link}>{t('show in catalog')}</DecoratedLink>
+            <DecoratedLink to={item.to} className={cls.link}>{t('show in catalog')}</DecoratedLink>
           </div>
         ))}
       </div>
