@@ -87,13 +87,19 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
             <span>− {totals.bundleDiscount}</span>
           </div>
         )}
+        {!!totals.promoDiscount && (
+          <div className={cls.prices}>
+            <span>{t('summary.promo discount')}</span>
+            <span>− {totals.promoDiscount}</span>
+          </div>
+        )}
         <div className={cls.prices}>
           <span>{t('summary.additional services')}</span>
           <span>{totalServices}</span>
         </div>
         <div className={(cls.pricesTotal)}>
           <span>{t('summary.grand total')}</span>
-          <span>{totals.totalPrice}</span>
+          <span>{totals.totalPrice + totalServices}</span>
         </div>
 
         <ActivatePromoButton  className={cls.promoBtn}/>

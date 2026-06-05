@@ -28,6 +28,7 @@ export interface CartData {
   totalPrice?: number
   extraServices?: number
   discount?: number
+  promoDiscount?: number
   bundleDiscount?: number
   promoCode?: PromoCodeType
 }
@@ -38,6 +39,7 @@ export interface CartDataRes {
   totalToPay: number
   extraServices?: number
   discount: number
+  promoDiscount?: number
   bundleDiscount?: number
   cartDiscount?: number
   promocode?: PromoCodeType
