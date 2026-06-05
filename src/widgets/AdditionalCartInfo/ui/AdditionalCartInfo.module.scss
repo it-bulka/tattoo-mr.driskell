@@ -27,6 +27,12 @@
   align-items: center;
 
   font: 17px / 140% var(--font-family-secondary);
+
+  span:last-child {
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
 }
 
 .pricesTotal {
