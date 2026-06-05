@@ -1,5 +1,8 @@
 {
   "no favourite yet": "You have not liked any products yet",
   "founded liked items": "Founded: {{count}}",
-  "liked items": "Items you liked"
+  "liked items": "Items you liked",
+  "auth required title": "Log in to save item to favourites",
+  "sign in": "Sign in",
+  "create account": "Create account"
 }

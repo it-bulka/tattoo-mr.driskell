@@ -1,5 +1,8 @@
 {
   "no favourite yet": "У тебе ще щодного обраного продукту",
   "founded liked items": "Знайдено: {{count}}",
-  "liked items": "Продукти, які вам сподобались"
+  "liked items": "Продукти, які вам сподобались",
+  "auth required title": "Увійдіть, щоб зберегти товар в обране",
+  "sign in": "Увійти",
+  "create account": "Зареєструвати акаунт"
 }

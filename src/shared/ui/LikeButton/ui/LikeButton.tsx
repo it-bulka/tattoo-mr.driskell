@@ -9,12 +9,14 @@ interface LikeButtonProps {
   className?: string,
   isLiked?: boolean
   onToggleLike?: (isLiked: boolean) => void
+  onClickGuard?: () => void
 }
 
 export const LikeButton = memo(({
    className,
    isLiked = false,
-   onToggleLike
+   onToggleLike,
+   onClickGuard
 }: LikeButtonProps) => {
   const [liked, setIsLiked] = useState<boolean>(isLiked)
 
@@ -22,11 +24,16 @@ export const LikeButton = memo(({
     e.preventDefault()
     e.stopPropagation()
 
+    if (onClickGuard) {
+      onClickGuard()
+      return
+    }
+
     const status = !isLiked
     setIsLiked(status)
 
     onToggleLike?.(status)
-  }, [setIsLiked, onToggleLike])
+  }, [setIsLiked, onToggleLike, onClickGuard])
 
   return (
     <button

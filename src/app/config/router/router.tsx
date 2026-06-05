@@ -95,7 +95,7 @@ export const router = createBrowserRouter([
       },
       {
         path: RoutePaths.favorites,
-        element: <FavouritesPage />
+        element: <PrivateRoute><FavouritesPage /></PrivateRoute>
       },
       {
         path: RoutePaths.not_found,

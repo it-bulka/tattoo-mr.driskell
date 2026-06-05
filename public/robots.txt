@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+Disallow: /profile
+Disallow: /profile/favorites
+Disallow: /catalog/cart
+Disallow: /catalog/cart/additional-service
+Disallow: /catalog/cart/payment-success
+Disallow: /catalog/cart/payment-failure
+
+Sitemap: https://YOUR_DOMAIN/sitemap.xml
