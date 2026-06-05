@@ -64,7 +64,7 @@ export interface SyncCartBody {
 }
 
 export interface PromoActivationReq {
-  userId: string
+  userId?: string
   promoCode: string
   items: CartItem[]
   extraServices?: CartItem[]

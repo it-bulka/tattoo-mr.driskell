@@ -22,14 +22,10 @@ export const activatePromo = createAsyncThunk<
     if(items.length === 0) return rejectWithValue('Please, choose products to buy before activate product')
 
     const userId = getUserId(state)
-    if(!userId) return rejectWithValue('User id is missing')
-
-    // TODO: add extraServices
-    // const extraServices = undefined
 
     try {
       const response = await dispatch(
-        cartApi.endpoints.activatePromo.initiate({ promoCode: promo, items, userId })
+        cartApi.endpoints.activatePromo.initiate({ promoCode: promo, items, userId: userId ?? undefined })
       ).unwrap()
 
       return response.data

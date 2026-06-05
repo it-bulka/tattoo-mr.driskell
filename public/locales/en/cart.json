@@ -34,6 +34,9 @@
   "promo code restart": "Set other promo code",
   "promo code applied": "Promo code applied",
   "promo code apply": "Apply promo code",
+  "promo code cancel": "Cancel promo code",
+  "promo code discount": "Promo code {{code}} discount:",
+  "promo code already active": "Promo code {{code}} is already applied. Cancel it first.",
   "buy now": "Buy now",
   "contact the manager": "Contact the manager",
   "agreement": {
