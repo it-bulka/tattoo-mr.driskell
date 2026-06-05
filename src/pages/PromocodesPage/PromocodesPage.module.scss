@@ -14,6 +14,13 @@
   color: var(--hint-color);
 }
 
+.empty {
+  margin-top: 40px;
+  font: 16px / 160% var(--font-family-secondary);
+  color: var(--hint-color);
+  max-width: 560px;
+}
+
 .cardsGrid {
   @include container;
 }

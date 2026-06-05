@@ -28,7 +28,11 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
       {isLoading && <PromocodesPageLoader />}
       {isError && <ErrorMsg as="p" size="medium" className="container" text={t('loading error')} />}
 
-      {promoCodes && (
+      {promoCodes?.length === 0 && (
+        <p className={classNames(cls.empty, 'container')}>{t('no promo codes')}</p>
+      )}
+
+      {!!promoCodes?.length && (
         <CardsGrid className={cls.cardsGrid}>
           {promoCodes.map(promoCode => (
             <Card
@@ -49,6 +53,7 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
           ))}
         </CardsGrid>
       )}
+
     </div>
   )
 }
