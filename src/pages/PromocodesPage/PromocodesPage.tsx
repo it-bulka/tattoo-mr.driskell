@@ -35,7 +35,8 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
               key={promoCode.id}
               title={promoCode.title}
               btnTitle={t('copy promo code')}
-              img={promoCode.imgUrl}
+              img={promoCode.imgUrl || '/default.png'}
+              imgFallback="/default.png"
               onBtnClick={() => handleCopy(promoCode.code)}
             >
               {promoCode.description.map(item => (
