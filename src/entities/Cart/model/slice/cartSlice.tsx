@@ -32,6 +32,7 @@ const initialState: CartSchema = cartAdapter.getInitialState({
   totalAmount: 0,
   totalPrice: 0,
   discount: 0,
+  promoDiscount: 0,
   bundleDiscount: 0,
   extraServices: 0,
   ids: [],
@@ -68,7 +69,7 @@ const cartSlice = createSlice({
       })
 
       if(state.promoCode) {
-        const promoDiscount = recalculatePromoCodeDiscount(delta.totalAmount, state.promoCode)
+        const promoDiscount = recalculatePromoCodeDiscount(delta.totalPrice, state.promoCode)
         delta.totalPrice -= promoDiscount
         delta.totalDiscount += promoDiscount
       }
@@ -149,7 +150,7 @@ const cartSlice = createSlice({
       if(!updatedTotals) return
 
       if(state.promoCode) {
-        const promoDiscount = recalculatePromoCodeDiscount(updatedTotals.newTotalAmount, state.promoCode)
+        const promoDiscount = recalculatePromoCodeDiscount(updatedTotals.newTotalPrice, state.promoCode)
         updatedTotals.newTotalPrice -= promoDiscount
         updatedTotals.newDiscount += promoDiscount
       }
@@ -180,17 +181,13 @@ const cartSlice = createSlice({
     },
     restartPromocode: (state) => {
       state.promoCode = undefined
+      state.promoDiscount = 0
       const items = Object.values(state.entities)
 
-      const delta = {
-        totalAmount: state.totalAmount || 0,
-        totalDiscount: state.discount || 0,
-        totalPrice: state.totalPrice || 0,
-      }
+      const delta = { totalAmount: 0, totalDiscount: 0, totalPrice: 0 }
 
       items.forEach(item => {
         recalculateTotalsWithSingleItem(delta, item)
-        return item
       })
 
       updateCartTotals(state, {
@@ -204,6 +201,7 @@ const cartSlice = createSlice({
       state.totalAmount = 0
       state.totalPrice = 0
       state.discount = 0
+      state.promoDiscount = 0
       state.extraServices = 0
       state.promoCode = undefined
       state.error = undefined

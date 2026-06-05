@@ -12,6 +12,7 @@ export const setPromoCodeData: SetPromoCodeData = (state, action) => {
   if (promoCodeError) {
     state.error = promoCodeError.message
     state.promoCode = undefined
+    state.promoDiscount = 0
     return
   }
 
