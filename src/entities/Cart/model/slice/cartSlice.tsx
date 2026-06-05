@@ -207,6 +207,16 @@ const cartSlice = createSlice({
       state.error = undefined
       state.isBackSynchronized = false
     },
+    setGuestCartFromStorage: (state, action: PayloadAction<CartItemType[]>) => {
+      cartAdapter.setAll(state, action.payload)
+      const delta = { totalAmount: 0, totalDiscount: 0, totalPrice: 0 }
+      action.payload.forEach(item => recalculateTotalsWithSingleItem(delta, item))
+      updateCartTotals(state, {
+        newTotalAmount: delta.totalAmount,
+        newDiscount: delta.totalDiscount,
+        newTotalPrice: delta.totalPrice,
+      })
+    },
     // BACK SYNC
     setCartData: (state, action: PayloadAction<CartDataRes>) => {
       setCartData(state, action, cartAdapter)

@@ -16,7 +16,7 @@ export const useInitCart = () => {
     } else {
       const savedItems = guestCartStorage.get()
       if (savedItems.length > 0) {
-        dispatch(cartActions.addItems(savedItems))
+        dispatch(cartActions.setGuestCartFromStorage(savedItems))
       }
     }
   }, [dispatch, userId])

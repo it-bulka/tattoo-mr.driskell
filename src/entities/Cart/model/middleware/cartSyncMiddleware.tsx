@@ -25,7 +25,7 @@ const debouncedSync = debounce(async () => {
       const result = await dispatch(
         cartApi.endpoints.calculateCart.initiate({ items })
       ).unwrap()
-      if (result?.data) dispatch(cartActions.setCartData(result.data))
+      if (result?.data?.items?.length) dispatch(cartActions.setCartData(result.data))
     } catch (error) {
       console.error('Cart calculate error:', error)
     }
@@ -53,6 +53,7 @@ const debouncedSync = debounce(async () => {
 
 const syncTriggerActions = [
   'cart/addItems',
+  'cart/setGuestCartFromStorage',
   'cart/removeItem',
   'cart/setItemAmount',
   'cart/restartPromocode'
