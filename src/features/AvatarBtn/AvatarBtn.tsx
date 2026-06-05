@@ -6,23 +6,21 @@ import { useCallback, memo } from 'react';
 import { useSelector } from 'react-redux';
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx';
 import { getIsAuth } from '@/features/auth';
+import { useAuthModals } from '@/shared/libs/authModalsContext';
 
 interface AvatarBtnProps {
   className?: string
-  onOpenLogin?: () => void
 }
 
-export const AvatarBtn = memo(({ className, onOpenLogin }: AvatarBtnProps) => {
+export const AvatarBtn = memo(({ className }: AvatarBtnProps) => {
   const navigate = useNavigate()
   const isAuth = useSelector(getIsAuth)
+  const { openLogin } = useAuthModals()
 
   const onClick = useCallback(() => {
-    if (isAuth) {
-      navigate(RoutePaths.profile)
-    } else {
-      onOpenLogin?.()
-    }
-  }, [isAuth, navigate, onOpenLogin])
+    if (isAuth) navigate(RoutePaths.profile)
+    else openLogin()
+  }, [isAuth, navigate, openLogin])
 
   return (
     <button className={classNames(cls.AvatarBtn, {}, [className])} onClick={onClick}>

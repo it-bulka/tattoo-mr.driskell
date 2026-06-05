@@ -13,11 +13,7 @@ import { SearchTattooMachine } from '@/features'
 import { Link } from 'react-router'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig.tsx'
 
-interface InnerHeaderProps {
-  onOpenLogin?: () => void
-}
-
-const MobileHeader = ({ onOpenLogin }: InnerHeaderProps) => {
+const MobileHeader = () => {
   return (
     <div className={cls.row}>
       <MenuBtn />
@@ -27,13 +23,13 @@ const MobileHeader = ({ onOpenLogin }: InnerHeaderProps) => {
       <div className={cls.actions}>
         <CartCount />
         <LikeCount className={cls.like}/>
-        <AvatarBtn className={cls.avatar} onOpenLogin={onOpenLogin}/>
+        <AvatarBtn className={cls.avatar} />
       </div>
     </div>
   )
 }
 
-const DesktopHeader = ({ onOpenLogin }: InnerHeaderProps) => {
+const DesktopHeader = () => {
   return (
     <>
       <div className={cls.upper}>
@@ -65,7 +61,7 @@ const DesktopHeader = ({ onOpenLogin }: InnerHeaderProps) => {
         <div className={cls.actions}>
           <CartCount />
           <LikeCount />
-          <AvatarBtn onOpenLogin={onOpenLogin}/>
+          <AvatarBtn />
         </div>
       </div>
       <div className={cls.lower}>
@@ -79,15 +75,15 @@ const DesktopHeader = ({ onOpenLogin }: InnerHeaderProps) => {
   )
 }
 
-export const Header = memo(({ className, onOpenLogin }: { className?: string, onOpenLogin?: () => void }) => {
+export const Header = memo(({ className }: { className?: string }) => {
   const isMobile = useDevice(1200)
 
   return (
     <header className={classNames(cls.header, {}, [className])}>
       <div className="container">
         {isMobile
-          ? <MobileHeader onOpenLogin={onOpenLogin} />
-          : <DesktopHeader onOpenLogin={onOpenLogin} />
+          ? <MobileHeader />
+          : <DesktopHeader />
         }
       </div>
     </header>
