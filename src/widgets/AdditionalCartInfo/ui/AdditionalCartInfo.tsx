@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { Button, CheckBox, AppLink, RadioButton, InfoLabel } from '@/shared/ui'
 import { memo, useCallback, useMemo } from 'react'
 import { useSelector } from 'react-redux'
-import { getCartTotalsSelector, getTotalPriceSelector } from '@/entities/Cart'
+import { getCartTotalsSelector, getTotalPriceSelector, getPromoCodeName } from '@/entities/Cart'
 import {
   getOrderDeliverySelector,
   getOrderPaymentSelector,
@@ -35,6 +35,7 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const selectedServices = useSelector(getSelectedServicesSelector)
   const cartSubtotal = useSelector(getTotalPriceSelector)
   const totals = useSelector(getCartTotalsSelector)
+  const promocodeName = useSelector(getPromoCodeName)
 
   const { data: servicesData } = useGetServicesQuery()
 
@@ -89,7 +90,7 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
         )}
         {!!totals.promoDiscount && (
           <div className={cls.prices}>
-            <span>{t('summary.promo discount')}</span>
+            <span>{t('summary.promo discount')}{promocodeName ? ` ${promocodeName}` : ''}</span>
             <span>− {totals.promoDiscount}</span>
           </div>
         )}

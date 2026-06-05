@@ -1,11 +1,10 @@
 import { DecoratedLink, Input } from '@/shared/ui'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from '@/app/providers/StoreProvider/config/store.ts'
-import { activatePromo, getPromoCodeName, cartActions, getCartTotalsSelector } from '@/entities/Cart'
+import { activatePromo, getPromoCodeName, cartActions } from '@/entities/Cart'
 import { useRef, memo } from 'react'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { currencyFormat } from '@/shared/libs'
 import cls from './ActivatePromoButton.module.scss'
 
 interface ActivatePromoButtonProps {
@@ -16,7 +15,6 @@ export const ActivatePromoButton = memo(({ className }: ActivatePromoButtonProps
   const { t } = useTranslation('cart')
   const inputRef = useRef<string | null>(null)
   const promocode = useSelector(getPromoCodeName)
-  const { promoDiscount } = useSelector(getCartTotalsSelector)
   const dispatch = useAppDispatch()
 
   const handleActivatePromo = async () => {
@@ -45,27 +43,24 @@ export const ActivatePromoButton = memo(({ className }: ActivatePromoButtonProps
       <Input
         key={promocode ?? 'empty'}
         defaultValue={promocode}
+        readOnly={!!promocode}
         label={t('promo code')}
         inputClassName={cls.input}
         className={cls.inputWrapper}
         onChange={(e) => { inputRef.current = e.target.value }}
       />
 
-      {promocode && promoDiscount > 0 && (
-        <p className={cls.discount}>
-          {t('promo code discount', { code: promocode })} {currencyFormat(promoDiscount)}
-        </p>
-      )}
-
-      {promocode && (
-        <DecoratedLink className={cls.cancelLink} type="button" onClick={handleCancelPromo}>
-          {t('promo code cancel')}
+      {!promocode && (
+        <DecoratedLink className={cls.link} type="button" onClick={handleActivatePromo}>
+          {t('promo code apply')}
         </DecoratedLink>
       )}
 
-      <DecoratedLink className={cls.link} type="button" onClick={handleActivatePromo}>
-        {t('promo code apply')}
-      </DecoratedLink>
+      {promocode && (
+        <DecoratedLink className={cls.link} type="button" onClick={handleCancelPromo}>
+          {t('promo code cancel')}
+        </DecoratedLink>
+      )}
     </div>
   )
 })
