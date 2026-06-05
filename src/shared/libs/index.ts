@@ -1,4 +1,6 @@
 export { withSuspense } from './withSuspense/withSuspense.tsx'
+export { AuthModalsContext, useAuthModals } from './authModalsContext'
+export type { AuthModalsContextValue } from './authModalsContext'
 export { useSeoMeta } from './useSeoMeta/useSeoMeta.tsx'
 export { currencyFormat } from './currencyFormat/currencyFormat.tsx'
 export { getElementPosition, type ElPositions } from './getElementPosition/getElementPosition.tsx'
