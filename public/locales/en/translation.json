@@ -4,6 +4,8 @@
   "catalog": "Catalog",
   "search": "Search",
   "promo codes": "Promo Codes",
+  "valid until": "Valid until",
+  "loading error": "Failed to load data. Please try again later.",
   "discounts": "Discounts",
   "help": "Help",
   "about": "About",

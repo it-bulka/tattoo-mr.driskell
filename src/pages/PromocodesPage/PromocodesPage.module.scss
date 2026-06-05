@@ -4,8 +4,14 @@
   }
 
   &:last-child {
-    margin-bottom: 34px;
+    margin-bottom: 20px;
   }
+}
+
+.expiry {
+  margin-bottom: 34px;
+  font-size: 13px;
+  color: var(--hint-color);
 }
 
 .cardsGrid {
