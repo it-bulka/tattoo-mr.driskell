@@ -1,22 +1,21 @@
 import { memo } from 'react'
-import { Skeleton } from '@/shared/ui/Skeleton'
+import { Skeleton, ProductCardSkeleton } from '@/shared/ui/Skeleton'
 import cls from '@/shared/ui/Skeleton/ui/pageLoader.module.scss'
+
+const TAB_WIDTHS = [140, 160, 150, 100]
 
 export const HomePageLoader = memo(() => {
   return (
-    <div className="container">
-      <div className={cls.loader}>
-        <Skeleton height={32} width={260} />
-        <div className={cls.grid4}>
-          {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className={cls.productCard}>
-              <Skeleton height={220} border="4px" />
-              <Skeleton height={16} width="80%" />
-              <Skeleton height={20} width="40%" />
-            </div>
-          ))}
-        </div>
-        <Skeleton height={300} border="8px" />
+    <div className="container pageSpacing">
+      <div className={cls.tabsRow}>
+        {TAB_WIDTHS.map((w, i) => (
+          <Skeleton key={i} height={42} width={w} border="4px" />
+        ))}
+      </div>
+      <div className={cls.grid4}>
+        {Array.from({ length: 4 }).map((_, i) => (
+          <ProductCardSkeleton key={i} />
+        ))}
       </div>
     </div>
   )

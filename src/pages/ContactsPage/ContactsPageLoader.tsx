@@ -8,17 +8,22 @@ export const ContactsPageLoader = memo(() => {
       <div className={cls.loader}>
         <Skeleton height={16} width={220} border="4px" />
         <Skeleton height={40} width={240} />
+
+        <Skeleton height={20} width={160} border="4px" />
         <div className={cls.twoCol}>
           <div className={cls.colMain}>
             <Skeleton height={200} border="8px" />
           </div>
-          <div className={cls.colMain}>
-            <div className={cls.grid2}>
-              {Array.from({ length: 4 }).map((_, i) => (
-                <Skeleton key={i} height={120} border="8px" />
-              ))}
-            </div>
+          <div className={cls.colSide}>
+            <Skeleton height={200} border="8px" />
           </div>
+        </div>
+
+        <Skeleton height={20} width={160} border="4px" />
+        <div className={cls.grid3}>
+          {Array.from({ length: 3 }).map((_, i) => (
+            <Skeleton key={i} height={180} border="8px" />
+          ))}
         </div>
       </div>
     </div>
