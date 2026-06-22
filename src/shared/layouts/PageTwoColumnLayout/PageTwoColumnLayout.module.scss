@@ -8,9 +8,9 @@
 }
 
 .right {
-  flex: 0 0 toPercent(392);
-  width: toPercent(392);
-  margin-left: 20px;
+  flex: 0 0 toPercent(430);
+  width: toPercent(430);
+  margin-left: toRem(32);
 }
 
 @include media-max-tablet-s {
