@@ -21,7 +21,7 @@ export type ImgSlideProps =  {
   className?: string
   onLikeClick?: () => void
   withAdaptation?: boolean
-} & Slide  & ({} | WithCheckbox)
+} & Slide  & (object | WithCheckbox)
 
 export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: ImgSlideProps) => {
   const [isLoaded, setIsLoaded] = useState(false)

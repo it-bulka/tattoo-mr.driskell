@@ -1,7 +1,7 @@
 import cls from './Select.module.scss'
 import classNames from 'classnames'
 import { memo } from 'react'
-import Select, { components, StylesConfig, Props as SelectProps } from 'react-select'
+import Select, { components, DropdownIndicatorProps, StylesConfig, Props as SelectProps } from 'react-select'
 import { useId } from 'react'
 import { getVars } from './libs/getVars/getVars.tsx'
 
@@ -10,10 +10,7 @@ type OptionType = {
   label: string
 }
 
-const {
-  primaryColor,
-  fontColor
-} = getVars()
+const { fontColor } = getVars()
 
 const getCustomStyles = (isMulti: boolean): StylesConfig<OptionType, boolean> => {
   return {
@@ -81,7 +78,7 @@ const getCustomStyles = (isMulti: boolean): StylesConfig<OptionType, boolean> =>
 }
 
 
-const DropdownIndicator = (props: any) => {
+const DropdownIndicator = (props: DropdownIndicatorProps<OptionType, boolean>) => {
   return (
     <components.DropdownIndicator {...props}>
      <div className={cls.indicator}/>

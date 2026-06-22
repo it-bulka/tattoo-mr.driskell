@@ -11,24 +11,22 @@ const HelpDetailPage = () => {
   const { slug } = useParams<{ slug: string }>()
 
   const article = slug ? getHelpArticleBySlug(slug) : undefined
+  const title = article ? t(article.titleKey) : ''
+  const description = article ? t(article.descriptionKey) : ''
+
+  useSeoMeta({ title: title || 'Not Found', description })
 
   if (!article) {
     return <Navigate to={RoutePaths.not_found} replace />
   }
 
-  const title = t(article.titleKey)
-
   return (
     <div className={cls.page}>
-      {useSeoMeta({
-        title,
-        description: t(article.descriptionKey),
-      })}
       <div className="container">
         <Breadcrumbs customLastCrumb={title} />
         <h1 className="pageTitle">{title}</h1>
 
-        <p className={cls.description}>{t(article.descriptionKey)}</p>
+        <p className={cls.description}>{description}</p>
 
         <div className={cls.sections}>
           {article.sections.map(section => (
