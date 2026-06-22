@@ -38,13 +38,15 @@
 
 .btnWrapper {
   background-color: var(--bg-card-color);
-  padding-left: toRem(15);
-  padding-right: toRem(15);
-  padding-bottom: var(--card-padding);
+  padding-left: toRem(24);
+  padding-right: toRem(24);
+  padding-bottom: toRem(20);
 }
 
 .btn {
   margin: auto;
+  font-size: toRem(14);
+  padding: toRem(8) toRem(16) toRem(10);
 }
 
 @include media-desktop {
@@ -54,9 +56,10 @@
     &:not(.staticOnTablet) {
       .btnWrapper {
         position: absolute;
-        top: calc(100% - toRem(10));
+        top: calc(100% - toRem(24));
         left: 0;
         width: 100%;
+        padding-top: toRem(16);
         transform: scaleY(0);
         transition: transform 0.7s ease;
         transform-origin: top;

@@ -58,7 +58,7 @@ export const ProductCard = ({
       />
 
       <div className={classNames(cls.btnWrapper, { [cls.isShown]: isHovered })}>
-        <AddToCartBtnWithCounter max className={cls.btn} product={product} />
+        <AddToCartBtnWithCounter className={cls.btn} product={product} />
       </div>
     </div>
   )
