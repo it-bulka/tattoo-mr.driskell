@@ -1,20 +1,21 @@
 .counter {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: toRem(20);
   width: fit-content;
   max-width: 100%;
 }
 
 .input {
-  border: 1px solid var(--accent-color);
-  min-width: 40px;
+  border: 1px solid var(--card-border-color);
+  min-width: toRem(56);
   max-width: 70%;
-  width: 40px; // + dynamic change
-  height: 40px;
+  width: toRem(56);
+  height: toRem(56);
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 7.5px 7px 8.5px;
+  font-size: toRem(18);
+  padding: toRem(10) toRem(8) toRem(12);
 }
