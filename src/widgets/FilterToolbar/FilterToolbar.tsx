@@ -15,9 +15,10 @@ interface FilterToolbarProps {
   category?: ProductCategory
   filterState: FilterState
   handlers: FilterHandlers
+  showQuickFilters?: boolean
 }
 
-export const FilterToolbar = ({ className, category, filterState, handlers }: FilterToolbarProps) => {
+export const FilterToolbar = ({ className, category, filterState, handlers, showQuickFilters = true }: FilterToolbarProps) => {
   const { t } = useTranslation('catalog')
   const isTablet = useDevice(1200)
 
@@ -33,11 +34,13 @@ export const FilterToolbar = ({ className, category, filterState, handlers }: Fi
 
   return (
     <div className={classNames(cls.filterToolbar, {}, [className])}>
-      <FilterLevel
-        options={quickFilterOptions}
-        selectedValues={filterState.tags}
-        onSelectionChange={(vals) => handlers.handleTagsChange(vals as FilterState['tags'])}
-      />
+      {showQuickFilters && (
+        <FilterLevel
+          options={quickFilterOptions}
+          selectedValues={filterState.tags}
+          onSelectionChange={(vals) => handlers.handleTagsChange(vals as FilterState['tags'])}
+        />
+      )}
 
       {isTablet
         ? (
