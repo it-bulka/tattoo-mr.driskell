@@ -1,9 +1,10 @@
 .companyOffice {
   background-color: var(--bg-card-color);
-  padding: 30px 50px 44px;
+  border: 1px solid var(--card-border-color);
+  padding: toRem(40);
   display: grid;
   grid-template-columns: 1fr;
-  row-gap: 20px;
+  row-gap: toRem(20);
 }
 
 .flex {
@@ -13,24 +14,25 @@
 }
 
 .phone {
-  font: 60px / 150% var(--font-family-secondary);
-  font-weight: 700;
-  margin-bottom: var(--space-s);
+  font: #{clamp(toRem(30), 3vw + 0.5rem, toRem(42))} / 130% var(--font-family-secondary);
+  font-weight: 600;
+  margin-bottom: toRem(8);
 }
 
 .additional {
-  font: 20px / 140% var(--font-family-secondary);
+  font: #{toRem(16)} / 140% var(--font-family-secondary);
 }
 
 .links {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-s);
-  align-items: end;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: toRem(16);
+  align-items: center;
 }
 
 .info {
-  font: 17px / 150% var(--font-family-secondary);
+  font: #{toRem(16)} / 150% var(--font-family-secondary);
 
   &.bold {
     font-weight: 700;
@@ -42,7 +44,7 @@
 }
 
 .apps {
-  font: 25px / 150% var(--font-family-secondary);
+  font: #{toRem(20)} / 150% var(--font-family-secondary);
 
   & > *:first-child {
     color: var(--gray-2);
@@ -60,18 +62,18 @@
   }
 
   .phone {
-    font-size: 30px;
+    font-size: toRem(28);
   }
 
   .additional {
-    font-size: 15px;
+    font-size: toRem(15);
   }
 
   .apps {
-    font-size: 17px;
+    font-size: toRem(17);
   }
 
   .info {
-    font-size: 15px;
+    font-size: toRem(15);
   }
 }
