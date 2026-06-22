@@ -4,32 +4,32 @@
 }
 
 .info {
-  padding: 40px 50px 0;
-  font: 25px / 115% var(--font-family-secondary);
+  padding: toRem(40) toRem(50) 0;
+  font: #{toRem(25)} / 115% var(--font-family-secondary);
   font-weight: 700;
 }
 
 .tierHint {
-  padding: 10px 50px 0;
+  padding: toRem(10) toRem(50) 0;
   font: var(--font-s-primary);
   color: var(--accent-color);
   font-weight: 600;
 }
 
 .cards {
-  padding: 20px;
+  padding: toRem(20);
   display: flex;
   align-items: center;
   @include scroll-snap;
 }
 
 .card {
-  width: 289px;
+  width: toRem(289);
 }
 
 .plus {
-  width: 40px;
-  height: 40px;
+  width: toRem(40);
+  height: toRem(40);
   position: relative;
   background-color: var(--bg-card-color);
   flex-shrink: 0;
@@ -53,20 +53,20 @@
 }
 
 .actions {
-  padding: 30px;
+  padding: var(--card-padding);
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: toRem(24);
 }
 
 .price {
   display: grid;
   grid-template-columns: repeat(2, min-content);
   align-items: center;
-  column-gap: 15px;
-  row-gap: 10px;
-  font: 17px / 150% var(--font-family-secondary);
+  column-gap: toRem(15);
+  row-gap: toRem(10);
+  font: #{toRem(17)} / 150% var(--font-family-secondary);
 
   .title {
     grid-column: 1/-1;
@@ -78,7 +78,7 @@
 .discount {
   background-color: var(--accent-dark-color);
   color: var(--text-light-color);
-  padding: 15px;
+  padding: toRem(15);
 }
 
 @include media-max-tablet-s {
@@ -88,7 +88,7 @@
   }
 
   .info {
-    padding: 30px  var(--container-padding) 20px;
+    padding: var(--card-padding) var(--container-padding) toRem(20);
   }
 
   .card {
@@ -103,14 +103,14 @@
 
 @include media-max-mobile-s {
   .info {
-    font-size: 17px;
-    padding: 30px var(--container-padding);
+    font-size: toRem(17);
+    padding: var(--card-padding) var(--container-padding);
   }
 
   .cards {
     overflow-x: scroll;
-    scrollbar-width: thin; /* Для Firefox */
-    scrollbar-color: var(--accent-color) var(--gray); /* Колір скролу у Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--gray);
 
     &::-webkit-scrollbar {
       height: 2px;
@@ -154,7 +154,7 @@
 
   .actions {
     justify-content: space-between;
-    gap: 20px;
+    gap: toRem(20);
   }
 
   .btn {
