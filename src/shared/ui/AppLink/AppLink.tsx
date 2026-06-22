@@ -13,15 +13,20 @@ export const AppLink = memo(({
   children,
   anchorScroll = false,
   to,
+  onClick,
   ...rest
 }: PropsWithChildren<AppLinkProps>) => {
   const anchorScrollHandle = useToAnchorScroll(to, anchorScroll)
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    anchorScrollHandle?.(e)
+    onClick?.(e)
+  }
   return (
     <NavLink
       className={classNames(cls.appLink, {}, [className])}
       to={to}
       {...rest}
-      onClick={anchorScrollHandle}
+      onClick={handleClick}
     >
       {children}
     </NavLink>

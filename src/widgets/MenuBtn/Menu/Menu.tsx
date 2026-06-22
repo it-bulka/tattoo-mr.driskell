@@ -19,6 +19,7 @@ import { SearchTattooMachine } from '@/features'
 interface MenuProps {
   className?: string
   isOpen: boolean
+  onClose: () => void
 }
 
 type MenuLink = {
@@ -28,6 +29,10 @@ type MenuLink = {
 }
 
 const menuLinks: MenuLink[] = [
+  {
+    name: 'home',
+    href: RoutePaths.home,
+  },
   {
     name: 'catalog',
     href:  RoutePaths.catalog,
@@ -50,8 +55,9 @@ const menuLinks: MenuLink[] = [
 interface SubLinksProps {
   links?: MenuLink[]
   isOpen: boolean
+  onLinkClick?: () => void
 }
-const SubLinks = ({ links, isOpen }: SubLinksProps) => {
+const SubLinks = ({ links, isOpen, onLinkClick }: SubLinksProps) => {
   const { t } = useTranslation()
 
   if(!links) return null
@@ -61,14 +67,14 @@ const SubLinks = ({ links, isOpen }: SubLinksProps) => {
       <div className="decorator vertical full croppedPoligon" />
       {links.map(link => (
         <li key={link.href} className={cls.sublink}>
-          <AppLink key={link.name} to={link.href}>{t(link.name)}</AppLink>
+          <AppLink key={link.name} to={link.href} onClick={onLinkClick}>{t(link.name)}</AppLink>
         </li>
       ))}
     </ul>
   )
 }
 
-const LinkWithSublinks = (props: MenuLink) => {
+const LinkWithSublinks = (props: MenuLink & { onLinkClick?: () => void }) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -77,12 +83,12 @@ const LinkWithSublinks = (props: MenuLink) => {
         <span>{props.name}</span>
         <span className={classNames(cls.arrow, { [cls.up]: isOpen})}><ArrowLeft /></span>
       </button>
-      <SubLinks links={props.subLinks} isOpen={isOpen} />
+      <SubLinks links={props.subLinks} isOpen={isOpen} onLinkClick={props.onLinkClick} />
     </>
   )
 }
 
-export const Menu = ({ className, isOpen }: MenuProps) => {
+export const Menu = ({ className, isOpen, onClose }: MenuProps) => {
   const { t } = useTranslation()
 
   useUpdateContentWidth(isOpen)
@@ -99,8 +105,8 @@ export const Menu = ({ className, isOpen }: MenuProps) => {
               return (
                 <li className={cls.link} key={link.href}>
                   {link.subLinks
-                    ? <LinkWithSublinks {...link} />
-                    : <AppLink key={link.name} to={link.href}>{t(link.name)}</AppLink>}
+                    ? <LinkWithSublinks {...link} onLinkClick={onClose} />
+                    : <AppLink key={link.name} to={link.href} onClick={onClose}>{t(link.name)}</AppLink>}
                 </li>
               )
             })}

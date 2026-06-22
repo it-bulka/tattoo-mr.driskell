@@ -24,7 +24,7 @@ export const MenuBtn = memo(({ className }: MenuBtnProps) => {
           </div>
         </div>
       </label>
-      <Menu isOpen={isChecked}/>
+      <Menu isOpen={isChecked} onClose={() => setChecked(false)}/>
     </>
   )
 })
