@@ -80,34 +80,36 @@ const CategoriesPage = () => {
   }
 
   return (
-    <div className={classNames(cls.categoriesPage, 'container')}>
-      <Breadcrumbs />
-      <h3 className={classNames('pageTitle', cls.title)}>
-        {slug ? t(slug.replace(/-/g, ' ')) : t('tattoo machines')}
-      </h3>
-      <FilterToolbar
-        className={cls.filterToolbar}
-        category={isNewArrivals ? undefined : normalizedSlug as ProductCategory}
-        filterState={filterState}
-        handlers={wrappedHandlers}
-      />
-
-      <ResetFilters
-        className={cls.resetFilters}
-        disabled={!isFiltersActive}
-        onReset={handleReset}
-      />
-
-      {isFetching && !data && <CategoriesProductsLoader />}
-      {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
-      {data && (
-        <ProductListWithBtn
-          products={data.machines}
-          onLoadMoreClick={handleLoadMore}
-          isLoading={isFetching}
-          showSeeMoreBtn={page < data.totalPages}
+    <div className={cls.pageWrapper}>
+      <div className={classNames(cls.categoriesPage, 'container')}>
+        <Breadcrumbs />
+        <h3 className={classNames('pageTitle', cls.title)}>
+          {slug ? t(slug.replace(/-/g, ' ')) : t('tattoo machines')}
+        </h3>
+        <FilterToolbar
+          className={cls.filterToolbar}
+          category={isNewArrivals ? undefined : normalizedSlug as ProductCategory}
+          filterState={filterState}
+          handlers={wrappedHandlers}
         />
-      )}
+
+        <ResetFilters
+          className={cls.resetFilters}
+          disabled={!isFiltersActive}
+          onReset={handleReset}
+        />
+
+        {isFetching && !data && <CategoriesProductsLoader />}
+        {isError && <ErrorMsg as="p" text={t('error_loading')} size="large" />}
+        {data && (
+          <ProductListWithBtn
+            products={data.machines}
+            onLoadMoreClick={handleLoadMore}
+            isLoading={isFetching}
+            showSeeMoreBtn={page < data.totalPages}
+          />
+        )}
+      </div>
     </div>
   )
 }

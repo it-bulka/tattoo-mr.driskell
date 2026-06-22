@@ -1,10 +1,18 @@
+.pageWrapper {
+  background: linear-gradient(180deg, #f7f5f2 0%, #f2efeb 100%);
+  min-height: 100vh;
+}
+
 .categoriesPage {
-  padding-top: 50px;
-  padding-bottom: 178px;
+  padding-top: toRem(50);
+  padding-bottom: toRem(178);
 }
 
 .title {
-  margin-top: 30px;
+  margin-top: toRem(30);
+  font-size: clamp(#{toRem(25)}, 1rem + 3.5vw, #{toRem(64)});
+  font-weight: 400;
+  color: #1d1d1d;
 }
 
 .filterToolbar {
@@ -16,5 +24,5 @@
 }
 
 .seeMore {
-  margin: 40px auto 0 auto;
+  margin: toRem(40) auto 0 auto;
 }
