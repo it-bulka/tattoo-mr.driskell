@@ -77,6 +77,8 @@ export const BrandsSlider = memo(() => {
   const { data: brands = [] } = useGetBrandsQuery(i18n.language)
   const brandsWithImages = brands.filter(b => b.imgUrl)
 
+  if (!brandsWithImages.length) return null
+
   const commonOptions: SwiperOptions = {
     spaceBetween: 40,
     slidesPerView: 4,
