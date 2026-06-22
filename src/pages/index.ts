@@ -17,3 +17,4 @@ export { OrderSuccessPage } from './OrderSuccessPage/ui/OrderSuccessPage.async.t
 export { OrderFailurePage } from './OrderFailurePage/ui/OrderFailurePage.async.tsx'
 export { AboutPage } from './AboutPage'
 export { HelpPage } from './HelpPage'
+export { HelpDetailPage } from './HelpDetailPage'

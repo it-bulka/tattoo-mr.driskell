@@ -9,7 +9,7 @@ import {
   ToolsBlog, BrandPage, BrandsPage, CategoriesPages, CatalogPage,
   SearchResultPage, FavouritesPage,
   OrderSuccessPage, OrderFailurePage,
-  AboutPage, HelpPage,
+  AboutPage, HelpPage, HelpDetailPage,
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -92,6 +92,10 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.help_tools,
         element: <ToolsBlog />
+      },
+      {
+        path: RoutePaths.help_detail,
+        element: <HelpDetailPage />
       },
       {
         path: RoutePaths.favorites,

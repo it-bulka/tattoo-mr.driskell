@@ -9,6 +9,7 @@ export enum AppRoutes {
   PROMO_CODES = 'promo_codes',
   DISCOUNTS = 'discounts',
   HELP = 'help',
+  HELP_DETAIL = 'help_detail',
   HELP_TOOLS = 'help_tools',
   ABOUT = 'about',
   CONTACTS = 'contacts',
@@ -34,6 +35,7 @@ export const getAdditionalServicePage = () => '/catalog/cart/additional-service'
 export const getPromoCodesPage = () => '/promo-codes'
 export const getDiscountsPage = () => '/discounts'
 export const getHelpPage = () => '/help'
+export const getHelpDetailPage = (slug: string) => `/help/${slug}`
 export const getHelpToolsPage = (slug: string) => `/help/tools/${slug}`
 export const getAboutPage = () => '/about'
 export const getContactsPage = () => '/contacts'
@@ -61,6 +63,7 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.PROMO_CODES]: getPromoCodesPage(),
   [AppRoutes.DISCOUNTS]: getDiscountsPage(),
   [AppRoutes.HELP]: getHelpPage(),
+  [AppRoutes.HELP_DETAIL]: getHelpDetailPage(':slug'),
   [AppRoutes.HELP_TOOLS]: getHelpToolsPage(':slug'),
   [AppRoutes.ABOUT]: getAboutPage(),
   [AppRoutes.CONTACTS]: getContactsPage(),
@@ -88,6 +91,10 @@ export const PathsMapToTranslate: Record<string, string> = {
   'promo-codes': 'promo codes',
   'discounts': 'discounts',
   'help': 'help',
+  'delivery': 'delivery',
+  'payment': 'payment',
+  'returns': 'returns',
+  'warranty': 'warranty',
   'tools': 'tools',
   'about': 'about',
   'contacts': 'contacts',
