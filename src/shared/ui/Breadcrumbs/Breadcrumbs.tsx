@@ -25,7 +25,7 @@ export const Breadcrumbs = ({ className, customLastCrumb }: BreadcrumbsProps) =>
 
       {crumbs.map((crumb, index) => {
         let mappedCrumb = PathsMapToTranslate[crumb]
-        if (!mappedCrumb) mappedCrumb = crumb
+        if (!mappedCrumb) mappedCrumb = crumb.replace(/-/g, ' ')
 
         if (index === crumbs.length - 1) {
           const c = customLastCrumb || t(mappedCrumb)

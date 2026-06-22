@@ -17,7 +17,8 @@ const CategoriesPage = () => {
   const { t } = useTranslation()
   const { slug } = useParams<{ slug: string }>()
 
-  const normalizedSlug = slug?.toLowerCase().replace(/[,\s]+/g, '-') as ProductCategory
+  const normalizedSlug = slug?.toLowerCase().replace(/[,\s]+/g, '-')
+  const isNewArrivals = normalizedSlug === 'new-arrivals'
 
   const { filterState, handlers, apiParams } = useProductFilters()
 
@@ -32,7 +33,9 @@ const CategoriesPage = () => {
   const { data, isFetching, isError } = useGetProductsPaginatedQuery({
     page,
     limit: LIMIT,
-    category: normalizedSlug,
+    ...(isNewArrivals
+      ? { label: 'new' as const }
+      : { category: normalizedSlug as ProductCategory }),
     ...apiParams,
   })
 
@@ -74,11 +77,11 @@ const CategoriesPage = () => {
     <div className={classNames(cls.categoriesPage, 'container')}>
       <Breadcrumbs />
       <h3 className={classNames('pageTitle', cls.title)}>
-        {slug ? t(slug) : t('tattoo machines')}
+        {slug ? t(slug.replace(/-/g, ' ')) : t('tattoo machines')}
       </h3>
       <FilterToolbar
         className={cls.filterToolbar}
-        category={normalizedSlug}
+        category={isNewArrivals ? undefined : normalizedSlug as ProductCategory}
         filterState={filterState}
         handlers={wrappedHandlers}
       />
