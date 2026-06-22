@@ -19,6 +19,7 @@
 .productCard {
   background-color: var(--bg-card-color);
   border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
   box-shadow: var(--card-shadow);
   transition: transform 0.7s ease, box-shadow 0.7s ease;
   position: relative;
@@ -60,6 +61,7 @@
         transition: transform 0.7s ease;
         transform-origin: top;
         z-index: 999;
+        border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
         @include shadow-btn;
 
         .btn {
