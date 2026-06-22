@@ -1,15 +1,17 @@
 .sliderWrapper {
   display: flex;
-  height: 400px;
+  height: toRem(480);
   position: relative;
 }
 
 .slider.withThumbs {
   flex-basis: 72%;
+  background: var(--bg-card-color);
+  border: 1px solid var(--card-border-color);
 }
 
 .slide {
-  height: 400px;
+  height: toRem(480);
 }
 
 .img {
@@ -28,7 +30,7 @@
 
   .tattoo-machine-slider .tattoo-machine-bullets {
     position: absolute;
-    bottom: 15px;
+    bottom: toRem(15);
     z-index: 9999;
     left: 50%;
     transform: translateX(-50%);
