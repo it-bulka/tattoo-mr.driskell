@@ -1,26 +1,37 @@
 .discountPage {
-  padding-top: 50px;
-  padding-bottom: 200px;
+  padding-top: toRem(50);
+  padding-bottom: toRem(178);
 }
 
 .title {
-  margin: 20px 0;
+  margin-top: toRem(16);
+  margin-bottom: toRem(4);
 }
 
-.products {
-  margin: 40px 0;
-}
-
-.filters {
+.categoryFilters {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  gap: toRem(12);
+  margin-top: toRem(20);
   @include scroll-snap;
+}
+
+.filterToolbar {
+  margin: toRem(20) 0 toRem(12);
+}
+
+.resetFilters {
+  margin-bottom: toRem(20);
+}
+
+.initialLoader {
+  padding: toRem(80) 0;
+  display: flex;
+  justify-content: center;
 }
 
 @include media-max-tablet-s {
   .discountPage {
-    padding-top: 30px;
-    padding-bottom: 160px;
+    padding-top: toRem(30);
+    padding-bottom: toRem(160);
   }
 }
