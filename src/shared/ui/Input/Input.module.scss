@@ -2,8 +2,8 @@
   color: var(--text-gray-color);
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  font: 17px / 140% var(--font-family-secondary);
+  gap: toRem(9);
+  font: #{toRem(16)} / 140% var(--font-family-secondary);
 
   input::placeholder {
     color: var(--gray-2);
@@ -11,6 +11,7 @@
 
   input {
     background-color: var(--bg-card-color);
+    border: 1px solid var(--card-border-color);
 
     &.withErr {
       border: 1px solid var(--red);
@@ -19,13 +20,13 @@
 
   &.normal {
     input {
-      padding: 23px 30px;
+      padding: toRem(20) toRem(24);
     }
   }
 
   &.small {
     input {
-      padding: 15px 25px;
+      padding: toRem(15) toRem(25);
     }
   }
 }

@@ -1,12 +1,13 @@
 .badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: toRem(12);
+  left: toRem(12);
   z-index: 10;
-  background-color: #CB3229;
+  background-color: var(--accent-dark-color);
   color: var(--text-light-color);
-  font: 13px / 130% var(--font-family-secondary);
-  font-weight: 700;
-  padding: 4px 8px;
+  font: #{toRem(12)} / 130% var(--font-family-secondary);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: toRem(6) toRem(12);
   pointer-events: none;
 }

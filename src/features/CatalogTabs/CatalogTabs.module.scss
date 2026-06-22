@@ -1,5 +1,5 @@
-$padding-left: 50px;
-$triangle-size: 20px;
+$padding-left: toRem(50);
+$triangle-size: toRem(20);
 $z-index-underlay: 9999;
 $z-index-wrapper: 99999;
 
@@ -42,7 +42,8 @@ $z-index-wrapper: 99999;
   position: relative;
   background-color: var(--bg-card-color);
   text-wrap: nowrap;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--card-border-color);
 
   &:before {
     content: '';
@@ -60,19 +61,18 @@ $z-index-wrapper: 99999;
 
 .tabs {
   position: relative;
-  padding: 30px $padding-left;
-  font: 17px / 150% var(--font-family-secondary);
-  column-gap: var(--text-dark-color);
+  padding: var(--card-padding) $padding-left;
+  font: #{toRem(17)} / 150% var(--font-family-secondary);
   color: var(--text-dark-color);
 
   .tabsInner {
-   gap: 27px;
+   gap: toRem(27);
   }
 }
 
 .content {
-  padding: 40px $padding-left 50px;
-  font: 17px / 150% var(--font-family-secondary);
+  padding: toRem(40) $padding-left toRem(50);
+  font: #{toRem(17)} / 150% var(--font-family-secondary);
   text-wrap: nowrap;
   width: fit-content;
   transition: width 0.7s ease;

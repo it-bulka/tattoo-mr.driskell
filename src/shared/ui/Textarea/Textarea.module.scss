@@ -2,8 +2,8 @@
   color: var(--text-gray-color);
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  font: 17px / 140% var(--font-family-secondary);
+  gap: toRem(9);
+  font: #{toRem(16)} / 140% var(--font-family-secondary);
 
   textarea::placeholder {
     color: var(--gray-2);
@@ -11,7 +11,8 @@
 
   textarea {
     background-color: var(--bg-card-color);
-    min-height: 120px;
+    border: 1px solid var(--card-border-color);
+    min-height: toRem(120);
     resize: vertical;
     width: 100%;
     font: inherit;
@@ -24,13 +25,13 @@
 
   &.normal {
     textarea {
-      padding: 23px 30px;
+      padding: toRem(20) toRem(24);
     }
   }
 
   &.small {
     textarea {
-      padding: 15px 25px;
+      padding: toRem(15) toRem(25);
     }
   }
 }

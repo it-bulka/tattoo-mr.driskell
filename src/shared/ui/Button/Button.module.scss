@@ -9,12 +9,11 @@
   color: var(--accent-color);
   display: block;
   position: relative;
-  padding: 8px 17px 12px;
+  padding: toRem(10) toRem(20) toRem(14);
   transition: $transition;
-  font: var(--font-btn);
+  font: #{toRem(18)} / 150% var(--font-family-secondary);
+  font-weight: 500;
   width: fit-content;
-
-  font: 20px / 150% var(--font-family-secondary);
 
   &.center {
     margin-left: auto;
@@ -22,9 +21,9 @@
   }
 
   &.big {
-    padding-top: 18px;
-    padding-bottom: 22px;
-    min-width: 270px;
+    padding-top: toRem(18);
+    padding-bottom: toRem(22);
+    min-width: toRem(270);
     text-align: center;
   }
 
@@ -36,8 +35,8 @@
     content: "";
     position: absolute;
     @include border-main;
-    width: 16px;
-    height: 16px;
+    width: toRem(16);
+    height: toRem(16);
     clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
     transition: $transition;
   }
@@ -70,8 +69,8 @@
   }
 
   &.withMargin {
-    margin-left: 11px;
-    margin-right: 11px;
+    margin-left: toRem(11);
+    margin-right: toRem(11);
   }
 
   &:disabled {
