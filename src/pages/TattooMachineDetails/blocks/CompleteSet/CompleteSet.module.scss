@@ -6,13 +6,13 @@
 .info {
   padding: 40px 50px 0;
   font: 25px / 115% var(--font-family-secondary);
-  font-weight: 900;
+  font-weight: 700;
 }
 
 .tierHint {
   padding: 10px 50px 0;
   font: var(--font-s-primary);
-  color: #CB3229;
+  color: var(--accent-color);
   font-weight: 600;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .discount {
-  background-color: #CB3229;
+  background-color: var(--accent-dark-color);
   color: var(--text-light-color);
   padding: 15px;
 }

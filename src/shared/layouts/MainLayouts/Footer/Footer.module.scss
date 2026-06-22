@@ -38,7 +38,7 @@
 }
 
 .links {
-  color: #E9ECF1;
+  color: var(--text-light-color);
   font: 20px / 135.5% var(--font-family-main);
   display: flex;
   flex-direction: column;
