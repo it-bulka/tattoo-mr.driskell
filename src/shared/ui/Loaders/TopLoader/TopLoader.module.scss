@@ -1,0 +1,17 @@
+.topLoader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: toRem(3);
+  z-index: var(--modal-z-index);
+  background: var(--accent-color);
+  animation: topLoaderSlide 1.2s ease-in-out infinite;
+  transform-origin: left;
+}
+
+@keyframes topLoaderSlide {
+  0% { transform: scaleX(0); }
+  40% { transform: scaleX(0.6); }
+  100% { transform: scaleX(1); }
+}
