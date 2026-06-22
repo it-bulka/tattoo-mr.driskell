@@ -17,33 +17,32 @@ const {
 
 const getCustomStyles = (isMulti: boolean): StylesConfig<OptionType, boolean> => {
   return {
-    // select border
     control: (provided, state) => ({
       ...provided,
-      backgroundColor: state.isFocused ? primaryColor : primaryColor,
-      border: 'none',
-      borderColor: 'transparent',
-      borderRadius: '0',
+      backgroundColor: '#ffffff',
+      border: `1px solid ${state.isFocused ? '#BB8C5F' : '#e5ddd2'}`,
+      borderRadius: '14px',
       fontWeight: 900,
       color: fontColor,
       minWidth: '186px',
-      padding: '12px 0 12px 20px',
+      minHeight: '56px',
+      padding: '0 0 0 20px',
+      boxShadow: state.isFocused ? '0 0 0 1px #BB8C5F' : 'none',
+      transition: 'border-color 0.3s ease, box-shadow 0.3s ease',
       "&:hover": {
-        borderColor: "none",
-        boxShadow: 'none',
+        borderColor: '#BB8C5F',
       },
     }),
-    // select option
-    option: (provided) => ({
+    option: (provided, state) => ({
       ...provided,
-      backgroundColor: primaryColor,
-      color: fontColor,
-      padding: '10px 0'
+      backgroundColor: state.isSelected ? '#BB8C5F' : state.isFocused ? '#faf7f2' : '#ffffff',
+      color: state.isSelected ? '#ffffff' : fontColor,
+      padding: '12px 20px',
+      transition: 'background-color 0.2s ease',
+      cursor: 'pointer',
     }),
-    // chosen in select
     singleValue: (provided) => ({
       ...provided,
-      backgroundColor: primaryColor,
       color: fontColor,
       padding: '0',
       margin: '0',
@@ -54,19 +53,20 @@ const getCustomStyles = (isMulti: boolean): StylesConfig<OptionType, boolean> =>
       margin: '0',
       color: fontColor,
     }),
-    // options wrapper
     menu: (provided) => ({
       ...provided,
-      marginTop: '0',
-      borderRadius: '0',
-      boxShadow: 'none',
-      padding: '0'
+      marginTop: '4px',
+      borderRadius: '14px',
+      boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
+      overflow: 'hidden',
+      padding: '0',
     }),
     menuList: (provided) => ({
       ...provided,
       boxShadow: 'none',
-      padding: '0 20px 10px',
-      backgroundColor: primaryColor
+      padding: '8px 0',
+      backgroundColor: '#ffffff',
+      borderRadius: '14px',
     }),
     indicatorsContainer: (provided) => ({
       ...provided,
@@ -105,7 +105,6 @@ export const CustomSelect = memo(({
   ...rest
 }: CustomSelectProps) => {
   const id = useId()
-  console.log('default', rest.defaultValue)
   return (
     <div className={classNames(cls.select, {}, [className])}>
       <label htmlFor={id}>{label}</label>

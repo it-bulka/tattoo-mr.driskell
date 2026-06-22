@@ -1,13 +1,18 @@
 .select {
   display: flex;
-  gap: 20px;
-  align-items: center;
+  flex-direction: column;
+  gap: toRem(8);
   z-index: var(--select-z-index);
+
+  label {
+    font: #{toRem(14)} / 150% var(--font-family-secondary);
+    color: var(--text-gray-color);
+  }
 }
 
 .indicator {
-  width: 5px;
-  height: 5px;
+  width: toRem(5);
+  height: toRem(5);
   background-color: var(--text-dark-color);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
