@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Card } from '@/shared/ui/Card/Card';
 import { CardsGrid } from '@/shared/ui/CardsGrid/CardsGrid';
 import { useNavigate } from 'react-router'
-import { getCatalogPage } from '@/shared/config/routeConfig/routeConfig'
+import { getCatalogPage, getHelpDetailPage } from '@/shared/config/routeConfig/routeConfig'
 
 export const CategoriesBlock = () => {
   const { t } = useTranslation()
@@ -14,21 +14,25 @@ export const CategoriesBlock = () => {
       title: t('help_page.cat_delivery_title'),
       text: t('help_page.cat_delivery_text'),
       btnTitle: t('help_page.cat_delivery_btn'),
+      onClick: () => navigate(getHelpDetailPage('delivery')),
     },
     {
       title: t('help_page.cat_payment_title'),
       text: t('help_page.cat_payment_text'),
       btnTitle: t('help_page.cat_payment_btn'),
+      onClick: () => navigate(getHelpDetailPage('payment')),
     },
     {
       title: t('help_page.cat_return_title'),
       text: t('help_page.cat_return_text'),
       btnTitle: t('help_page.cat_return_btn'),
+      onClick: () => navigate(getHelpDetailPage('returns')),
     },
     {
       title: t('help_page.cat_warranty_title'),
       text: t('help_page.cat_warranty_text'),
       btnTitle: t('help_page.cat_warranty_btn'),
+      onClick: () => navigate(getHelpDetailPage('warranty')),
     },
     {
       title: t('help_page.cat_guide_title'),
