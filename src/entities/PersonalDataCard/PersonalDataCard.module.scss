@@ -9,15 +9,13 @@ $font-m: #{toRem(16)} / 150% var(--font-family-secondary);
 .general {
   display: flex;
   gap: 4.33%;
-  margin-bottom: toRem(32);
+  margin-bottom: toRem(24);
 
   .img {
     width: 42.34%;
     aspect-ratio: 1 / 1;
-
-    img {
-      border-radius: 50%;
-    }
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   .info {
@@ -27,6 +25,7 @@ $font-m: #{toRem(16)} / 150% var(--font-family-secondary);
 
   .managerTitle {
     font: $font-m;
+    color: var(--text-gray-color);
   }
 
   .name {
@@ -36,12 +35,38 @@ $font-m: #{toRem(16)} / 150% var(--font-family-secondary);
   }
 }
 
-.email {
-  margin-top: toRem(24);
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(12);
+  padding-top: toRem(20);
+  border-top: 1px solid var(--card-border-color);
 }
 
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: toRem(10);
+  margin-top: toRem(4);
+}
+
+.pill {
+  font: #{toRem(12)} / 100% var(--font-family-secondary);
+  font-weight: 500;
+  padding: toRem(8) toRem(16);
+  border: 1px solid var(--card-border-color);
+  border-radius: toRem(20);
+  color: var(--text-gray-color);
+  transition: color var(--delay) ease, border-color var(--delay) ease;
+
+  &:hover {
+    color: var(--accent-color);
+    border-color: var(--accent-color);
+  }
+}
 
 .additionalInfo {
   font: $font-m;
   margin-top: toRem(20);
+  color: var(--text-gray-color);
 }

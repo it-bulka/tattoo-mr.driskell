@@ -1,8 +1,9 @@
 import cls from './PersonalDataCard.module.scss'
 import classNames from 'classnames'
 import {
-  OnlineStatus, Status, ContactsWrapper, ContactLink, ContactsWithSocialMedia
+  OnlineStatus, Status, ContactLink, AppLink
 } from '@/shared/ui'
+import CallIcon from '@/shared/assets/general/call.svg?react'
 import MailIcon from '@/shared/assets/general/mail.svg?react'
 import { memo, ReactNode } from 'react'
 
@@ -46,25 +47,29 @@ export const PersonalDataCard = memo(({
         </div>
       </div>
 
-      <ContactsWithSocialMedia
-        phone={phone}
-        viber={viber}
-        whatsup={whatsup}
-        telegram={telegram}
-        gap="s"
-      />
+      <div className={cls.contacts}>
+        <ContactLink
+          href={`tel:${phone}`}
+          icon={<CallIcon />}
+          bold
+        >
+          {phone}
+        </ContactLink>
 
-      {email && (
-        <ContactsWrapper className={cls.email}>
-          <ContactLink
-            href={`mailto:${email}`}
-            icon={<MailIcon />}
-            textAccent
-          >
-            {email}
-          </ContactLink>
-        </ContactsWrapper>
-      )}
+        <ContactLink
+          href={`mailto:${email}`}
+          icon={<MailIcon />}
+          textAccent
+        >
+          {email}
+        </ContactLink>
+
+        <div className={cls.socials}>
+          {viber && <AppLink to={viber} className={cls.pill}>Viber</AppLink>}
+          {whatsup && <AppLink to={whatsup} className={cls.pill}>WhatsApp</AppLink>}
+          {telegram && <AppLink to={telegram} className={cls.pill}>Telegram</AppLink>}
+        </div>
+      </div>
 
       {additionalInfo && <p className={cls.additionalInfo}>{additionalInfo}</p>}
     </div>

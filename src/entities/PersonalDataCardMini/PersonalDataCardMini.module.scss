@@ -60,6 +60,10 @@
   justify-content: start;
   font-size: toRem(11);
   margin-top: toRem(4);
+
+  @include media-max-tablet-s {
+    font-size: toRem(15);
+  }
 }
 
 // --- Contacts section: phone → email → socials ---
