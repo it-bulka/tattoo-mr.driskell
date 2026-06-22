@@ -9,18 +9,19 @@
 }
 
 .title {
-  margin-top: toRem(30);
+  margin-top: toRem(16);
+  margin-bottom: toRem(4);
   font-size: clamp(#{toRem(25)}, 1rem + 3.5vw, #{toRem(64)});
   font-weight: 400;
   color: #1d1d1d;
 }
 
 .filterToolbar {
-  margin: toRem(40) 0 toRem(16);
+  margin: toRem(24) 0 toRem(12);
 }
 
 .resetFilters {
-  margin-bottom: toRem(28);
+  margin-bottom: toRem(20);
 }
 
 .seeMore {

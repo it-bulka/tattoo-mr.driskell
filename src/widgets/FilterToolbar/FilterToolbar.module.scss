@@ -1,10 +1,15 @@
 .filterToolbar {
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: toRem(20);
 }
 
 .selectors {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  background-color: var(--bg-filter-block);
+  border: 1px solid var(--card-border-color);
+  border-radius: toRem(16);
+  padding: toRem(16) toRem(28);
 }

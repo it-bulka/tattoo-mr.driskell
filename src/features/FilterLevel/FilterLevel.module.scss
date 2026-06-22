@@ -1,5 +1,5 @@
 .filters {
   display: flex;
-  gap: 20px;
+  gap: toRem(12);
   @include scroll-snap;
 }

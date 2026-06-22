@@ -41,12 +41,14 @@
   --card-shadow-hover: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
   --card-img-gradient: linear-gradient(180deg, #ffffff, #faf7f2);
 
+  --bg-filter-block: #FAFAF8;
+
   --breadcrumb-color: #8c8479;
   --breadcrumb-active-color: #2b2b2b;
 
-  --toggler-width: #{toRem(52)};
-  --toggler-height: #{toRem(30)};
-  --toggler-thumb: #{toRem(24)};
+  --toggler-width: #{toRem(44)};
+  --toggler-height: #{toRem(24)};
+  --toggler-thumb: #{toRem(18)};
   --toggler-inset: #{toRem(3)};
 
   --success-color: #5A8F5A;
