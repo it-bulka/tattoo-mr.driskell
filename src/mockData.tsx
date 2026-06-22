@@ -106,15 +106,22 @@ export const promoCodes = Array.from({ length: 10 }, (_, index) => ({
   id: index
 }))
 
-export const personalManager = {
-  avatar: Manager,
-  name: 'Valeria',
+const managerContacts = {
   phone: '+380676276433',
   email: 'i.it.bulka@gmail.com',
   viber: 'viber://contact?number=%2B380676276433',
   whatsup: 'https://wa.me/380676276433',
   telegram: 'https://t.me/iva147iva147'
 }
+
+export const personalManager = { avatar: Manager, name: 'Valeria', ...managerContacts }
+
+export const managers = [
+  { id: 0, avatar: 'https://randomuser.me/api/portraits/women/44.jpg', name: 'Valeria', ...managerContacts },
+  { id: 1, avatar: 'https://randomuser.me/api/portraits/women/68.jpg', name: 'Olena', ...managerContacts },
+  { id: 2, avatar: 'https://randomuser.me/api/portraits/men/32.jpg', name: 'Dmytro', ...managerContacts },
+  { id: 3, avatar: 'https://randomuser.me/api/portraits/women/65.jpg', name: 'Anastasia', ...managerContacts },
+]
 
 const getTranslation = async (key: string) => {
   if (!i18next.isInitialized) {

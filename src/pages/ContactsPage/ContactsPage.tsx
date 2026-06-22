@@ -3,13 +3,12 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Breadcrumbs } from '@/shared/ui'
 import { TechSupport } from './TechSupport/TechSupport.tsx'
-import { personalManager } from '@/mockData.tsx'
+import { managers } from '@/mockData.tsx'
 import { PersonalDataCardMini } from '@/entities/PersonalDataCardMini/PersonalDataCardMini'
 import { CompanyOffice } from './CompanyOffice/CompanyOffice.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
 import { useSeoMeta } from '@/shared/libs'
 
-const cards = Array.from({ length: 4 }, (_, i) => ({ id: i, ...personalManager}))
 
 const ContactsPage = () => {
   const { t } = useTranslation()
@@ -35,7 +34,7 @@ const ContactsPage = () => {
         className={cls.companyData}
         left={(
           <div className={cls.managers}>
-            {cards.map((card) => (
+            {managers.map((card) => (
               <PersonalDataCardMini
                 key={card.id}
                 name={card.name}
