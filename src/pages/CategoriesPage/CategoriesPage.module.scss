@@ -8,7 +8,11 @@
 }
 
 .filterToolbar {
-  margin: 40px 0 28px;
+  margin: toRem(40) 0 toRem(16);
+}
+
+.resetFilters {
+  margin-bottom: toRem(28);
 }
 
 .seeMore {

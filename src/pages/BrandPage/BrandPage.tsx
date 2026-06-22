@@ -6,6 +6,7 @@ import { ProductListWithBtn } from '@/entities/ProductList/ProductListWithBtn'
 import { useGetProductsPaginatedQuery } from '@/entities/ProductList'
 import { ProductCategory } from '@/entities/ProductList'
 import { FilterToolbar } from '@/widgets'
+import { ResetFilters } from '@/features'
 import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
 import { memo, useState, useCallback } from 'react'
 import { useParams } from 'react-router'
@@ -37,7 +38,7 @@ const BrandPage = memo(() => {
 
   const [selectedCategories, setSelectedCategories] = useState<ProductCategory[]>([])
   const [page, setPage] = useState(1)
-  const { filterState, handlers, apiParams } = useProductFilters()
+  const { filterState, handlers, apiParams, isFiltersActive } = useProductFilters()
 
   const handleCategoryToggle = useCallback((category: ProductCategory) => {
     setSelectedCategories(prev => {
@@ -125,6 +126,12 @@ const BrandPage = memo(() => {
         category={activeCategory}
         filterState={filterState}
         handlers={wrappedHandlers}
+      />
+
+      <ResetFilters
+        className={cls.resetFilters}
+        disabled={!isFiltersActive}
+        onReset={() => { setPage(1); handlers.handleReset() }}
       />
 
       {isFetching && !data && <BrandProductsLoader />}

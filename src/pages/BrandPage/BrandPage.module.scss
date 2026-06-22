@@ -26,5 +26,9 @@
 }
 
 .filterToolbar {
-  margin-bottom: 28px;
+  margin-bottom: toRem(16);
+}
+
+.resetFilters {
+  margin-bottom: toRem(28);
 }

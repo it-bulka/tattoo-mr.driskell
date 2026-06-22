@@ -31,5 +31,6 @@
     "shader": "Shader",
     "flat": "Flat"
   },
-  "filter": "Filter"
+  "filter": "Filter",
+  "reset filters": "Reset filters"
 }

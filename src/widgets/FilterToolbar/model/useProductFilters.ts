@@ -51,6 +51,14 @@ export const useProductFilters = () => {
     setState(s => ({ ...s, needleTypes }))
   }, [])
 
+  const handleReset = useCallback(() => {
+    setState(initialFilterState)
+  }, [])
+
+  const isFiltersActive = useMemo(() => {
+    return JSON.stringify(state) !== JSON.stringify(initialFilterState)
+  }, [state])
+
   const handlers = useMemo(() => ({
     handleTagsChange,
     handleSortChange,
@@ -58,6 +66,7 @@ export const useProductFilters = () => {
     handleInStockChange,
     handleMotorTypesChange,
     handleNeedleTypesChange,
+    handleReset,
   }), [
     handleTagsChange,
     handleSortChange,
@@ -65,11 +74,12 @@ export const useProductFilters = () => {
     handleInStockChange,
     handleMotorTypesChange,
     handleNeedleTypesChange,
+    handleReset,
   ])
 
   const apiParams = useMemo(() => buildApiParams(state), [state])
 
-  return { filterState: state, handlers, apiParams }
+  return { filterState: state, handlers, apiParams, isFiltersActive }
 }
 
 export type FilterHandlers = ReturnType<typeof useProductFilters>['handlers']

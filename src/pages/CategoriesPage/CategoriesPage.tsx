@@ -2,6 +2,7 @@ import cls from './CategoriesPage.module.scss'
 import classNames from 'classnames'
 import { Breadcrumbs, ErrorMsg } from '@/shared/ui'
 import { FilterToolbar } from '@/widgets'
+import { ResetFilters } from '@/features'
 import { useTranslation } from 'react-i18next'
 import { ProductListWithBtn } from '@/entities/ProductList/ProductListWithBtn'
 import { useGetProductsPaginatedQuery } from '@/entities/ProductList'
@@ -20,7 +21,7 @@ const CategoriesPage = () => {
   const normalizedSlug = slug?.toLowerCase().replace(/[,\s]+/g, '-')
   const isNewArrivals = normalizedSlug === 'new-arrivals'
 
-  const { filterState, handlers, apiParams } = useProductFilters()
+  const { filterState, handlers, apiParams, isFiltersActive } = useProductFilters()
 
   const [prevSlug, setPrevSlug] = useState(normalizedSlug)
   const [page, setPage] = useState(1)
@@ -44,6 +45,11 @@ const CategoriesPage = () => {
       setPage(p => p + 1)
     }
   }, [data, page])
+
+  const handleReset = useCallback(() => {
+    setPage(1)
+    handlers.handleReset()
+  }, [handlers])
 
   const wrappedHandlers = {
     ...handlers,
@@ -84,6 +90,12 @@ const CategoriesPage = () => {
         category={isNewArrivals ? undefined : normalizedSlug as ProductCategory}
         filterState={filterState}
         handlers={wrappedHandlers}
+      />
+
+      <ResetFilters
+        className={cls.resetFilters}
+        disabled={!isFiltersActive}
+        onReset={handleReset}
       />
 
       {isFetching && !data && <CategoriesProductsLoader />}
