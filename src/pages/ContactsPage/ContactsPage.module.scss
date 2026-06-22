@@ -1,19 +1,20 @@
 .managers {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-m);
+  grid-template-columns: repeat(3, 1fr);
+  gap: toRem(24);
 }
 
 .blockTitle {
-  margin-bottom: var(--space-l);
+  margin-bottom: toRem(24);
 }
 
 .companyData {
-  margin-bottom: 50px;
+  margin-bottom: toRem(50);
 }
 
 @include media-max-tablet-s {
   .managers {
+    grid-template-columns: repeat(2, 1fr);
     @include container;
   }
 }
