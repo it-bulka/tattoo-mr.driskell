@@ -1,14 +1,15 @@
 .tabs {
-  font: 30px / 115% var(--font-family-secondary);
-  font-weight: 700;
+  font: #{clamp(toRem(28), 2vw + 1rem, toRem(42))} / 115% var(--font-family-heading);
+  font-weight: 600;
+  letter-spacing: -1px;
   flex-wrap: nowrap;
   white-space: nowrap;
-  gap: 24px;
+  gap: toRem(40);
   @include scroll-snap;
 
-  margin-bottom: 37px;
+  margin-bottom: toRem(50);
 }
 
 .seeMore {
-  margin: 50px auto 0;
+  margin: toRem(50) auto 0;
 }

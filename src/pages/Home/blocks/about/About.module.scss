@@ -1,5 +1,5 @@
 .about {
-  padding: 120px 0;
+  padding: toRem(140) 0;
   display: flex;
   align-items: center;
 
@@ -8,21 +8,21 @@
   }
 
   .info {
-    margin-left: 40px;
+    margin-left: toRem(40);
   }
 }
 
 .title {
   color: var(--accent-color);
-  font: 50px / 130% var(--font-family-third);
+  font: #{clamp(toRem(25), 2.5vw + 0.5rem, toRem(50))} / 130% var(--font-family-third);
 }
 
 .content {
   font: var(--font-m-primary);
-  margin: 20px 0;
+  margin: toRem(20) 0;
 
   &:last-of-type {
-    margin-bottom: 40px;
+    margin-bottom: toRem(40);
   }
 }
 
@@ -30,8 +30,8 @@
   .about {
     max-width: none;
     display: block;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: toRem(80);
+    padding-bottom: toRem(80);
 
     .img {
       width: 100%;
@@ -39,38 +39,30 @@
     }
 
     .info {
-      margin: 40px 0 0;
+      margin: toRem(40) 0 0;
 
       @include container;
     }
   }
 
-  .title {
-    font-size: 40px;
-  }
-
   .btn {
-    margin: 40px auto 0;
-    width: 274px;
+    margin: toRem(40) auto 0;
+    width: toRem(274);
   }
 }
 
 @include media-max-mobile-s {
   .about {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: toRem(60);
+    padding-bottom: toRem(60);
 
     .info {
-      margin-top: 30px;
+      margin-top: toRem(30);
     }
   }
 
-  .title {
-    font-size: 25px;
-  }
-
   .btn {
-    margin-top: 30px;
+    margin-top: toRem(30);
     width: 100%;
   }
 }

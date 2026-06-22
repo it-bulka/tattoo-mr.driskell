@@ -43,8 +43,9 @@ $padding: 50px;
 }
 
 .title {
-  font: 60px / 100% var(--font-family-third);
-  margin-bottom: 20px;
+  font: #{clamp(toRem(36), 3vw + 1rem, toRem(60))} / 100% var(--font-family-third);
+  letter-spacing: -1px;
+  margin-bottom: toRem(20);
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
