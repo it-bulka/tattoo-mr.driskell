@@ -5,7 +5,7 @@ import { Card } from '@/shared/ui/Card/Card'
 import { CardsGrid, ErrorMsg, Breadcrumbs } from '@/shared/ui'
 import { useHandleCopy, useSeoMeta, dateFormat } from '@/shared/libs'
 import { useGetPromoCodesQuery } from '@/entities/PromoCode'
-import { PromocodesPageLoader } from './PromocodesPageLoader'
+import { PromocodesContentLoader } from './PromocodesContentLoader'
 
 interface PromocodesPageProps {
   className?: string
@@ -25,7 +25,7 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
       <Breadcrumbs className="container"/>
       <h1 className='pageTitle container'>{t('promo codes')}</h1>
 
-      {isLoading && <PromocodesPageLoader />}
+      {isLoading && <PromocodesContentLoader />}
       {isError && <ErrorMsg as="p" size="medium" className="container" text={t('loading error')} />}
 
       {promoCodes?.length === 0 && (

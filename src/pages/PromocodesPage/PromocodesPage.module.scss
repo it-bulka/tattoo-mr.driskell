@@ -1,24 +1,24 @@
 .paragraph {
   &:not(:last-child) {
-    margin-bottom: 10px;
+    margin-bottom: toRem(10);
   }
 
   &:last-child {
-    margin-bottom: 20px;
+    margin-bottom: toRem(20);
   }
 }
 
 .expiry {
-  margin-bottom: 34px;
-  font-size: 13px;
+  margin-bottom: toRem(34);
+  font-size: toRem(13);
   color: var(--hint-color);
 }
 
 .empty {
-  margin-top: 40px;
-  font: 16px / 160% var(--font-family-secondary);
+  margin-top: toRem(40);
+  font: #{toRem(16)} / 160% var(--font-family-secondary);
   color: var(--hint-color);
-  max-width: 560px;
+  max-width: toRem(560);
 }
 
 .cardsGrid {
