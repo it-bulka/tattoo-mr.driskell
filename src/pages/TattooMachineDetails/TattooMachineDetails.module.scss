@@ -1,20 +1,21 @@
 .page {
-  padding-top: 50px;
-  padding-bottom: 200px;
+  padding-top: toRem(60);
+  padding-bottom: toRem(200);
 }
 
 .main {
-  margin-top: 30px;
+  margin-top: toRem(40);
   display: grid;
   grid-template-columns: repeat(2, 50%);
   align-items: start;
 
-  row-gap: 25px;
+  row-gap: toRem(48);
 }
 
 .title {
-  font: 30px / 115% var(--font-family-secondary);
-  font-weight: 700;
+  font: #{clamp(toRem(28), 3vw + 0.5rem, toRem(56))} / 110% var(--font-family-heading);
+  font-weight: 600;
+  letter-spacing: -1px;
   color: var(--text-dark-color);
 }
 
@@ -38,23 +39,25 @@
 
   .priceCurrent {
     color: var(--accent-color);
-    font: 24px / 130% var(--font-family-secondary);
-    font-weight: 700;
+    font: #{clamp(toRem(24), 2vw + 0.5rem, toRem(42))} / 130% var(--font-family-heading);
+    font-weight: 600;
+    letter-spacing: -0.5px;
     display: inline-block;
-    margin-right: 15px;
+    margin-right: toRem(15);
   }
 
   .pricePrev {
     text-decoration: line-through;
     color: var(--gray-2);
-    font: 17px / 130% var(--font-family-secondary);
+    font: #{toRem(15)} / 130% var(--font-family-secondary);
   }
 }
 
 .presence {
   flex-grow: 1;
-  font: 17px / 130% var(--font-family-secondary);
-  margin-left: 25px;
+  font: #{toRem(15)} / 130% var(--font-family-secondary);
+  margin-left: toRem(25);
+  color: var(--text-gray-color);
 
   .presenceValue {
     color: var(--accent-color);
@@ -62,13 +65,15 @@
 }
 
 .description {
-  padding: 25px 0;
+  padding: toRem(48) 0;
   width: 100%;
+  line-height: 180%;
+  max-width: toRem(620);
 }
 
 .link {
   flex-basis: 100%;
-  margin-bottom: 39px;
+  margin-bottom: toRem(48);
 }
 
 // general
@@ -76,8 +81,8 @@
   display: flex;
   justify-content: space-between;
   align-items: end;
-  margin-bottom: 45px;
-  margin-top: 70px;
+  margin-bottom: toRem(64);
+  margin-top: toRem(100);
 
   .headerLink {
     white-space: nowrap;
@@ -85,28 +90,25 @@
 }
 
 .blockLink {
-  font: 25px / 140% var(--font-family-secondary);
+  font: #{toRem(25)} / 140% var(--font-family-secondary);
 }
 
 
 // MEDIA
-$element-margin-bottom: 24px;
+$element-margin-bottom: toRem(24);
 @include media-max-tablet-s {
   .main {
-    margin-top: 40px;
+    margin-top: toRem(40);
   }
 
   .blockHeader {
-    margin-bottom: 40px;
-    margin-top: 80px;
+    margin-bottom: toRem(40);
+    margin-top: toRem(80);
   }
 
   .title {
     grid-column: 1 / -1;
     grid-row: 1;
-
-    font-size: 25px;
-    line-height: 115%;
   }
 
   .slider {
@@ -120,21 +122,14 @@ $element-margin-bottom: 24px;
 
   .description {
     order: 2;
-    padding: 20px 0;
-    font-size: 15px;
+    padding: toRem(20) 0;
+    font-size: toRem(15);
+    max-width: none;
   }
 
   .price {
     order: 3;
     margin-bottom: $element-margin-bottom;
-
-    .priceCurrent {
-      font-size: 17px;
-    }
-
-    .pricePrev {
-      font-size: 15px;
-    }
   }
 
   .presence {
@@ -152,23 +147,19 @@ $element-margin-bottom: 24px;
 }
 
 @include media-max-mobile-s {
-  $element-margin-bottom: 20px;
+  $element-margin-bottom: toRem(20);
   .main {
     display: block;
-    margin-top: 30px;
+    margin-top: toRem(30);
   }
 
   .slider {
-    margin: 20px 0;
+    margin: toRem(20) 0;
   }
 
   .blockHeader {
-    margin-bottom: 30px;
-    margin-top: 60px;
-  }
-
-  .title {
-    font-size: 20px;
+    margin-bottom: toRem(30);
+    margin-top: toRem(60);
   }
 
   .link {
@@ -189,7 +180,7 @@ $element-margin-bottom: 24px;
 
   .price {
     .priceCurrent {
-      margin-right: 5px;
+      margin-right: toRem(5);
     }
   }
 }
