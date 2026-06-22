@@ -1,5 +1,5 @@
 @mixin footer-padding {
-  padding: 139px 0 120px;
+  padding: toRem(60) 0 toRem(50);
 }
 
 .footer {
@@ -29,7 +29,7 @@
     grid-column: span 2;
 
     color: var(--text-light-color);
-    font: 20px / 150% var(--font-family-secondary);
+    font: #{toRem(14)} / 150% var(--font-family-secondary);
 
     & > *:first-child {
       //display: flex;
@@ -39,10 +39,10 @@
 
 .links {
   color: var(--text-light-color);
-  font: 20px / 135.5% var(--font-family-main);
+  font: #{toRem(14)} / 150% var(--font-family-main);
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: toRem(12);
 }
 
 .logoWrapper {
@@ -63,8 +63,8 @@
 
 .workHours {
   color: var(--gray);
-  font: 17px / 150% var(--font-family-secondary);
-  margin: 12px 0 22px;
+  font: #{toRem(12)} / 150% var(--font-family-secondary);
+  margin: toRem(8) 0 toRem(16);
 }
 
 .linkFull {
@@ -73,7 +73,7 @@
   gap: 10px;
 }
 
-$block-padding: 70px;
+$block-padding: toRem(40);
 
 @mixin block-spacing {
   @include container;
@@ -125,7 +125,7 @@ $block-padding: 70px;
   }
 
   .links {
-    font-size: 17px;
+    font-size: toRem(13);
     margin: 0 auto;
   }
 }
