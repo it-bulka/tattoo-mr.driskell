@@ -30,7 +30,7 @@ export const Footer = memo(({ className }: FooterProps) => {
           <div className={cls.links}>
             <AppLink to={RoutePaths.promo_codes}>{t('promo codes')}</AppLink>
             <AppLink to={RoutePaths.discounts}>{t('discounts')}</AppLink>
-            <AppLink to={'/'}>{t('help')}</AppLink>
+            <AppLink to={RoutePaths.help}>{t('help')}</AppLink>
           </div>
           <div className={cls.links}>
             <AppLink to={RoutePaths.about}>{t('about')}</AppLink>
