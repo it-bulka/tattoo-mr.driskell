@@ -1,47 +1,45 @@
-$padding: 30px;
-$shadow-left: -4px 4px 6px rgba(0, 0, 0, 0.1);
-$shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
-
 @mixin shadow-card {
-  box-shadow: 4px 0 6px rgba(0, 0, 0, 0.1)
+  box-shadow: var(--card-shadow-hover);
 }
 @mixin shadow-btn {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+  box-shadow: var(--card-shadow);
 }
 
 @mixin remove-card-hovering {
-  box-shadow: none;
-  top: 0;
+  box-shadow: var(--card-shadow);
+  transform: none;
 }
 
 @mixin static-btn {
   position: static;
-  padding: 0 $padding 20px;
-  margin-top: calc(-1 * ($padding - 16px));
+  padding: 0 var(--card-padding) toRem(20);
+  margin-top: calc(-1 * (var(--card-padding) - toRem(16)));
 }
 
 .productCard {
   background-color: var(--bg-card-color);
-  transition: top 0.7s ease;
-  top: 0;
+  border: 1px solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
+  transition: transform 0.7s ease, box-shadow 0.7s ease;
   position: relative;
 
   &:not(.staticOnAll):hover {
     @include shadow-card;
-    top: -5%;
+    transform: translateY(-4px);
   }
 }
 
 .title {
-  font: 17px / 140% var(--font-family-secondary);
-  margin: 6px 0 10px;
+  font: #{toRem(16)} / 150% var(--font-family-secondary);
+  font-weight: 500;
+  margin: toRem(6) 0 toRem(10);
 }
 
 .btnWrapper {
   background-color: var(--bg-card-color);
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: $padding;
+  padding-left: toRem(15);
+  padding-right: toRem(15);
+  padding-bottom: var(--card-padding);
 }
 
 .btn {
@@ -55,7 +53,7 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
     &:not(.staticOnTablet) {
       .btnWrapper {
         position: absolute;
-        top: calc(100% - 10px);
+        top: calc(100% - toRem(10));
         left: 0;
         width: 100%;
         transform: scaleY(0);
@@ -103,6 +101,3 @@ $shadow-right: 4px -4px 6px rgba(0, 0, 0, 0.1);
     }
   }
 }
-
-
-
