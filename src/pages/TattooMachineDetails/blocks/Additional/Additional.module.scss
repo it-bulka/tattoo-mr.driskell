@@ -14,7 +14,7 @@
 
 .title {
   font: 25px / 115% var(--font-family-secondary);
-  font-weight: 900;
+  font-weight: 700;
   margin-bottom: 20px;
 }
 
@@ -41,7 +41,7 @@
 
     .tabs {
       font: 25px / 115% var(--font-family-secondary);
-      font-weight: 900;
+      font-weight: 700;
       margin-bottom: 20px;
       gap: 50px;
       @include scroll-snap;

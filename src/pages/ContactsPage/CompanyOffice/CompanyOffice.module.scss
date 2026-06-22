@@ -14,7 +14,7 @@
 
 .phone {
   font: 60px / 150% var(--font-family-secondary);
-  font-weight: 900;
+  font-weight: 700;
   margin-bottom: var(--space-s);
 }
 
@@ -33,7 +33,7 @@
   font: 17px / 150% var(--font-family-secondary);
 
   &.bold {
-    font-weight: 900;
+    font-weight: 700;
   }
 
   &:not(:first-of-type) {
