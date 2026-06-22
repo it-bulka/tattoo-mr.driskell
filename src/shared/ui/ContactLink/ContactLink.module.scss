@@ -1,7 +1,5 @@
-$font-m: 17px / 150% var(--font-family-secondary);
-
 .linkFull {
-  font: $font-m;
+  font: #{toRem(16)} / 150% var(--font-family-secondary);
   display: inline-flex;
   align-items: center;
   gap: var(--space-s);
