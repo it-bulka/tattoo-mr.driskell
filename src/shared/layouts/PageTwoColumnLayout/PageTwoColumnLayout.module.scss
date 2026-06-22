@@ -5,12 +5,13 @@
 
 .left {
   flex: 1;
+  min-width: 0;
 }
 
 .right {
-  flex: 0 0 toPercent(430);
-  width: toPercent(430);
-  margin-left: toRem(32);
+  flex: 0 0 toPercent(410);
+  min-width: 0;
+  margin-left: toRem(24);
 }
 
 @include media-max-tablet-s {
