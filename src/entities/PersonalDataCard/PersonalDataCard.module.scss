@@ -1,18 +1,23 @@
-$font-m: 17px / 150% var(--font-family-secondary);
+$font-m: #{toRem(16)} / 150% var(--font-family-secondary);
 
 .personalDataCard {
-  padding: 40px;
+  padding: toRem(32);
   background: var(--bg-card-color);
+  border: 1px solid var(--card-border-color);
 }
 
 .general {
   display: flex;
   gap: 4.33%;
-  margin-bottom: 42px;
+  margin-bottom: toRem(32);
 
   .img {
     width: 42.34%;
     aspect-ratio: 1 / 1;
+
+    img {
+      border-radius: 50%;
+    }
   }
 
   .info {
@@ -25,18 +30,18 @@ $font-m: 17px / 150% var(--font-family-secondary);
   }
 
   .name {
-    font: 20px / 150% var(--font-family-secondary);
+    font: #{toRem(20)} / 150% var(--font-family-secondary);
     font-weight: 700;
     flex: 1;
   }
 }
 
 .email {
-  margin-top: 30px;
+  margin-top: toRem(24);
 }
 
 
 .additionalInfo {
   font: $font-m;
-  margin-top: 25px;
+  margin-top: toRem(20);
 }
