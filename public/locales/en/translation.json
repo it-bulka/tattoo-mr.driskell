@@ -303,5 +303,57 @@
     "support_title": "Get in Touch",
     "support_desc": "Our team is ready to answer any question. Choose a convenient way to contact us.",
     "support_hours_title": "Working Hours"
-  }
+  },
+  "help_detail": {
+    "delivery": {
+      "title": "Delivery",
+      "description": "Everything about shipping methods, delivery times, and costs for orders across Ukraine.",
+      "s1_title": "Shipping Methods",
+      "s1_text": "We ship orders via Nova Poshta across Ukraine. Delivery is available to any branch or parcel locker of your choice. Courier delivery to your address is also available through Nova Poshta.",
+      "s2_title": "Delivery Times",
+      "s2_text": "Orders placed before 2:00 PM are shipped the same day. Delivery across Ukraine takes 1–3 business days depending on your region. You will receive an SMS or email notification with a tracking number.",
+      "s3_title": "Shipping Costs",
+      "s3_text": "Shipping is charged at Nova Poshta rates, typically 80–130 UAH. Orders over 3,000 UAH qualify for free shipping. Pickup from our Kyiv location is always free.",
+      "s4_title": "In-Store Pickup",
+      "s4_text": "Our pickup point is located at 22 Khreshchatyk St., Kyiv. We are open daily from 9:00 AM to 8:00 PM (no days off). Orders are ready for pickup within 30 minutes of confirmation."
+    },
+    "payment": {
+      "title": "Payment",
+      "description": "Available payment methods, transaction security, and important information.",
+      "s1_title": "Online Card Payment",
+      "s1_text": "We accept Visa and Mastercard through the WayForPay payment system. All transactions are protected by the 3D Secure protocol. Funds are charged immediately upon order confirmation.",
+      "s2_title": "Cash on Delivery",
+      "s2_text": "You pay for the goods upon receipt at a Nova Poshta branch. Please note: Nova Poshta charges an additional commission (20 UAH + 2% of the order amount) for cash on delivery.",
+      "s3_title": "Payment on Pickup",
+      "s3_text": "When picking up your order at our location, you can pay by card via POS terminal or in cash.",
+      "s4_title": "Payment Security",
+      "s4_text": "We do not store your bank card data. Payment processing is handled exclusively on WayForPay's secure servers using PCI DSS certification."
+    },
+    "returns": {
+      "title": "Returns & Exchange",
+      "description": "Return and exchange policies, procedures, and timelines.",
+      "s1_title": "Return Policy",
+      "s1_text": "You have the right to return a product of proper quality within 14 days of receipt. The item must be in its original packaging, unused, with all tags and accessories intact.",
+      "s2_title": "Defective Item Exchange",
+      "s2_text": "If you receive a product with a manufacturing defect, we will exchange it or issue a refund. Contact our manager and send a photo of the defect for verification.",
+      "s3_title": "Return Procedure",
+      "s3_text": "Contact our manager via the feedback form, Telegram, or by phone. After approval, send the item via Nova Poshta to our address. Refunds are processed within 3–5 business days.",
+      "s4_title": "Non-Returnable Items",
+      "s4_text": "Consumable materials (needles, inks, caps), used items, and items with damaged packaging are not eligible for return."
+    },
+    "warranty": {
+      "title": "Warranty",
+      "description": "Warranty terms for tattoo equipment, coverage periods, and the warranty claim process.",
+      "s1_title": "Warranty Terms",
+      "s1_text": "All equipment comes with an official manufacturer's warranty. The warranty period depends on the brand and is listed on each product page. Typically, this ranges from 6 to 24 months from the date of purchase.",
+      "s2_title": "How to Use the Warranty",
+      "s2_text": "If a malfunction occurs, contact our manager with a description of the issue, photos, and your order number. We will arrange diagnostics and either repair or replace the item.",
+      "s3_title": "What Is Not Covered",
+      "s3_text": "The warranty does not cover mechanical damage, consequences of improper use, unauthorized repairs, or natural wear of parts (tips, seals, cables)."
+    }
+  },
+  "delivery": "Delivery",
+  "payment": "Payment",
+  "returns": "Returns & Exchange",
+  "warranty": "Warranty"
 }
