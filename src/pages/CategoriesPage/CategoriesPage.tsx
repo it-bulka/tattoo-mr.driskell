@@ -1,6 +1,7 @@
 import cls from './CategoriesPage.module.scss'
 import classNames from 'classnames'
 import { Breadcrumbs, ErrorMsg } from '@/shared/ui'
+import { TopLoader } from '@/shared/ui/Loaders'
 import { FilterToolbar } from '@/widgets'
 import { ResetFilters } from '@/features'
 import { useTranslation } from 'react-i18next'
@@ -81,6 +82,7 @@ const CategoriesPage = () => {
 
   return (
     <div className={cls.pageWrapper}>
+      <TopLoader isLoading={isFetching && !!data} />
       <div className={classNames(cls.categoriesPage, 'container')}>
         <Breadcrumbs />
         <h3 className={classNames('pageTitle', cls.title)}>
