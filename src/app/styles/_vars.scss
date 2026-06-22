@@ -1,8 +1,9 @@
 @use "mixins" as *;
 :root {
-  --font-family-main: Montserrat, "Arial", sans-serif;
-  --font-family-secondary: Jost, "Segoe UI", "Arial", "Helvetica", sans-serif;
-  --font-family-third: Forum, "Georgia", "Times New Roman", serif;
+  --font-family-main: "Manrope", "Arial", sans-serif;
+  --font-family-secondary: "Manrope", "Segoe UI", "Arial", "Helvetica", sans-serif;
+  --font-family-third: "Cormorant Garamond", "Georgia", "Times New Roman", serif;
+  --font-family-heading: "Cormorant Garamond", "Georgia", serif;
 
   // screens
   --mobile-s: 320px;
@@ -17,28 +18,35 @@
 
 
   // COLORS
-  --bg-color: #EEEEEE;
-  --bg-color-2: #E3E3E3;
+  --bg-color: #F7F4EF;
+  --bg-color-2: #EFE9E0;
   --bg-dark-color: #050402;
-  --bg-card-color: #F5F5F5;
+  --bg-card-color: #FFFFFF;
   --accent-color: #BB8C5F;
   --accent-dark-color: #524336;
   --text-light-color: #FAF6F2;
-  --text-dark-color: #3E424B;
-  --text-gray-color: #636B78;
+  --text-dark-color: #1F1F1F;
+  --text-gray-color: #6B6B6B;
   --hint-color: #76BC21;
   --purple: #755FBB;
-  --red: #C82A2A;
+  --red: #BB8C5F;
   --green: #5FBBA3;
-  --gray: #636B78;
-  --gray-2: #D0D0D0;
+  --gray: #9A9A9A;
+  --gray-2: #D5CFC7;
   --overlay-color: rgba(0, 0, 0, 0.75);
+
+  --card-border-color: #EBE4DA;
+  --card-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.05);
+  --card-shadow-hover: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
+
+  --success-color: #5A8F5A;
+  --error-color: #C0392B;
 
   // FONTS
   // sizes
-  --font-size-s: 15px;
-  --font-size-m: 17px;
-  --font-size-l: 25px;
+  --font-size-s: 0.875rem;
+  --font-size-m: 1rem;
+  --font-size-l: 1.5rem;
 
   // line-height
   --font-line-s: 115%;
@@ -56,17 +64,17 @@
 
 
   // btn
-  --font-size-btn: 20px;
+  --font-size-btn: 1.125rem;
   --font-line-btn: 150%;
   --font-btn: var(--font-size-btn) / var(--font-line-btn) var(--font-family-secondary);
 
   // tag
-  --font-size-tag: 15px;
+  --font-size-tag: 0.8125rem;
   --font-line-tag: 130%;
   --font-tag: var(--font-size-tag) / var(--font-line-tag) var(--font-family-secondary);
 
   // SIZE
-  --container-padding: 20px;
+  --container-padding: 1.25rem;
   --container: 1216px; // 1216px + --container-padding * 2
   --container-max-width: calc(var(--container) + var(--container-padding) + var(--container-padding));
 
@@ -80,11 +88,11 @@
   --viewport-height-max: 1259;
 
   // SPACES
-  --space-s: 10px;
-  --space-m: 20px;
-  --space-l: 30px;
+  --space-s: 0.625rem;
+  --space-m: 1.25rem;
+  --space-l: 1.875rem;
 
-  --card-padding: 30px;
+  --card-padding: 1.875rem;
 
   // animations
   --delay: 0.3s;
