@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { Tag, type TagType } from '../../Tag/Tag.tsx'
 import { CheckBox } from '../../CheckBox/CheckBox.tsx'
 import { LikeProductButton } from '@/features'
-import { memo, useMemo } from 'react'
+import { memo, useMemo, useState, useCallback } from 'react'
 
 export type Slide = {
   id: string
@@ -24,6 +24,14 @@ export type ImgSlideProps =  {
 } & Slide  & ({} | WithCheckbox)
 
 export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: ImgSlideProps) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+
+  const handleLoad = useCallback(() => setIsLoaded(true), [])
+  const handleError = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.src = '/default.png'
+    setIsLoaded(true)
+  }, [])
+
   const actionContent = useMemo(() => {
     if('checked' in rest) {
       return (
@@ -43,6 +51,7 @@ export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: I
   return (
     <div className={classNames(
       cls.slide,
+      { [cls.loaded]: isLoaded },
       {[cls.adaptiveWithCheckbox]: withAdaptation && 'checked' in rest},
       {[cls.adaptiveWithTags]: withAdaptation && !('checked' in rest)},
       [className])}
@@ -51,7 +60,15 @@ export const ImgSlide = memo(({ className, withAdaptation, img, id, ...rest }: I
         {actionContent}
         <LikeProductButton machineId={id}/>
       </div>
-      <img src={img || '/default.png'} alt={rest.alt || 'зображення товару'} className={cls.img} loading="lazy" decoding="async" onError={(e) => { e.currentTarget.src = '/default.png' }} />
+      <img
+        src={img || '/default.png'}
+        alt={rest.alt || 'зображення товару'}
+        className={cls.img}
+        loading="lazy"
+        decoding="async"
+        onLoad={handleLoad}
+        onError={handleError}
+      />
     </div>
   )
 })

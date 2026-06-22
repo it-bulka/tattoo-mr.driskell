@@ -1,14 +1,36 @@
 .slide {
   position: relative;
+  aspect-ratio: 1;
   background: var(--card-img-gradient);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 100%
+    );
+    animation: imgShimmer 1.4s ease infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  &.loaded::before {
+    display: none;
+  }
 
   .actions {
     position: absolute;
     inset: 0;
-    padding: 30px;
+    padding: toRem(30);
     display: flex;
     justify-content: space-between;
     align-items: start;
+    z-index: 2;
   }
 }
 
@@ -17,6 +39,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@keyframes imgShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .tags {
