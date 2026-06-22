@@ -1,8 +1,13 @@
 .appLink {
+  transition: color var(--delay) ease;
+
+  &:global(.active) {
+    color: var(--accent-color);
+  }
+
   @media (hover: hover) {
     &:hover {
       color: var(--accent-color);
-      transition: color var(--delay) ease;
     }
   }
 }
