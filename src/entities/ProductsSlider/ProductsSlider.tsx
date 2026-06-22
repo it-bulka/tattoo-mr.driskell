@@ -19,7 +19,7 @@ export const ProductsSlider = memo(({
       paginationId={sliderId}
       dotsPosition={'outside'}
       dotsType='large'
-      slidesPerView={1}
+      slidesPerView={2}
       spaceBetween={20}
       speed={1200}
       loop
