@@ -1,7 +1,8 @@
 import cls from './PersonalDataCardMini.module.scss'
 import classNames from 'classnames'
 import { IPersonalData } from '../PersonalDataCard/PersonalDataСard.tsx'
-import { ContactLink, ContactsWithSocialMedia, ContactsWrapper, OnlineStatus } from '@/shared/ui'
+import { AppLink, ContactLink, OnlineStatus } from '@/shared/ui'
+import CallIcon from '@/shared/assets/general/call.svg?react'
 import MailIcon from '@/shared/assets/general/mail.svg?react'
 import { memo } from 'react'
 
@@ -27,14 +28,17 @@ export const PersonalDataCardMini = memo(({
 
       <p className={cls.name}>{name}</p>
 
-      <ContactsWithSocialMedia
-        phone={phone}
-        viber={viber}
-        whatsup={whatsup}
-        telegram={telegram}
-      />
+      <OnlineStatus status={status} className={cls.status} />
 
-      <ContactsWrapper>
+      <div className={cls.contacts}>
+        <ContactLink
+          href={`tel:${phone}`}
+          icon={<CallIcon />}
+          bold
+        >
+          {phone}
+        </ContactLink>
+
         <ContactLink
           href={`mailto:${email}`}
           icon={<MailIcon />}
@@ -42,9 +46,13 @@ export const PersonalDataCardMini = memo(({
         >
           {email}
         </ContactLink>
-      </ContactsWrapper>
 
-      <OnlineStatus status={status} className={cls.status} />
+        <div className={cls.socials}>
+          {viber && <AppLink to={viber} className={cls.pill}>Viber</AppLink>}
+          {whatsup && <AppLink to={whatsup} className={cls.pill}>WhatsApp</AppLink>}
+          {telegram && <AppLink to={telegram} className={cls.pill}>Telegram</AppLink>}
+        </div>
+      </div>
     </div>
   )
 })
