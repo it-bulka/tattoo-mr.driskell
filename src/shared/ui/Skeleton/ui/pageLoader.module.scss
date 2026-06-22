@@ -100,6 +100,29 @@
   padding: toRem(16) toRem(24) toRem(24);
 }
 
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: toRem(20);
+}
+
+.serviceCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-card-color);
+  border: 1px solid var(--card-border-color);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.serviceCardContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: toRem(10);
+  padding: toRem(22) toRem(40) toRem(40);
+}
+
 .brandCard {
   display: flex;
   flex-direction: column;
@@ -124,6 +147,14 @@
 }
 
 @include media-max-tablet-s {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .serviceCardContent {
+    padding: var(--card-padding);
+  }
+
   .grid3 {
     grid-template-columns: repeat(auto-fill, minmax(toRem(240), 1fr));
     gap: toRem(20);
@@ -147,7 +178,13 @@
 @include media-max-mobile-s {
   .grid3,
   .grid4,
-  .grid2 {
+  .grid2,
+  .cardsGrid {
     grid-template-columns: 1fr;
+  }
+
+  .serviceCardContent {
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
   }
 }
