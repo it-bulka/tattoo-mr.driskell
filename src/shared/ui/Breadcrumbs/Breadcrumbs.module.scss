@@ -1,15 +1,15 @@
 .breadcrumbs {
-  color: var(--gray-2);
-  font: 17px / 150% var(--font-family-secondary);
+  color: var(--breadcrumb-color);
+  font: #{toRem(17)} / 150% var(--font-family-secondary);
   display: flex;
   align-items: center;
   @include scroll-snap;
 
   & > *:not(:last-child) {
-    margin: 10px;
+    margin: toRem(10);
   }
 
   .active {
-    color: var(--text-gray-color);
+    color: var(--breadcrumb-active-color);
   }
 }

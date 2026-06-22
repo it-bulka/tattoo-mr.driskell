@@ -2,6 +2,19 @@
   display: grid;
   place-items: center;
   color: var(--accent-color);
+  width: toRem(44);
+  height: toRem(44);
+  border-radius: 50%;
+  background-color: var(--bg-card-color);
+  box-shadow: 0 toRem(2) toRem(8) rgba(0, 0, 0, 0.1);
+  transition: box-shadow var(--delay) ease;
+  cursor: pointer;
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 toRem(4) toRem(12) rgba(0, 0, 0, 0.15);
+    }
+  }
 
   & > * {
     grid-column: 1;
@@ -12,6 +25,8 @@
 
 .icon {
   opacity: 0;
+  width: toRem(20);
+  height: toRem(20);
 
   &:first-child:hover {
     opacity: 1;

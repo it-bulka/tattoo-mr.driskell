@@ -1,7 +1,7 @@
 .togglerWrapper {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: toRem(20);
 
   input[type="checkbox"] {
     display: none;
@@ -10,26 +10,31 @@
   .toggler {
     position: relative;
     display: block;
-    width: 35px;
-    height: 20px;
+    width: var(--toggler-width);
+    height: var(--toggler-height);
     background-color: var(--gray);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background-color var(--delay) ease;
 
     &:before {
       content: "";
       position: absolute;
-      top: 2.5px;
-      left: 2.5px;
-      width: 15px;
-      height: 15px;
+      top: var(--toggler-inset);
+      left: var(--toggler-inset);
+      width: var(--toggler-thumb);
+      height: var(--toggler-thumb);
       background-color: var(--bg-card-color);
+      border-radius: 50%;
       transition: left var(--delay) ease;
+      box-shadow: 0 toRem(1) toRem(3) rgba(0, 0, 0, 0.15);
     }
   }
 
   input[type="checkbox"]:checked + .toggler {
     background-color: var(--accent-color);
     &:before {
-      left: 17.5px;
+      left: calc(var(--toggler-width) - var(--toggler-thumb) - var(--toggler-inset));
     }
   }
 }
