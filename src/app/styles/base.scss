@@ -171,8 +171,9 @@ svg {
 
 .currentPrice {
   color: var(--accent-color);
-  font: 24px / 130% var(--font-family-secondary);
-  font-weight: 900;
+  font: clamp(1.25rem, 1rem + 1vw, 2.125rem) / 130% var(--font-family-heading);
+  font-weight: 600;
+  letter-spacing: -0.5px;
 }
 
 .prevPrice {
@@ -182,14 +183,15 @@ svg {
 }
 
 .pageSpacing {
-  padding-top: 50px;
-  padding-bottom: 200px;
+  padding-top: clamp(1.25rem, 1rem + 2vw, 3.125rem);
+  padding-bottom: clamp(7.5rem, 6rem + 5vw, 12.5rem);
 }
 
 .pageTitle {
-  font: 60px / 100% var(--font-family-third);
-  margin-top: 30px;
-  margin-bottom: 40px;
+  font: clamp(1.5625rem, 1rem + 2.5vw, 3.75rem) / 110% var(--font-family-third);
+  letter-spacing: -1px;
+  margin-top: toRem(30);
+  margin-bottom: toRem(40);
 
   &.margin-0 {
     margin-top: 0;
@@ -198,35 +200,20 @@ svg {
 }
 
 .blockTitle {
-  font: 25px / 115% var(--font-family-secondary);
-  font-weight: 900;
+  font: clamp(1.0625rem, 0.75rem + 1vw, 1.5625rem) / 115% var(--font-family-secondary);
+  font-weight: 700;
 }
 
 @include media-max-tablet-s {
-  .pageSpacing {
-    padding-top: 30px;
-    padding-bottom: 160px;
-  }
-
   .pageTitle {
-    font-size: 50px;
-    line-height: 130%;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-top: toRem(20);
+    margin-bottom: toRem(30);
   }
 };
 
 @include media-max-mobile-s {
-  .pageSpacing {
-    padding-top: 20px;
-    padding-bottom: 120px;
-  }
-
   .pageTitle {
-    font-size: 25px;
-  }
-
-  .blockTitle {
-    font-size: 17px;
+    margin-top: toRem(15);
+    margin-bottom: toRem(20);
   }
 };
