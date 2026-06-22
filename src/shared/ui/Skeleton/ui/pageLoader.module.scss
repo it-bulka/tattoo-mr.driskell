@@ -36,6 +36,13 @@
   gap: 12px;
 }
 
+.tabsRow {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: toRem(6);
+  margin-bottom: toRem(50);
+}
+
 .twoCol {
   display: flex;
   gap: var(--space-l);
@@ -58,14 +65,16 @@
 
 .grid3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(toRem(240), 1fr));
+  align-items: start;
+  gap: toRem(40);
 }
 
 .grid4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fill, minmax(toRem(240), 1fr));
+  align-items: start;
+  gap: toRem(40);
 }
 
 .grid2 {
@@ -77,7 +86,18 @@
 .productCard {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  background-color: var(--bg-card-color);
+  border: 1px solid var(--card-border-color);
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+
+.productCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: toRem(8);
+  padding: toRem(16) toRem(24) toRem(24);
 }
 
 .brandCard {
@@ -105,11 +125,13 @@
 
 @include media-max-tablet-s {
   .grid3 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(toRem(240), 1fr));
+    gap: toRem(20);
   }
 
   .grid4 {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(toRem(240), 1fr));
+    gap: toRem(20);
   }
 
   .twoCol {
