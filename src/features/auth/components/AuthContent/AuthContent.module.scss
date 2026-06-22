@@ -1,12 +1,15 @@
 .content {
-  padding: 40px 44px;
+  padding: toRem(40) toRem(44);
   background-color: var(--bg-color);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: toRem(15);
   margin: auto;
-
   position: relative;
+
+  form > label {
+    margin: toRem(8) 0;
+  }
 }
 
 .loader, .error {
