@@ -36,8 +36,18 @@
   --overlay-color: rgba(0, 0, 0, 0.75);
 
   --card-border-color: #EBE4DA;
-  --card-shadow: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.05);
+  --card-border-radius: #{toRem(20)};
+  --card-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.04);
   --card-shadow-hover: 0 1rem 2.5rem rgba(0, 0, 0, 0.08);
+  --card-img-gradient: linear-gradient(180deg, #ffffff, #faf7f2);
+
+  --breadcrumb-color: #8c8479;
+  --breadcrumb-active-color: #2b2b2b;
+
+  --toggler-width: #{toRem(52)};
+  --toggler-height: #{toRem(30)};
+  --toggler-thumb: #{toRem(24)};
+  --toggler-inset: #{toRem(3)};
 
   --success-color: #5A8F5A;
   --error-color: #C0392B;
