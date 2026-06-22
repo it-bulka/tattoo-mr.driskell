@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: var(--space-s) var(--space-m);
-  width: max-content;
+  width: 100%;
 
   &.inline {
     display: inline-grid;
