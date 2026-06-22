@@ -1,11 +1,11 @@
 .filterButton {
-  padding: toRem(14) toRem(28);
+  padding: toRem(10) toRem(20);
   border: 1px solid var(--accent-color);
-  border-radius: 999px;
+  border-radius: toRem(24);
   color: var(--accent-color);
   transition: var(--delay) ease;
   text-wrap: nowrap;
-  background-color: var(--bg-card-color);
+  background-color: transparent;
 
   @media (hover: hover) {
     &:hover {

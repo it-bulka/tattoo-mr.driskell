@@ -1,7 +1,14 @@
 .togglerWrapper {
   display: flex;
   align-items: center;
-  gap: toRem(20);
+  gap: toRem(12);
+
+  span:not(.toggler) {
+    font: #{toRem(14)} / 150% var(--font-family-secondary);
+    font-weight: 500;
+    color: var(--text-dark-color);
+    white-space: nowrap;
+  }
 
   input[type="checkbox"] {
     display: none;

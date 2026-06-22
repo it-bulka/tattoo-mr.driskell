@@ -1,12 +1,14 @@
 .select {
   display: flex;
-  flex-direction: column;
-  gap: toRem(8);
+  align-items: center;
+  gap: toRem(12);
   z-index: var(--select-z-index);
 
   label {
     font: #{toRem(14)} / 150% var(--font-family-secondary);
-    color: var(--text-gray-color);
+    font-weight: 500;
+    color: var(--text-dark-color);
+    white-space: nowrap;
   }
 }
 
