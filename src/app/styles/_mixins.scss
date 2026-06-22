@@ -4,6 +4,10 @@ $max-mobile: 767px;
 
 $min-tablet: 768px;
 
+@function toRem($px) {
+  @return calc($px / 16) * 1rem;
+}
+
 @function toPercent($part, $from: null) {
   @if($from == null) {
     $from: 1236 // container with padding
