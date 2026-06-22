@@ -18,3 +18,5 @@ export { OrderFailurePage } from './OrderFailurePage/ui/OrderFailurePage.async.t
 export { AboutPage } from './AboutPage'
 export { HelpPage } from './HelpPage'
 export { HelpDetailPage } from './HelpDetailPage'
+export { VerifyEmailPage } from './VerifyEmailPage'
+export { ResetPasswordPage } from './ResetPasswordPage'

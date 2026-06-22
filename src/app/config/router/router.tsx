@@ -10,6 +10,7 @@ import {
   SearchResultPage, FavouritesPage,
   OrderSuccessPage, OrderFailurePage,
   AboutPage, HelpPage, HelpDetailPage,
+  VerifyEmailPage, ResetPasswordPage,
 } from '@/pages'
 
 export const router = createBrowserRouter([
@@ -100,6 +101,14 @@ export const router = createBrowserRouter([
       {
         path: RoutePaths.favorites,
         element: <PrivateRoute><FavouritesPage /></PrivateRoute>
+      },
+      {
+        path: RoutePaths.verify_email,
+        element: <VerifyEmailPage />
+      },
+      {
+        path: RoutePaths.reset_password,
+        element: <ResetPasswordPage />
       },
       {
         path: RoutePaths.not_found,

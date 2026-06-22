@@ -19,6 +19,9 @@ export enum AppRoutes {
   BRANDS = 'brands',
   BRAND_TATTOO_MACHINE = 'brand',
   TATTOO_MACHINE_DETAILS = 'tattoo_machine_details',
+  // auth
+  VERIFY_EMAIL = 'verify_email',
+  RESET_PASSWORD = 'reset_password',
   // additional
   FORBIDDEN = 'forbidden',
   NOT_FOUND = 'not_found',
@@ -48,6 +51,9 @@ export const getCatalogBrandsPage = (slug: string) => `/brands/${slug}`
 export const getCatalogDetailsPage = (slug: string) => `/catalog/${slug}`
 export const getTattooMachineDetailsPage = (slug: string) => `/catalog/tattoo-machines/${slug}`
 
+export const getVerifyEmailPage = () => '/user/verify-email'
+export const getResetPasswordPage = () => '/user/reset-password'
+
 export const getForbiddenPage = () => '/forbidden'
 export const getNotFoundPage = () => '/not-found'
 export const getOrderSuccessPage = () => '/catalog/cart/payment-success'
@@ -73,6 +79,9 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.BRANDS]: getBrandsPage(),
   [AppRoutes.BRAND_TATTOO_MACHINE]: getCatalogBrandsPage(':slug'),
   [AppRoutes.TATTOO_MACHINE_DETAILS]: getTattooMachineDetailsPage(':slug'),
+  // AUTH
+  [AppRoutes.VERIFY_EMAIL]: getVerifyEmailPage(),
+  [AppRoutes.RESET_PASSWORD]: getResetPasswordPage(),
   // ADDITIONAL
   [AppRoutes.FORBIDDEN]: getForbiddenPage(),
   [AppRoutes.NOT_FOUND]: getNotFoundPage(),
