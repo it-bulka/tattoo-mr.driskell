@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { auth } from '../api/auth.tsx';
-import { DEVICE_ID_LOCALSTORAGE } from '@/shared/consts';
+import { ACCESS_TOKEN_LOCALSTORAGE, DEVICE_ID_LOCALSTORAGE } from '@/shared/consts';
 import { setUUID } from '@/shared/libs';
 import { userActions } from '@/entities/User';
 import { VerifyEmailReq } from '../types/verifyEmail.ts'
@@ -25,12 +25,14 @@ export const verifyEmailThunk = createAsyncThunk<
       ).unwrap()
 
       if(response.data) {
-        await dispatch(userActions.setUser(response.data))
+        dispatch(userActions.setUser(response.data))
       }
+
+      localStorage.setItem(ACCESS_TOKEN_LOCALSTORAGE, response.accessToken)
 
       return {
         token: response.accessToken,
-        deviceId: deviceId
+        deviceId,
       }
     } catch (e) {
       console.log(e)
