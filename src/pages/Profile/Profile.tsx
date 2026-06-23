@@ -9,6 +9,7 @@ import { PersonalManager } from './PersonalManager/PersonalManager.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
 import { ProfileEditForm } from '@/features/ProfileForm'
 import { ChangePasswordForm } from '@/features/ChangePasswordForm'
+import { LogoutButton } from '@/features/auth/logout'
 import { getUserId, useGetUserQuery } from '@/entities/User'
 import { useSeoMeta } from '@/shared/libs'
 
@@ -27,6 +28,7 @@ const Profile = () => {
           <h1 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h1>
           <ProfileEditForm className={cls.withContainer} />
           <ChangePasswordForm className={cls.withContainer} />
+          <LogoutButton className={cls.withContainer} />
           <Histories className={classNames(cls.withContainer, cls.histories)}/>
         </>
       )}
