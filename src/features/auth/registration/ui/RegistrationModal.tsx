@@ -12,10 +12,15 @@ interface RegistrationModalProps {
 }
 
 export const RegistrationModal = ({ isOpen, onClose, onOpenLogin }: RegistrationModalProps) => {
-  const [registration, { isLoading, isSuccess, error }] = useRegisterMutation()
+  const [registration, { isLoading, isSuccess, error, reset }] = useRegisterMutation()
+
+  const handleClose = () => {
+    reset()
+    onClose()
+  }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={handleClose}>
       <Auth.Content
         isLoading={isLoading}
         error={error && getRtkApiMessage(error)}

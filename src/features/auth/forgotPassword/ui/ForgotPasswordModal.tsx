@@ -18,10 +18,15 @@ export const ForgotPasswordModal = ({
   onOpenLogin,
   onOpenRegister,
 }: ForgotPasswordModalProps) => {
-  const [sendEmail, { isLoading, isSuccess, error }] = useSendForgotPasswordEmailMutation()
+  const [sendEmail, { isLoading, isSuccess, error, reset }] = useSendForgotPasswordEmailMutation()
+
+  const handleClose = () => {
+    reset()
+    onClose()
+  }
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal isOpen={isOpen} onClose={handleClose}>
       <Auth.Content isLoading={isLoading} error={error ? getRtkApiMessage(error) : undefined}>
         {!isSuccess
           ? (
