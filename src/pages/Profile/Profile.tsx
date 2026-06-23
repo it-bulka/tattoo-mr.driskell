@@ -10,6 +10,7 @@ import { PageTwoColumnLayout } from '@/shared/layouts'
 import { ProfileEditForm } from '@/features/ProfileForm'
 import { ChangePasswordForm } from '@/features/ChangePasswordForm'
 import { LogoutButton } from '@/features/auth/logout'
+import { DeleteAccountButton } from '@/features/auth/deleteAccount'
 import { getUserId, useGetUserQuery } from '@/entities/User'
 import { useSeoMeta } from '@/shared/libs'
 
@@ -29,6 +30,7 @@ const Profile = () => {
           <ProfileEditForm className={cls.withContainer} />
           <ChangePasswordForm className={cls.withContainer} />
           <LogoutButton className={classNames(cls.withContainer, cls.logout)} />
+          <DeleteAccountButton className={classNames(cls.withContainer, cls.deleteAccount)} />
           <Histories className={classNames(cls.withContainer, cls.histories)}/>
         </>
       )}

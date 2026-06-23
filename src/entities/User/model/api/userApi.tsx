@@ -39,7 +39,13 @@ export const userApi = rtkApi.injectEndpoints({
         body,
       }),
     }),
+    deleteUser: build.mutation<void, string>({
+      query: (id) => ({
+        url: `/users/${id}`,
+        method: 'DELETE',
+      }),
+    }),
   }),
 })
 
-export const { useGetUserQuery, useUpdateUserMutation, useUpdatePasswordMutation } = userApi
+export const { useGetUserQuery, useUpdateUserMutation, useUpdatePasswordMutation, useDeleteUserMutation } = userApi
