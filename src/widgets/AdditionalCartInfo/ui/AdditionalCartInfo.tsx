@@ -69,7 +69,7 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
     handleCodConfirm,
   } = useCheckoutSubmit()
 
-  const buttonLabel = isCod ? t('payment.confirm order') : t('payment.pay now')
+  const buttonLabel = t('payment.confirm order')
 
   return (
     <div className={classNames(cls.additionalInfo, {}, [className])}>
