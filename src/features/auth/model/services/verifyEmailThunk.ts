@@ -18,11 +18,11 @@ export const verifyEmailThunk = createAsyncThunk<
     }
 
     try {
+      const deviceId = localStorage.getItem(DEVICE_ID_LOCALSTORAGE) ?? setUUID(DEVICE_ID_LOCALSTORAGE)
+
       const response = await dispatch(
         auth.endpoints.verifyEmail.initiate(data)
       ).unwrap()
-
-      const deviceId = localStorage.getItem(DEVICE_ID_LOCALSTORAGE) ?? setUUID(DEVICE_ID_LOCALSTORAGE)
 
       if(response.data) {
         await dispatch(userActions.setUser(response.data))
