@@ -1,15 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { auth } from '../api/auth.tsx'
-import { userActions } from '@/entities/User'
-import { authActions } from '../slice/authSlice.ts'
-import { rtkApi } from '@/shared/api/rtkApi.ts'
+import { clearAuthState } from './clearAuthState.ts'
 import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
-
-const clearLocalState = (dispatch: any) => {
-  dispatch(authActions.logout())
-  dispatch(userActions.clearUser())
-  dispatch(rtkApi.util.resetApiState())
-}
 
 export const logoutThunk = createAsyncThunk<void, void, { state: StateSchema }>(
   'auth/logout',
@@ -19,9 +11,9 @@ export const logoutThunk = createAsyncThunk<void, void, { state: StateSchema }>(
 
       await dispatch(auth.endpoints.logout.initiate(userId)).unwrap()
 
-      clearLocalState(dispatch)
+      clearAuthState(dispatch)
     } catch (e) {
-      clearLocalState(dispatch)
+      clearAuthState(dispatch)
       return rejectWithValue('Logout failed')
     }
   }

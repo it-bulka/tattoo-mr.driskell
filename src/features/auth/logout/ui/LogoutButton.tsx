@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { useState, useCallback } from 'react'
+import { useState, useCallback, memo } from 'react'
 import { Button } from '@/shared/ui'
 import { LogoutModal } from './LogoutModal.tsx'
 
@@ -7,7 +7,7 @@ interface LogoutButtonProps {
   className?: string
 }
 
-export const LogoutButton = ({ className }: LogoutButtonProps) => {
+export const LogoutButton = memo(({ className }: LogoutButtonProps) => {
   const { t } = useTranslation('auth')
   const [isOpen, setIsOpen] = useState(false)
 
@@ -19,7 +19,9 @@ export const LogoutButton = ({ className }: LogoutButtonProps) => {
       <Button className={className} dark onClick={onOpen}>
         {t('logout')}
       </Button>
-      <LogoutModal isOpen={isOpen} onClose={onClose} />
+      {isOpen && <LogoutModal isOpen onClose={onClose} />}
     </>
   )
-}
+})
+
+LogoutButton.displayName = 'LogoutButton'
