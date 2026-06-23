@@ -66,6 +66,7 @@ export const useModal = ({
 
     return () => {
       clearTimeout(timerRef.current)
+      enableBodyScroll()
       window.removeEventListener('keydown', onKeyDown)
     }
   }, [onKeyDown, isOpen])
