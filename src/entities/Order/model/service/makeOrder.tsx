@@ -1,66 +1,81 @@
-import { createAsyncThunk } from '@reduxjs/toolkit'
-import { CartFormData } from '@/features/CartForm/model/types/cartFormTypes.tsx'
-import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { CartFormData } from "@/features/CartForm/model/types/cartFormTypes.tsx";
+import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema.ts";
 import {
   getUserId,
   getOrderDeliverySelector,
   getOrderPaymentSelector,
-} from '@/entities'
-import { getSelectedServicesSelector } from '../selectors/orderSelectors.tsx'
-import { orderApi } from '../api/orderApi.tsx'
-import { OrderRes } from '../types/orderSchema.tsx'
-import { getCartItemsSelector, getPromoCodeName, cartActions, cartApi } from '@/entities/Cart'
-import { CART_FORM_LOCALSTORAGE } from '@/shared/consts/localStorages.tsx'
-import { getRtkApiMessage } from '@/shared/libs'
-
+} from "@/entities";
+import { getSelectedServicesSelector } from "../selectors/orderSelectors.tsx";
+import { orderApi } from "../api/orderApi.tsx";
+import { OrderRes } from "../types/orderSchema.tsx";
+import {
+  getCartItemsSelector,
+  getPromoCodeName,
+  clearCartAfterOrder,
+} from "@/entities/Cart";
+import { getRtkApiMessage } from "@/shared/libs";
 
 export const makeOrder = createAsyncThunk<
   OrderRes,
   CartFormData,
   {
-    state: StateSchema,
-    rejectValue: string
+    state: StateSchema;
+    rejectValue: string;
   }
 >(
-  'orders/makeOrder',
+  "orders/makeOrder",
   async (buyerData, { dispatch, getState, rejectWithValue }) => {
-    const state = getState()
-    const userId = getUserId(state)
-    const delivery = getOrderDeliverySelector(state)
-    const paymentType = getOrderPaymentSelector(state)
-    const itemsToBuy = getCartItemsSelector(state)
-    const selectedServices = getSelectedServicesSelector(state)
-    const promoCode = getPromoCodeName(state)
+    const state = getState();
+    const userId = getUserId(state);
+    const delivery = getOrderDeliverySelector(state);
+    const paymentType = getOrderPaymentSelector(state);
+    const itemsToBuy = getCartItemsSelector(state);
+    const selectedServices = getSelectedServicesSelector(state);
+    const promoCode = getPromoCodeName(state);
 
-    const errors = []
-    if (!userId) errors.push(`user id`)
-    if (!delivery) errors.push(`delivery type`)
-    if (!paymentType) errors.push(`payment type`)
-    if (!itemsToBuy.length) errors.push(`items to buy`)
+    const errors = [];
+    if (!userId) errors.push(`user id`);
+    if (!delivery) errors.push(`delivery type`);
+    if (!paymentType) errors.push(`payment type`);
+    if (!itemsToBuy.length) errors.push(`items to buy`);
 
     if (errors.length) {
-      const errorsString = errors.join(', ')
-      const err = `Provide the following data: ${errorsString}`
-      return rejectWithValue(err)
+      const errorsString = errors.join(", ");
+      const err = `Provide the following data: ${errorsString}`;
+      return rejectWithValue(err);
     }
 
     const {
-      name, email, phone,
+      name,
+      email,
+      phone,
       deliveryMethod: _dm,
       agree: _agree,
-      city, street, apartment, entrance, floor, doorphone, comment,
-      npCityRef, npCityName, npDeliveryType, npWarehouseRef, npWarehouseName,
-    } = buyerData
+      city,
+      street,
+      apartment,
+      entrance,
+      floor,
+      doorphone,
+      comment,
+      npCityRef,
+      npCityName,
+      npDeliveryType,
+      npWarehouseRef,
+      npWarehouseName,
+    } = buyerData;
 
-    const shippingAddress = delivery === 'courier'
-      ? { city, street, apartment, entrance, floor, doorphone }
-      : {
-          npCityRef: npCityRef!,
-          npCityName: npCityName!,
-          npDeliveryType: npDeliveryType!,
-          npWarehouseRef,
-          npWarehouseName,
-        }
+    const shippingAddress =
+      delivery === "courier"
+        ? { city, street, apartment, entrance, floor, doorphone }
+        : {
+            npCityRef: npCityRef!,
+            npCityName: npCityName!,
+            npDeliveryType: npDeliveryType!,
+            npWarehouseRef,
+            npWarehouseName,
+          };
 
     const data = {
       userId: userId!,
@@ -75,26 +90,23 @@ export const makeOrder = createAsyncThunk<
       })),
       selectedServices,
       promoCode,
-    }
+    };
 
     try {
       const response = await dispatch(
-        orderApi.endpoints.sendOrder.initiate(data)
-      ).unwrap()
+        orderApi.endpoints.sendOrder.initiate(data),
+      ).unwrap();
 
-      localStorage.removeItem(CART_FORM_LOCALSTORAGE)
-
-      dispatch(cartActions.clearCart())
-      if (userId) {
-        await dispatch(
-          cartApi.endpoints.syncCart.initiate({ userId, orderItems: [] })
-        )
+      if (!response.paymentData) {
+        await clearCartAfterOrder(dispatch, userId);
       }
 
-      return response
+      return response;
     } catch (e) {
-      const message = getRtkApiMessage(e as Parameters<typeof getRtkApiMessage>[0])
-      return rejectWithValue(message)
+      const message = getRtkApiMessage(
+        e as Parameters<typeof getRtkApiMessage>[0],
+      );
+      return rejectWithValue(message);
     }
-  }
-)
+  },
+);

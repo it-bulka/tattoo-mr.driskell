@@ -1,7 +1,12 @@
 export type {
-  CartSchema, CartData, CartItemType, CartDataRes, SyncCartBody, CartItem,
-  PromoActivationReq
-} from './model/type/cartSchema.tsx'
+  CartSchema,
+  CartData,
+  CartItemType,
+  CartDataRes,
+  SyncCartBody,
+  CartItem,
+  PromoActivationReq,
+} from "./model/type/cartSchema.tsx";
 export {
   getCartErrorSelector,
   getCartItemsSelector,
@@ -12,20 +17,21 @@ export {
   getTotalPriceSelector,
   getCartSyncWithBackSelector,
   getCartItemById,
-  getPromoCodeName
-} from "./model/selectors/selectors.tsx"
-export { cartSyncMiddleware } from './model/middleware/cartSyncMiddleware.tsx'
+  getPromoCodeName,
+} from "./model/selectors/selectors.tsx";
+export { cartSyncMiddleware } from "./model/middleware/cartSyncMiddleware.tsx";
 
-export { Cart } from './ui/Cart/Cart.tsx'
-export { fetchCart } from './model/services/fetchCart.tsx'
-export { useGetCartQuery } from './model/api/cartApi.tsx'
-export { useInitCart } from './model/utils/useInitCart.tsx'
-export { offlineSyncLocalStorage } from './model/utils/offlineSync.tsx'
-export { useManualCartSync } from './model/utils/manualSync.tsx'
-export { useSyncCartWithServerBeforeClose } from './model/utils/useSyncCartWithServerBeforeClose.tsx'
-export { addItemsToCart } from './model/services/addItemToCart.tsx'
-export { cartActions, cartReducer } from './model/slice/cartSlice.tsx'
-export { cartApi } from './model/api/cartApi.tsx'
-export { guestCartStorage } from './model/utils/guestCartStorage.tsx'
-export { getCartTotalsSelector } from './model/selectors/selectors.tsx'
-export { activatePromo } from './model/services/activatePromo.tsx'
+export { Cart } from "./ui/Cart/Cart.tsx";
+export { fetchCart } from "./model/services/fetchCart.tsx";
+export { useGetCartQuery } from "./model/api/cartApi.tsx";
+export { useInitCart } from "./model/utils/useInitCart.tsx";
+export { offlineSyncLocalStorage } from "./model/utils/offlineSync.tsx";
+export { useManualCartSync } from "./model/utils/manualSync.tsx";
+export { useSyncCartWithServerBeforeClose } from "./model/utils/useSyncCartWithServerBeforeClose.tsx";
+export { addItemsToCart } from "./model/services/addItemToCart.tsx";
+export { cartActions, cartReducer } from "./model/slice/cartSlice.tsx";
+export { cartApi } from "./model/api/cartApi.tsx";
+export { guestCartStorage } from "./model/utils/guestCartStorage.tsx";
+export { getCartTotalsSelector } from "./model/selectors/selectors.tsx";
+export { activatePromo } from "./model/services/activatePromo.tsx";
+export { clearCartAfterOrder } from "./model/utils/clearCartAfterOrder.ts";

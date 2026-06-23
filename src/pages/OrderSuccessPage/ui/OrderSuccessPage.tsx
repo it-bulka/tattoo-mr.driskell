@@ -1,32 +1,41 @@
-import cls from './OrderSuccessPage.module.scss'
-import { useTranslation } from 'react-i18next'
-import { useSearchParams } from 'react-router'
-import { AppLink } from '@/shared/ui/AppLink/AppLink'
-import { getProfilePage, getCartPage } from '@/shared/config/routeConfig/routeConfig.tsx'
+import cls from "./OrderSuccessPage.module.scss";
+import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router";
+import { AppLink } from "@/shared/ui/AppLink/AppLink";
+import {
+  getProfilePage,
+  getCartPage,
+} from "@/shared/config/routeConfig/routeConfig.tsx";
+import { useClearCartOnSuccess } from "../model/useClearCartOnSuccess.ts";
 
 const OrderSuccessPage = () => {
-  const { t } = useTranslation('cart')
-  const [searchParams] = useSearchParams()
-  const orderId = searchParams.get('orderId')
+  const { t } = useTranslation("cart");
+  const [searchParams] = useSearchParams();
+  const orderId = searchParams.get("orderId");
+  useClearCartOnSuccess();
 
   return (
     <div className={cls.page}>
       <div className={cls.content}>
         <div className={cls.icon}>✓</div>
-        <h2 className={cls.title}>{t('order success.title')}</h2>
+        <h2 className={cls.title}>{t("order success.title")}</h2>
         {orderId && (
           <p className={cls.orderId}>
-            {t('order success.order number')} <span>{orderId}</span>
+            {t("order success.order number")} <span>{orderId}</span>
           </p>
         )}
-        <p className={cls.description}>{t('order success.description')}</p>
+        <p className={cls.description}>{t("order success.description")}</p>
         <div className={cls.links}>
-          <AppLink to={getProfilePage()}>{t('order success.to profile')}</AppLink>
-          <AppLink to={getCartPage()}>{t('order success.continue shopping')}</AppLink>
+          <AppLink to={getProfilePage()}>
+            {t("order success.to profile")}
+          </AppLink>
+          <AppLink to={getCartPage()}>
+            {t("order success.continue shopping")}
+          </AppLink>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default OrderSuccessPage
+export default OrderSuccessPage;
