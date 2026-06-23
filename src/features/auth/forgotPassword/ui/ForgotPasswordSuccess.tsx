@@ -11,6 +11,7 @@ export const ForgotPasswordSuccess = ({ onOpenLogin }: ForgotPasswordSuccessProp
     <div>
       <Auth.Title>{t('password recovery success.title')}</Auth.Title>
       <p>{t('password recovery success.info')}</p>
+      <p>{t('check spam')}</p>
       <button type="button" onClick={onOpenLogin}>{t('back to login')}</button>
     </div>
   )
