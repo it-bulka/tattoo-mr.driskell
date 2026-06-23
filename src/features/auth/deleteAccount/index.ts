@@ -1,1 +1,1 @@
-export { DeleteAccountButton } from './ui/DeleteAccountButton.tsx'
+export { DeleteAccountButton } from "./ui/DeleteAccountButton.tsx";
