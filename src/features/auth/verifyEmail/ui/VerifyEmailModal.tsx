@@ -18,14 +18,21 @@ export const VerifyEmailModal = () => {
     }
   }, [status, navigate])
 
+  const goHome = () => navigate(getHomePage())
+
   return (
     <Modal isOpen>
-      <Auth.Content isLoading={status === 'loading'} error={status === 'error' ? (error || t('verification failed')) : undefined}>
-        {status === 'loading' && (
-          <Auth.Title>{t('email verification')}</Auth.Title>
-        )}
-        {status === 'success' && (
-          <Auth.Title>{t('email verified')}</Auth.Title>
+      <Auth.Content isLoading={status === 'loading'}>
+        <Auth.Title>
+          {status === 'loading' && t('email verification')}
+          {status === 'success' && t('email verified')}
+          {status === 'error' && t('verification failed')}
+        </Auth.Title>
+        {status === 'error' && (
+          <>
+            <p>{error}</p>
+            <Auth.Button onClick={goHome}>{t('back to login')}</Auth.Button>
+          </>
         )}
       </Auth.Content>
     </Modal>
