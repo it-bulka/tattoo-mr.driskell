@@ -28,7 +28,7 @@ const Profile = () => {
           <h1 className={classNames("pageTitle", cls.withContainer)}>{t('profile')}</h1>
           <ProfileEditForm className={cls.withContainer} />
           <ChangePasswordForm className={cls.withContainer} />
-          <LogoutButton className={cls.withContainer} />
+          <LogoutButton className={classNames(cls.withContainer, cls.logout)} />
           <Histories className={classNames(cls.withContainer, cls.histories)}/>
         </>
       )}

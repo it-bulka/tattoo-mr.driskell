@@ -16,6 +16,10 @@
   }
 }
 
+.logout {
+  margin-top: 30px;
+}
+
 @include media-max-tablet-s {
   .withContainer {
     @include container;
