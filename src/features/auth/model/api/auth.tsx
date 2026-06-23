@@ -41,10 +41,11 @@ export const auth = rtkApi.injectEndpoints({
         body: data
       })
     }),
-    logout: build.mutation<void, void>({
-      query: () => ({
+    logout: build.mutation<void, string | undefined>({
+      query: (userId) => ({
         url: '/auth/logout',
-        method: 'POST'
+        method: 'POST',
+        params: userId ? { userId } : undefined,
       })
     })
   })
