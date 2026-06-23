@@ -1,21 +1,26 @@
-import { createSlice, createEntityAdapter, PayloadAction } from '@reduxjs/toolkit'
-import { LikedProductsSchema } from '../types/likedProducts.tsx'
-import { Product } from '@/entities/ProductCard/ProductCard.tsx'
-import { StateSchema } from '@/app/providers/StoreProvider/config/StateSchema.ts'
+import {
+  createSlice,
+  createEntityAdapter,
+  PayloadAction,
+} from "@reduxjs/toolkit";
+import { LikedProductsSchema } from "../types/likedProducts.tsx";
+import { Product } from "@/entities/ProductCard/ProductCard.tsx";
+import { StateSchema } from "@/app/providers/StoreProvider/config/StateSchema.ts";
 
 const likedProductsAdapter = createEntityAdapter<Product, string>({
-  selectId: product => product.id,
-})
+  selectId: (product) => product.id,
+});
 
-export const likedProductsSelector = likedProductsAdapter.getSelectors<StateSchema>(
-  state => state.favourites.products
-)
+export const likedProductsSelector =
+  likedProductsAdapter.getSelectors<StateSchema>(
+    (state) => state.favourites.products,
+  );
 
 type Pages = {
-  totalCount: number
-  totalPages: number
-  currentPage: number
-}
+  totalCount: number;
+  totalPages: number;
+  currentPage: number;
+};
 
 const initialState: LikedProductsSchema = likedProductsAdapter.getInitialState({
   entities: {},
@@ -28,43 +33,50 @@ const initialState: LikedProductsSchema = likedProductsAdapter.getInitialState({
   error: null,
   isLoading: false,
   _inited: false,
-})
+  _lastFetchedAt: null,
+});
 
 const sliceLikedProducts = createSlice({
-  name: 'liked/products',
+  name: "liked/products",
   initialState,
   reducers: {
     initProducts: (state, action: PayloadAction<Product[]>) => {
-      likedProductsAdapter.setMany(state, action.payload)
-      state._inited = true
+      likedProductsAdapter.setMany(state, action.payload);
+      state._inited = true;
+      state._lastFetchedAt = Date.now();
+    },
+    invalidate: (state) => {
+      likedProductsAdapter.removeAll(state);
+      state._inited = false;
+      state._lastFetchedAt = null;
+      state.currentPage = 0;
+      state.totalCount = 0;
+      state.totalPages = 1;
     },
     addProducts: (state, action: PayloadAction<Product[]>) => {
-      console.log('See: addProducts:', action.payload)
-      likedProductsAdapter.addMany(state, action.payload)
+      likedProductsAdapter.addMany(state, action.payload);
     },
     setPage: (state, action: PayloadAction<Pages>) => {
-      const { totalCount, totalPages, currentPage } = action.payload
+      const { totalCount, totalPages, currentPage } = action.payload;
 
-      state.totalCount = totalCount
-      state.totalPages = totalPages
-      state.currentPage = currentPage
+      state.totalCount = totalCount;
+      state.totalPages = totalPages;
+      state.currentPage = currentPage;
     },
     restoreProducts: (state, action: PayloadAction<Product[]>) => {
-      likedProductsAdapter.setAll(state, action.payload)
+      likedProductsAdapter.setAll(state, action.payload);
     },
     deleteOne: (state, action: PayloadAction<string>) => {
-      likedProductsAdapter.removeOne(state, action.payload)
+      likedProductsAdapter.removeOne(state, action.payload);
     },
     setError: (state, action: PayloadAction<string | null>) => {
-      state.error = action.payload
+      state.error = action.payload;
     },
     setLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload
-    }
-  }
-})
+      state.isLoading = action.payload;
+    },
+  },
+});
 
-export const {
-  actions: likedProductsActions,
-  reducer: likedProductsReducer,
-} = sliceLikedProducts
+export const { actions: likedProductsActions, reducer: likedProductsReducer } =
+  sliceLikedProducts;
