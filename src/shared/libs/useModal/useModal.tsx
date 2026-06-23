@@ -1,7 +1,5 @@
-import {
-  useCallback, useEffect, useRef, useState
-} from 'react'
-import { disableBodyScroll, enableBodyScroll } from '@/shared/libs'
+import { useCallback, useEffect, useRef, useState } from "react";
+import { disableBodyScroll, enableBodyScroll } from "@/shared/libs";
 
 /**
  * Custom hook to manage modal open, close, and animation states.
@@ -20,12 +18,12 @@ import { disableBodyScroll, enableBodyScroll } from '@/shared/libs'
  */
 
 interface UseModalProps {
-  isOpen?: boolean
-  onClose?: () => void
-  animationDelay?: number
+  isOpen?: boolean;
+  onClose?: () => void;
+  animationDelay?: number;
 }
 
-const ANIMATION_DELAY = 300
+const ANIMATION_DELAY = 300;
 
 /**
  * useModal hook to manage modal state and animations.
@@ -34,42 +32,45 @@ const ANIMATION_DELAY = 300
  */
 
 export const useModal = ({
-                           onClose,
-                           animationDelay = ANIMATION_DELAY,
-                           isOpen = false
-                         }: UseModalProps) => {
-  const [isClosing, setIsClosing] = useState(false)
-  const timerRef = useRef<number>(undefined)
+  onClose,
+  animationDelay = ANIMATION_DELAY,
+  isOpen = false,
+}: UseModalProps) => {
+  const [isClosing, setIsClosing] = useState(false);
+  const timerRef = useRef<number>(undefined);
 
   const closeHandler = useCallback(() => {
-    if(onClose) {
-      enableBodyScroll()
-      setIsClosing(true)
+    if (onClose) {
+      enableBodyScroll();
+      setIsClosing(true);
       timerRef.current = setTimeout(() => {
-        onClose()
-        setIsClosing(false)
-      }, animationDelay)
+        onClose();
+        setIsClosing(false);
+      }, animationDelay);
     }
-  }, [onClose])
+  }, [onClose]);
 
-  const onKeyDown = useCallback((e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      closeHandler()
-    }
-  }, [closeHandler])
+  const onKeyDown = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        closeHandler();
+      }
+    },
+    [closeHandler],
+  );
 
   useEffect(() => {
-    if(isOpen) {
-      disableBodyScroll()
-      window.addEventListener('keydown', onKeyDown)
+    if (isOpen) {
+      disableBodyScroll();
+      window.addEventListener("keydown", onKeyDown);
     }
 
     return () => {
-      clearTimeout(timerRef.current)
-      enableBodyScroll()
-      window.removeEventListener('keydown', onKeyDown)
-    }
-  }, [onKeyDown, isOpen])
+      clearTimeout(timerRef.current);
+      enableBodyScroll();
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [onKeyDown, isOpen]);
 
-  return { isClosing, closeHandler }
-}
+  return { isClosing, closeHandler };
+};
