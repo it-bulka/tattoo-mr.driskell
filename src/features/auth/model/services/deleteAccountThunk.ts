@@ -17,6 +17,7 @@ export const deleteAccountThunk = createAsyncThunk<
 
     clearAuthState(dispatch);
   } catch {
+    clearAuthState(dispatch);
     return rejectWithValue("Delete failed");
   }
 });
