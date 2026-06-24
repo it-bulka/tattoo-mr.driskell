@@ -1,4 +1,4 @@
-import { Modal } from '@/shared/ui'
+import { Modal, CloseBtn } from '@/shared/ui'
 import { Auth } from '@/features/auth/components'
 import { useAuthModals } from '@/shared/libs/authModalsContext'
 import { useTranslation } from 'react-i18next'
@@ -26,6 +26,7 @@ export const AuthRequiredModal = ({ isOpen, onClose }: AuthRequiredModalProps) =
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <Auth.Content>
+        <CloseBtn className={cls.closeBtn} onClick={onClose} />
         <div className={cls.wrap}>
           <Auth.Title className={cls.title}>{t('auth required title')}</Auth.Title>
           <div className={cls.actions}>

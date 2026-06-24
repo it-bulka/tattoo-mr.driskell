@@ -7,6 +7,12 @@
   max-width: 340px;
 }
 
+.closeBtn {
+  position: absolute;
+  top: toRem(12);
+  right: toRem(12);
+}
+
 .title {
   font-size: toRem(22);
 }
