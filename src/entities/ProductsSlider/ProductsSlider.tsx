@@ -19,11 +19,14 @@ export const ProductsSlider = memo(({
       paginationId={sliderId}
       dotsPosition={'outside'}
       dotsType='large'
-      slidesPerView={2}
+      slidesPerView={1}
       spaceBetween={20}
       speed={1200}
       loop
       breakpoints={{
+        480: {
+          slidesPerView: 2,
+        },
         800: {
           slidesPerView: 3,
         }
