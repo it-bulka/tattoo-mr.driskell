@@ -14,6 +14,8 @@
   position: static;
   padding: 0 var(--card-padding) toRem(20);
   margin-top: calc(-1 * (var(--card-padding) - toRem(16)));
+  border: 1px solid var(--card-border-color);
+  border-top: none;
   border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
 }
 
