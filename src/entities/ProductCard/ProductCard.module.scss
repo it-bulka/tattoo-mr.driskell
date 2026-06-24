@@ -41,6 +41,15 @@
   padding-left: toRem(24);
   padding-right: toRem(24);
   padding-bottom: toRem(20);
+
+  .staticOnAll & {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+  }
 }
 
 .btn {
@@ -82,8 +91,8 @@
       }
     }
 
-    &.staticOnAll .btnWrapper{
-      @include static-btn;
+    &.staticOnAll .btnWrapper {
+      position: absolute;
     }
   }
 }
