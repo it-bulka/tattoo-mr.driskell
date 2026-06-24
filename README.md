@@ -1,50 +1,111 @@
-# React + TypeScript + Vite
+# Tattoo Shop — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA e-commerce store for tattoo supplies (tattoo machines, needles, inks, accessories, services). Targets Ukrainian and English-speaking audiences.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Technology | Version | Purpose |
+|---|---|---|
+| React | 19 | UI framework |
+| TypeScript | 5.7 (strict) | Type safety |
+| Vite | 6 | Build tool & dev server |
+| Redux Toolkit + RTK Query | 2.6 | State management & API |
+| React Router | 7.2 | Routing |
+| react-hook-form + zod | 7.55 / 3.24 | Forms & validation |
+| i18next | 24 | Internationalization (uk / en) |
+| SCSS Modules | — | Component styling |
+| Framer Motion | 12 | Animations |
+| Swiper | 11 | Sliders / carousels |
 
-## Expanding the ESLint configuration
+## Quick Start
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```bash
+# Install dependencies
+npm install
 
-- Configure the top-level `parserOptions` property like this:
+# Start dev server (http://localhost:5173)
+npm run dev
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+# Production build
+npm run build
+
+# Preview production build locally
+npm run preview
+
+# Bundle analysis
+npm run analyze
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Environment Variables
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+| Variable | Description | Example |
+|---|---|---|
+| `VITE_BASE_API_URL` | Backend API URL | `http://localhost:3000/api/v1` |
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+> `.env.production` must be configured before deployment.
+
+## Architecture
+
+The project follows the **Feature-Sliced Design (FSD)** methodology:
+
 ```
+src/
+├── app/          — initialization, providers, router, global styles
+├── entities/     — business entities (Cart, User, Product, Order, Session)
+├── features/     — user scenarios (auth, search, favourites, cart)
+├── pages/        — pages (lazy-loaded)
+├── widgets/      — complex UI blocks (NavBar, FilterMenu, Catalog)
+└── shared/       — common: ui/, api/, libs/, config/, layouts/
+```
+
+Imports flow top-down only. Alias: `@/` → `src/`.
+
+More details: **[Project Architecture](docs/architecture.md)**
+
+## Main Pages
+
+| Page | Path |
+|---|---|
+| Home | `/` |
+| Catalog | `/catalog` |
+| Category (tattoo machines) | `/catalog/tattoo-machines` |
+| Product Details | `/catalog/tattoo-machines/:slug` |
+| Brands | `/brands` |
+| Brand | `/brands/:slug` |
+| Cart | `/catalog/cart` |
+| Additional Services | `/catalog/cart/additional-service` |
+| Search | `/search` |
+| Profile | `/profile` |
+| Favourites | `/profile/favorites` |
+| Promo Codes | `/promo-codes` |
+| Discounts | `/discounts` |
+| Help | `/help` |
+| Contacts | `/contacts` |
+| About | `/about` |
+
+## Features
+
+- **Catalog** — categories, brands, price filtering, pagination
+- **Search** — debounced search with dropdown results
+- **Cart** — backend sync, promo codes, checkout flow
+- **Auth** — registration, login, email verification, password reset
+- **Favourites** — likes persisted in localStorage
+- **Profile** — personal data, order history
+- **i18n** — Ukrainian (default) and English
+- **Responsive** — adaptive layout via useDevice hook
+
+## Deployment
+
+Configured for **Netlify** deployment (`netlify.toml`). SPA fallback to `index.html` is already set up.
+
+```bash
+npm run build   # → dist/
+```
+
+## Documentation
+
+| Document | Description |
+|---|---|
+| [Architecture](docs/architecture.md) | FSD structure, layers, state management, API layer |
+| [UI Components](docs/ui-components.md) | Shared UI library (~45 components) |
+| [Internationalization](docs/i18n.md) | Language setup, namespaces, adding translations |
