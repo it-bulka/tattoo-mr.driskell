@@ -1,0 +1,22 @@
+.wrapper {
+  display: flex;
+  gap: toRem(20);
+  overflow: hidden;
+}
+
+.item {
+  flex-shrink: 0;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .item {
+    width: calc((100% - toRem(20)) / 2);
+  }
+}
+
+@media (min-width: 800px) {
+  .item {
+    width: calc((100% - toRem(40)) / 3);
+  }
+}
