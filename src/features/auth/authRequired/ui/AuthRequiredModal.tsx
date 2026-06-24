@@ -27,7 +27,7 @@ export const AuthRequiredModal = ({ isOpen, onClose }: AuthRequiredModalProps) =
     <Modal isOpen={isOpen} onClose={onClose}>
       <Auth.Content>
         <div className={cls.wrap}>
-          <Auth.Title>{t('auth required title')}</Auth.Title>
+          <Auth.Title className={cls.title}>{t('auth required title')}</Auth.Title>
           <div className={cls.actions}>
             <button type="button" className={cls.link} onClick={handleLogin}>
               {t('sign in')}
