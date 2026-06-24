@@ -14,6 +14,7 @@
   position: static;
   padding: 0 var(--card-padding) toRem(20);
   margin-top: calc(-1 * (var(--card-padding) - toRem(16)));
+  border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
 }
 
 @mixin abs-btn {
@@ -51,8 +52,7 @@
   padding-bottom: toRem(20);
 
   .staticOnAll & {
-    @include abs-btn;
-    bottom: 1px;
+    @include static-btn;
   }
 }
 
@@ -93,7 +93,7 @@
     }
 
     &.staticOnAll .btnWrapper {
-      position: absolute;
+      @include static-btn;
     }
   }
 }
