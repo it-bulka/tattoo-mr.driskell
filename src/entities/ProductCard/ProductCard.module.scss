@@ -16,6 +16,14 @@
   margin-top: calc(-1 * (var(--card-padding) - toRem(16)));
 }
 
+@mixin abs-btn {
+  position: absolute;
+  left: 1px;
+  right: 1px;
+  z-index: 1;
+  border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+}
+
 .productCard {
   background-color: var(--bg-card-color);
   border: 1px solid var(--card-border-color);
@@ -43,12 +51,8 @@
   padding-bottom: toRem(20);
 
   .staticOnAll & {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1;
-    border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
+    @include abs-btn;
+    bottom: 1px;
   }
 }
 
@@ -64,16 +68,13 @@
     &:not(.staticOnMobile),
     &:not(.staticOnTablet) {
       .btnWrapper {
-        position: absolute;
+        @include abs-btn;
         top: calc(100% - toRem(24));
-        left: 0;
-        width: 100%;
         padding-top: toRem(16);
         transform: scaleY(0);
         transition: transform 0.7s ease;
         transform-origin: top;
         z-index: 999;
-        border-radius: 0 0 var(--card-border-radius) var(--card-border-radius);
         @include shadow-btn;
 
         .btn {
