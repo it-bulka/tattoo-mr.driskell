@@ -2,13 +2,17 @@ import cls from './ScrollUpToolbar.module.scss'
 import classNames from 'classnames'
 import { ScrollUpButton } from './ScrollUpButton/ScrollUpButton.tsx'
 import { memo, useEffect, useState } from 'react'
-import { useThrottle } from '@/shared/libs'
+import { useDevice, useThrottle } from '@/shared/libs'
+import { useLocation } from 'react-router';
 
 interface ScrollUpToolbarProps {
   className?: string
 }
 export const ScrollUpToolbar = memo(({ className }: ScrollUpToolbarProps) => {
   const [isShown, setShown] = useState(false)
+  const [isEnoughTall, setEnoughTall] = useState(false)
+  const isMobile = useDevice()
+  const { pathname } = useLocation();
 
   const checkScrollPercentage = useThrottle(() => {
     const scrollTop = window.scrollY;
@@ -25,13 +29,34 @@ export const ScrollUpToolbar = memo(({ className }: ScrollUpToolbarProps) => {
   })
 
   useEffect(() => {
-    window.addEventListener('scroll', checkScrollPercentage)
+    if (!isEnoughTall) {
+      setShown(false);
+      return;
+    }
+
+    window.addEventListener('scroll', checkScrollPercentage, {
+      passive: true,
+    })
     return () => window.removeEventListener('scroll', checkScrollPercentage)
-  }, [])
+  }, [isEnoughTall])
+
+  useEffect(()=> {
+    const checkHeight = () => {
+      const docHeight = document.documentElement.scrollHeight;
+      const winHeight = window.innerHeight;
+
+      setEnoughTall(docHeight >= winHeight * 1.6);
+    };
+
+    checkHeight();
+  }, [pathname])
 
   return (
     <div className={classNames('container', cls.toolbar, {}, [className])}>
-      <ScrollUpButton className={classNames(cls.btn, {[cls.visible]: isShown})}/>
+      <ScrollUpButton
+        className={classNames(cls.btn, {[cls.visible]: isShown })}
+        btnOnly={isMobile}
+      />
     </div>
   )
 })

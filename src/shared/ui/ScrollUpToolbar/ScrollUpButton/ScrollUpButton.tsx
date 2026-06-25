@@ -6,8 +6,9 @@ import { memo } from 'react'
 
 interface ScrollUpButtonProps {
   className?: string
+  btnOnly?: boolean
 }
-export const ScrollUpButton = memo(({ className }: ScrollUpButtonProps) => {
+export const ScrollUpButton = memo(({ className, btnOnly = false }: ScrollUpButtonProps) => {
   const { t } = useTranslation()
 
   const onClick = () => {
@@ -15,7 +16,7 @@ export const ScrollUpButton = memo(({ className }: ScrollUpButtonProps) => {
   }
   return (
     <button className={classNames(cls.btn, {}, [className])} onClick={onClick}>
-      <span>{t('to top')}</span>
+      {btnOnly || <span>{t('to top')}</span>}
       <span className={cls.arrow}>
         <ArrowLeft />
       </span>
