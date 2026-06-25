@@ -48,6 +48,7 @@ const RenderImg = (props: ImgProps) => {
   return <img alt={props.alt || 'image'} src={props.content} className={cls.img} {...attribute}/>
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mapParagraphType: Record<ParagraphType, (props: any) => ReactNode> = {
   title: RenderTitle,
   list: RenderList,

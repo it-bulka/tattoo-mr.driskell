@@ -1,6 +1,6 @@
 import { ProductList } from '@/entities/ProductList/ProductList'
 import { ErrorMsg } from '@/shared/ui'
-import { getRtkApiMessage, useSeoMeta } from '@/shared/libs'
+import { getRtkApiMessage, SeoMeta } from '@/shared/libs'
 import { useTranslation } from 'react-i18next'
 import {
   useGetCachedSearchProducts
@@ -24,10 +24,10 @@ const SearchResultPage = () => {
 
   return (
     <div className="container pageSpacing">
-      {useSeoMeta({
-        title: searchQuery ? `Пошук: ${searchQuery}` : 'Пошук',
-        noIndex: true,
-      })}
+      <SeoMeta
+        title={searchQuery ? `Пошук: ${searchQuery}` : 'Пошук'}
+        noIndex
+      />
       {t('founded', { count: data?.data?.length ?? 0})}
       {!data?.data?.length || <ProductList products={data.data}/>}
       {(isError && error) && <ErrorMsg as="p" text={getRtkApiMessage(error)} />}

@@ -27,7 +27,7 @@ export const Accordion = memo(({
       setIsUp(true)
       setIsClosing(false)
     }, 300)
-  }, [setIsClosing, setIsUp])
+  }, [setIsClosing, setIsUp, onClick])
 
   const openHandle = useCallback(() => {
     setIsUp(false)

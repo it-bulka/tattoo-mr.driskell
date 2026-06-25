@@ -12,7 +12,7 @@ import { ChangePasswordForm } from "@/features/ChangePasswordForm";
 import { LogoutButton } from "@/features/auth/logout";
 import { DeleteAccountButton } from "@/features/auth/deleteAccount";
 import { getUserId, useGetUserQuery } from "@/entities/User";
-import { useSeoMeta } from "@/shared/libs";
+import { SeoMeta } from "@/shared/libs";
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -24,7 +24,10 @@ const Profile = () => {
       className={"pageSpacing"}
       left={
         <>
-          {useSeoMeta({ title: "Профіль", noIndex: true })}
+          <SeoMeta
+            title="Профіль"
+            noIndex
+          />
           <Breadcrumbs className={cls.withContainer} />
           <h1 className={classNames("pageTitle", cls.withContainer)}>
             {t("profile")}

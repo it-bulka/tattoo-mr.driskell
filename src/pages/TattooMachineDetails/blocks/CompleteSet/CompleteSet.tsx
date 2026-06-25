@@ -84,6 +84,7 @@ export const CompleteSet = memo(({ combo, bundleDiscountTiers }: CompleteSetProp
     return bestTier.isPercentage
       ? Math.round((sumResult.current * bestTier.value) / 100 * 100) / 100
       : Math.min(bestTier.value, sumResult.current)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bundleDiscountTiers, sumResult.itemsAmount, sumResult.current])
 
   const nextTier = useMemo(() => {

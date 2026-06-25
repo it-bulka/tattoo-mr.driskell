@@ -62,7 +62,6 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
   const { control } = useFormContext<CartFormData>()
 
   const {
-    isCod,
     isCodModalOpen,
     closeCodModal,
     handleMainButtonClick,
@@ -80,18 +79,18 @@ export const AdditionalCartInfo = memo(({ className }: AdditionalInfoProps) => {
         </div>
         <div className={cls.prices}>
           <span>{t('summary.total discount')}</span>
-          <span>{`− ${totals.totalDiscount}`}</span>
+          <span>{`-&nbsp;${totals.totalDiscount}`}</span>
         </div>
         {!!totals.bundleDiscount && (
           <div className={cls.prices}>
             <span>{t('summary.bundle discount')}</span>
-            <span>{`− ${totals.bundleDiscount}`}</span>
+            <span>{`-&nbsp;${totals.bundleDiscount}`}</span>
           </div>
         )}
         {!!totals.promoDiscount && (
           <div className={cls.prices}>
             <span>{t('summary.promo discount')}{promocodeName ? ` ${promocodeName}` : ''}</span>
-            <span>{`− ${totals.promoDiscount}`}</span>
+            <span>{`-&nbsp;${totals.promoDiscount}`}</span>
           </div>
         )}
         <div className={cls.prices}>

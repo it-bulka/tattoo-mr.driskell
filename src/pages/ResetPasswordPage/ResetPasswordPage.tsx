@@ -1,10 +1,10 @@
 import { ResetPasswordModal } from '@/features/auth'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const ResetPasswordPage = () => {
   return (
     <>
-      {useSeoMeta({ title: 'Скидання пароля', noIndex: true })}
+      <SeoMeta title="Скидання пароля" noIndex />
       <ResetPasswordModal />
     </>
   )

@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { memo } from 'react';
 
 interface SeoMetaProps {
   title: string
@@ -11,7 +12,7 @@ interface SeoMetaProps {
 const SITE_NAME = 'Tattoo Shop'
 const DEFAULT_OG_IMAGE = '/default.png'
 
-export const useSeoMeta = ({
+export const SeoMeta = memo(({
   title,
   description,
   ogImage,
@@ -41,4 +42,6 @@ export const useSeoMeta = ({
       <meta name="twitter:image" content={ogImage || DEFAULT_OG_IMAGE} />
     </Helmet>
   )
-}
+})
+
+SeoMeta.displayName = 'SeoMeta'

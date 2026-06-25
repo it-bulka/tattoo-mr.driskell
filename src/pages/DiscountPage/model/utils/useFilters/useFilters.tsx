@@ -2,6 +2,7 @@ import { useSearchParams } from 'react-router'
 import { useState, useEffect, useCallback } from 'react'
 import { ProductCategory } from '@/entities'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const useFilters = (trigger: any, limit: number) => {
   const [searchParams, setSearchParams] = useSearchParams()
   const [activeFilters, setActiveFilters] = useState<ProductCategory[]>([])

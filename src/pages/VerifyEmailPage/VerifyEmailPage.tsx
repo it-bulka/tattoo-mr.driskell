@@ -1,10 +1,10 @@
 import { VerifyEmailModal } from '@/features/auth'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const VerifyEmailPage = () => {
   return (
     <>
-      {useSeoMeta({ title: 'Підтвердження email', noIndex: true })}
+      <SeoMeta title="Підтвердження email" noIndex />
       <VerifyEmailModal />
     </>
   )

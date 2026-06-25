@@ -45,7 +45,7 @@ const debounceSyncLikedIdsWithBack = debounce(async () => {
   } catch (error) {
     const err =
       getRejectedError(error) ||
-      "Something went wrong. Some likes are not added \ removed";
+      "Something went wrong. Some likes are not added / removed";
     dispatch(likedIdsActions.setError(err));
     dispatch(likedIdsActions.rollback());
   }

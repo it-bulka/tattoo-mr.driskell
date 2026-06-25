@@ -20,7 +20,7 @@ const Decoration = memo(function Decoration() {
     const numItems = 4;
     const gap = 50;
     const widthItem = (containerWidth - (numItems - 1) * gap) / numItems;
-    let middleGaps = [];
+    const middleGaps = [];
     for (let i = 1; i < numItems; i++) {
       const middleGap = (i * widthItem) + (i - 1) * gap + gap / 2;
       middleGaps.push(middleGap);

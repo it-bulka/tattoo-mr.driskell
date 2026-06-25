@@ -6,7 +6,7 @@ import { ValuesBlock } from './blocks/ValuesBlock/ValuesBlock'
 import { StatsBlock } from './blocks/StatsBlock/StatsBlock'
 import { BrandsBlock } from './blocks/BrandsBlock/BrandsBlock'
 import { CtaBlock } from './blocks/CtaBlock/CtaBlock'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 interface AboutPageProps {
   className?: string
@@ -15,10 +15,10 @@ interface AboutPageProps {
 const AboutPage = ({ className }: AboutPageProps) => {
   return (
     <div className={classNames(cls.aboutPage, {}, [className])}>
-      {useSeoMeta({
-        title: 'Про нас',
-        description: 'Дізнайтесь більше про наш магазин тату-обладнання: досвід, місія, команда.',
-      })}
+      <SeoMeta
+        title="Про нас"
+        description="Дізнайтесь більше про наш магазин тату-обладнання: досвід, місія, команда."
+      />
       <HeroBlock />
       <StoryBlock />
       <ValuesBlock />

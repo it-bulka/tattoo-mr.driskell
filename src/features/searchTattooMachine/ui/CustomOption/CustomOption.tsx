@@ -2,7 +2,7 @@ import { OptionProps } from 'react-select'
 import { Product } from '@/entities/ProductCard/ProductCard.tsx'
 import cls from './CustomOption.module.scss'
 
-export interface OptionType extends Product {}
+export type OptionType = Product
 
 export const CustomOption = (props: OptionProps<OptionType>) => {
   const { data, innerRef, innerProps, selectOption } = props;

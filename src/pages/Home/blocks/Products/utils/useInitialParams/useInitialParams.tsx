@@ -6,6 +6,7 @@ export const useInitialParams = () => {
 
   const initialParams = useMemo(() => {
     return Object.fromEntries(searchParams.entries())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return initialParams

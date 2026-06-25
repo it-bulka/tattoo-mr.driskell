@@ -2,7 +2,7 @@ import cls from './HelpDetailPage.module.scss'
 import { useParams, Navigate } from 'react-router'
 import { useTranslation } from 'react-i18next'
 import { Breadcrumbs } from '@/shared/ui'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 import { RoutePaths } from '@/shared/config/routeConfig/routeConfig'
 import { getHelpArticleBySlug } from './model/helpArticles'
 
@@ -14,14 +14,16 @@ const HelpDetailPage = () => {
   const title = article ? t(article.titleKey) : ''
   const description = article ? t(article.descriptionKey) : ''
 
-  useSeoMeta({ title: title || 'Not Found', description })
-
   if (!article) {
     return <Navigate to={RoutePaths.not_found} replace />
   }
 
   return (
     <div className={cls.page}>
+      <SeoMeta
+        title={title || 'Not Found'}
+        description={description}
+      />
       <div className="container">
         <Breadcrumbs customLastCrumb={title} />
         <h1 className="pageTitle">{title}</h1>

@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 import { getCartItemsSelector } from '@/entities/Cart/model/selectors/selectors'
 import { CartFormProvider } from '@/features/CartForm/model/service/cartFormContext.tsx'
 import { lazy, Suspense } from 'react'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const CartForm = lazy(() =>
   import('@/features/CartForm/ui/CartForm').then(m => ({ default: m.CartForm }))
@@ -23,7 +23,7 @@ const CartPage = ({ className }: CartPageProps) => {
 
   return (
     <div className={classNames(cls.cartPage, 'container', {}, [className])}>
-      {useSeoMeta({ title: 'Кошик', noIndex: true })}
+      <SeoMeta title="Кошик" noIndex />
       <Breadcrumbs />
       <h1 className="pageTitle">{t('cart')}</h1>
       <div className={cls.content}>

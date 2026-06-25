@@ -36,6 +36,7 @@ export const DecoratedLink = ({
     }
 
     return innerContent
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [type])
 
   return (

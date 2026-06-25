@@ -21,7 +21,7 @@ export const dateFormat = (
 ) => {
   const local = getLocal()
 
-  const options: Record<Format, any> = {
+  const options: Record<Format, object> = {
     date: dateOptions,
     time: timeOptions,
     all: allOptions

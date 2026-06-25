@@ -12,7 +12,7 @@ import { memo, useState, useCallback } from 'react'
 import { useParams } from 'react-router'
 import { useGetBrandsQuery } from '@/entities/Brand'
 import { BrandProductsLoader } from './BrandProductsLoader'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const LIMIT = 20
 
@@ -96,13 +96,15 @@ const BrandPage = memo(() => {
 
   return (
     <div className={classNames(cls.brandsPage, 'container')}>
-      {useSeoMeta({
-        title: brand ? `${brand.name} — тату-машинки` : (slug ?? 'Бренд'),
-        description: brand
-          ? `Тату-машинки бренду ${brand.name}. Офіційний імпортер, гарантія якості.`
-          : undefined,
-        ogImage: brand?.imgUrl,
-      })}
+      <SeoMeta
+        title={brand ? `${brand.name} — тату-машинки` : (slug ?? 'Бренд')}
+        description={
+          brand
+            ? `Тату-машинки бренду ${brand.name}. Офіційний імпортер, гарантія якості.`
+            : undefined
+        }
+        ogImage={brand?.imgUrl}
+      />
       <Breadcrumbs />
       <div className={cls.brand}>
         {brand?.imgUrl && <img src={brand.imgUrl} alt={brand.name} loading="lazy" decoding="async" />}

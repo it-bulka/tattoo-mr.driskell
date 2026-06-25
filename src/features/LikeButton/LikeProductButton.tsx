@@ -22,7 +22,7 @@ export const LikeProductButton = ({
 
   const onToggle = useCallback((isLiked: boolean) => {
     debounceLikeToggle({ machineId, isLiked })
-  }, [machineId])
+  }, [machineId, debounceLikeToggle])
 
   return (
     <LikeButton

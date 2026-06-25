@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/shared/ui'
 import { CategoriesBlock } from './blocks/CategoriesBlock/CategoriesBlock'
 import { FaqBlock } from './blocks/FaqBlock/FaqBlock'
 import { SupportBlock } from './blocks/SupportBlock/SupportBlock'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 interface HelpPageProps {
   className?: string
@@ -16,10 +16,10 @@ const HelpPage = ({ className }: HelpPageProps) => {
 
   return (
     <div className={classNames(cls.helpPage, {}, [className])}>
-      {useSeoMeta({
-        title: 'Допомога',
-        description: 'Відповіді на поширені запитання: доставка, оплата, гарантія.',
-      })}
+      <SeoMeta
+        title="Допомога"
+        description="Відповіді на поширені запитання: доставка, оплата, гарантія."
+      />
       <Breadcrumbs className="container" />
       <h1 className="pageTitle container">{t('help')}</h1>
       <CategoriesBlock />

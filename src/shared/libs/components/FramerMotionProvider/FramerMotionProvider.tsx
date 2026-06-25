@@ -63,7 +63,7 @@ export const useMotionLib = () => {
   return useContext(FramerMotionContext) as NonNullableFields<FramerMotionContextPayload>
 }
 
-export function withMotionLoaded<P extends Object>(WrappedComponent: ComponentType<P>) {
+export function withMotionLoaded<P extends object>(WrappedComponent: ComponentType<P>) {
   return (props: P) => {
     const { isLoaded } = useMotionLib()
 

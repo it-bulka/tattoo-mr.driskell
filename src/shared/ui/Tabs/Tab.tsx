@@ -24,7 +24,8 @@ export const Tab = <T extends string, K extends string | number>({
     if(!currentRef.current) return
     const { width, top, left } = getElementPosition(currentRef.current)
     onClick?.({ width, top, left })
-  }, [isActive])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isActive, onClick])
 
   return (
     <li

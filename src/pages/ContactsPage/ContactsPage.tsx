@@ -7,7 +7,7 @@ import { managers } from '@/mockData.tsx'
 import { PersonalDataCardMini } from '@/entities/PersonalDataCardMini/PersonalDataCardMini'
 import { CompanyOffice } from './CompanyOffice/CompanyOffice.tsx'
 import { PageTwoColumnLayout } from '@/shared/layouts'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 
 const ContactsPage = () => {
@@ -15,10 +15,10 @@ const ContactsPage = () => {
 
   return (
     <div>
-      {useSeoMeta({
-        title: 'Контакти',
-        description: "Зв'яжіться з нами: адреса, телефон, email, графік роботи.",
-      })}
+      <SeoMeta
+        title="Контакти"
+        description="Зв'яжіться з нами: адреса, телефон, email, графік роботи."
+      />
       <Breadcrumbs className="container" />
       <h1 className={classNames("pageTitle container")}>{t('contacts')}</h1>
 

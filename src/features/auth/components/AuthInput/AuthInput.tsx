@@ -1,6 +1,6 @@
 import { Input, type InputProps } from '@/shared/ui/Input/Input'
 
-interface AuthInputProps extends Omit<InputProps, 'size'> {}
+type AuthInputProps = Omit<InputProps, 'size'>
 
 export const AuthInput = ({
   label,

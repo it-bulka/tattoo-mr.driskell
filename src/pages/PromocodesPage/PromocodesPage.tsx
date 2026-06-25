@@ -3,7 +3,7 @@ import classNames from 'classnames'
 import { useTranslation } from 'react-i18next'
 import { Card } from '@/shared/ui/Card/Card'
 import { CardsGrid, ErrorMsg, Breadcrumbs } from '@/shared/ui'
-import { useHandleCopy, useSeoMeta, dateFormat } from '@/shared/libs'
+import { useHandleCopy, SeoMeta, dateFormat } from '@/shared/libs'
 import { useGetPromoCodesQuery } from '@/entities/PromoCode'
 import { PromocodesContentLoader } from './PromocodesContentLoader'
 
@@ -18,10 +18,10 @@ const PromocodesPage = ({ className }: PromocodesPageProps) => {
 
   return (
     <div className={classNames('pageSpacing', {}, [className])}>
-      {useSeoMeta({
-        title: 'Промокоди',
-        description: 'Промокоди та купони на знижку в магазині тату-обладнання.',
-      })}
+      <SeoMeta
+        title="Промокоди"
+        description="Промокоди та купони на знижку в магазині тату-обладнання."
+      />
       <Breadcrumbs className="container"/>
       <h1 className='pageTitle container'>{t('promo codes')}</h1>
 

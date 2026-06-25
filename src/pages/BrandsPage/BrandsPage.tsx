@@ -5,7 +5,7 @@ import { Breadcrumbs, ErrorMsg } from '@/shared/ui'
 import { BrandCard } from './BrandCard.tsx'
 import { BrandsListLoader } from './BrandsListLoader'
 import cls from './BrandsPage.module.scss'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const BrandsPage = memo(() => {
   const { t, i18n } = useTranslation()
@@ -13,10 +13,10 @@ const BrandsPage = memo(() => {
 
   return (
     <div className={cls.brandsPage + ' container'}>
-      {useSeoMeta({
-        title: 'Бренди тату-обладнання',
-        description: 'Всі бренди тату-машинок та обладнання в нашому магазині.',
-      })}
+      <SeoMeta
+        title="Бренди тату-обладнання"
+        description="Всі бренди тату-машинок та обладнання в нашому магазині."
+      />
       <Breadcrumbs />
       <h1 className={'pageTitle ' + cls.title}>{t('brands')}</h1>
       {isLoading && <BrandsListLoader />}

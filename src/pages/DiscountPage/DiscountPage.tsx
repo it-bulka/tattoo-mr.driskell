@@ -10,7 +10,7 @@ import { TopLoader } from '@/shared/ui/Loaders'
 import { FilterToolbar } from '@/widgets'
 import { ResetFilters } from '@/features'
 import { useProductFilters } from '@/widgets/FilterToolbar/model/useProductFilters'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 
 const CATEGORY_FILTERS: { id: ProductCategory; name: string }[] = [
   { id: 'tattoo-holders', name: 'tattoo holders' },
@@ -91,10 +91,10 @@ const DiscountPage = () => {
   return (
     <div className={classNames(cls.discountPage, 'container')}>
       <TopLoader isLoading={isFetching && !!data} />
-      {useSeoMeta({
-        title: 'Знижки та акції',
-        description: 'Актуальні акції та знижки на тату-обладнання.',
-      })}
+      <SeoMeta
+        title="Знижки та акції"
+        description="Актуальні акції та знижки на тату-обладнання."
+      />
       <Breadcrumbs />
       <h1 className={classNames('pageTitle', cls.title)}>{t('discounts')}</h1>
 

@@ -49,7 +49,7 @@ const ShareSocialMediaProvider = ({ children }: PropsWithChildren) => {
   )
 }
 
-const withShareProvider = <P extends Object>(WrappedComponent: ComponentType<P>) =>
+const withShareProvider = <P extends object>(WrappedComponent: ComponentType<P>) =>
   (props: P) => {
   return (
     <ShareSocialMediaProvider>
@@ -62,7 +62,7 @@ export const useShareLib  = () => {
   return useContext(ShareMediaContext) as NonNullableFields<ShareMediaPayload>
 }
 
-const withShareLibLoaded = <P extends Object>(WrappedComponent: ComponentType<P>) => {
+const withShareLibLoaded = <P extends object>(WrappedComponent: ComponentType<P>) => {
   return (props: P) => {
     const { isLoaded } = useShareLib()
     if(!isLoaded) return
@@ -71,6 +71,6 @@ const withShareLibLoaded = <P extends Object>(WrappedComponent: ComponentType<P>
   }
 }
 
-export const withShareLib = <P extends Object>(WrappedComponent: ComponentType<P>) => {
+export const withShareLib = <P extends object>(WrappedComponent: ComponentType<P>) => {
   return withShareProvider(withShareLibLoaded(WrappedComponent))
 }

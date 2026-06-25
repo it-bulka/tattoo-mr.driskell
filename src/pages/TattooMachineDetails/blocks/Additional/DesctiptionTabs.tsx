@@ -25,6 +25,7 @@ const content = (
   </div>
 )
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tabsContent: Record<TabIds, any> = {
   description:  content,
   specifications:  content,

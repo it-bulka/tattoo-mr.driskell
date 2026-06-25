@@ -29,7 +29,7 @@ export const manualSync = (): AppThunk => async (dispatch, getState) => {
 
     dispatch(cartActions.setCartData(result?.data || []))
     localStorage.removeItem(IS_BACK_CART_SYNC_LOCALSTORAGE)
-  } catch (e) {
+  } catch {
     console.error('manualSync failed')
   }
 }

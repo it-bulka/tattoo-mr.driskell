@@ -32,7 +32,7 @@ export const CounterInput = memo(({
     if(minusValue < min) return
     inputRef.current!.value = minusValue.toString()
     onChange?.(minusValue)
-  }, [onChange, min])
+  }, [onChange, min, getValidNumber])
 
   const onPlusClick = useCallback(() => {
     if (!inputRef.current) return null;
@@ -41,7 +41,7 @@ export const CounterInput = memo(({
     const plusValue = numValue + 1
     inputRef.current!.value = plusValue.toString()
     onChange?.(plusValue)
-  }, [onChange])
+  }, [onChange, getValidNumber])
 
   const onBlur = useCallback((e: FocusEvent<HTMLInputElement>) => {
     const targetValue = e.target.value.trim()
@@ -66,12 +66,12 @@ export const CounterInput = memo(({
 
   const onInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     if (!inputRef.current) return;
-    let value = e.target.value.replace(/[^0-9]/g, '')
+    const value = e.target.value.replace(/[^0-9]/g, '')
 
     inputRef.current.value = value
     onChange?.(Number(value))
     onResizeInput(value, inputRef.current)
-  }, [onChange, onResizeInput, min])
+  }, [onChange, onResizeInput])
 
 
   return (

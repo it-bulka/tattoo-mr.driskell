@@ -10,7 +10,7 @@ import { useParams, Navigate } from 'react-router'
 import { RoutePaths, getCatalogBrandsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { MainBlock } from './blocks/Main/MainBlock.tsx'
 import { TattooMachineDetailsPageLoader } from './TattooMachineDetailsPageLoader'
-import { useSeoMeta } from '@/shared/libs'
+import { SeoMeta } from '@/shared/libs'
 import { ProductSchema } from '@/shared/ui/SeoSchemas'
 
 interface TattooMachineDetailsProps {
@@ -42,11 +42,11 @@ const TattooMachineDetails = ({ className }: TattooMachineDetailsProps) => {
 
   return (
     <div className={classNames(cls.page, {}, [className])}>
-      {useSeoMeta({
-        title: data.title,
-        description: data.longDescription?.join(' ').slice(0, 155),
-        ogImage: data.images?.[0],
-      })}
+      <SeoMeta
+        title={data.title}
+        description={data.longDescription?.join(' ').slice(0, 155)}
+        ogImage={data.images?.[0]}
+      />
       <ProductSchema
         name={data.title}
         description={data.longDescription?.join(' ').slice(0, 300)}

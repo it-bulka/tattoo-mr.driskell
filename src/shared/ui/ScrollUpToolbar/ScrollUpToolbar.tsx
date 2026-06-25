@@ -38,7 +38,7 @@ export const ScrollUpToolbar = memo(({ className }: ScrollUpToolbarProps) => {
       passive: true,
     })
     return () => window.removeEventListener('scroll', checkScrollPercentage)
-  }, [isEnoughTall])
+  }, [isEnoughTall, checkScrollPercentage])
 
   useEffect(()=> {
     const checkHeight = () => {
