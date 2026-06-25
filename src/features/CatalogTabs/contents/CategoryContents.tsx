@@ -4,10 +4,11 @@ import { catalogContent } from '../data.ts'
 import { AppLink } from '@/shared/ui'
 import { getCatalogDetailsPage } from '@/shared/config/routeConfig/routeConfig.tsx'
 import { useTranslation } from 'react-i18next'
+import { memo } from 'react';
 
 const toSlug = (s: string) => s.toLowerCase().replace(/[,\s]+/g, '-')
 
-export const CategoryContents = () => {
+export const CategoryContents = memo(() => {
   const { t } = useTranslation()
   return (
     <ul className={classNames(cls.contents, cls.categories)}>
@@ -16,4 +17,5 @@ export const CategoryContents = () => {
       ))}
     </ul>
   )
-}
+})
+CategoryContents.displayName = 'CategoryContents'

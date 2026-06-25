@@ -8,6 +8,10 @@
   li:hover {
     color: var(--accent-color);
   }
+
+  @include media-max-mobile-s {
+    white-space: break-spaces;
+  }
 }
 
 .brands {
